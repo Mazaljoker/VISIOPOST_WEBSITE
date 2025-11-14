@@ -11,6 +11,9 @@ import FaqSection from './sections/FaqSection';
 import FinalCtaSection from './sections/FinalCtaSection';
 import Footer from './sections/Footer';
 
+// Components
+import FloatingIcons from './components/FloatingIcons';
+
 /**
  * Landing Page VisioPost - Composant principal
  *
@@ -28,18 +31,24 @@ import Footer from './sections/Footer';
  */
 const LandingPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <Header />
-      <HeroSection />
-      <SocialProofSection />
-      <ProblemSection />
-      <SolutionSection />
-      <FeaturesSection />
-      <BeforeAfterSection />
-      <PricingSection />
-      <FaqSection />
-      <FinalCtaSection />
-      <Footer />
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative">
+      {/* Floating background icons */}
+      <FloatingIcons />
+
+      {/* Main content */}
+      <div className="relative z-10">
+        <Header />
+        <HeroSection />
+        <SocialProofSection />
+        <ProblemSection />
+        <SolutionSection />
+        <FeaturesSection />
+        <BeforeAfterSection />
+        <PricingSection />
+        <FaqSection />
+        <FinalCtaSection />
+        <Footer />
+      </div>
     </div>
   );
 };
