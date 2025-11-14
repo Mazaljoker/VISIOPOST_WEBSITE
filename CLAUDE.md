@@ -1,234 +1,177 @@
-# 🤖 CLAUDE.md - Instructions pour Claude Code
+# 🤖 CLAUDE.md - Instructions Claude Code
 
-Ce fichier contient les instructions complètes pour Claude Code afin de maintenir et développer la landing page VisioPost en suivant **STRICTEMENT** les principes **KISS**, **SRP**, **SOLID** et **DRY**.
+## 🎯 Mission
 
-## 🎯 Principes Fondamentaux
+Développer le **site web complet VisioPost** (landing + pages additionnelles) en suivant **KISS, SRP, SOLID, DRY**.
 
-### 1. KISS (Keep It Simple, Stupid)
-- Code lisible > Code clever
-- Solution la plus simple qui fonctionne
-- Pas d'over-engineering
+## 🌐 Scope - Site Web Complet
 
-### 2. SRP (Single Responsibility Principle)
-- Chaque composant = UNE seule responsabilité
-- Fichiers <300 lignes
-- Composants <100 lignes idéalement
+### Pages à Développer
 
-### 3. SOLID Principles
-- **S**ingle Responsibility
-- **O**pen/Closed (extensible sans modification)
-- **L**iskov Substitution
-- **I**nterface Segregation
-- **D**ependency Inversion
+#### Phase 1 : Landing Page ✅
+- `/` - Homepage avec Hero, Playlists, Features, Pricing, FAQ
 
-### 4. DRY (Don't Repeat Yourself)
-- Zéro duplication
-- Extraire patterns répétitifs en composants réutilisables
+#### Phase 2 : Pages Produit 📄
+- `/features` - Détail fonctionnalités
+- `/playlists` - Page dédiée USP principal
+- `/pricing` - Tarification détaillée + ROI calculator
+
+#### Phase 3 : Content 📄
+- `/blog` - Articles SEO
+- `/case-studies` - Études de cas clients
+- `/resources` - Templates & guides
+
+#### Phase 4 : Support 📄
+- `/about` - À propos équipe
+- `/contact` - Formulaire + démo
+- `/legal/*` - CGV, Privacy, Cookies
+
+#### Phase 5 : Marketing 📄
+- `/demo` - Demande démo
+- `/partners` - Programme partenaires
+- `/integrations` - Facebook, Instagram, etc.
+
+## 🏗️ Architecture Cible
+
+```
+src/
+├── components/
+│   ├── layout/          # Header, Footer, Navigation
+│   ├── ui/              # Button, Card, Input, Modal
+│   ├── sections/        # FeatureCard, PricingCard, etc.
+│   └── forms/           # ContactForm, DemoRequestForm
+├── pages/
+│   ├── home/            # Landing page + sections
+│   ├── features/        # Page fonctionnalités
+│   ├── playlists/       # Page dédiée Playlists
+│   ├── pricing/         # Pricing détaillée
+│   ├── blog/            # Blog + articles
+│   ├── contact/         # Contact
+│   └── legal/           # Pages légales
+├── data/                # features.ts, pricing.ts, faqs.ts
+├── hooks/               # useFaq, useForm, useAnalytics
+├── utils/               # classNames, validation, seo
+├── router/              # React Router config
+└── App.tsx              # App avec routing
+```
 
 ## 🎨 Design System VisioScreen
 
 ### Couleurs (IMMUABLES)
-
-```typescript
-'visio-violet': '#3f2680'
-'visio-rose':   '#ed1164'
-'visio-bleu':   '#00aeef'
+```
+Violet: #3f2680
+Rose:   #ed1164
+Bleu:   #00aeef
 ```
 
-**RÈGLE ABSOLUE** : Ne JAMAIS modifier ces couleurs.
+**RÈGLE ABSOLUE** : NE JAMAIS modifier ces couleurs.
 
-## 🏗️ Architecture
+## ⚡ Principes
 
-### Structure Actuelle
-```
-src/
-├── LandingPage.tsx  # ⚠️ 771 lignes - À REFACTORER
-├── App.tsx
-├── main.tsx
-└── styles.css
-```
+### KISS - Keep It Simple
+- Code lisible > Code clever
+- Solution la plus simple
 
-### Structure Cible (Après Refactoring)
-```
-src/
-├── components/       # Composants réutilisables
-│   ├── Button.tsx
-│   ├── FeatureCard.tsx
-│   └── PricingCard.tsx
-├── sections/        # Sections de page
-│   ├── HeroSection.tsx
-│   ├── ProblemSection.tsx
-│   ├── PlaylistExplanation.tsx
-│   ├── SolutionSection.tsx
-│   ├── FeaturesSection.tsx
-│   ├── PricingSection.tsx
-│   └── FaqSection.tsx
-├── data/           # Données séparées
-│   ├── features.ts
-│   ├── pricing.ts
-│   └── faqs.ts
-├── hooks/          # Custom hooks
-│   └── useFaq.ts
-└── utils/          # Utilitaires
-    └── classNames.ts
-```
+### SRP - Single Responsibility
+- 1 composant = 1 responsabilité
+- Fichiers <300 lignes
+- Composants <100 lignes
+
+### SOLID
+- Single Responsibility
+- Open/Closed
+- Liskov Substitution
+- Interface Segregation  
+- Dependency Inversion
+
+### DRY - Don't Repeat Yourself
+- Zéro duplication
+- Composants réutilisables
 
 ## 🚨 Règles STRICTES
 
 ### ❌ INTERDIT
-1. Modifier les couleurs VisioScreen sans validation
-2. Dupliquer du code
+1. Modifier couleurs VisioScreen
+2. Dupliquer code
 3. Fichiers >300 lignes
-4. Types `any` en TypeScript
-5. Inline styles (utiliser Tailwind uniquement)
-6. Console.log en production
-7. Hardcoded data dans les composants
+4. Types `any`
+5. Inline styles
+6. Console.log en prod
+7. Hardcoded data dans composants
 
 ### ✅ OBLIGATOIRE
-1. Typage TypeScript strict
+1. TypeScript strict
 2. Composants <100 lignes
 3. Props interfaces explicites
-4. Extraction data dans `/data` si répétitif
-5. Tests manuel après chaque modif
+4. Extraction data dans `/data`
+5. Tests manuel (npm run dev)
 6. Responsive mobile-first
 7. Accessibilité WCAG AA
-
-## 🎯 Priorités de Refactoring
-
-### P0 (Urgent)
-1. **Refactoring LandingPage.tsx** (771 lignes → composants séparés)
-2. **Extraction données** dans `/data`
-3. **Tests responsive** complets
-
-### Plan de Refactoring
-
-#### Étape 1 : Sections
-Extraire chaque section majeure dans `src/sections/`:
-- `HeroSection.tsx` (~80 lignes)
-- `SocialProof.tsx` (~30 lignes)
-- `ProblemSection.tsx` (~60 lignes)
-- `PlaylistExplanation.tsx` (~150 lignes)
-- `SolutionSection.tsx` (~120 lignes)
-- `FeaturesSection.tsx` (~80 lignes)
-- `BeforeAfterSection.tsx` (~60 lignes)
-- `PricingSection.tsx` (~150 lignes)
-- `FaqSection.tsx` (~80 lignes)
-- `FinalCtaSection.tsx` (~50 lignes)
-- `Footer.tsx` (~80 lignes)
-
-#### Étape 2 : Composants Réutilisables
-Créer dans `src/components/`:
-- `Button.tsx` - Boutons avec variants
-- `FeatureCard.tsx` - Cards features
-- `PricingCard.tsx` - Cards pricing
-- `FaqItem.tsx` - Item FAQ accordéon
-
-#### Étape 3 : Données
-Extraire dans `src/data/`:
-- `features.ts` - Liste des 6 features
-- `pricing.ts` - Plans tarifaires
-- `faqs.ts` - Questions FAQ
-- `content.ts` - Textes statiques
-
-#### Étape 4 : Hooks
-Créer `src/hooks/useFaq.ts` pour logique FAQ
-
-## 📏 Standards de Code
-
-### TypeScript
-```typescript
-// BON ✅
-interface ButtonProps {
-  variant: 'primary' | 'secondary' | 'ghost';
-  size?: 'sm' | 'md' | 'lg';
-  children: ReactNode;
-  onClick?: () => void;
-}
-
-const Button = ({ variant, size = 'md', children, onClick }: ButtonProps) => {
-  // ...
-};
-
-// MAUVAIS ❌
-const Button = (props: any) => { ... };
-```
-
-### Naming Conventions
-- Composants: PascalCase (`HeroSection`)
-- Fonctions: camelCase (`toggleFaq`)
-- Constantes: UPPER_SNAKE_CASE (`MAX_PAGES`)
-- CSS: kebab-case Tailwind
-
-### Imports
-```typescript
-import React, { useState } from 'react';     // React
-import { Sparkles } from 'lucide-react';     // Libs
-import Button from './components/Button';     // Composants
-import { features } from './data/features';   // Data
-import { cn } from './utils/classNames';      // Utils
-import './styles.css';                        // Styles
-```
+8. SEO meta tags par page
+9. Routing propre
+10. Navigation breadcrumbs
 
 ## 💡 Concept Clé : Playlists
 
-**CRITIQUE** : Le système de Playlists est l'USP principal.
+**USP PRINCIPAL** - À mentionner partout :
+- Landing page : Section dédiée
+- Header : Menu item highlighted
+- Page /playlists : Page entière
+- Features : Feature principale
+- Pricing : Dans chaque plan
+- Blog : Articles explicatifs
 
-Il DOIT être :
-- ✅ Expliqué clairement (section dédiée)
-- ✅ Mentionné partout
-- ✅ Différencié : "Netflix pour posts sociaux"
+**Analogie** : "Netflix pour posts sociaux"
 
-## 🧪 Testing
+## 🎯 Priorités Développement
 
-### Avant chaque commit
-```bash
-npm run dev        # Vérifier rendu
-npm run build      # Vérifier build
-```
+### P0 - Semaine 1
+1. Setup React Router
+2. Layout global (Header + Footer)
+3. Refactor Landing en composants
+4. Système UI (Button, Card, Input)
 
-**Checklist** :
-- [ ] Pas d'erreur console
-- [ ] Responsive mobile
-- [ ] Couleurs VisioScreen OK
-- [ ] Animations fluides
+### P1 - Semaine 2-3  
+1. Page /playlists (USP)
+2. Page /features
+3. Page /pricing
+4. Page /contact
+
+### P2 - Semaine 4-5
+1. Blog
+2. Case studies
+3. Resources
+4. Pages légales
 
 ## 🔄 Workflow Git
 
 ### Format Commits
 ```
-type(scope): description
-
-feat(pricing): add playlist mention
-fix(faq): accordion mobile bug
-refactor(landing): extract HeroSection
+feat(pages): add PlaylistsPage
+feat(components): add DemoRequestForm
+refactor(home): extract HeroSection
+fix(navigation): mobile menu bug
 ```
 
 ## 🏁 Checklist Avant Commit
 
-- [ ] KISS : Code simple ?
+- [ ] KISS : Simple ?
 - [ ] SRP : 1 responsabilité ?
-- [ ] SOLID : Principes respectés ?
-- [ ] DRY : Pas de duplication ?
+- [ ] SOLID : Principes OK ?
+- [ ] DRY : Pas duplication ?
 - [ ] TypeScript strict ?
 - [ ] Responsive testé ?
+- [ ] Routes fonctionnent ?
+- [ ] SEO meta tags ?
 - [ ] Build réussit ?
 - [ ] Couleurs inchangées ?
 
----
-
 ## 📚 Documentation Complète
 
-Pour la documentation exhaustive (20+ pages), voir le fichier complet dans le repo.
-
-Ce fichier contient :
-- Exemples détaillés de refactoring
-- Cas d'usage spécifiques
-- Templates de composants
-- Guidelines d'accessibilité
-- Optimisations performance
+Le fichier complet (1700+ lignes) avec exemples détaillés, templates et guidelines est disponible en local dans le projet.
 
 ---
 
-**Version** : 1.0  
-**Projet** : VisioPost Landing Page  
+**Version** : 2.0 (Full Website)  
+**Projet** : VisioPost Website Complet  
 **Auteur** : Claude + Franck-Olivier
