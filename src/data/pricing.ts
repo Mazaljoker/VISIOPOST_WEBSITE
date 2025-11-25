@@ -1,78 +1,44 @@
 import { PricingPlan } from '../types';
 
 /**
- * Plan tarifaire pour les centrales
- * Gratuit si ≥10 adhérents payants
+ * Plan tarifaire pour les centrales - Programme Pilote
+ * Setup one-shot pour démarrer sans risque
  */
 export const centralePlan: PricingPlan = {
-  title: "CENTRALE",
-  price: 0,
-  period: "/mois",
+  title: "PROGRAMME PILOTE",
+  price: 2500,
+  period: " (Setup One-shot)",
   features: [
-    "Studio IA illimité",
-    "Distribution automatique",
-    "Dashboard stats consolidées",
-    "Support prioritaire",
-    "Utilisateurs illimités"
+    "Audit de visibilité actuel",
+    "Configuration du 'Ton de Marque' IA",
+    "Setup technique (20 magasins)",
+    "Formation équipe siège",
+    "Rapport de performance à 30 jours"
   ],
-  cta: "Commencer gratuitement",
+  cta: "Lancer un Pilote",
   variant: "centrale",
-  highlight: "⭐ OFFRE CENTRALE"
+  highlight: "🚀 DÉMARRAGE SANS RISQUE"
 };
 
 /**
  * Plans tarifaires pour les adhérents
- * 3 niveaux : FREE, STARTER (populaire), PRO
+ * Licence Réseau - offre volume disponible
  */
 export const adherentPlans: PricingPlan[] = [
-  // Plan FREE
   {
-    title: "FREE",
-    price: 0,
-    period: "/mois",
+    title: "Licence RÉSEAU",
+    price: 39,
+    period: "/mois/point de vente",
     features: [
-      "1 page Facebook",
-      "5 posts IA/mois",
-      "Réception playlists",
-      "Stats basiques"
+      "Accès Plateforme Visiopost",
+      "3 à 5 Posts IA / semaine",
+      "Modération automatique",
+      "Support Adhérent inclus",
+      "Facturation centralisée possible"
     ],
-    cta: "Essayer",
-    variant: "free",
-    isPopular: false
-  },
-
-  // Plan STARTER (POPULAIRE)
-  {
-    title: "STARTER",
-    price: 15,
-    period: "/mois",
-    features: [
-      "1 page Facebook",
-      "50 posts IA/mois",
-      "Réception playlists",
-      "Stats avancées",
-      "Sans watermark"
-    ],
-    cta: "Choisir Starter",
+    cta: "Simuler mon tarif",
     variant: "starter",
     isPopular: true,
-    highlight: "⭐ POPULAIRE"
-  },
-
-  // Plan PRO
-  {
-    title: "PRO",
-    price: 29,
-    period: "/mois",
-    features: [
-      "3 pages Facebook",
-      "200 posts IA/mois",
-      "Calendrier éditorial",
-      "Stats complètes",
-      "Exports données"
-    ],
-    cta: "Choisir Pro",
-    variant: "pro",
-    isPopular: false
+    highlight: "OFFRE VOLUME DISPONIBLE"
   }
 ];

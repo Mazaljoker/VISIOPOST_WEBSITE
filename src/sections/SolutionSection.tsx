@@ -1,4 +1,4 @@
-import { Sparkles, Users, BarChart3 } from 'lucide-react';
+import { Sparkles, Users, BarChart3, ShieldCheck } from 'lucide-react';
 import { solutionSteps } from '../data/solutionSteps';
 import StepCard from '../components/StepCard';
 import Button from '../components/Button';
@@ -14,7 +14,8 @@ const SolutionSection = ({ className = '' }: SolutionSectionProps) => {
   const iconMap: Record<string, JSX.Element> = {
     Sparkles: <Sparkles className="w-8 h-8 text-white" />,
     Users: <Users className="w-8 h-8 text-white" />,
-    BarChart3: <BarChart3 className="w-8 h-8 text-white" />
+    BarChart3: <BarChart3 className="w-8 h-8 text-white" />,
+    ShieldCheck: <ShieldCheck className="w-8 h-8 text-white" />
   };
 
   return (

@@ -7,19 +7,19 @@ import { BeforeAfterSectionProps } from '../types';
  */
 const BeforeAfterSection = ({ className = '' }: BeforeAfterSectionProps) => {
   const avant = [
-    "2h par post",
-    "Graphiste nécessaire",
-    "20% adoption adhérents",
-    "HQ paie cher",
-    "Frustration générale"
+    "Contenu Dupliqué (Pénalisé)",
+    "Portée Organique proche de 0",
+    "Risque d'image (Amateurisme)",
+    "Réseau passif et silencieux",
+    "Aucune Data centralisée"
   ];
 
   const apres = [
-    "30 secondes par post",
-    "IA fait tout automatiquement",
-    "80% adhérents publient",
-    "HQ gratuit",
-    "Autonomie & efficacité"
+    "Contenu 100% Unique & Local",
+    "Reach Maximisé (Boost Algo)",
+    "Image de Marque Contrôlée",
+    "Réseau Activé & Puissant",
+    "Pilotage par la Data"
   ];
 
   return (

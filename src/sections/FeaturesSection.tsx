@@ -4,7 +4,9 @@ import {
   BarChart3,
   Calendar,
   CheckCircle,
-  Zap
+  Zap,
+  Shield,
+  MapPin
 } from 'lucide-react';
 import { features } from '../data/features';
 import FeatureCard from '../components/FeatureCard';
@@ -22,7 +24,9 @@ const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
     BarChart3: <BarChart3 className="w-8 h-8" />,
     Calendar: <Calendar className="w-8 h-8" />,
     CheckCircle: <CheckCircle className="w-8 h-8" />,
-    Zap: <Zap className="w-8 h-8" />
+    Zap: <Zap className="w-8 h-8" />,
+    Shield: <Shield className="w-8 h-8" />,
+    MapPin: <MapPin className="w-8 h-8" />
   };
 
   return (

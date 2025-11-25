@@ -10,7 +10,7 @@ const ProblemSection = ({ className = '' }: ProblemSectionProps) => {
     <section className={`py-20 px-4 sm:px-6 lg:px-8 ${className}`}>
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-6">
-          Vous reconnaissez ces situations ?
+          Le Mur Algorithmique : Pourquoi votre réseau est invisible
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6 mt-12">
@@ -29,7 +29,7 @@ const ProblemSection = ({ className = '' }: ProblemSectionProps) => {
 
         <div className="mt-12 p-8 bg-gradient-to-r from-visio-violet/5 to-visio-rose/5 rounded-2xl">
           <p className="text-xl font-semibold text-gray-900">
-            C'est normal. Vous êtes une coopérative, pas Starbucks.
+            Résultat : Vous avez une armée d'ambassadeurs, mais leurs armes sont enrayées par les filtres Anti-Spam de Meta et LinkedIn.
           </p>
         </div>
       </div>

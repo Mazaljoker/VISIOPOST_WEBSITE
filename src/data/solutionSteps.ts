@@ -1,48 +1,44 @@
 import { Step } from '../types';
 
-/**
- * Les 3 étapes du processus VisioPost
- * Utilisé dans SolutionSection
- */
 export const solutionSteps: Step[] = [
   {
     number: "01",
-    title: "CENTRALE CRÉE",
-    icon: "Sparkles",
+    title: "CONTRÔLE CENTRAL",
+    icon: "ShieldCheck", // Assurez-vous d'importer l'icone ou mapper
     features: [
-      "Prenez une photo",
-      "L'IA GPT-4 Vision génère un post",
-      "Créez des \"posts suggérés\""
+      "Le Siège définit le message clé",
+      "Verrouillage de la charte graphique",
+      "Validation des templates IA"
     ],
-    highlight: "⏱️ 30 secondes par post",
+    highlight: "🛡️ Brand Safety Totale",
     gradientIcon: "from-visio-violet to-visio-rose",
     gradientNumber: "from-visio-violet to-visio-rose",
     highlightColor: "visio-violet"
   },
   {
     number: "02",
-    title: "ADHÉRENTS REÇOIVENT",
-    icon: "Users",
+    title: "CONTEXTUALISATION",
+    icon: "Sparkles",
     features: [
-      "Inbox de posts suggérés",
-      "Prévisualisent sur leur page",
-      "Publient en 1 clic (ou pas)"
+      "L'IA adapte le ton par ville",
+      "Injection de données locales (Météo, Events)",
+      "Variation sémantique anti-spam"
     ],
-    highlight: "💡 Ou créent leurs propres posts IA",
+    highlight: "📍 500 Posts Uniques générés",
     gradientIcon: "from-visio-rose to-visio-bleu",
     gradientNumber: "from-visio-rose to-visio-bleu",
     highlightColor: "visio-rose"
   },
   {
     number: "03",
-    title: "RÉSULTATS",
+    title: "DISTRIBUTION INTELLIGENTE",
     icon: "BarChart3",
     features: [
-      "Stats par magasin",
-      "Dashboard consolidé centrale",
-      "ROI temps mesurable"
+      "Publication étalée (Time Staggering)",
+      "Maximisation du Reach Organique",
+      "Reporting consolidé au siège"
     ],
-    highlight: "📊 Vision complète réseau",
+    highlight: "📈 +300% de Portée",
     gradientIcon: "from-visio-bleu to-visio-violet",
     gradientNumber: "from-visio-bleu to-visio-violet",
     highlightColor: "visio-bleu"
