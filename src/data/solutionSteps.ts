@@ -42,5 +42,19 @@ export const solutionSteps: Step[] = [
     gradientIcon: "from-visio-bleu to-visio-violet",
     gradientNumber: "from-visio-bleu to-visio-violet",
     highlightColor: "visio-bleu"
+  },
+  {
+    number: "04",
+    title: "ÉCOUTE DU RÉSEAU",
+    icon: "Heart",
+    features: [
+      "Analyse de sentiments IA",
+      "Alertes commentaires négatifs",
+      "Dashboard réputation temps réel"
+    ],
+    highlight: "🛡️ Protection Réputation",
+    gradientIcon: "from-visio-rose to-visio-violet",
+    gradientNumber: "from-visio-rose to-visio-violet",
+    highlightColor: "visio-rose"
   }
 ];

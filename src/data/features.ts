@@ -36,5 +36,11 @@ export const features: Feature[] = [
     title: "Onboarding Express",
     description: "Connectez 500 pages locales en quelques minutes via nos connecteurs API sécurisés.",
     gradient: "from-visio-bleu to-visio-rose"
+  },
+  {
+    icon: "Heart",
+    title: "Analyse de Sentiments",
+    description: "Détection IA des commentaires négatifs et alertes temps réel pour protéger votre réputation réseau.",
+    gradient: "from-visio-rose to-visio-bleu"
   }
 ];

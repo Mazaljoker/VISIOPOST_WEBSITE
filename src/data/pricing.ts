@@ -40,5 +40,20 @@ export const adherentPlans: PricingPlan[] = [
     variant: "starter",
     isPopular: true,
     highlight: "OFFRE VOLUME DISPONIBLE"
+  },
+  {
+    title: "Licence PRO + SENTIMENT",
+    price: 59,
+    period: "/mois/point de vente",
+    features: [
+      "Tout RÉSEAU inclus",
+      "Analyse de sentiments IA",
+      "Alertes commentaires négatifs",
+      "Dashboard réputation",
+      "Rapport hebdomadaire e-réputation"
+    ],
+    cta: "Découvrir PRO",
+    variant: "pro",
+    highlight: "PROTECTION RÉPUTATION"
   }
 ];
