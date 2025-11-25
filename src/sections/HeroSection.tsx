@@ -113,11 +113,13 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
 
             <motion.p
               variants={heroItem}
-              className="text-xl text-gray-600 mb-8"
+              className="text-xl text-gray-600 mb-8 leading-relaxed"
             >
-              Harmonisez la communication nationale avec l'authenticité locale.
-              Éliminez le duplicate content. Décuplez votre portée organique.
-              Gardez le contrôle absolu.
+              <span className="block mb-2 font-semibold text-gray-800">
+                Le problème : Vos 500 pages locales sont muettes ou désordonnées.
+              </span>
+              Diffusez automatiquement vos campagnes nationales sur l'ensemble de vos points de vente.
+              Chaque magasin publie une version unique et locale, sans double effort ni risque d'erreur.
             </motion.p>
 
             <motion.div
@@ -137,11 +139,13 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
+                className="flex flex-col items-center"
               >
-                <Button variant="secondary" size="lg" className="group">
+                <Button variant="secondary" size="lg" className="group w-full">
                   <Play className="w-5 h-5" />
                   <span>Voir le concept (2min)</span>
                 </Button>
+                <span className="text-xs text-gray-400 mt-2">Pas d'inscription requise</span>
               </motion.div>
             </motion.div>
 

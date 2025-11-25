@@ -1,58 +1,63 @@
 import { Step } from '../types';
 
+/**
+ * Étapes de la solution VisioPost
+ * Flow linéaire : Siège -> IA -> Local -> Écoute
+ * Histoire claire pour le client B2B
+ */
 export const solutionSteps: Step[] = [
   {
     number: "01",
-    title: "CONTRÔLE CENTRAL",
-    icon: "ShieldCheck", // Assurez-vous d'importer l'icone ou mapper
+    title: "LE SIÈGE IMPULSE",
+    icon: "ShieldCheck",
     features: [
-      "Le Siège définit le message clé",
-      "Verrouillage de la charte graphique",
-      "Validation des templates IA"
+      "Définition de la campagne nationale",
+      "Verrouillage des assets de marque",
+      "Validation du message clé"
     ],
-    highlight: "Brand Safety Totale",
+    highlight: "1 Campagne créée",
     gradientIcon: "from-visio-violet to-visio-rose",
     gradientNumber: "from-visio-violet to-visio-rose",
     highlightColor: "visio-violet"
   },
   {
     number: "02",
-    title: "CONTEXTUALISATION",
+    title: "L'IA DÉCLINE",
     icon: "Sparkles",
     features: [
-      "L'IA adapte le ton par ville",
-      "Injection de données locales (Météo, Events)",
-      "Variation sémantique anti-spam"
+      "Génération de 500 variantes uniques",
+      "Adaptation au contexte local (Ville/Météo)",
+      "Optimisation anti-duplicate"
     ],
-    highlight: "500 Posts Uniques générés",
+    highlight: "500 Posts Uniques",
     gradientIcon: "from-visio-rose to-visio-bleu",
     gradientNumber: "from-visio-rose to-visio-bleu",
     highlightColor: "visio-rose"
   },
   {
     number: "03",
-    title: "DISTRIBUTION INTELLIGENTE",
-    icon: "BarChart3",
+    title: "LE LOCAL PUBLIE",
+    icon: "MapPin",
     features: [
-      "Publication étalée (Time Staggering)",
-      "Maximisation du Reach Organique",
-      "Reporting consolidé au siège"
+      "Notification aux gérants (App mobile)",
+      "Publication automatique ou validée",
+      "Rayonnement local immédiat"
     ],
-    highlight: "+300% de Portée",
+    highlight: "100% du Réseau Actif",
     gradientIcon: "from-visio-bleu to-visio-violet",
     gradientNumber: "from-visio-bleu to-visio-violet",
     highlightColor: "visio-bleu"
   },
   {
     number: "04",
-    title: "ÉCOUTE DU RÉSEAU",
-    icon: "Heart",
+    title: "LE SIÈGE MESURE",
+    icon: "BarChart3",
     features: [
+      "Analytics consolidés en temps réel",
       "Analyse de sentiments IA",
-      "Alertes commentaires négatifs",
-      "Dashboard réputation temps réel"
+      "Alertes réputation & reporting"
     ],
-    highlight: "Protection Réputation",
+    highlight: "Visibilité Totale",
     gradientIcon: "from-visio-rose to-visio-violet",
     gradientNumber: "from-visio-rose to-visio-violet",
     highlightColor: "visio-rose"

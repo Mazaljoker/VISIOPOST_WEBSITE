@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Users, BarChart3, ShieldCheck, Heart } from 'lucide-react';
+import { Sparkles, Users, BarChart3, ShieldCheck, Heart, MapPin } from 'lucide-react';
 import { solutionSteps } from '../data/solutionSteps';
 import StepCard from '../components/StepCard';
 import Button from '../components/Button';
@@ -54,7 +54,8 @@ const SolutionSection = ({ className = '' }: SolutionSectionProps) => {
     Users: <Users className="w-8 h-8 text-white" />,
     BarChart3: <BarChart3 className="w-8 h-8 text-white" />,
     ShieldCheck: <ShieldCheck className="w-8 h-8 text-white" />,
-    Heart: <Heart className="w-8 h-8 text-white" />
+    Heart: <Heart className="w-8 h-8 text-white" />,
+    MapPin: <MapPin className="w-8 h-8 text-white" />
   };
 
   return (
