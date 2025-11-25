@@ -2,8 +2,8 @@ import Button from '../components/Button';
 import { HeaderProps } from '../types';
 
 /**
- * Section Header - Navigation sticky avec logo + links + CTAs
- * Lignes originales : 27-54 (~29 lignes)
+ * Section Header - Navigation B2B avec "Espace Client"
+ * Transformation : "Connexion" -> "Espace Client", "Démo" -> "Réserver une Démo"
  */
 const Header = ({ className = '' }: HeaderProps) => {
   return (
@@ -19,17 +19,17 @@ const Header = ({ className = '' }: HeaderProps) => {
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            <a href="#features" className="text-gray-700 hover:text-visio-violet transition">
-              Fonctionnalités
+            <a href="#features" className="text-gray-700 hover:text-visio-violet transition hidden md:block">
+              Solution
             </a>
-            <a href="#pricing" className="text-gray-700 hover:text-visio-violet transition">
-              Tarifs
+            <a href="#pricing" className="text-gray-700 hover:text-visio-violet transition hidden md:block">
+              Offre Réseau
             </a>
-            <button className="text-gray-700 hover:text-visio-violet transition">
-              Connexion
+            <button className="text-gray-900 font-medium hover:text-visio-violet transition px-4">
+              Espace Client
             </button>
             <Button variant="primary" size="sm">
-              Démo
+              Réserver une Démo
             </Button>
           </div>
         </div>
