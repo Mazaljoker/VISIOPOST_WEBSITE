@@ -128,7 +128,7 @@ const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
               {/* Texte */}
               <div>
                 <div className="inline-block px-4 py-1 bg-visio-rose/20 text-visio-rose rounded-full text-sm font-bold mb-6">
-                  ✨ NOUVEAU : AI PREDICTION
+                  NOUVEAU : AI PREDICTION
                 </div>
                 <h3 className="text-3xl font-bold mb-4">
                   Ne devinez plus. <br/>

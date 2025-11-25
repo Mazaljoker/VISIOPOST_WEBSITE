@@ -133,7 +133,7 @@ const PricingSection = ({ className = '' }: PricingSectionProps) => {
           transition={{ delay: 0.8 }}
         >
           <p className="text-gray-600">
-            💡 <span className="font-semibold">Tarif dégressif</span> selon la taille du réseau
+            <span className="font-semibold">Tarif dégressif</span> selon la taille du réseau
           </p>
         </motion.div>
       </motion.div>

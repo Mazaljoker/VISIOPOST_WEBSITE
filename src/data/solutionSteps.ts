@@ -10,7 +10,7 @@ export const solutionSteps: Step[] = [
       "Verrouillage de la charte graphique",
       "Validation des templates IA"
     ],
-    highlight: "🛡️ Brand Safety Totale",
+    highlight: "Brand Safety Totale",
     gradientIcon: "from-visio-violet to-visio-rose",
     gradientNumber: "from-visio-violet to-visio-rose",
     highlightColor: "visio-violet"
@@ -24,7 +24,7 @@ export const solutionSteps: Step[] = [
       "Injection de données locales (Météo, Events)",
       "Variation sémantique anti-spam"
     ],
-    highlight: "📍 500 Posts Uniques générés",
+    highlight: "500 Posts Uniques générés",
     gradientIcon: "from-visio-rose to-visio-bleu",
     gradientNumber: "from-visio-rose to-visio-bleu",
     highlightColor: "visio-rose"
@@ -38,7 +38,7 @@ export const solutionSteps: Step[] = [
       "Maximisation du Reach Organique",
       "Reporting consolidé au siège"
     ],
-    highlight: "📈 +300% de Portée",
+    highlight: "+300% de Portée",
     gradientIcon: "from-visio-bleu to-visio-violet",
     gradientNumber: "from-visio-bleu to-visio-violet",
     highlightColor: "visio-bleu"
@@ -52,7 +52,7 @@ export const solutionSteps: Step[] = [
       "Alertes commentaires négatifs",
       "Dashboard réputation temps réel"
     ],
-    highlight: "🛡️ Protection Réputation",
+    highlight: "Protection Réputation",
     gradientIcon: "from-visio-rose to-visio-violet",
     gradientNumber: "from-visio-rose to-visio-violet",
     highlightColor: "visio-rose"

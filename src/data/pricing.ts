@@ -17,7 +17,7 @@ export const centralePlan: PricingPlan = {
   ],
   cta: "Lancer un Pilote",
   variant: "centrale",
-  highlight: "🚀 DÉMARRAGE SANS RISQUE"
+  highlight: "DÉMARRAGE SANS RISQUE"
 };
 
 /**
@@ -55,6 +55,6 @@ export const adherentPlans: PricingPlan[] = [
     ],
     cta: "Découvrir PRO",
     variant: "pro",
-    highlight: "🧠 INTELLIGENCE PRÉDICTIVE"
+    highlight: "INTELLIGENCE PRÉDICTIVE"
   }
 ];
