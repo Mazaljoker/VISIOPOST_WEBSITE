@@ -3,7 +3,8 @@ import {
   Sparkles,
   Users,
   BarChart3,
-  Calendar,
+  Clock,
+  TrendingUp,
   CheckCircle,
   Zap,
   Shield,
@@ -60,7 +61,8 @@ const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
     Sparkles: <Sparkles className="w-8 h-8" />,
     Users: <Users className="w-8 h-8" />,
     BarChart3: <BarChart3 className="w-8 h-8" />,
-    Calendar: <Calendar className="w-8 h-8" />,
+    Clock: <Clock className="w-8 h-8" />,
+    TrendingUp: <TrendingUp className="w-8 h-8" />,
     CheckCircle: <CheckCircle className="w-8 h-8" />,
     Zap: <Zap className="w-8 h-8" />,
     Shield: <Shield className="w-8 h-8" />,
@@ -110,6 +112,112 @@ const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
               />
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Bloc Feature Prédictive - AI Intelligence */}
+        <motion.div
+          className="mt-20 max-w-5xl mx-auto bg-gray-900 rounded-3xl p-1 text-white overflow-hidden shadow-2xl"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: 'easeOut' as const }}
+        >
+          <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-8 md:p-12 rounded-[22px] border border-gray-700">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+
+              {/* Texte */}
+              <div>
+                <div className="inline-block px-4 py-1 bg-visio-rose/20 text-visio-rose rounded-full text-sm font-bold mb-6">
+                  ✨ NOUVEAU : AI PREDICTION
+                </div>
+                <h3 className="text-3xl font-bold mb-4">
+                  Ne devinez plus. <br/>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-visio-rose to-visio-bleu">
+                    Sachez quand poster.
+                  </span>
+                </h3>
+                <p className="text-gray-400 mb-6 text-lg">
+                  Notre algorithme analyse 12 points de données (Météo, Trafic, Historique, Concurrents...) pour déterminer la fenêtre de tir idéale par point de vente.
+                </p>
+                <div className="flex items-center space-x-4 text-sm font-medium">
+                  <div className="flex items-center text-green-400">
+                    <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                    +45% d'Engagement
+                  </div>
+                  <div className="flex items-center text-blue-400">
+                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+                    Prédiction à J+7
+                  </div>
+                </div>
+              </div>
+
+              {/* Simulation Graphique */}
+              <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700 relative">
+                {/* Faux Graphique animé */}
+                <motion.div
+                  className="flex justify-between items-end h-32 mb-4 space-x-2"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <motion.div
+                    className="w-full bg-gray-700 rounded-t opacity-30"
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '30%' }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                  />
+                  <motion.div
+                    className="w-full bg-gray-700 rounded-t opacity-40"
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '50%' }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                  />
+                  <motion.div
+                    className="w-full bg-gradient-to-t from-visio-violet to-visio-rose rounded-t relative group"
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '90%' }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                  >
+                    <motion.div
+                      className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-gray-900 text-xs font-bold px-2 py-1 rounded shadow-lg whitespace-nowrap"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 1 }}
+                    >
+                      Meilleur moment : 18h30
+                    </motion.div>
+                  </motion.div>
+                  <motion.div
+                    className="w-full bg-gray-700 rounded-t opacity-50"
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '60%' }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.7 }}
+                  />
+                  <motion.div
+                    className="w-full bg-gray-700 rounded-t opacity-30"
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '40%' }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                  />
+                </motion.div>
+                <div className="flex justify-between text-xs text-gray-500 font-mono">
+                  <span>14h</span>
+                  <span>16h</span>
+                  <span className="text-white font-bold">18h</span>
+                  <span>20h</span>
+                  <span>22h</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </motion.div>
       </motion.div>
     </section>

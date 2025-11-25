@@ -20,15 +20,15 @@ export const features: Feature[] = [
     gradient: "from-visio-bleu to-visio-violet"
   },
   {
-    icon: "Calendar",
-    title: "Workflow de Validation",
-    description: "Système d'approbation multiniveaux (Siège -> Région -> Adhérent) fluide et rapide.",
+    icon: "Clock",
+    title: "Smart Scheduling",
+    description: "Ne postez pas au hasard. Notre IA prédit le 'Best Time to Post' pour chaque ville afin de maximiser la viralité.",
     gradient: "from-visio-violet to-visio-bleu"
   },
   {
-    icon: "Zap",
-    title: "Anti-Duplicate",
-    description: "Technologie unique de variation de structure pour passer sous les radars du 'Duplicate Content'.",
+    icon: "TrendingUp",
+    title: "Prédiction de Portée",
+    description: "Avant même de publier, l'IA estime le 'Reach' potentiel de votre post et vous suggère des améliorations.",
     gradient: "from-visio-rose to-visio-violet"
   },
   {
