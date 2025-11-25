@@ -86,7 +86,7 @@ const SolutionSection = ({ className = '' }: SolutionSectionProps) => {
           <p className="text-xl text-gray-600">Simple. Rapide. Efficace.</p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
           {solutionSteps.map((step, index) => (
             <motion.div
               key={index}
