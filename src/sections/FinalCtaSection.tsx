@@ -49,7 +49,7 @@ const pulseGlow = {
  * Section Final CTA - Appel à l'action B2B spectaculaire
  * Animation d'entrée scale + glow pulsant
  */
-const FinalCtaSection = ({ className = '' }: FinalCtaSectionProps) => {
+const FinalCtaSection = ({ className = '', onOpenRoi }: FinalCtaSectionProps) => {
   return (
     <section className={`py-20 px-4 sm:px-6 lg:px-8 ${className}`}>
       <motion.div
@@ -134,6 +134,7 @@ const FinalCtaSection = ({ className = '' }: FinalCtaSectionProps) => {
               <Button
                 variant="secondary"
                 size="lg"
+                onClick={onOpenRoi}
                 className="border-white text-white hover:bg-white/10 px-8 py-4 rounded-xl font-bold text-lg flex items-center"
               >
                 <ArrowRight className="w-5 h-5 mr-2" />

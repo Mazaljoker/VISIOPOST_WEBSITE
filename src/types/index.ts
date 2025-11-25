@@ -140,6 +140,7 @@ export interface FaqSectionProps {
 
 export interface FinalCtaSectionProps {
   className?: string;
+  onOpenRoi?: () => void;
 }
 
 export interface FooterProps {

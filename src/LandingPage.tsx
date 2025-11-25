@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 // Sections
 import Header from './sections/Header';
 import HeroSection from './sections/HeroSection';
@@ -13,6 +15,7 @@ import Footer from './sections/Footer';
 
 // Components
 import FloatingIcons from './components/FloatingIcons';
+import RoiModal from './components/RoiModal';
 
 /**
  * Landing Page VisioPost - Composant principal
@@ -30,8 +33,13 @@ import FloatingIcons from './components/FloatingIcons';
  * @see CLAUDE.md pour les guidelines complètes
  */
 const LandingPage = () => {
+  const [isRoiModalOpen, setIsRoiModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative">
+      {/* ROI Simulator Modal */}
+      <RoiModal isOpen={isRoiModalOpen} onClose={() => setIsRoiModalOpen(false)} />
+
       {/* Floating background icons */}
       <FloatingIcons />
 
@@ -46,7 +54,7 @@ const LandingPage = () => {
         <BeforeAfterSection />
         <PricingSection />
         <FaqSection />
-        <FinalCtaSection />
+        <FinalCtaSection onOpenRoi={() => setIsRoiModalOpen(true)} />
         <Footer />
       </div>
     </div>
