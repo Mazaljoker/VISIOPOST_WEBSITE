@@ -15,17 +15,6 @@ import { features } from '../data/features';
 import FeatureCard from '../components/FeatureCard';
 import { FeaturesSectionProps } from '../types';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
 const titleVariants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -38,14 +27,15 @@ const titleVariants = {
   },
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 50, scale: 0.9 },
+// Individual card variants with rewind support
+const featureCardVariants = {
+  hidden: { opacity: 0, y: 60, scale: 0.9 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.4,
       ease: 'easeOut' as const,
     },
   },
@@ -72,15 +62,13 @@ const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
 
   return (
     <section id="features" className={`py-20 px-4 sm:px-6 lg:px-8 ${className}`}>
-      <motion.div
-        className="max-w-7xl mx-auto"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={containerVariants}
-      >
+      <div className="max-w-7xl mx-auto">
+        {/* Title - appears once */}
         <motion.div
           className="text-center mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
           variants={titleVariants}
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -89,14 +77,15 @@ const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
           <p className="text-xl text-gray-600">Une plateforme complète pour vos réseaux</p>
         </motion.div>
 
-        <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-        >
+        {/* Feature cards - each has individual scroll trigger with rewind */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3, margin: "-30px" }}
+              variants={featureCardVariants}
               whileHover={{
                 y: -8,
                 scale: 1.02,
@@ -112,15 +101,15 @@ const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
               />
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Bloc Feature Prédictive - AI Intelligence */}
+        {/* Bloc Feature Prédictive - AI Intelligence - with rewind */}
         <motion.div
           className="mt-20 max-w-5xl mx-auto bg-gray-900 rounded-3xl p-1 text-white overflow-hidden shadow-2xl"
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: 'easeOut' as const }}
+          initial={{ opacity: 0, y: 60, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: 'easeOut' as const }}
         >
           <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-8 md:p-12 rounded-[22px] border border-gray-700">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -219,7 +208,7 @@ const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
             </div>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 };

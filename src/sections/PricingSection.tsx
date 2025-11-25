@@ -3,17 +3,6 @@ import { centralePlan, adherentPlans } from '../data/pricing';
 import PricingCard from '../components/PricingCard';
 import { PricingSectionProps } from '../types';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
-    },
-  },
-};
-
 const titleVariants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -26,21 +15,22 @@ const titleVariants = {
   },
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 60, scale: 0.9 },
+// Individual card variants with rewind
+const pricingCardVariants = {
+  hidden: { opacity: 0, y: 70, scale: 0.9 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.6,
+      duration: 0.5,
       ease: 'easeOut' as const,
     },
   },
 };
 
 const centralCardVariants = {
-  hidden: { opacity: 0, scale: 0.8, y: 40 },
+  hidden: { opacity: 0, scale: 0.85, y: 50 },
   visible: {
     opacity: 1,
     scale: 1,
@@ -59,15 +49,13 @@ const centralCardVariants = {
 const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
   return (
     <section id="pricing" className={`py-20 px-4 sm:px-6 lg:px-8 ${className}`}>
-      <motion.div
-        className="max-w-7xl mx-auto"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={containerVariants}
-      >
+      <div className="max-w-7xl mx-auto">
+        {/* Title - appears once */}
         <motion.div
           className="text-center mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
           variants={titleVariants}
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -76,9 +64,12 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
           <p className="text-xl text-gray-600">Transparent. Équitable. Sans surprise.</p>
         </motion.div>
 
-        {/* Centrale Pricing */}
+        {/* Centrale Pricing - with rewind */}
         <motion.div
           className="max-w-2xl mx-auto mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3, margin: "-50px" }}
           variants={centralCardVariants}
           whileHover={{
             scale: 1.03,
@@ -96,15 +87,15 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
           />
         </motion.div>
 
-        {/* Adhérents Pricing */}
-        <motion.div
-          className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
-          variants={containerVariants}
-        >
+        {/* Adhérents Pricing - each card with individual rewind */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {adherentPlans.map((plan, index) => (
             <motion.div
               key={index}
-              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3, margin: "-30px" }}
+              variants={pricingCardVariants}
               whileHover={{
                 y: -12,
                 scale: 1.02,
@@ -125,19 +116,21 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
               />
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
+        {/* Footer text - with rewind */}
         <motion.div
           className="text-center mt-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 0.4 }}
         >
           <p className="text-gray-600">
             <span className="font-semibold">Tarif dégressif</span> selon la taille du réseau
           </p>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 };

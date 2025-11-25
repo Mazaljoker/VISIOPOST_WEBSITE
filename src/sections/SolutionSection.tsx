@@ -5,17 +5,6 @@ import StepCard from '../components/StepCard';
 import Button from '../components/Button';
 import { SolutionSectionProps } from '../types';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1,
-    },
-  },
-};
-
 const titleVariants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -28,14 +17,15 @@ const titleVariants = {
   },
 };
 
-const stepVariants = {
-  hidden: { opacity: 0, y: 60, scale: 0.9 },
+// Card variants with rewind support (once: false)
+const cardVariants = {
+  hidden: { opacity: 0, y: 80, scale: 0.85 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.6,
+      duration: 0.5,
       ease: 'easeOut' as const,
     },
   },
@@ -69,15 +59,13 @@ const SolutionSection = ({ className = '' }: SolutionSectionProps) => {
 
   return (
     <section className={`py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white ${className}`}>
-      <motion.div
-        className="max-w-7xl mx-auto"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={containerVariants}
-      >
+      <div className="max-w-7xl mx-auto">
+        {/* Title - appears once */}
         <motion.div
           className="text-center mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
           variants={titleVariants}
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -86,11 +74,15 @@ const SolutionSection = ({ className = '' }: SolutionSectionProps) => {
           <p className="text-xl text-gray-600">Simple. Rapide. Efficace.</p>
         </motion.div>
 
+        {/* Cards - each has individual scroll trigger with rewind */}
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
           {solutionSteps.map((step, index) => (
             <motion.div
               key={index}
-              variants={stepVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3, margin: "-50px" }}
+              variants={cardVariants}
               whileHover={{
                 y: -10,
                 transition: { duration: 0.3, ease: 'easeOut' },
@@ -108,8 +100,12 @@ const SolutionSection = ({ className = '' }: SolutionSectionProps) => {
           ))}
         </div>
 
+        {/* CTA Button - with rewind */}
         <motion.div
           className="text-center mt-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.5 }}
           variants={buttonVariants}
         >
           <motion.div
@@ -122,7 +118,7 @@ const SolutionSection = ({ className = '' }: SolutionSectionProps) => {
             </Button>
           </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 };
