@@ -56,7 +56,7 @@ const centralCardVariants = {
 /**
  * Section Pricing - Tarification B2B avec animations pop
  */
-const PricingSection = ({ className = '' }: PricingSectionProps) => {
+const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
   return (
     <section id="pricing" className={`py-20 px-4 sm:px-6 lg:px-8 ${className}`}>
       <motion.div
@@ -98,7 +98,7 @@ const PricingSection = ({ className = '' }: PricingSectionProps) => {
 
         {/* Adhérents Pricing */}
         <motion.div
-          className="grid md:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
           variants={containerVariants}
         >
           {adherentPlans.map((plan, index) => (
@@ -121,6 +121,7 @@ const PricingSection = ({ className = '' }: PricingSectionProps) => {
                 variant={plan.variant}
                 isPopular={plan.isPopular}
                 highlight={plan.highlight}
+                onClick={plan.variant === 'starter' ? onOpenRoi : undefined}
               />
             </motion.div>
           ))}

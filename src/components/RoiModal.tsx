@@ -36,15 +36,15 @@ const modalVariants = {
 const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
   const [shops, setShops] = useState(50);
 
-  // Algorithme de calcul fictif mais réaliste
-  const reachPerPost = 850; // Portée moyenne organique boostée
-  const postsPerMonth = 4;
+  // Constantes de calcul
+  const REACH_PER_POST = 850;
+  const POSTS_PER_MONTH = 4;
+  const AGENCY_COST = 150;
+  const VISIOPOST_COST = 39;
 
   // Calculs
-  const totalReach = (shops * reachPerPost * postsPerMonth).toLocaleString('fr-FR');
-  const agencyCost = shops * 150; // Coût moyen agence par mois
-  const visiopostCost = shops * 39; // Coût Visiopost
-  const savings = ((agencyCost - visiopostCost) * 12).toLocaleString('fr-FR');
+  const totalReach = (shops * REACH_PER_POST * POSTS_PER_MONTH).toLocaleString('fr-FR');
+  const annualSavings = ((AGENCY_COST - VISIOPOST_COST) * shops * 12).toLocaleString('fr-FR');
 
   return (
     <AnimatePresence>
@@ -142,11 +142,11 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
                   </div>
                   <motion.div
                     className="text-3xl font-bold text-gray-900"
-                    key={savings}
+                    key={annualSavings}
                     initial={{ opacity: 0.5 }}
                     animate={{ opacity: 1 }}
                   >
-                    {savings} €
+                    {annualSavings} €
                   </motion.div>
                   <div className="text-sm text-gray-500 mt-1">
                     vs Agence digitale classique

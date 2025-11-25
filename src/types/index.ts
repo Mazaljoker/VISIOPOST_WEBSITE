@@ -33,6 +33,7 @@ export interface PricingCardProps {
   isPopular?: boolean;
   variant?: 'free' | 'starter' | 'pro' | 'centrale';
   highlight?: string;
+  onClick?: () => void;
 }
 
 export interface FaqItemProps {
@@ -132,6 +133,7 @@ export interface BeforeAfterSectionProps {
 
 export interface PricingSectionProps {
   className?: string;
+  onOpenRoi?: () => void;
 }
 
 export interface FaqSectionProps {

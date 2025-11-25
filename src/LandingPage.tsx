@@ -52,7 +52,7 @@ const LandingPage = () => {
         <SolutionSection />
         <FeaturesSection />
         <BeforeAfterSection />
-        <PricingSection />
+        <PricingSection onOpenRoi={() => setIsRoiModalOpen(true)} />
         <FaqSection />
         <FinalCtaSection onOpenRoi={() => setIsRoiModalOpen(true)} />
         <Footer />

@@ -21,7 +21,8 @@ const PricingCard = ({
   cta,
   isPopular = false,
   variant = 'free',
-  highlight
+  highlight,
+  onClick
 }: PricingCardProps) => {
   const isCentrale = variant === 'centrale';
   const isStarter = variant === 'starter';
@@ -66,7 +67,7 @@ const PricingCard = ({
               </li>
             ))}
           </ul>
-          <Button variant="primary" size="lg" className="w-full">
+          <Button variant="primary" size="lg" className="w-full" onClick={onClick}>
             {cta}
           </Button>
         </div>
@@ -98,6 +99,7 @@ const PricingCard = ({
             variant={isStarter ? 'primary' : variant === 'pro' ? 'secondary' : 'ghost'}
             size="md"
             className="w-full"
+            onClick={onClick}
           >
             {cta}
           </Button>
