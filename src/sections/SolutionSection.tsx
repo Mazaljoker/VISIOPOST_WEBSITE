@@ -1,13 +1,61 @@
+import { motion } from 'framer-motion';
 import { Sparkles, Users, BarChart3, ShieldCheck } from 'lucide-react';
 import { solutionSteps } from '../data/solutionSteps';
 import StepCard from '../components/StepCard';
 import Button from '../components/Button';
 import { SolutionSectionProps } from '../types';
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const titleVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut' as const,
+    },
+  },
+};
+
+const stepVariants = {
+  hidden: { opacity: 0, y: 60, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut' as const,
+    },
+  },
+};
+
+const buttonVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: 0.8,
+    },
+  },
+};
+
 /**
  * Section Solution - Comment VisioPost fonctionne en 3 étapes
- * Lignes originales : 173-311 (~140 lignes)
- * Réduit à ~75 lignes via StepCard
+ * Animations step by step révélant le processus
  */
 const SolutionSection = ({ className = '' }: SolutionSectionProps) => {
   // Map des noms d'icônes vers composants
@@ -20,35 +68,60 @@ const SolutionSection = ({ className = '' }: SolutionSectionProps) => {
 
   return (
     <section className={`py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white ${className}`}>
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+      <motion.div
+        className="max-w-7xl mx-auto"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={containerVariants}
+      >
+        <motion.div
+          className="text-center mb-16"
+          variants={titleVariants}
+        >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Comment VisioPost résout tout ça
           </h2>
           <p className="text-xl text-gray-600">Simple. Rapide. Efficace.</p>
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {solutionSteps.map((step, index) => (
-            <StepCard
+            <motion.div
               key={index}
-              number={step.number}
-              title={step.title}
-              icon={iconMap[step.icon]}
-              features={step.features}
-              highlight={step.highlight}
-              showArrow={index < solutionSteps.length - 1}
-            />
+              variants={stepVariants}
+              whileHover={{
+                y: -10,
+                transition: { duration: 0.3, ease: 'easeOut' },
+              }}
+            >
+              <StepCard
+                number={step.number}
+                title={step.title}
+                icon={iconMap[step.icon]}
+                features={step.features}
+                highlight={step.highlight}
+                showArrow={index < solutionSteps.length - 1}
+              />
+            </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Button variant="primary" size="lg">
-            <Sparkles className="w-6 h-6" />
-            <span>Essayer gratuitement</span>
-          </Button>
-        </div>
-      </div>
+        <motion.div
+          className="text-center mt-12"
+          variants={buttonVariants}
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Button variant="primary" size="lg">
+              <Sparkles className="w-6 h-6" />
+              <span>Réserver une Démo</span>
+            </Button>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

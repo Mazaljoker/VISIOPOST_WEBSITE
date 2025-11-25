@@ -1,89 +1,263 @@
-import { ShieldCheck, Play, ArrowRight, CheckCircle } from 'lucide-react'; // Changé Sparkles par ShieldCheck pour le sérieux
+import { ShieldCheck, Play, ArrowRight, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Button from '../components/Button';
 import { HeroSectionProps } from '../types';
 
+// Variants pour animations hero spectaculaires
+const heroContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const heroItem = {
+  hidden: { opacity: 0, y: 60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: 'easeOut' as const,
+    },
+  },
+};
+
+const heroTitle = {
+  hidden: { opacity: 0, y: 80, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 1,
+      ease: 'easeOut' as const,
+    },
+  },
+};
+
+const floatAnimation = {
+  initial: { y: 0 },
+  animate: {
+    y: [-10, 10, -10],
+    transition: {
+      duration: 6,
+      repeat: Infinity,
+      ease: 'easeInOut' as const,
+    },
+  },
+};
+
+const pulseGlow = {
+  initial: { opacity: 0.5, scale: 1 },
+  animate: {
+    opacity: [0.5, 0.8, 0.5],
+    scale: [1, 1.05, 1],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: 'easeInOut' as const,
+    },
+  },
+};
+
 const HeroSection = ({ className = '' }: HeroSectionProps) => {
   return (
-    <section className={`pt-32 pb-20 px-4 sm:px-6 lg:px-8 ${className}`}>
+    <section className={`pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden ${className}`}>
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-visio-violet/10 to-visio-rose/10 rounded-full">
+          <motion.div
+            variants={heroContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div
+              variants={heroItem}
+              className="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-visio-violet/10 to-visio-rose/10 rounded-full"
+            >
               <span className="text-visio-violet font-semibold text-sm flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4" />
+                <motion.div
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <ShieldCheck className="w-4 h-4" />
+                </motion.div>
                 Infrastructure Certifiée Brand Safety
               </span>
-            </div>
+            </motion.div>
 
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+            <motion.h1
+              variants={heroTitle}
+              className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6"
+            >
               Transformez votre Réseau en{' '}
-              <span className="bg-gradient-to-r from-visio-violet via-visio-rose to-visio-bleu bg-clip-text text-transparent">
+              <motion.span
+                className="bg-gradient-to-r from-visio-violet via-visio-rose to-visio-bleu bg-clip-text text-transparent inline-block"
+                animate={{
+                  backgroundPosition: ['0%', '100%', '0%'],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+                style={{ backgroundSize: '200% 100%' }}
+              >
                 Média Décentralisé
-              </span>
-            </h1>
+              </motion.span>
+            </motion.h1>
 
-            <p className="text-xl text-gray-600 mb-8">
+            <motion.p
+              variants={heroItem}
+              className="text-xl text-gray-600 mb-8"
+            >
               Harmonisez la communication nationale avec l'authenticité locale.
               Éliminez le duplicate content. Décuplez votre portée organique.
               Gardez le contrôle absolu.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button variant="primary" size="lg" className="group">
-                <span>Demander une Démo Réseau</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+            <motion.div
+              variants={heroItem}
+              className="flex flex-col sm:flex-row gap-4 mb-8"
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button variant="primary" size="lg" className="group">
+                  <span>Demander une Démo Réseau</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </motion.div>
 
-              <Button variant="secondary" size="lg" className="group">
-                <Play className="w-5 h-5" />
-                <span>Voir le concept (2min)</span>
-              </Button>
-            </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button variant="secondary" size="lg" className="group">
+                  <Play className="w-5 h-5" />
+                  <span>Voir le concept (2min)</span>
+                </Button>
+              </motion.div>
+            </motion.div>
 
-            <div className="flex items-center space-x-6 text-sm text-gray-600">
-              <div className="flex items-center space-x-2">
+            <motion.div
+              variants={heroItem}
+              className="flex flex-wrap items-center gap-6 text-sm text-gray-600"
+            >
+              <motion.div
+                className="flex items-center space-x-2"
+                whileHover={{ scale: 1.05 }}
+              >
                 <CheckCircle className="w-5 h-5 text-green-500" />
                 <span>Compatible Facebook & LinkedIn</span>
-              </div>
-              <div className="flex items-center space-x-2">
+              </motion.div>
+              <motion.div
+                className="flex items-center space-x-2"
+                whileHover={{ scale: 1.05 }}
+              >
                 <CheckCircle className="w-5 h-5 text-green-500" />
                 <span>Conforme RGPD / Brand Safety</span>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-visio-violet/20 via-visio-rose/20 to-visio-bleu/20 rounded-3xl blur-3xl"></div>
-            <div className="relative bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            {/* Glow effect animé */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-visio-violet/20 via-visio-rose/20 to-visio-bleu/20 rounded-3xl blur-3xl"
+              variants={pulseGlow}
+              initial="initial"
+              animate="animate"
+            />
+
+            <motion.div
+              className="relative bg-white rounded-2xl shadow-2xl p-8 border border-gray-200"
+              variants={floatAnimation}
+              initial="initial"
+              animate="animate"
+            >
               {/* Simulation d'interface Pro */}
               <div className="space-y-4">
-                 <div className="flex justify-between items-center border-b pb-4">
-                    <div className="text-sm font-bold text-gray-500">CAMPAGNE NATIONALE "Rentrée 2025"</div>
-                    <div className="text-green-600 text-sm font-bold bg-green-100 px-2 py-1 rounded">VALIDÉE</div>
-                 </div>
-                 <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-gray-50 p-3 rounded-lg border border-gray-100">
-                        <div className="text-xs text-gray-400 mb-1">Variation Lyon</div>
-                        <div className="text-sm font-medium">"Salut les Gones ! La rentrée approche..."</div>
-                    </div>
-                    <div className="bg-gray-50 p-3 rounded-lg border border-gray-100">
-                        <div className="text-xs text-gray-400 mb-1">Variation Bordeaux</div>
-                        <div className="text-sm font-medium">"Gavé hâte de vous retrouver pour la rentrée..."</div>
-                    </div>
-                 </div>
-                 <div className="pt-2">
-                    <div className="text-xs text-gray-500 mb-2">Portée Estimée vs Duplicate Content</div>
-                    <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <div className="h-full w-[85%] bg-gradient-to-r from-visio-violet to-visio-rose"></div>
-                    </div>
-                    <div className="flex justify-between text-xs mt-1">
-                        <span>Standard</span>
-                        <span className="font-bold text-visio-violet">+450% Visibilité</span>
-                    </div>
-                 </div>
+                <motion.div
+                  className="flex justify-between items-center border-b pb-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                >
+                  <div className="text-sm font-bold text-gray-500">CAMPAGNE NATIONALE "Rentrée 2025"</div>
+                  <motion.div
+                    className="text-green-600 text-sm font-bold bg-green-100 px-2 py-1 rounded"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 1, type: 'spring', stiffness: 300 }}
+                  >
+                    VALIDÉE
+                  </motion.div>
+                </motion.div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <motion.div
+                    className="bg-gray-50 p-3 rounded-lg border border-gray-100"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.1 }}
+                    whileHover={{ scale: 1.02, borderColor: '#8B5CF6' }}
+                  >
+                    <div className="text-xs text-gray-400 mb-1">Variation Lyon</div>
+                    <div className="text-sm font-medium">"Salut les Gones ! La rentrée approche..."</div>
+                  </motion.div>
+                  <motion.div
+                    className="bg-gray-50 p-3 rounded-lg border border-gray-100"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2 }}
+                    whileHover={{ scale: 1.02, borderColor: '#EC4899' }}
+                  >
+                    <div className="text-xs text-gray-400 mb-1">Variation Bordeaux</div>
+                    <div className="text-sm font-medium">"Gavé hâte de vous retrouver pour la rentrée..."</div>
+                  </motion.div>
+                </div>
+
+                <motion.div
+                  className="pt-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.4 }}
+                >
+                  <div className="text-xs text-gray-500 mb-2">Portée Estimée vs Duplicate Content</div>
+                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-visio-violet to-visio-rose"
+                      initial={{ width: '0%' }}
+                      animate={{ width: '85%' }}
+                      transition={{ delay: 1.6, duration: 1.5, ease: 'easeOut' }}
+                    />
+                  </div>
+                  <div className="flex justify-between text-xs mt-1">
+                    <span>Standard</span>
+                    <motion.span
+                      className="font-bold text-visio-violet"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 2.5 }}
+                    >
+                      +450% Visibilité
+                    </motion.span>
+                  </div>
+                </motion.div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
