@@ -184,82 +184,82 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
               animate="animate"
             />
 
+            {/* Video de présentation paysage */}
             <motion.div
-              className="relative bg-white rounded-2xl shadow-2xl p-8 border border-gray-200"
+              className="relative bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
               variants={floatAnimation}
               initial="initial"
               animate="animate"
             >
-              {/* Simulation d'interface Pro */}
-              <div className="space-y-4">
+              {/* Header avec titre style interface */}
+              <motion.div
+                className="flex justify-between items-center px-6 py-4 border-b border-gray-100 bg-gray-50"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+              >
+                <div className="text-sm font-bold text-gray-500">PRÉSENTATION VISIOPOST</div>
                 <motion.div
-                  className="flex justify-between items-center border-b pb-4"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8 }}
+                  className="text-visio-violet text-sm font-bold bg-visio-violet/10 px-2 py-1 rounded"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 1, type: 'spring', stiffness: 300 }}
                 >
-                  <div className="text-sm font-bold text-gray-500">CAMPAGNE NATIONALE "Rentrée 2025"</div>
-                  <motion.div
-                    className="text-green-600 text-sm font-bold bg-green-100 px-2 py-1 rounded"
+                  2 MIN
+                </motion.div>
+              </motion.div>
+
+              {/* Container vidéo 16:9 */}
+              <div className="relative aspect-video bg-gradient-to-br from-gray-900 to-gray-800">
+                {/* Placeholder vidéo - remplacer par iframe ou video */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <motion.button
+                    className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition group"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    transition={{ delay: 1, type: 'spring', stiffness: 300 }}
+                    transition={{ delay: 1.2, type: 'spring', stiffness: 300 }}
                   >
-                    VALIDÉE
-                  </motion.div>
-                </motion.div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <motion.div
-                    className="bg-gray-50 p-3 rounded-lg border border-gray-100"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.1 }}
-                    whileHover={{ scale: 1.02, borderColor: '#8B5CF6' }}
-                  >
-                    <div className="text-xs text-gray-400 mb-1">Variation Lyon</div>
-                    <div className="text-sm font-medium">"Salut les Gones ! La rentrée approche..."</div>
-                  </motion.div>
-                  <motion.div
-                    className="bg-gray-50 p-3 rounded-lg border border-gray-100"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.2 }}
-                    whileHover={{ scale: 1.02, borderColor: '#EC4899' }}
-                  >
-                    <div className="text-xs text-gray-400 mb-1">Variation Bordeaux</div>
-                    <div className="text-sm font-medium">"Gavé hâte de vous retrouver pour la rentrée..."</div>
-                  </motion.div>
+                    <Play className="w-8 h-8 text-visio-violet ml-1 group-hover:scale-110 transition" />
+                  </motion.button>
                 </div>
 
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+
+                {/* Texte overlay bas */}
                 <motion.div
-                  className="pt-2"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                  className="absolute bottom-4 left-4 right-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.4 }}
                 >
-                  <div className="text-xs text-gray-500 mb-2">Portée Estimée vs Duplicate Content</div>
-                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full bg-gradient-to-r from-visio-violet to-visio-rose"
-                      initial={{ width: '0%' }}
-                      animate={{ width: '85%' }}
-                      transition={{ delay: 1.6, duration: 1.5, ease: 'easeOut' }}
-                    />
-                  </div>
-                  <div className="flex justify-between text-xs mt-1">
-                    <span>Standard</span>
-                    <motion.span
-                      className="font-bold text-visio-violet"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 2.5 }}
-                    >
-                      +450% Visibilité
-                    </motion.span>
+                  <div className="text-white/90 text-sm font-medium">
+                    Découvrez comment VisioPost transforme votre communication réseau
                   </div>
                 </motion.div>
               </div>
+
+              {/* Footer avec stats */}
+              <motion.div
+                className="px-6 py-4 bg-gray-50 border-t border-gray-100"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.6 }}
+              >
+                <div className="flex justify-between items-center text-xs text-gray-500">
+                  <span>Sans inscription • Résultat immédiat</span>
+                  <motion.span
+                    className="font-bold text-visio-violet"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2 }}
+                  >
+                    +450% Visibilité
+                  </motion.span>
+                </div>
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
