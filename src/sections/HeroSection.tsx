@@ -145,7 +145,18 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                 whileTap={{ scale: 0.98 }}
                 className="flex flex-col items-center"
               >
-                <Button variant="secondary" size="lg" className="group w-full">
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="group w-full"
+                  onClick={() => {
+                    setActiveTab('video');
+                    setTimeout(() => {
+                      const video = document.querySelector('video');
+                      if (video) video.play();
+                    }, 400);
+                  }}
+                >
                   <Play className="w-5 h-5" />
                   <span>Voir le concept (2min)</span>
                 </Button>
