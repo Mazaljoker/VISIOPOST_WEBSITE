@@ -68,6 +68,7 @@ const pulseGlow = {
 
 const HeroSection = ({ className = '' }: HeroSectionProps) => {
   const [activeTab, setActiveTab] = useState<'campagne' | 'video'>('campagne');
+  const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <section className={`pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden ${className}`}>
@@ -305,37 +306,61 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                   >
                     {/* Container vidéo 16:9 */}
                     <div className="relative aspect-video bg-gradient-to-br from-gray-900 to-gray-800">
-                      {/* Placeholder vidéo - remplacer par iframe ou video */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <motion.button
-                          className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition group"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
-                        >
-                          <Play className="w-8 h-8 text-visio-violet ml-1 group-hover:scale-110 transition" />
-                        </motion.button>
-                      </div>
+                      {/* Vidéo HTML5 */}
+                      <video
+                        src="/videos/presentation.mp4"
+                        className="absolute inset-0 w-full h-full object-cover"
+                        controls={isPlaying}
+                        playsInline
+                        onPlay={() => setIsPlaying(true)}
+                        onPause={() => setIsPlaying(false)}
+                        onEnded={() => setIsPlaying(false)}
+                        onClick={(e) => {
+                          if (!isPlaying) {
+                            (e.target as HTMLVideoElement).play();
+                          }
+                        }}
+                      />
 
-                      {/* Overlay gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+                      {/* Overlay Play button (caché quand vidéo joue) */}
+                      {!isPlaying && (
+                        <>
+                          <div className="absolute inset-0 flex items-center justify-center z-10">
+                            <motion.button
+                              className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition group"
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.95 }}
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
+                              onClick={() => {
+                                const video = document.querySelector('video');
+                                if (video) video.play();
+                              }}
+                            >
+                              <Play className="w-8 h-8 text-visio-violet ml-1 group-hover:scale-110 transition" />
+                            </motion.button>
+                          </div>
 
-                      {/* Texte overlay bas */}
-                      <motion.div
-                        className="absolute bottom-4 left-4 right-4"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
-                      >
-                        <div className="text-white text-sm font-medium">
-                          Découvrez comment VisioPost transforme votre communication réseau
-                        </div>
-                        <div className="text-white/70 text-xs mt-1">
-                          Sans inscription • Résultat immédiat
-                        </div>
-                      </motion.div>
+                          {/* Overlay gradient */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+
+                          {/* Texte overlay bas */}
+                          <motion.div
+                            className="absolute bottom-4 left-4 right-4 z-10"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4 }}
+                          >
+                            <div className="text-white text-sm font-medium">
+                              Découvrez comment VisioPost transforme votre communication réseau
+                            </div>
+                            <div className="text-white/70 text-xs mt-1">
+                              Sans inscription • Résultat immédiat
+                            </div>
+                          </motion.div>
+                        </>
+                      )}
                     </div>
                   </motion.div>
                 )}
