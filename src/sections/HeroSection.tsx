@@ -153,7 +153,12 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                     setActiveTab('video');
                     setTimeout(() => {
                       const video = document.querySelector('video');
-                      if (video) video.play();
+                      if (video) {
+                        video.play();
+                        if (video.requestFullscreen) {
+                          video.requestFullscreen();
+                        }
+                      }
                     }, 400);
                   }}
                 >
