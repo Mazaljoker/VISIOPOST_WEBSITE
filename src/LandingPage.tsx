@@ -44,10 +44,13 @@ import RoiModal from './components/RoiModal';
 const LandingPage = () => {
   const [isRoiModalOpen, setIsRoiModalOpen] = useState(false);
 
+  const handleOpenRoi = () => setIsRoiModalOpen(true);
+  const handleCloseRoi = () => setIsRoiModalOpen(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative">
       {/* ROI Simulator Modal */}
-      <RoiModal isOpen={isRoiModalOpen} onClose={() => setIsRoiModalOpen(false)} />
+      <RoiModal isOpen={isRoiModalOpen} onClose={handleCloseRoi} />
 
       {/* Floating background icons */}
       <FloatingIcons />
@@ -65,9 +68,9 @@ const LandingPage = () => {
         <FeaturesSection />
         <MultiPlatformSection />
         <NetworkIntelligenceSection />
-        <PricingSection />
+        <PricingSection onOpenRoi={handleOpenRoi} />
         <FaqSection />
-        <FinalCtaSection />
+        <FinalCtaSection onOpenRoi={handleOpenRoi} />
         <Footer />
       </div>
     </div>
