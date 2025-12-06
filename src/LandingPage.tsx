@@ -6,6 +6,7 @@ import HeroSection from './sections/HeroSection';
 import SocialProofSection from './sections/SocialProofSection';
 import ProblemSection from './sections/ProblemSection';
 import SolutionSection from './sections/SolutionSection';
+import BeforeAfterSection from './sections/BeforeAfterSection';
 import FeaturesSection from './sections/FeaturesSection';
 import MultiPlatformSection from './sections/MultiPlatformSection';
 import NetworkIntelligenceSection from './sections/NetworkIntelligenceSection';
@@ -21,11 +22,19 @@ import RoiModal from './components/RoiModal';
 /**
  * Landing Page VisioPost V3.1.1
  *
- * Refactoré avec nouveau contenu :
- * - Focus sur le problème duplicate content
- * - Pricing simplifié (setup + 30€/user)
- * - Multi-plateforme (Facebook + à venir)
- * - Network Intelligence teaser
+ * Structure des sections :
+ * 1. Hero - Accroche principale
+ * 2. Social Proof - Stats et confiance
+ * 3. Problem - Le problème duplicate content
+ * 4. Solution - Comment on résout
+ * 5. BeforeAfter - Simulation visuelle Facebook
+ * 6. Features - Fonctionnalités
+ * 7. MultiPlatform - Facebook + à venir
+ * 8. NetworkIntelligence - Teaser V5
+ * 9. Pricing - Tarification
+ * 10. FAQ - Questions fréquentes
+ * 11. FinalCTA - Appel à l'action
+ * 12. Footer
  */
 const LandingPage = () => {
   const [isRoiModalOpen, setIsRoiModalOpen] = useState(false);
@@ -45,6 +54,7 @@ const LandingPage = () => {
         <SocialProofSection />
         <ProblemSection />
         <SolutionSection />
+        <BeforeAfterSection />
         <FeaturesSection />
         <MultiPlatformSection />
         <NetworkIntelligenceSection />
