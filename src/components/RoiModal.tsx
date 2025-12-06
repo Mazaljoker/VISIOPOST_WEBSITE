@@ -42,7 +42,6 @@ const AnimatedNumber = ({ value, suffix = '' }: { value: number; suffix?: string
     spring.set(value);
   }, [value, spring]);
 
-  // Use motion.span with the MotionValue directly
   return (
     <span>
       <motion.span>{display}</motion.span>{suffix}
@@ -62,11 +61,11 @@ interface MetricCardProps {
 
 const MetricCard = ({ icon, label, value, suffix = '', sublabel, color }: MetricCardProps) => {
   const colorClasses = {
-    blue: 'bg-blue-50/50 border-blue-100 text-blue-600',
-    green: 'bg-green-50/50 border-green-100 text-green-600',
-    purple: 'bg-purple-50/50 border-purple-100 text-purple-600',
-    orange: 'bg-orange-50/50 border-orange-100 text-orange-600',
-    red: 'bg-red-50/50 border-red-100 text-red-600',
+    blue: 'bg-nreach-electric/10 border-nreach-electric/30 text-nreach-electric',
+    green: 'bg-green-50 border-green-200 text-green-600',
+    purple: 'bg-nreach-lavande/10 border-nreach-lavande/30 text-nreach-lavande',
+    orange: 'bg-orange-50 border-orange-200 text-orange-600',
+    red: 'bg-red-50 border-red-200 text-red-600',
   };
 
   return (
@@ -78,7 +77,7 @@ const MetricCard = ({ icon, label, value, suffix = '', sublabel, color }: Metric
         {icon}
         {label}
       </div>
-      <div className="text-2xl font-extrabold text-gray-900">
+      <div className="text-2xl font-extrabold text-nreach-midnight dark:text-dark-text">
         <AnimatedNumber value={value} suffix={suffix} />
       </div>
       <div className="text-xs opacity-80 mt-1">{sublabel}</div>
@@ -103,47 +102,47 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
   const metrics = useMemo(() => {
     const { reachPerPost, postsPerMonth, engagementRate, conversionRate, averageBasket, agencyCostPerShop, duplicatePenalty } = roiConfig;
     
-    // Portée avec VisioPost (pas de pénalité)
-    const reachWithVisioPost = shops * reachPerPost * postsPerMonth;
+    // Portée avec nReach (pas de pénalité)
+    const reachWithNReach = shops * reachPerPost * postsPerMonth;
     
-    // Portée sans VisioPost (pénalité duplicate)
-    const reachWithoutVisioPost = Math.round(reachWithVisioPost * (1 - duplicatePenalty));
+    // Portée sans nReach (pénalité duplicate)
+    const reachWithoutNReach = Math.round(reachWithNReach * (1 - duplicatePenalty));
     
     // Gain de portée
-    const reachGain = reachWithVisioPost - reachWithoutVisioPost;
-    const reachGainPercent = Math.round((reachGain / reachWithoutVisioPost) * 100);
+    const reachGain = reachWithNReach - reachWithoutNReach;
+    const reachGainPercent = Math.round((reachGain / reachWithoutNReach) * 100);
     
     // Engagement
-    const engagementWithVisioPost = Math.round(reachWithVisioPost * engagementRate);
-    const engagementWithoutVisioPost = Math.round(reachWithoutVisioPost * engagementRate);
+    const engagementWithNReach = Math.round(reachWithNReach * engagementRate);
+    const engagementWithoutNReach = Math.round(reachWithoutNReach * engagementRate);
     
     // Conversions potentielles
-    const conversions = Math.round(engagementWithVisioPost * conversionRate);
+    const conversions = Math.round(engagementWithNReach * conversionRate);
     
     // Revenu additionnel estimé
     const additionalRevenue = conversions * averageBasket;
     
-    // Coût VisioPost
-    const visioPostCost = shops * getPlanPrice;
+    // Coût nReach
+    const nreachCost = shops * getPlanPrice;
     
     // Économie vs agence
     const agencyCost = shops * agencyCostPerShop;
-    const savingsVsAgency = agencyCost - visioPostCost;
+    const savingsVsAgency = agencyCost - nreachCost;
     
     // ROI
     const totalBenefit = additionalRevenue + savingsVsAgency;
-    const roi = Math.round((totalBenefit / visioPostCost) * 100);
+    const roi = Math.round((totalBenefit / nreachCost) * 100);
     
     return {
-      reachWithVisioPost,
-      reachWithoutVisioPost,
+      reachWithNReach,
+      reachWithoutNReach,
       reachGain,
       reachGainPercent,
-      engagementWithVisioPost,
-      engagementWithoutVisioPost,
+      engagementWithNReach,
+      engagementWithoutNReach,
       conversions,
       additionalRevenue,
-      visioPostCost,
+      nreachCost,
       agencyCost,
       savingsVsAgency,
       roi
@@ -156,7 +155,7 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" role="dialog" aria-modal="true">
           {/* Backdrop */}
           <motion.div
-            className="absolute inset-0 bg-gray-900/60 backdrop-blur-md"
+            className="absolute inset-0 bg-nreach-midnight/60 backdrop-blur-md"
             variants={backdropVariants}
             initial="hidden"
             animate="visible"
@@ -166,19 +165,19 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
 
           {/* Modal */}
           <motion.div
-            className="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden flex flex-col max-h-[90vh]"
+            className="relative bg-white dark:bg-dark-surface rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden flex flex-col max-h-[90vh]"
             variants={modalVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-visio-violet to-visio-rose p-6 text-white flex justify-between items-center shrink-0">
+            <div className="bg-gradient-to-r from-nreach-midnight to-nreach-lavande p-6 text-white flex justify-between items-center shrink-0">
               <h3 className="text-2xl font-bold flex items-center gap-3">
                 <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
                   <TrendingUp className="w-6 h-6" />
                 </div>
-                Simulateur ROI VisioPost
+                Simulateur ROI nReach Studio
               </h3>
               <button
                 onClick={onClose}
@@ -196,11 +195,11 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
                 {/* Slider */}
                 <div>
                   <div className="flex justify-between items-end mb-3">
-                    <label className="text-gray-700 font-bold">
+                    <label className="text-nreach-midnight dark:text-dark-text font-bold">
                       Taille du réseau
                     </label>
-                    <span className="text-2xl font-bold text-visio-violet">
-                      {shops} <span className="text-sm font-normal text-gray-500">points de vente</span>
+                    <span className="text-2xl font-bold text-nreach-electric">
+                      {shops} <span className="text-sm font-normal text-light-text-muted dark:text-dark-text-muted">points de vente</span>
                     </span>
                   </div>
                   <div className="relative w-full h-6 flex items-center">
@@ -211,14 +210,14 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
                       step="10"
                       value={shops}
                       onChange={(e) => setShops(parseInt(e.target.value))}
-                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-visio-rose focus:outline-none z-10"
+                      className="w-full h-2 bg-light-border dark:bg-dark-border rounded-lg appearance-none cursor-pointer accent-nreach-electric focus:outline-none z-10"
                     />
                     <div 
-                      className="absolute h-2 bg-gradient-to-r from-visio-violet to-visio-rose rounded-l-lg pointer-events-none top-1/2 -translate-y-1/2" 
+                      className="absolute h-2 bg-gradient-to-r from-nreach-electric to-nreach-lavande rounded-l-lg pointer-events-none top-1/2 -translate-y-1/2" 
                       style={{ width: `${((shops - 10) / 490) * 100}%` }} 
                     />
                   </div>
-                  <div className="flex justify-between text-xs text-gray-400 mt-1">
+                  <div className="flex justify-between text-xs text-light-text-muted dark:text-dark-text-muted mt-1">
                     <span>10</span>
                     <span>250</span>
                     <span>500</span>
@@ -227,7 +226,7 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
 
                 {/* Plan selector */}
                 <div>
-                  <label className="text-gray-700 font-bold block mb-3">
+                  <label className="text-nreach-midnight dark:text-dark-text font-bold block mb-3">
                     Plan sélectionné
                   </label>
                   <div className="flex gap-3">
@@ -235,23 +234,23 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
                       onClick={() => setSelectedPlan('starter')}
                       className={`flex-1 p-3 rounded-xl border-2 transition-all ${
                         selectedPlan === 'starter'
-                          ? 'border-visio-violet bg-visio-violet/5'
-                          : 'border-gray-200 hover:border-gray-300'
+                          ? 'border-nreach-electric bg-nreach-electric/5'
+                          : 'border-light-border dark:border-dark-border hover:border-nreach-electric/50'
                       }`}
                     >
-                      <div className="font-bold text-gray-900">Essentiel</div>
-                      <div className="text-sm text-gray-500">{getPlanPrice}€/user</div>
+                      <div className="font-bold text-nreach-midnight dark:text-dark-text">Essentiel</div>
+                      <div className="text-sm text-light-text-muted dark:text-dark-text-muted">{getPlanPrice}€/user</div>
                     </button>
                     <button
                       onClick={() => setSelectedPlan('pro')}
                       className={`flex-1 p-3 rounded-xl border-2 transition-all ${
                         selectedPlan === 'pro'
-                          ? 'border-visio-rose bg-visio-rose/5'
-                          : 'border-gray-200 hover:border-gray-300'
+                          ? 'border-nreach-lavande bg-nreach-lavande/5'
+                          : 'border-light-border dark:border-dark-border hover:border-nreach-lavande/50'
                       }`}
                     >
-                      <div className="font-bold text-gray-900">Business</div>
-                      <div className="text-sm text-gray-500">{selectedPlan === 'pro' ? getPlanPrice : 45}€/user</div>
+                      <div className="font-bold text-nreach-midnight dark:text-dark-text">Business</div>
+                      <div className="text-sm text-light-text-muted dark:text-dark-text-muted">{selectedPlan === 'pro' ? getPlanPrice : 45}€/user</div>
                     </button>
                   </div>
                 </div>
@@ -259,44 +258,44 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
 
               {/* Comparison: Without vs With */}
               <div className="grid md:grid-cols-2 gap-4 mb-6">
-                <div className="bg-red-50 rounded-xl p-4 border border-red-100">
-                  <div className="flex items-center space-x-2 text-red-600 font-semibold mb-3">
+                <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-4 border border-red-200 dark:border-red-800">
+                  <div className="flex items-center space-x-2 text-red-600 dark:text-red-400 font-semibold mb-3">
                     <AlertTriangle className="w-4 h-4" />
-                    <span>Sans VisioPost</span>
+                    <span>Sans nReach</span>
                   </div>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Portée mensuelle</span>
-                      <span className="font-bold text-red-600">{metrics.reachWithoutVisioPost.toLocaleString('fr-FR')}</span>
+                      <span className="text-light-text-muted dark:text-dark-text-muted">Portée mensuelle</span>
+                      <span className="font-bold text-red-600 dark:text-red-400">{metrics.reachWithoutNReach.toLocaleString('fr-FR')}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Engagement</span>
-                      <span className="font-bold text-red-600">{metrics.engagementWithoutVisioPost.toLocaleString('fr-FR')}</span>
+                      <span className="text-light-text-muted dark:text-dark-text-muted">Engagement</span>
+                      <span className="font-bold text-red-600 dark:text-red-400">{metrics.engagementWithoutNReach.toLocaleString('fr-FR')}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Pénalité duplicate</span>
-                      <span className="font-bold text-red-600">-80%</span>
+                      <span className="text-light-text-muted dark:text-dark-text-muted">Pénalité duplicate</span>
+                      <span className="font-bold text-red-600 dark:text-red-400">-80%</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-green-50 rounded-xl p-4 border border-green-100">
-                  <div className="flex items-center space-x-2 text-green-600 font-semibold mb-3">
+                <div className="bg-nreach-electric/10 rounded-xl p-4 border border-nreach-electric/30">
+                  <div className="flex items-center space-x-2 text-nreach-electric font-semibold mb-3">
                     <CheckCircle className="w-4 h-4" />
-                    <span>Avec VisioPost</span>
+                    <span>Avec nReach Studio</span>
                   </div>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Portée mensuelle</span>
-                      <span className="font-bold text-green-600">{metrics.reachWithVisioPost.toLocaleString('fr-FR')}</span>
+                      <span className="text-light-text-muted dark:text-dark-text-muted">Portée mensuelle</span>
+                      <span className="font-bold text-nreach-electric">{metrics.reachWithNReach.toLocaleString('fr-FR')}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Engagement</span>
-                      <span className="font-bold text-green-600">{metrics.engagementWithVisioPost.toLocaleString('fr-FR')}</span>
+                      <span className="text-light-text-muted dark:text-dark-text-muted">Engagement</span>
+                      <span className="font-bold text-nreach-electric">{metrics.engagementWithNReach.toLocaleString('fr-FR')}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Gain de portée</span>
-                      <span className="font-bold text-green-600">+{metrics.reachGainPercent}%</span>
+                      <span className="text-light-text-muted dark:text-dark-text-muted">Gain de portée</span>
+                      <span className="font-bold text-nreach-electric">+{metrics.reachGainPercent}%</span>
                     </div>
                   </div>
                 </div>
@@ -337,28 +336,28 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
               </div>
 
               {/* Cost breakdown */}
-              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 mb-6">
+              <div className="bg-light-surface dark:bg-dark-bg rounded-xl p-4 border border-light-border dark:border-dark-border mb-6">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="font-semibold text-gray-700">Récapitulatif mensuel</span>
-                  <span className="text-xs text-gray-400">Plan {selectedPlan === 'starter' ? 'Essentiel' : 'Business'}</span>
+                  <span className="font-semibold text-nreach-midnight dark:text-dark-text">Récapitulatif mensuel</span>
+                  <span className="text-xs text-light-text-muted dark:text-dark-text-muted">Plan {selectedPlan === 'starter' ? 'Essentiel' : 'Business'}</span>
                 </div>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">{shops} utilisateurs × {getPlanPrice}€</span>
-                    <span className="font-bold">{metrics.visioPostCost.toLocaleString('fr-FR')}€/mois</span>
+                    <span className="text-light-text-muted dark:text-dark-text-muted">{shops} utilisateurs × {getPlanPrice}€</span>
+                    <span className="font-bold text-nreach-midnight dark:text-dark-text">{metrics.nreachCost.toLocaleString('fr-FR')}€/mois</span>
                   </div>
                   <div className="flex justify-between text-green-600">
                     <span>Économie vs agence ({roiConfig.agencyCostPerShop}€/PDV)</span>
                     <span className="font-bold">+{metrics.savingsVsAgency.toLocaleString('fr-FR')}€/mois</span>
                   </div>
-                  <div className="flex justify-between text-blue-600">
+                  <div className="flex justify-between text-nreach-electric">
                     <span>Revenu additionnel estimé</span>
                     <span className="font-bold">+{metrics.additionalRevenue.toLocaleString('fr-FR')}€/mois</span>
                   </div>
-                  <div className="border-t pt-2 mt-2 flex justify-between">
-                    <span className="font-bold text-gray-900">Bénéfice net estimé</span>
-                    <span className="font-bold text-visio-violet text-lg">
-                      +{(metrics.savingsVsAgency + metrics.additionalRevenue - metrics.visioPostCost).toLocaleString('fr-FR')}€/mois
+                  <div className="border-t border-light-border dark:border-dark-border pt-2 mt-2 flex justify-between">
+                    <span className="font-bold text-nreach-midnight dark:text-dark-text">Bénéfice net estimé</span>
+                    <span className="font-bold text-nreach-electric text-lg">
+                      +{(metrics.savingsVsAgency + metrics.additionalRevenue - metrics.nreachCost).toLocaleString('fr-FR')}€/mois
                     </span>
                   </div>
                 </div>
@@ -366,11 +365,11 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
 
               {/* Footer CTA */}
               <div className="text-center">
-                <p className="text-gray-500 mb-4 text-xs">
+                <p className="text-light-text-muted dark:text-dark-text-muted mb-4 text-xs">
                   *Estimations basées sur les performances moyennes du secteur Retail. Résultats réels variables.
                 </p>
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button variant="primary" size="lg" className="w-full sm:w-auto shadow-xl shadow-visio-violet/20">
+                  <Button variant="primary" size="lg" className="w-full sm:w-auto shadow-xl shadow-nreach-electric/20">
                     <Zap className="w-5 h-5 mr-2" />
                     <span>Demander mon devis personnalisé</span>
                     <ArrowRight className="w-5 h-5 ml-2" />
