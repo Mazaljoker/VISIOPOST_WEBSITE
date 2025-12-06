@@ -1,32 +1,48 @@
+import { motion } from 'framer-motion';
 import { faqs } from '../data/faqs';
 import FaqItem from '../components/FaqItem';
-import { useFaq } from '../hooks/useFaq';
-import { FaqSectionProps } from '../types';
+
+const titleVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut' as const,
+    },
+  },
+};
 
 /**
- * Section FAQ - Questions fréquentes avec accordéon
- * Lignes originales : 592-648 (~58 lignes)
+ * Section FAQ - Questions fréquentes
+ * Rebrandé pour nReach Studio
  */
-const FaqSection = ({ className = '' }: FaqSectionProps) => {
-  const { openIndex, toggle } = useFaq();
-
+const FaqSection = () => {
   return (
-    <section className={`py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white ${className}`}>
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+    <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-light-surface dark:bg-dark-surface">
+      <div className="max-w-3xl mx-auto">
+        <motion.div
+          className="text-center mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={titleVariants}
+        >
+          <h2 className="text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
             Questions fréquentes
           </h2>
-        </div>
+          <p className="text-xl text-light-text-muted dark:text-dark-text-muted">
+            Tout ce que vous devez savoir sur nReach Studio
+          </p>
+        </motion.div>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <FaqItem
               key={index}
-              question={faq.q}
-              answer={faq.a}
-              isOpen={openIndex === index}
-              onToggle={() => toggle(index)}
+              question={faq.question}
+              answer={faq.answer}
             />
           ))}
         </div>
