@@ -1,88 +1,73 @@
 import { motion } from 'framer-motion';
-import { Brain, TrendingUp, Sparkles } from 'lucide-react';
+import { Brain, TrendingUp, Target, Zap } from 'lucide-react';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
+const features = [
+  {
+    icon: Brain,
+    title: 'IA Adaptative',
+    description: 'Apprend des performances de chaque point de vente',
   },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-    },
+  {
+    icon: TrendingUp,
+    title: 'Optimisation Continue',
+    description: 'Améliore le contenu basé sur les résultats',
   },
-};
+  {
+    icon: Target,
+    title: 'Ciblage Intelligent',
+    description: 'Adapte le message à chaque audience locale',
+  },
+];
 
 /**
  * Section Network Intelligence - Teaser V5
+ * Rebrandé pour nReach Studio
  */
-const NetworkIntelligenceSection = ({ className = '' }: { className?: string }) => {
+const NetworkIntelligenceSection = () => {
   return (
-    <section className={`py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white ${className}`}>
-      <motion.div
-        className="max-w-4xl mx-auto"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={containerVariants}
-      >
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-nreach-midnight to-nreach-midnight-700">
+      <div className="max-w-6xl mx-auto">
         <motion.div
-          variants={itemVariants}
-          className="text-center"
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
-          <div className="inline-flex items-center px-4 py-2 bg-visio-violet/20 rounded-full text-visio-rose text-sm font-semibold mb-6">
-            <Brain className="w-4 h-4 mr-2" />
-            BIENTÔT DISPONIBLE
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nreach-electric/20 text-nreach-electric mb-4">
+            <Zap className="w-4 h-4" />
+            <span className="text-sm font-medium">Bientôt disponible</span>
           </div>
-
-          <h2 className="text-4xl font-bold mb-6">
-            Votre réseau devient plus intelligent chaque jour
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Network Intelligence
           </h2>
-
-          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            Après 1 mois d'utilisation, notre IA analyse les performances de tous vos magasins. 
-            Elle identifie ce qui fonctionne et applique les recettes gagnantes à l'ensemble du réseau.
+          <p className="text-lg text-dark-text-muted max-w-2xl mx-auto">
+            La prochaine évolution de nReach Studio : une IA qui apprend de votre réseau
           </p>
         </motion.div>
 
-        <motion.div
-          variants={itemVariants}
-          className="grid md:grid-cols-3 gap-6 mt-12"
-        >
-          <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-            <TrendingUp className="w-10 h-10 text-visio-rose mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Apprentissage continu</h3>
-            <p className="text-gray-400 text-sm">
-              L'IA analyse chaque post publié et son engagement
-            </p>
-          </div>
-
-          <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-            <Sparkles className="w-10 h-10 text-visio-violet mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Recettes gagnantes</h3>
-            <p className="text-gray-400 text-sm">
-              Ce qui marche à Lyon est automatiquement proposé à Marseille
-            </p>
-          </div>
-
-          <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-            <Brain className="w-10 h-10 text-visio-bleu mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Amélioration automatique</h3>
-            <p className="text-gray-400 text-sm">
-              Plus vous utilisez VisioPost, meilleurs sont vos résultats
-            </p>
-          </div>
-        </motion.div>
-      </motion.div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              className="bg-white/5 backdrop-blur rounded-xl p-6 border border-white/10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <div className="w-12 h-12 bg-nreach-electric/20 rounded-xl flex items-center justify-center mb-4">
+                <feature.icon className="w-6 h-6 text-nreach-electric" />
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-dark-text-muted">
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };
