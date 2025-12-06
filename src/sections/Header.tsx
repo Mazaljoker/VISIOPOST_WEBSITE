@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { NReachLogo } from '../components/NReachLogo';
 import { Button } from '../components/Button';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { useTheme } from '../context/ThemeContext';
 
 const navItems = [
   { label: 'Fonctionnalités', href: '#features' },
@@ -13,6 +15,7 @@ const navItems = [
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +24,13 @@ export const Header: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Détermine le thème du logo selon le contexte
+  // En haut de page (hero dark) = logo light (blanc)
+  // Après scroll ou en mode light = logo dark (midnight)
+  const logoTheme = isScrolled 
+    ? (resolvedTheme === 'dark' ? 'dark' : 'light')
+    : 'dark'; // En haut sur le hero sombre, logo blanc
 
   return (
     <>
@@ -39,34 +49,45 @@ export const Header: React.FC = () => {
             <a href="#" className="flex items-center">
               <NReachLogo
                 variant="full"
-                theme={isScrolled ? 'light' : 'light'}
+                theme={logoTheme}
                 size="md"
               />
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center gap-6">
               {navItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-light-text-muted hover:text-nreach-midnight dark:text-dark-text-muted dark:hover:text-dark-text transition-colors font-medium"
+                  className={`transition-colors font-medium ${
+                    isScrolled
+                      ? 'text-light-text-muted hover:text-nreach-midnight dark:text-dark-text-muted dark:hover:text-dark-text'
+                      : 'text-white/80 hover:text-white'
+                  }`}
                 >
                   {item.label}
                 </a>
               ))}
+              
+              {/* Theme Toggle */}
+              <ThemeToggle />
+              
               <Button variant="primary" size="md">
                 Démo gratuite
               </Button>
             </nav>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2 text-nreach-midnight dark:text-dark-text"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Mobile: Theme Toggle + Menu Button */}
+            <div className="md:hidden flex items-center gap-2">
+              <ThemeToggle />
+              <button
+                className={`p-2 ${isScrolled ? 'text-nreach-midnight dark:text-dark-text' : 'text-white'}`}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
       </motion.header>
