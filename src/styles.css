@@ -13,12 +13,20 @@
     scroll-behavior: smooth;
   }
   
+  /* Transition fluide lors du changement de thème */
+  html.transitioning,
+  html.transitioning *,
+  html.transitioning *::before,
+  html.transitioning *::after {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
+  }
+  
   body {
     @apply bg-light-bg text-light-text antialiased;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   }
   
-  /* Dark mode */
+  /* Dark mode body */
   .dark body {
     @apply bg-dark-bg text-dark-text;
   }
@@ -61,6 +69,12 @@
   .section-subtitle {
     @apply text-lg sm:text-xl text-light-text-muted dark:text-dark-text-muted max-w-2xl mx-auto;
   }
+  
+  /* Theme toggle indicator */
+  .theme-indicator {
+    @apply fixed bottom-4 right-4 px-3 py-1.5 rounded-full text-xs font-medium z-50;
+    @apply bg-nreach-midnight/90 text-white dark:bg-white/90 dark:text-nreach-midnight;
+  }
 }
 
 /* Utility Styles */
@@ -83,6 +97,11 @@
   /* Animate glow */
   .animate-glow {
     animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  /* Dark mode transition helper */
+  .theme-transition {
+    @apply transition-colors duration-300 ease-in-out;
   }
 }
 
@@ -124,4 +143,13 @@
 
 .dark ::-webkit-scrollbar-thumb:hover {
   @apply bg-nreach-electric;
+}
+
+/* Selection colors */
+::selection {
+  @apply bg-nreach-electric/30 text-nreach-midnight;
+}
+
+.dark ::selection {
+  @apply bg-nreach-electric/40 text-white;
 }
