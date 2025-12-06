@@ -1,20 +1,13 @@
 import { motion, AnimatePresence, useSpring, useTransform } from 'framer-motion';
-import { X, TrendingUp, PiggyBank, ArrowRight } from 'lucide-react';
+import { X, TrendingUp, PiggyBank, ArrowRight, Users, Target, Zap, AlertTriangle, CheckCircle } from 'lucide-react';
 import { useState, useEffect, useMemo } from 'react';
+import { roiConfig, pricingPlans } from '../data/pricing';
 import Button from './Button';
 
 interface RoiModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
-// Constants moved outside to prevent re-creation
-const CONSTANTS = {
-  REACH_PER_POST: 850,
-  POSTS_PER_MONTH: 4,
-  AGENCY_COST: 150,
-  VISIOPOST_COST: 39,
-};
 
 const backdropVariants = {
   hidden: { opacity: 0 },
@@ -38,7 +31,7 @@ const modalVariants = {
 };
 
 // --- Sub-component for Animated Numbers ---
-const AnimatedNumber = ({ value }: { value: number }) => {
+const AnimatedNumber = ({ value, suffix = '' }: { value: number; suffix?: string }) => {
   const spring = useSpring(value, { mass: 0.8, stiffness: 75, damping: 15 });
   const display = useTransform(spring, (current) =>
     Math.round(current).toLocaleString('fr-FR')
@@ -48,19 +41,108 @@ const AnimatedNumber = ({ value }: { value: number }) => {
     spring.set(value);
   }, [value, spring]);
 
-  return <motion.span>{display}</motion.span>;
+  return <motion.span>{display}{suffix}</motion.span>;
+};
+
+// --- Metric Card Component ---
+interface MetricCardProps {
+  icon: React.ReactNode;
+  label: string;
+  value: number;
+  suffix?: string;
+  sublabel: string;
+  color: 'blue' | 'green' | 'purple' | 'orange' | 'red';
+}
+
+const MetricCard = ({ icon, label, value, suffix = '', sublabel, color }: MetricCardProps) => {
+  const colorClasses = {
+    blue: 'bg-blue-50/50 border-blue-100 text-blue-600',
+    green: 'bg-green-50/50 border-green-100 text-green-600',
+    purple: 'bg-purple-50/50 border-purple-100 text-purple-600',
+    orange: 'bg-orange-50/50 border-orange-100 text-orange-600',
+    red: 'bg-red-50/50 border-red-100 text-red-600',
+  };
+
+  return (
+    <motion.div
+      className={`p-4 rounded-xl border ${colorClasses[color]}`}
+      whileHover={{ y: -2, scale: 1.02 }}
+    >
+      <div className="font-semibold text-sm flex items-center gap-2 mb-1">
+        {icon}
+        {label}
+      </div>
+      <div className="text-2xl font-extrabold text-gray-900">
+        <AnimatedNumber value={value} suffix={suffix} />
+      </div>
+      <div className="text-xs opacity-80 mt-1">{sublabel}</div>
+    </motion.div>
+  );
 };
 
 const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
   const [shops, setShops] = useState(50);
+  const [selectedPlan, setSelectedPlan] = useState<'starter' | 'pro'>('starter');
 
-  // Memoize calculations for performance
-  const { totalReach, annualSavings } = useMemo(() => {
+  // Get plan price based on selection and degressivity
+  const getPlanPrice = useMemo(() => {
+    const plan = pricingPlans.find(p => p.variant === selectedPlan);
+    if (!plan || !plan.degressivity) return selectedPlan === 'starter' ? 30 : 45;
+    
+    const tier = plan.degressivity.find(d => shops >= d.min && shops <= d.max);
+    return tier?.price || plan.price || 30;
+  }, [shops, selectedPlan]);
+
+  // Memoize all calculations
+  const metrics = useMemo(() => {
+    const { reachPerPost, postsPerMonth, engagementRate, conversionRate, averageBasket, agencyCostPerShop, duplicatePenalty } = roiConfig;
+    
+    // Portée avec VisioPost (pas de pénalité)
+    const reachWithVisioPost = shops * reachPerPost * postsPerMonth;
+    
+    // Portée sans VisioPost (pénalité duplicate)
+    const reachWithoutVisioPost = Math.round(reachWithVisioPost * (1 - duplicatePenalty));
+    
+    // Gain de portée
+    const reachGain = reachWithVisioPost - reachWithoutVisioPost;
+    const reachGainPercent = Math.round((reachGain / reachWithoutVisioPost) * 100);
+    
+    // Engagement
+    const engagementWithVisioPost = Math.round(reachWithVisioPost * engagementRate);
+    const engagementWithoutVisioPost = Math.round(reachWithoutVisioPost * engagementRate);
+    
+    // Conversions potentielles
+    const conversions = Math.round(engagementWithVisioPost * conversionRate);
+    
+    // Revenu additionnel estimé
+    const additionalRevenue = conversions * averageBasket;
+    
+    // Coût VisioPost
+    const visioPostCost = shops * getPlanPrice;
+    
+    // Économie vs agence
+    const agencyCost = shops * agencyCostPerShop;
+    const savingsVsAgency = agencyCost - visioPostCost;
+    
+    // ROI
+    const totalBenefit = additionalRevenue + savingsVsAgency;
+    const roi = Math.round((totalBenefit / visioPostCost) * 100);
+    
     return {
-      totalReach: shops * CONSTANTS.REACH_PER_POST * CONSTANTS.POSTS_PER_MONTH,
-      annualSavings: (CONSTANTS.AGENCY_COST - CONSTANTS.VISIOPOST_COST) * shops * 12,
+      reachWithVisioPost,
+      reachWithoutVisioPost,
+      reachGain,
+      reachGainPercent,
+      engagementWithVisioPost,
+      engagementWithoutVisioPost,
+      conversions,
+      additionalRevenue,
+      visioPostCost,
+      agencyCost,
+      savingsVsAgency,
+      roi
     };
-  }, [shops]);
+  }, [shops, getPlanPrice]);
 
   return (
     <AnimatePresence>
@@ -78,7 +160,7 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
 
           {/* Modal */}
           <motion.div
-            className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]"
+            className="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden flex flex-col max-h-[90vh]"
             variants={modalVariants}
             initial="hidden"
             animate="visible"
@@ -90,7 +172,7 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
                 <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
                   <TrendingUp className="w-6 h-6" />
                 </div>
-                Simulateur de Performance
+                Simulateur ROI VisioPost
               </h3>
               <button
                 onClick={onClose}
@@ -101,82 +183,190 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
               </button>
             </div>
 
-            {/* Content (Scrollable if needed on small screens) */}
+            {/* Content */}
             <div className="p-6 md:p-8 overflow-y-auto">
-              {/* Slider Section */}
-              <div className="mb-10">
-                <div className="flex justify-between items-end mb-4">
-                  <label className="text-gray-700 font-bold text-lg">
-                    Taille de votre réseau
-                  </label>
-                  <span className="text-3xl font-bold text-visio-violet">
-                    {shops} <span className="text-base font-normal text-gray-500">magasins</span>
-                  </span>
+              {/* Controls */}
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                {/* Slider */}
+                <div>
+                  <div className="flex justify-between items-end mb-3">
+                    <label className="text-gray-700 font-bold">
+                      Taille du réseau
+                    </label>
+                    <span className="text-2xl font-bold text-visio-violet">
+                      {shops} <span className="text-sm font-normal text-gray-500">points de vente</span>
+                    </span>
+                  </div>
+                  <div className="relative w-full h-6 flex items-center">
+                    <input
+                      type="range"
+                      min="10"
+                      max="500"
+                      step="10"
+                      value={shops}
+                      onChange={(e) => setShops(parseInt(e.target.value))}
+                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-visio-rose focus:outline-none z-10"
+                    />
+                    <div 
+                      className="absolute h-2 bg-gradient-to-r from-visio-violet to-visio-rose rounded-l-lg pointer-events-none top-1/2 -translate-y-1/2" 
+                      style={{ width: `${((shops - 10) / 490) * 100}%` }} 
+                    />
+                  </div>
+                  <div className="flex justify-between text-xs text-gray-400 mt-1">
+                    <span>10</span>
+                    <span>250</span>
+                    <span>500</span>
+                  </div>
                 </div>
-                
-                <div className="relative w-full h-6 flex items-center">
-                  <input
-                    type="range"
-                    min="10"
-                    max="500"
-                    step="10"
-                    value={shops}
-                    onChange={(e) => setShops(parseInt(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-visio-rose focus:outline-none focus:ring-2 focus:ring-visio-violet/50 z-10"
-                  />
-                  {/* Track progress visual fill (optional but nice) */}
-                  <div 
-                    className="absolute h-2 bg-visio-violet rounded-l-lg pointer-events-none top-1/2 -translate-y-1/2" 
-                    style={{ width: `${((shops - 10) / 490) * 100}%` }} 
-                  />
+
+                {/* Plan selector */}
+                <div>
+                  <label className="text-gray-700 font-bold block mb-3">
+                    Plan sélectionné
+                  </label>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => setSelectedPlan('starter')}
+                      className={`flex-1 p-3 rounded-xl border-2 transition-all ${
+                        selectedPlan === 'starter'
+                          ? 'border-visio-violet bg-visio-violet/5'
+                          : 'border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      <div className="font-bold text-gray-900">Essentiel</div>
+                      <div className="text-sm text-gray-500">{getPlanPrice}€/user</div>
+                    </button>
+                    <button
+                      onClick={() => setSelectedPlan('pro')}
+                      className={`flex-1 p-3 rounded-xl border-2 transition-all ${
+                        selectedPlan === 'pro'
+                          ? 'border-visio-rose bg-visio-rose/5'
+                          : 'border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      <div className="font-bold text-gray-900">Business</div>
+                      <div className="text-sm text-gray-500">{selectedPlan === 'pro' ? getPlanPrice : 45}€/user</div>
+                    </button>
+                  </div>
                 </div>
               </div>
 
-              {/* Results Grid */}
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                {/* Card 1 : Reach */}
-                <motion.div
-                  className="bg-blue-50/50 p-6 rounded-2xl border border-blue-100 relative overflow-hidden"
-                  whileHover={{ y: -4, boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.1)" }}
-                >
-                  <div className="text-blue-600 font-semibold mb-1 flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4" />
-                    Portée Organique / mois
+              {/* Comparison: Without vs With */}
+              <div className="grid md:grid-cols-2 gap-4 mb-6">
+                <div className="bg-red-50 rounded-xl p-4 border border-red-100">
+                  <div className="flex items-center space-x-2 text-red-600 font-semibold mb-3">
+                    <AlertTriangle className="w-4 h-4" />
+                    <span>Sans VisioPost</span>
                   </div>
-                  <div className="text-4xl font-extrabold text-gray-900 tracking-tight">
-                    <AnimatedNumber value={totalReach} />
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Portée mensuelle</span>
+                      <span className="font-bold text-red-600">{metrics.reachWithoutVisioPost.toLocaleString('fr-FR')}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Engagement</span>
+                      <span className="font-bold text-red-600">{metrics.engagementWithoutVisioPost.toLocaleString('fr-FR')}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Pénalité duplicate</span>
+                      <span className="font-bold text-red-600">-80%</span>
+                    </div>
                   </div>
-                  <div className="text-sm text-blue-600/80 mt-2 font-medium">
-                    Vues locales qualifiées
-                  </div>
-                </motion.div>
+                </div>
 
-                {/* Card 2 : Savings */}
-                <motion.div
-                  className="bg-green-50/50 p-6 rounded-2xl border border-green-100 relative overflow-hidden"
-                  whileHover={{ y: -4, boxShadow: "0 10px 25px -5px rgba(34, 197, 94, 0.1)" }}
-                >
-                  <div className="text-green-600 font-semibold mb-1 flex items-center gap-2">
-                    <PiggyBank className="w-4 h-4" />
-                    Économie annuelle
+                <div className="bg-green-50 rounded-xl p-4 border border-green-100">
+                  <div className="flex items-center space-x-2 text-green-600 font-semibold mb-3">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Avec VisioPost</span>
                   </div>
-                  <div className="text-4xl font-extrabold text-gray-900 tracking-tight">
-                    <AnimatedNumber value={annualSavings} /> €
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Portée mensuelle</span>
+                      <span className="font-bold text-green-600">{metrics.reachWithVisioPost.toLocaleString('fr-FR')}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Engagement</span>
+                      <span className="font-bold text-green-600">{metrics.engagementWithVisioPost.toLocaleString('fr-FR')}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Gain de portée</span>
+                      <span className="font-bold text-green-600">+{metrics.reachGainPercent}%</span>
+                    </div>
                   </div>
-                  <div className="text-sm text-green-600/80 mt-2 font-medium">
-                    vs Agence classique
+                </div>
+              </div>
+
+              {/* Key Metrics Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <MetricCard
+                  icon={<TrendingUp className="w-4 h-4" />}
+                  label="Portée gagnée"
+                  value={metrics.reachGain}
+                  sublabel="vues/mois"
+                  color="blue"
+                />
+                <MetricCard
+                  icon={<Users className="w-4 h-4" />}
+                  label="Conversions"
+                  value={metrics.conversions}
+                  sublabel="clients potentiels/mois"
+                  color="purple"
+                />
+                <MetricCard
+                  icon={<PiggyBank className="w-4 h-4" />}
+                  label="Économie vs agence"
+                  value={metrics.savingsVsAgency}
+                  suffix="€"
+                  sublabel="par mois"
+                  color="green"
+                />
+                <MetricCard
+                  icon={<Target className="w-4 h-4" />}
+                  label="ROI estimé"
+                  value={metrics.roi}
+                  suffix="%"
+                  sublabel="retour sur investissement"
+                  color="orange"
+                />
+              </div>
+
+              {/* Cost breakdown */}
+              <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 mb-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="font-semibold text-gray-700">Récapitulatif mensuel</span>
+                  <span className="text-xs text-gray-400">Plan {selectedPlan === 'starter' ? 'Essentiel' : 'Business'}</span>
+                </div>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">{shops} utilisateurs × {getPlanPrice}€</span>
+                    <span className="font-bold">{metrics.visioPostCost.toLocaleString('fr-FR')}€/mois</span>
                   </div>
-                </motion.div>
+                  <div className="flex justify-between text-green-600">
+                    <span>Économie vs agence ({roiConfig.agencyCostPerShop}€/PDV)</span>
+                    <span className="font-bold">+{metrics.savingsVsAgency.toLocaleString('fr-FR')}€/mois</span>
+                  </div>
+                  <div className="flex justify-between text-blue-600">
+                    <span>Revenu additionnel estimé</span>
+                    <span className="font-bold">+{metrics.additionalRevenue.toLocaleString('fr-FR')}€/mois</span>
+                  </div>
+                  <div className="border-t pt-2 mt-2 flex justify-between">
+                    <span className="font-bold text-gray-900">Bénéfice net estimé</span>
+                    <span className="font-bold text-visio-violet text-lg">
+                      +{(metrics.savingsVsAgency + metrics.additionalRevenue - metrics.visioPostCost).toLocaleString('fr-FR')}€/mois
+                    </span>
+                  </div>
+                </div>
               </div>
 
               {/* Footer CTA */}
-              <div className="text-center bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                <p className="text-gray-500 mb-6 text-sm">
-                  *Estimations basées sur les performances moyennes du secteur Retail.
+              <div className="text-center">
+                <p className="text-gray-500 mb-4 text-xs">
+                  *Estimations basées sur les performances moyennes du secteur Retail. Résultats réels variables.
                 </p>
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Button variant="primary" size="lg" className="w-full sm:w-auto shadow-xl shadow-visio-violet/20">
-                    <span>Télécharger mon rapport détaillé</span>
+                    <Zap className="w-5 h-5 mr-2" />
+                    <span>Demander mon devis personnalisé</span>
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </motion.div>
