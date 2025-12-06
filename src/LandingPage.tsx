@@ -7,6 +7,8 @@ import SocialProofSection from './sections/SocialProofSection';
 import ProblemSection from './sections/ProblemSection';
 import SolutionSection from './sections/SolutionSection';
 import BeforeAfterSection from './sections/BeforeAfterSection';
+import HowItWorksSection from './sections/HowItWorksSection';
+import UseCasesSection from './sections/UseCasesSection';
 import FeaturesSection from './sections/FeaturesSection';
 import MultiPlatformSection from './sections/MultiPlatformSection';
 import NetworkIntelligenceSection from './sections/NetworkIntelligenceSection';
@@ -22,19 +24,22 @@ import RoiModal from './components/RoiModal';
 /**
  * Landing Page VisioPost V3.1.1
  *
- * Structure des sections :
- * 1. Hero - Accroche principale
- * 2. Social Proof - Stats et confiance
- * 3. Problem - Le problème duplicate content
- * 4. Solution - Comment on résout
- * 5. BeforeAfter - Simulation visuelle Facebook
- * 6. Features - Fonctionnalités
- * 7. MultiPlatform - Facebook + à venir
- * 8. NetworkIntelligence - Teaser V5
- * 9. Pricing - Tarification
- * 10. FAQ - Questions fréquentes
- * 11. FinalCTA - Appel à l'action
- * 12. Footer
+ * Structure des sections (ordre optimisé pour conversion) :
+ * 
+ * 1. Hero - Accroche "0 duplicate content"
+ * 2. SocialProof - Stats crédibilité (+340%, etc.)
+ * 3. Problem - Pénalité Facebook duplicate
+ * 4. Solution - Comment on résout (3 points clés)
+ * 5. BeforeAfter - Simulation posts Facebook (impact visuel)
+ * 6. HowItWorks - Flowchart animé Siège→VisioPost→Magasins + teaser modes
+ * 7. UseCases - Exemples par secteur (Optique, Distribution, Sport, Coiffure)
+ * 8. Features - Fonctionnalités détaillées
+ * 9. MultiPlatform - Facebook + Instagram/TikTok/LinkedIn à venir
+ * 10. NetworkIntelligence - Teaser V5 (IA qui apprend)
+ * 11. Pricing - Tarification (setup + 30€/user)
+ * 12. FAQ - Questions fréquentes
+ * 13. FinalCTA - Appel à l'action Calendly
+ * 14. Footer
  */
 const LandingPage = () => {
   const [isRoiModalOpen, setIsRoiModalOpen] = useState(false);
@@ -55,6 +60,8 @@ const LandingPage = () => {
         <ProblemSection />
         <SolutionSection />
         <BeforeAfterSection />
+        <HowItWorksSection />
+        <UseCasesSection />
         <FeaturesSection />
         <MultiPlatformSection />
         <NetworkIntelligenceSection />
