@@ -1,97 +1,106 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import Button from '../components/Button';
-import { HeaderProps } from '../types';
+import { NReachLogo } from '../components/NReachLogo';
+import { Button } from '../components/Button';
 
-/**
- * Section Header - Navigation B2B responsive avec menu mobile
- */
-const Header = ({ className = '' }: HeaderProps) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const navItems = [
+  { label: 'Fonctionnalités', href: '#features' },
+  { label: 'Tarifs', href: '#pricing' },
+  { label: 'FAQ', href: '#faq' },
+];
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const closeMenu = () => setIsMenuOpen(false);
+export const Header: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className={`fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-200 ${className}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-visio-violet via-visio-rose to-visio-bleu flex items-center justify-center">
-              <span className="text-white font-bold text-lg sm:text-xl">V</span>
-            </div>
-            <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-visio-violet via-visio-rose to-visio-bleu bg-clip-text text-transparent">
-              VisioPost
-            </span>
-          </div>
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-white/90 dark:bg-dark-bg/90 backdrop-blur-lg shadow-card'
+            : 'bg-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <a href="#" className="flex items-center">
+              <NReachLogo
+                variant="full"
+                theme={isScrolled ? 'light' : 'light'}
+                size="md"
+              />
+            </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            <a href="#features" className="text-gray-700 hover:text-visio-violet transition">
-              Solution
-            </a>
-            <a href="#pricing" className="text-gray-700 hover:text-visio-violet transition">
-              Offre Réseau
-            </a>
-            <button className="text-gray-900 font-medium hover:text-visio-violet transition">
-              Espace Client
-            </button>
-            <Button variant="primary" size="sm">
-              Réserver une Démo
-            </Button>
-          </div>
-
-          {/* Mobile: CTA + Hamburger */}
-          <div className="flex md:hidden items-center space-x-2">
-            <Button variant="primary" size="sm" className="text-xs px-3 py-1.5">
-              Démo
-            </Button>
-            <button
-              onClick={toggleMenu}
-              className="p-2 rounded-lg hover:bg-gray-100 transition"
-              aria-label="Menu"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu Dropdown */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
-          <div className="px-4 py-4 space-y-3">
-            <a
-              href="#features"
-              onClick={closeMenu}
-              className="block py-2 px-3 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-visio-violet transition"
-            >
-              Solution
-            </a>
-            <a
-              href="#pricing"
-              onClick={closeMenu}
-              className="block py-2 px-3 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-visio-violet transition"
-            >
-              Offre Réseau
-            </a>
-            <a
-              href="#"
-              onClick={closeMenu}
-              className="block py-2 px-3 rounded-lg text-gray-900 font-medium hover:bg-gray-50 hover:text-visio-violet transition"
-            >
-              Espace Client
-            </a>
-            <div className="pt-2 border-t border-gray-100">
-              <Button variant="primary" size="sm" className="w-full">
-                Réserver une Démo
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-8">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-light-text-muted hover:text-nreach-midnight dark:text-dark-text-muted dark:hover:text-dark-text transition-colors font-medium"
+                >
+                  {item.label}
+                </a>
+              ))}
+              <Button variant="primary" size="md">
+                Démo gratuite
               </Button>
-            </div>
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-2 text-nreach-midnight dark:text-dark-text"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
-      )}
-    </nav>
+      </motion.header>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-40 md:hidden pt-20"
+          >
+            <div className="bg-white dark:bg-dark-bg h-full">
+              <nav className="flex flex-col items-center gap-6 p-8">
+                {navItems.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="text-xl font-medium text-nreach-midnight dark:text-dark-text"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+                <Button variant="primary" size="lg" className="w-full mt-4">
+                  Démo gratuite
+                </Button>
+              </nav>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
