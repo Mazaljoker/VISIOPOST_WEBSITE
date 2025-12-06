@@ -1,46 +1,44 @@
 import { Feature } from '../types';
 
+/**
+ * Fonctionnalités VisioPost V3.1.1
+ * Focus sur les bénéfices, pas sur la technique
+ */
 export const features: Feature[] = [
   {
-    icon: "Shield", // A mapper vers Shield dans FeaturesSection
-    title: "Brand Safety",
-    description: "Protection absolue de votre image de marque. Rien n'est publié sans validation des 'Garde-fous' sémantiques.",
+    icon: "Sparkles",
+    title: "Génération IA",
+    description: "Notre technologie crée des variations uniques de vos campagnes. Chaque magasin = un contenu différent.",
     gradient: "from-visio-violet to-visio-rose"
   },
   {
-    icon: "MapPin", // A mapper vers MapPin
-    title: "Ancrage Local",
-    description: "L'IA connait les spécificités culturelles, climatiques et événementielles de chaque point de vente.",
+    icon: "MapPin",
+    title: "Personnalisation locale",
+    description: "Ville, région, actualités locales. Chaque post parle à l'audience du magasin.",
     gradient: "from-visio-rose to-visio-bleu"
   },
   {
-    icon: "BarChart3",
-    title: "Analytics Consolidés",
-    description: "Vue 'Hélicoptère' pour le siège : comparez la performance de vos régions en temps réel.",
+    icon: "Shield",
+    title: "Validation centralisée",
+    description: "Le siège contrôle le message. Les magasins exécutent sans risque d'erreur.",
     gradient: "from-visio-bleu to-visio-violet"
   },
   {
-    icon: "Clock",
-    title: "Smart Scheduling",
-    description: "Ne postez pas au hasard. Notre IA prédit le 'Best Time to Post' pour chaque ville afin de maximiser la viralité.",
+    icon: "Zap",
+    title: "Publication simplifiée",
+    description: "3 clics pour publier. Aucune formation nécessaire. 30 secondes chrono.",
     gradient: "from-visio-violet to-visio-bleu"
   },
   {
-    icon: "TrendingUp",
-    title: "Prédiction de Portée",
-    description: "Avant même de publier, l'IA estime le 'Reach' potentiel de votre post et vous suggère des améliorations.",
+    icon: "BarChart3",
+    title: "Analytics réseau",
+    description: "Vue consolidée de la performance. Comparez vos régions en temps réel.",
     gradient: "from-visio-rose to-visio-violet"
   },
   {
     icon: "Users",
-    title: "Onboarding Express",
-    description: "Connectez 500 pages locales en quelques minutes via nos connecteurs API sécurisés.",
+    title: "Multi-format",
+    description: "Feed, Stories, Reels. Un visuel, tous les formats. Optimisé pour chaque plateforme.",
     gradient: "from-visio-bleu to-visio-rose"
-  },
-  {
-    icon: "Heart",
-    title: "Analyse de Sentiments",
-    description: "Détection IA des commentaires négatifs et alertes temps réel pour protéger votre réputation réseau.",
-    gradient: "from-visio-rose to-visio-bleu"
   }
 ];

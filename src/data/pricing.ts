@@ -1,60 +1,63 @@
 import { PricingPlan } from '../types';
 
 /**
- * Plan tarifaire pour les centrales - Programme Pilote
- * Setup one-shot pour démarrer sans risque
+ * Frais de setup selon taille réseau
  */
-export const centralePlan: PricingPlan = {
-  title: "PROGRAMME PILOTE",
-  price: 2500,
-  period: " (Setup One-shot)",
+export const setupFees = [
+  { maxUsers: 50, price: 990, label: "Réseau < 50 points de vente" },
+  { maxUsers: 200, price: 1990, label: "Réseau 50-200 points de vente" },
+  { maxUsers: Infinity, price: 2990, label: "Réseau 200+ points de vente" }
+];
+
+/**
+ * Tarification par utilisateur avec dégressivité
+ */
+export const userPricing = [
+  { maxUsers: 20, price: 30 },
+  { maxUsers: 50, price: 25 },
+  { maxUsers: 100, price: 20 },
+  { maxUsers: Infinity, price: 15 }
+];
+
+/**
+ * Options multi-plateforme (par réseau, pas par user)
+ */
+export const platformOptions = [
+  { name: "Facebook", price: 0, included: true, available: true },
+  { name: "Instagram", price: 15, included: false, available: true, badge: "Janvier 2025" },
+  { name: "TikTok", price: 15, included: false, available: false, badge: "Q1 2025" },
+  { name: "LinkedIn", price: 15, included: false, available: false, badge: "Q1 2025" }
+];
+
+/**
+ * Plan principal affiché sur la landing
+ */
+export const mainPlan: PricingPlan = {
+  title: "VISIOPOST",
+  price: 30,
+  period: "/utilisateur/mois",
   features: [
-    "Audit de visibilité actuel",
-    "Configuration du 'Ton de Marque' IA",
-    "Setup technique (20 magasins)",
-    "Formation équipe siège",
-    "Rapport de performance à 30 jours"
+    "Facebook inclus",
+    "IA génération illimitée",
+    "0% duplicate content garanti",
+    "Analytics consolidés",
+    "Onboarding accompagné",
+    "Support prioritaire"
   ],
-  cta: "Lancer un Pilote",
+  cta: "Demander un devis",
   variant: "centrale",
-  highlight: "DÉMARRAGE SANS RISQUE"
+  highlight: "À PARTIR DE"
 };
 
 /**
- * Plans tarifaires pour les adhérents
- * Licence Réseau - offre volume disponible
+ * Informations complémentaires pricing
  */
-export const adherentPlans: PricingPlan[] = [
-  {
-    title: "Licence RÉSEAU",
-    price: 39,
-    period: "/mois/point de vente",
-    features: [
-      "Accès Plateforme Visiopost",
-      "3 à 5 Posts IA / semaine",
-      "Modération automatique",
-      "Support Adhérent inclus",
-      "Facturation centralisée possible"
-    ],
-    cta: "Simuler mon tarif",
-    variant: "starter",
-    isPopular: true,
-    highlight: "OFFRE VOLUME DISPONIBLE"
-  },
-  {
-    title: "Licence PRO + INTELLIGENCE",
-    price: 79,
-    period: "/mois/point de vente",
-    features: [
-      "Tout RÉSEAU inclus",
-      "Smart Scheduling (Best Time IA)",
-      "Prédiction de Portée avant publication",
-      "Analyse de sentiments IA",
-      "Dashboard réputation temps réel",
-      "Alertes commentaires négatifs"
-    ],
-    cta: "Découvrir PRO",
-    variant: "pro",
-    highlight: "INTELLIGENCE PRÉDICTIVE"
-  }
-];
+export const pricingInfo = {
+  setupNote: "+ Frais de mise en place selon votre réseau",
+  volumeNote: "Tarifs dégressifs selon la taille de votre réseau",
+  optionsNote: "Options : Instagram, TikTok, LinkedIn"
+};
+
+// Legacy exports pour compatibilité
+export const centralePlan = mainPlan;
+export const adherentPlans: PricingPlan[] = [];

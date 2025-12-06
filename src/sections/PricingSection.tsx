@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { centralePlan, adherentPlans } from '../data/pricing';
-import PricingCard from '../components/PricingCard';
+import { Check, ArrowRight } from 'lucide-react';
+import { mainPlan, platformOptions, pricingInfo } from '../data/pricing';
+import Button from '../components/Button';
 import { PricingSectionProps } from '../types';
 
 const titleVariants = {
@@ -15,22 +16,8 @@ const titleVariants = {
   },
 };
 
-// Individual card variants with rewind
-const pricingCardVariants = {
-  hidden: { opacity: 0, y: 70, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut' as const,
-    },
-  },
-};
-
-const centralCardVariants = {
-  hidden: { opacity: 0, scale: 0.85, y: 50 },
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 50 },
   visible: {
     opacity: 1,
     scale: 1,
@@ -44,91 +31,118 @@ const centralCardVariants = {
 };
 
 /**
- * Section Pricing - Tarification B2B avec animations pop
+ * Section Pricing - Nouveau modèle V3.1.1
+ * Setup + 30€/user + plateformes optionnelles
  */
-const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
+const PricingSection = ({ className = '' }: PricingSectionProps) => {
   return (
-    <section id="pricing" className={`py-20 px-4 sm:px-6 lg:px-8 ${className}`}>
-      <div className="max-w-7xl mx-auto">
-        {/* Title - appears once */}
+    <section id="pricing" className={`py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 ${className}`}>
+      <div className="max-w-4xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
           variants={titleVariants}
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Tarification Simple
+            Tarification claire. ROI immédiat.
           </h2>
-          <p className="text-xl text-gray-600">Transparent. Équitable. Sans surprise.</p>
+          <p className="text-xl text-gray-600">
+            Transparent. Équitable. Sans surprise.
+          </p>
         </motion.div>
 
-        {/* Centrale Pricing - with rewind */}
+        {/* Main Pricing Card */}
         <motion.div
-          className="max-w-2xl mx-auto mb-16"
+          className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.3, margin: "-50px" }}
-          variants={centralCardVariants}
-          whileHover={{
-            scale: 1.03,
-            transition: { duration: 0.3 },
-          }}
+          viewport={{ once: true, amount: 0.3 }}
+          variants={cardVariants}
+          whileHover={{ scale: 1.02 }}
         >
-          <PricingCard
-            title={centralePlan.title}
-            price={centralePlan.price}
-            period={centralePlan.period}
-            features={centralePlan.features}
-            cta={centralePlan.cta}
-            variant={centralePlan.variant}
-            highlight={centralePlan.highlight}
-          />
-        </motion.div>
+          {/* Header */}
+          <div className="bg-gradient-to-r from-visio-violet to-visio-rose p-8 text-white text-center">
+            <div className="text-sm font-bold uppercase tracking-wide opacity-90 mb-2">
+              {mainPlan.highlight}
+            </div>
+            <div className="flex items-baseline justify-center">
+              <span className="text-6xl font-bold">{mainPlan.price}€</span>
+              <span className="text-xl ml-2 opacity-90">{mainPlan.period}</span>
+            </div>
+            <div className="mt-4 text-sm opacity-80">
+              {pricingInfo.setupNote}
+            </div>
+          </div>
 
-        {/* Adhérents Pricing - each card with individual rewind */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {adherentPlans.map((plan, index) => (
-            <motion.div
-              key={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.3, margin: "-30px" }}
-              variants={pricingCardVariants}
-              whileHover={{
-                y: -12,
-                scale: 1.02,
-                transition: { duration: 0.3 },
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <PricingCard
-                title={plan.title}
-                price={plan.price}
-                period={plan.period}
-                features={plan.features}
-                cta={plan.cta}
-                variant={plan.variant}
-                isPopular={plan.isPopular}
-                highlight={plan.highlight}
-                onClick={plan.variant === 'starter' ? onOpenRoi : undefined}
-              />
-            </motion.div>
-          ))}
-        </div>
+          {/* Features */}
+          <div className="p-8">
+            <div className="grid md:grid-cols-2 gap-4 mb-8">
+              {mainPlan.features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  className="flex items-center space-x-3"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Check className="w-4 h-4 text-green-600" />
+                  </div>
+                  <span className="text-gray-700">{feature}</span>
+                </motion.div>
+              ))}
+            </div>
 
-        {/* Footer text - with rewind */}
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
-          transition={{ duration: 0.4 }}
-        >
-          <p className="text-gray-600">
-            <span className="font-semibold">Tarif dégressif</span> selon la taille du réseau
-          </p>
+            {/* Platforms */}
+            <div className="border-t pt-6 mb-8">
+              <div className="text-sm font-semibold text-gray-500 uppercase mb-4">Plateformes</div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {platformOptions.map((platform, index) => (
+                  <div
+                    key={index}
+                    className={`p-3 rounded-lg text-center ${
+                      platform.included
+                        ? 'bg-green-50 border border-green-200'
+                        : platform.available
+                        ? 'bg-blue-50 border border-blue-200'
+                        : 'bg-gray-50 border border-gray-200'
+                    }`}
+                  >
+                    <div className="font-semibold text-gray-900">{platform.name}</div>
+                    {platform.included ? (
+                      <div className="text-xs text-green-600 font-medium">✓ Inclus</div>
+                    ) : (
+                      <>
+                        <div className="text-xs text-gray-500">+{platform.price}€/mois</div>
+                        {platform.badge && (
+                          <div className="text-xs text-blue-600 font-medium mt-1">{platform.badge}</div>
+                        )}
+                      </>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="text-center">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button variant="primary" size="lg" className="w-full md:w-auto">
+                  <span>{mainPlan.cta}</span>
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </motion.div>
+              <p className="text-sm text-gray-500 mt-4">
+                {pricingInfo.volumeNote}
+              </p>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

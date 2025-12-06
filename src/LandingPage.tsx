@@ -7,7 +7,8 @@ import SocialProofSection from './sections/SocialProofSection';
 import ProblemSection from './sections/ProblemSection';
 import SolutionSection from './sections/SolutionSection';
 import FeaturesSection from './sections/FeaturesSection';
-import BeforeAfterSection from './sections/BeforeAfterSection';
+import MultiPlatformSection from './sections/MultiPlatformSection';
+import NetworkIntelligenceSection from './sections/NetworkIntelligenceSection';
 import PricingSection from './sections/PricingSection';
 import FaqSection from './sections/FaqSection';
 import FinalCtaSection from './sections/FinalCtaSection';
@@ -18,19 +19,13 @@ import FloatingIcons from './components/FloatingIcons';
 import RoiModal from './components/RoiModal';
 
 /**
- * Landing Page VisioPost - Composant principal
+ * Landing Page VisioPost V3.1.1
  *
- * Refactoré selon les principes KISS, SRP, SOLID, DRY
- * - Avant : 771 lignes monolithiques
- * - Après : 45 lignes d'orchestration
- *
- * Architecture :
- * - 11 sections modulaires
- * - 5 composants réutilisables
- * - 6 fichiers de données
- * - 1 hook custom
- *
- * @see CLAUDE.md pour les guidelines complètes
+ * Refactoré avec nouveau contenu :
+ * - Focus sur le problème duplicate content
+ * - Pricing simplifié (setup + 30€/user)
+ * - Multi-plateforme (Facebook + à venir)
+ * - Network Intelligence teaser
  */
 const LandingPage = () => {
   const [isRoiModalOpen, setIsRoiModalOpen] = useState(false);
@@ -51,10 +46,11 @@ const LandingPage = () => {
         <ProblemSection />
         <SolutionSection />
         <FeaturesSection />
-        <BeforeAfterSection />
-        <PricingSection onOpenRoi={() => setIsRoiModalOpen(true)} />
+        <MultiPlatformSection />
+        <NetworkIntelligenceSection />
+        <PricingSection />
         <FaqSection />
-        <FinalCtaSection onOpenRoi={() => setIsRoiModalOpen(true)} />
+        <FinalCtaSection />
         <Footer />
       </div>
     </div>
