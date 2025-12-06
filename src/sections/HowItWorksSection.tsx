@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Building2, ArrowRight, Store, Sparkles, Shield, Eye, Glasses, ShoppingCart, Dumbbell, Scissors } from 'lucide-react';
 
@@ -182,5 +183,4 @@ const HowItWorksSection = () => {
   );
 };
 
-import React from 'react';
 export default HowItWorksSection;
