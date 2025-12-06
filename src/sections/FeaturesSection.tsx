@@ -41,26 +41,26 @@ const featureCardVariants = {
   },
 };
 
+// Icon components map
+const iconComponents: Record<string, React.FC<{ className?: string }>> = {
+  Sparkles,
+  Users,
+  BarChart3,
+  Clock,
+  TrendingUp,
+  CheckCircle,
+  Zap,
+  Shield,
+  MapPin,
+  Heart
+};
+
 /**
  * Section Features - Grille des 6 fonctionnalités principales
  * Animation staggered pour effet "cascade"
  * Rebrandé pour nReach Studio
  */
 const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
-  // Map des noms d'icônes vers composants
-  const iconMap: Record<string, JSX.Element> = {
-    Sparkles: <Sparkles className="w-8 h-8" />,
-    Users: <Users className="w-8 h-8" />,
-    BarChart3: <BarChart3 className="w-8 h-8" />,
-    Clock: <Clock className="w-8 h-8" />,
-    TrendingUp: <TrendingUp className="w-8 h-8" />,
-    CheckCircle: <CheckCircle className="w-8 h-8" />,
-    Zap: <Zap className="w-8 h-8" />,
-    Shield: <Shield className="w-8 h-8" />,
-    MapPin: <MapPin className="w-8 h-8" />,
-    Heart: <Heart className="w-8 h-8" />
-  };
-
   return (
     <section id="features" className={`py-20 px-4 sm:px-6 lg:px-8 bg-light-bg dark:bg-dark-bg ${className}`}>
       <div className="max-w-7xl mx-auto">
@@ -80,28 +80,34 @@ const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
 
         {/* Feature cards - each has individual scroll trigger with rewind */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.3, margin: "-30px" }}
-              variants={featureCardVariants}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-                transition: { duration: 0.2 },
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <FeatureCard
-                icon={iconMap[feature.icon]}
-                title={feature.title}
-                description={feature.description}
-                gradient={feature.gradient}
-              />
-            </motion.div>
-          ))}
+          {features.map((feature, index) => {
+            // Get the icon component
+            const IconComponent = iconComponents[feature.icon];
+            const iconElement = IconComponent ? <IconComponent /> : <Sparkles />;
+            
+            return (
+              <motion.div
+                key={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3, margin: "-30px" }}
+                variants={featureCardVariants}
+                whileHover={{
+                  y: -8,
+                  scale: 1.02,
+                  transition: { duration: 0.2 },
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <FeatureCard
+                  icon={iconElement}
+                  title={feature.title}
+                  description={feature.description}
+                  gradient={feature.gradient}
+                />
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Bloc Feature Prédictive - AI Intelligence - with rewind */}
