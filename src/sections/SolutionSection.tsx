@@ -1,70 +1,173 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Shuffle, MapPin, CheckCircle } from 'lucide-react';
+import { Upload, Sparkles, Bell, TrendingUp, Shield, Clock, BarChart3, Check, ArrowRight } from 'lucide-react';
 
-const solutions = [
+const topCards = [
   {
+    icon: Shield,
+    title: 'Brand Safety 100%',
+    description: 'Chaque variation respecte votre charte',
+  },
+  {
+    icon: Clock,
+    title: '30 secondes',
+    description: 'Le magasin choisit et publie',
+  },
+  {
+    icon: BarChart3,
+    title: 'Portée maximale',
+    description: 'Les réseaux récompensent le contenu unique',
+  },
+];
+
+const steps = [
+  {
+    number: '01',
+    icon: Upload,
+    title: 'UPLOADEZ',
+    features: [
+      'Votre visuel et votre message',
+      'Notre IA prend le relais',
+      'Validation siège garantie',
+    ],
+    badge: '1 Campagne',
+    badgeColor: 'bg-nreach-midnight text-white',
+  },
+  {
+    number: '02',
     icon: Sparkles,
-    title: 'IA Générative',
-    description: 'GPT-4 Vision analyse vos images et génère des textes uniques',
+    title: 'GÉNÉRATION AUTOMATIQUE',
+    features: [
+      'Une version unique par magasin',
+      'Personnalisation ville et région',
+      'Zéro duplicate content',
+    ],
+    badge: '500 Posts Uniques',
+    badgeColor: 'bg-nreach-midnight text-white',
   },
   {
-    icon: Shuffle,
-    title: 'Variations Infinies',
-    description: 'Chaque point de vente reçoit une version différente du post',
+    number: '03',
+    icon: Bell,
+    title: 'PUBLICATION SIMPLIFIÉE',
+    features: [
+      'Le magasin reçoit une notification',
+      '3 clics pour publier',
+      'Aucune formation nécessaire',
+    ],
+    badge: '30 Secondes',
+    badgeColor: 'bg-nreach-lavande text-white',
   },
   {
-    icon: MapPin,
-    title: 'Localisation Auto',
-    description: 'Variables dynamiques : ville, région, horaires adaptés',
+    number: '04',
+    icon: TrendingUp,
+    title: 'PORTÉE MAXIMALE',
+    features: [
+      'Les réseaux voient des contenus originaux',
+      "L'algorithme vous récompense",
+      'Analytics consolidés en temps réel',
+    ],
+    badge: '+340% Reach',
+    badgeColor: 'bg-nreach-electric text-nreach-midnight',
   },
 ];
 
 /**
- * Section Solution - Comment nReach Studio résout le problème
+ * Section Solution - 4 étapes clés + Brand Safety
  * Rebrandé pour nReach Studio
  */
 const SolutionSection = () => {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-light-bg dark:bg-dark-bg">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nreach-electric/10 text-nreach-electric mb-4">
-            <CheckCircle className="w-4 h-4" />
-            <span className="text-sm font-medium">La solution</span>
-          </div>
           <h2 className="text-3xl md:text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
-            nReach Studio génère du contenu <span className="text-nreach-electric">unique</span>
+            Comment <span className="text-nreach-electric">nReach Studio</span> résout le problème
           </h2>
           <p className="text-lg text-light-text-muted dark:text-dark-text-muted max-w-2xl mx-auto">
-            Notre IA crée des variations uniques de chaque post pour chaque point de vente de votre réseau.
+            Un processus simple et sécurisé pour générer du contenu unique sur tout votre réseau
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {solutions.map((solution, index) => (
+        {/* Top Cards - Brand Safety, 30s, Portée */}
+        <motion.div
+          className="grid md:grid-cols-3 gap-6 mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+        >
+          {topCards.map((card, index) => (
             <motion.div
               key={index}
-              className="bg-white dark:bg-dark-surface rounded-xl p-6 border border-light-border dark:border-dark-border shadow-card hover:shadow-nreach transition-shadow"
+              className="bg-white dark:bg-dark-surface rounded-2xl p-6 border border-light-border dark:border-dark-border shadow-card text-center"
+              whileHover={{ y: -4 }}
+            >
+              <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-nreach-electric/20 to-nreach-lavande/20 flex items-center justify-center">
+                <card.icon className="w-7 h-7 text-nreach-electric" />
+              </div>
+              <h3 className="text-lg font-bold text-nreach-midnight dark:text-dark-text mb-2">
+                {card.title}
+              </h3>
+              <p className="text-sm text-light-text-muted dark:text-dark-text-muted">
+                {card.description}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* 4 Steps Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((step, index) => (
+            <motion.div
+              key={index}
+              className="relative bg-white dark:bg-dark-surface rounded-2xl p-6 border border-light-border dark:border-dark-border shadow-card"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -4 }}
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-nreach-electric to-nreach-lavande rounded-xl flex items-center justify-center mb-4">
-                <solution.icon className="w-6 h-6 text-white" />
+              {/* Arrow between cards (desktop only) */}
+              {index < steps.length - 1 && (
+                <div className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10">
+                  <ArrowRight className="w-6 h-6 text-nreach-electric" />
+                </div>
+              )}
+
+              {/* Icon */}
+              <div className="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-nreach-midnight to-nreach-lavande flex items-center justify-center">
+                <step.icon className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-nreach-midnight dark:text-dark-text mb-2">
-                {solution.title}
+
+              {/* Number */}
+              <div className="text-4xl font-extrabold text-nreach-electric mb-2">
+                {step.number}
+              </div>
+
+              {/* Title */}
+              <h3 className="text-lg font-bold text-nreach-midnight dark:text-dark-text mb-4 uppercase tracking-wide">
+                {step.title}
               </h3>
-              <p className="text-light-text-muted dark:text-dark-text-muted">
-                {solution.description}
-              </p>
+
+              {/* Features */}
+              <ul className="space-y-2 mb-6">
+                {step.features.map((feature, fIndex) => (
+                  <li key={fIndex} className="flex items-start gap-2 text-sm text-light-text-muted dark:text-dark-text-muted">
+                    <Check className="w-4 h-4 text-nreach-electric flex-shrink-0 mt-0.5" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Badge */}
+              <div className={`inline-block px-4 py-2 rounded-lg text-sm font-semibold ${step.badgeColor}`}>
+                {step.badge}
+              </div>
             </motion.div>
           ))}
         </div>
