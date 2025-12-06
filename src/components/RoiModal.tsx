@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, useSpring, useTransform, MotionValue } from 'framer-motion';
+import { motion, AnimatePresence, useSpring, useTransform } from 'framer-motion';
 import { X, TrendingUp, PiggyBank, ArrowRight, Users, Target, Zap, AlertTriangle, CheckCircle } from 'lucide-react';
 import { useState, useEffect, useMemo } from 'react';
 import { roiConfig, pricingPlans } from '../data/pricing';
