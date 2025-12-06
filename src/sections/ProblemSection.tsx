@@ -1,27 +1,33 @@
 import { motion } from 'framer-motion';
-import { AlertTriangle, TrendingDown, Copy, Ban } from 'lucide-react';
+import { AlertTriangle, TrendingDown, Copy, Ban, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const problems = [
   {
     icon: Copy,
     title: 'Contenu dupliqué',
-    description: 'Le même post sur 100 pages = pénalité algorithmique Facebook',
+    description: 'Le même post sur 100 pages = pénalité algorithmique sur tous les réseaux',
   },
   {
     icon: TrendingDown,
     title: 'Portée en chute',
-    description: 'Vos posts atteignent moins de 2% de votre audience',
+    description: 'Vos posts atteignent moins de 2% de votre audience potentielle',
   },
   {
     icon: Ban,
     title: 'Engagement nul',
-    description: 'Aucune interaction car le contenu n\'est pas personnalisé',
+    description: 'Aucune interaction car le contenu n\'est pas personnalisé localement',
   },
+];
+
+const platforms = [
+  { icon: Facebook, name: 'Facebook' },
+  { icon: Instagram, name: 'Instagram' },
+  { icon: Linkedin, name: 'LinkedIn' },
 ];
 
 /**
  * Section Problem - Le problème du duplicate content
- * Rebrandé pour nReach Studio
+ * Rebrandé pour nReach Studio - Multi-plateformes
  */
 const ProblemSection = () => {
   return (
@@ -38,11 +44,29 @@ const ProblemSection = () => {
             <span className="text-sm font-medium">Le problème</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
-            Facebook pénalise le contenu dupliqué
+            Les réseaux sociaux pénalisent le contenu dupliqué
           </h2>
-          <p className="text-lg text-light-text-muted dark:text-dark-text-muted max-w-2xl mx-auto">
-            Quand tous vos points de vente publient le même contenu, l'algorithme Facebook réduit drastiquement votre portée.
+          <p className="text-lg text-light-text-muted dark:text-dark-text-muted max-w-3xl mx-auto mb-6">
+            Quand vous créez une campagne et la diffusez à l'identique sur tous vos points de vente, 
+            les algorithmes réduisent drastiquement votre portée organique.
           </p>
+
+          {/* Platforms affected */}
+          <div className="flex items-center justify-center gap-4">
+            {platforms.map((platform, index) => (
+              <motion.div
+                key={index}
+                className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-dark-bg rounded-full border border-light-border dark:border-dark-border"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <platform.icon className="w-4 h-4 text-red-500" />
+                <span className="text-sm text-light-text-muted dark:text-dark-text-muted">{platform.name}</span>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6">
