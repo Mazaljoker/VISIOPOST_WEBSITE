@@ -1,7 +1,8 @@
-import { motion, AnimatePresence, useSpring, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useSpring, useTransform, MotionValue } from 'framer-motion';
 import { X, TrendingUp, PiggyBank, ArrowRight, Users, Target, Zap, AlertTriangle, CheckCircle } from 'lucide-react';
 import { useState, useEffect, useMemo } from 'react';
 import { roiConfig, pricingPlans } from '../data/pricing';
+import { DegressivityTier } from '../types';
 import Button from './Button';
 
 interface RoiModalProps {
@@ -33,7 +34,7 @@ const modalVariants = {
 // --- Sub-component for Animated Numbers ---
 const AnimatedNumber = ({ value, suffix = '' }: { value: number; suffix?: string }) => {
   const spring = useSpring(value, { mass: 0.8, stiffness: 75, damping: 15 });
-  const display = useTransform(spring, (current) =>
+  const display = useTransform(spring, (current: number) =>
     Math.round(current).toLocaleString('fr-FR')
   );
 
@@ -41,7 +42,12 @@ const AnimatedNumber = ({ value, suffix = '' }: { value: number; suffix?: string
     spring.set(value);
   }, [value, spring]);
 
-  return <motion.span>{display}{suffix}</motion.span>;
+  // Use motion.span with the MotionValue directly
+  return (
+    <span>
+      <motion.span>{display}</motion.span>{suffix}
+    </span>
+  );
 };
 
 // --- Metric Card Component ---
@@ -89,7 +95,7 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
     const plan = pricingPlans.find(p => p.variant === selectedPlan);
     if (!plan || !plan.degressivity) return selectedPlan === 'starter' ? 30 : 45;
     
-    const tier = plan.degressivity.find(d => shops >= d.min && shops <= d.max);
+    const tier = plan.degressivity.find((d: DegressivityTier) => shops >= d.min && shops <= d.max);
     return tier?.price || plan.price || 30;
   }, [shops, selectedPlan]);
 
