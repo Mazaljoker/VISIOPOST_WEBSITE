@@ -1,383 +1,252 @@
-import { useState } from 'react';
-import { ShieldCheck, Play, ArrowRight, CheckCircle, Monitor, Video } from 'lucide-react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Button from '../components/Button';
-import { HeroSectionProps } from '../types';
+import { ArrowRight, Sparkles, Users, Zap, MapPin, Play, MessageSquare } from 'lucide-react';
+import { Button } from '../components/Button';
 
-const heroContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
+const stats = [
+  { value: 'n', label: 'locations', icon: Users },
+  { value: '1', label: 'studio', icon: Zap },
+  { value: '∞', label: 'variations', icon: Sparkles },
+];
+
+const examplePosts = [
+  {
+    city: 'Lyon',
+    region: 'Auvergne-Rhône-Alpes',
+    text: '"Ici à Lyon, on craque pour les nouvelles Ray-Ban !"',
   },
-};
-
-const heroItem = {
-  hidden: { opacity: 0, y: 60 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: 'easeOut' as const,
-    },
+  {
+    city: 'Bordeaux',
+    region: 'Nouvelle-Aquitaine',
+    text: '"En Nouvelle-Aquitaine, c\'est LA tendance de l\'été !"',
   },
-};
+];
 
-const heroTitle = {
-  hidden: { opacity: 0, y: 80, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 1,
-      ease: 'easeOut' as const,
-    },
-  },
-};
-
-const floatAnimation = {
-  initial: { y: 0 },
-  animate: {
-    y: [-10, 10, -10],
-    transition: {
-      duration: 6,
-      repeat: Infinity,
-      ease: 'easeInOut' as const,
-    },
-  },
-};
-
-const pulseGlow = {
-  initial: { opacity: 0.5, scale: 1 },
-  animate: {
-    opacity: [0.5, 0.8, 0.5],
-    scale: [1, 1.05, 1],
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: 'easeInOut' as const,
-    },
-  },
-};
-
-const HeroSection = ({ className = '' }: HeroSectionProps) => {
-  const [activeTab, setActiveTab] = useState<'campagne' | 'video'>('campagne');
-  const [isPlaying, setIsPlaying] = useState(false);
+export const HeroSection: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<'exemple' | 'video'>('exemple');
 
   return (
-    <section className={`pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden ${className}`}>
-      <div className="max-w-7xl mx-auto">
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-midnight" />
+      
+      {/* Glow Effects */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-nreach-electric/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-nreach-lavande/20 rounded-full blur-3xl" />
+      
+      {/* Grid Pattern */}
+      <div 
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), 
+                           linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px',
+        }}
+      />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            variants={heroContainer}
-            initial="hidden"
-            animate="visible"
-          >
+          {/* Left Column - Text */}
+          <div className="text-center lg:text-left">
+            {/* Badge */}
             <motion.div
-              variants={heroItem}
-              className="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-visio-violet/10 to-visio-rose/10 rounded-full"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nreach-electric/10 border border-nreach-electric/30 mb-8"
             >
-              <span className="text-visio-violet font-semibold text-sm flex items-center gap-2">
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <ShieldCheck className="w-4 h-4" />
-                </motion.div>
-                Technologie Anti-Duplicate Brevetée
+              <Sparkles className="w-4 h-4 text-nreach-electric" />
+              <span className="text-nreach-electric text-sm font-medium">
+                Propulsé par notre IA propriétaire
               </span>
             </motion.div>
-
+            
+            {/* Headline */}
             <motion.h1
-              variants={heroTitle}
-              className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6"
             >
-              Vos 500 pages publient.{' '}
-              <motion.span
-                className="bg-gradient-to-r from-visio-violet via-visio-rose to-visio-bleu bg-clip-text text-transparent inline-block"
-                animate={{
-                  backgroundPosition: ['0%', '100%', '0%'],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: 'linear',
-                }}
-                style={{ backgroundSize: '200% 100%' }}
-              >
-                Zéro contenu dupliqué.
-              </motion.span>
-            </motion.h1>
-
-            <motion.p
-              variants={heroItem}
-              className="text-xl text-gray-600 mb-8 leading-relaxed"
-            >
-              Quand un réseau poste le même contenu partout, Facebook coupe la portée.
-              Notre IA génère des publications uniques pour chaque point de vente.
-              <span className="block mt-2 font-semibold text-gray-800">
-                Votre reach explose.
+              <span className="text-nreach-electric">n</span> locations.
+              <br />
+              <span className="bg-gradient-to-r from-nreach-electric to-nreach-lavande bg-clip-text text-transparent">
+                One studio.
               </span>
+            </motion.h1>
+            
+            {/* Subheadline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="text-lg sm:text-xl text-dark-text-muted max-w-xl mb-8"
+            >
+              Générez des posts <span className="text-white font-semibold">uniques</span> pour
+              chaque point de vente de votre réseau.
+              <span className="text-nreach-electric"> Fini les pénalités de contenu dupliqué.</span>
             </motion.p>
-
+            
+            {/* CTA Buttons */}
             <motion.div
-              variants={heroItem}
-              className="flex flex-col sm:flex-row gap-4 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-10"
             >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Button variant="primary" size="lg" className="group">
-                  <span>Demander une Démo</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex flex-col items-center"
-              >
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="group w-full"
-                  onClick={() => {
-                    setActiveTab('video');
-                    setTimeout(() => {
-                      const video = document.querySelector('video');
-                      if (video) {
-                        video.play();
-                        if (video.requestFullscreen) {
-                          video.requestFullscreen();
-                        }
-                      }
-                    }, 400);
-                  }}
-                >
-                  <Play className="w-5 h-5" />
-                  <span>Voir comment ça marche (2min)</span>
-                </Button>
-              </motion.div>
+              <Button variant="primary" size="lg" icon={<ArrowRight size={20} />}>
+                Démarrer gratuitement
+              </Button>
+              <Button variant="outline" size="lg" className="border-white/20 text-white hover:border-nreach-electric hover:text-nreach-electric">
+                Voir la démo
+              </Button>
             </motion.div>
-
+            
+            {/* Stats */}
             <motion.div
-              variants={heroItem}
-              className="flex flex-wrap items-center gap-6 text-sm text-gray-600"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="flex items-center justify-center lg:justify-start gap-8"
             >
-              <motion.div
-                className="flex items-center space-x-2"
-                whileHover={{ scale: 1.05 }}
-              >
-                <CheckCircle className="w-5 h-5 text-green-500" />
-                <span>+340% de portée organique</span>
-              </motion.div>
-              <motion.div
-                className="flex items-center space-x-2"
-                whileHover={{ scale: 1.05 }}
-              >
-                <CheckCircle className="w-5 h-5 text-green-500" />
-                <span>100% des posts uniques</span>
-              </motion.div>
-              <motion.div
-                className="flex items-center space-x-2"
-                whileHover={{ scale: 1.05 }}
-              >
-                <CheckCircle className="w-5 h-5 text-green-500" />
-                <span>30 secondes pour publier</span>
-              </motion.div>
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <stat.icon className="w-4 h-4 text-nreach-electric" />
+                    <span className="text-2xl sm:text-3xl font-extrabold text-white">
+                      {stat.value}
+                    </span>
+                  </div>
+                  <span className="text-xs text-dark-text-muted">{stat.label}</span>
+                </div>
+              ))}
             </motion.div>
-          </motion.div>
+          </div>
 
+          {/* Right Column - Demo Card */}
           <motion.div
-            className="relative"
-            initial={{ opacity: 0, x: 100 }}
+            initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ delay: 0.4 }}
+            className="relative"
           >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-br from-visio-violet/20 via-visio-rose/20 to-visio-bleu/20 rounded-3xl blur-3xl"
-              variants={pulseGlow}
-              initial="initial"
-              animate="animate"
-            />
-
-            <motion.div
-              className="relative bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
-              variants={floatAnimation}
-              initial="initial"
-              animate="animate"
-            >
-              <motion.div
-                className="flex border-b border-gray-100 bg-gray-50"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-              >
+            <div className="bg-white dark:bg-dark-surface rounded-2xl shadow-2xl overflow-hidden">
+              {/* Tabs */}
+              <div className="flex border-b border-light-border dark:border-dark-border">
                 <button
-                  onClick={() => setActiveTab('campagne')}
-                  className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold transition-all ${
-                    activeTab === 'campagne'
-                      ? 'text-visio-violet border-b-2 border-visio-violet bg-white'
-                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                  onClick={() => setActiveTab('exemple')}
+                  className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 text-sm font-medium transition-colors ${
+                    activeTab === 'exemple'
+                      ? 'text-nreach-midnight dark:text-dark-text border-b-2 border-nreach-electric'
+                      : 'text-light-text-muted dark:text-dark-text-muted hover:text-nreach-midnight dark:hover:text-dark-text'
                   }`}
                 >
-                  <Monitor className="w-4 h-4" />
-                  <span className="hidden sm:inline">Exemple</span>
+                  <MessageSquare className="w-4 h-4" />
+                  Exemple
                 </button>
                 <button
                   onClick={() => setActiveTab('video')}
-                  className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold transition-all ${
+                  className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 text-sm font-medium transition-colors ${
                     activeTab === 'video'
-                      ? 'text-visio-violet border-b-2 border-visio-violet bg-white'
-                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                      ? 'text-nreach-midnight dark:text-dark-text border-b-2 border-nreach-electric'
+                      : 'text-light-text-muted dark:text-dark-text-muted hover:text-nreach-midnight dark:hover:text-dark-text'
                   }`}
                 >
-                  <Video className="w-4 h-4" />
-                  <span className="hidden sm:inline">Vidéo</span>
-                  <span className="text-xs bg-visio-violet/10 text-visio-violet px-1.5 py-0.5 rounded">2min</span>
+                  <Play className="w-4 h-4" />
+                  Vidéo
+                  <span className="px-2 py-0.5 bg-light-surface dark:bg-dark-bg rounded text-xs">2min</span>
                 </button>
-              </motion.div>
+              </div>
 
-              <AnimatePresence mode="wait">
-                {activeTab === 'campagne' ? (
-                  <motion.div
-                    key="campagne"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.3 }}
-                    className="p-6"
-                  >
-                    <div className="flex justify-between items-center border-b pb-4 mb-4">
-                      <div className="text-sm font-bold text-gray-500">CAMPAGNE "Nouvelle Collection"</div>
-                      <motion.div
-                        className="text-green-600 text-sm font-bold bg-green-100 px-2 py-1 rounded"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
-                      >
-                        500 POSTS UNIQUES
-                      </motion.div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4 mb-4">
-                      <motion.div
-                        className="bg-gray-50 p-3 rounded-lg border border-gray-100"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        whileHover={{ scale: 1.02, borderColor: '#8B5CF6' }}
-                      >
-                        <div className="text-xs text-gray-400 mb-1">📍 Lyon</div>
-                        <div className="text-sm font-medium">"Ici à Lyon, on craque pour les nouvelles Ray-Ban !"</div>
-                      </motion.div>
-                      <motion.div
-                        className="bg-gray-50 p-3 rounded-lg border border-gray-100"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
-                        whileHover={{ scale: 1.02, borderColor: '#EC4899' }}
-                      >
-                        <div className="text-xs text-gray-400 mb-1">📍 Bordeaux</div>
-                        <div className="text-sm font-medium">"En Nouvelle-Aquitaine, c'est LA tendance de l'été !"</div>
-                      </motion.div>
-                    </div>
-
+              {/* Tab Content */}
+              <div className="p-6">
+                <AnimatePresence mode="wait">
+                  {activeTab === 'exemple' ? (
                     <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 }}
+                      key="exemple"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
                     >
-                      <div className="text-xs text-gray-500 mb-2">Portée Estimée vs Duplicate Content</div>
-                      <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <motion.div
-                          className="h-full bg-gradient-to-r from-visio-violet to-visio-rose"
-                          initial={{ width: '0%' }}
-                          animate={{ width: '85%' }}
-                          transition={{ delay: 0.6, duration: 1.5, ease: 'easeOut' }}
-                        />
+                      {/* Campaign Header */}
+                      <div className="flex items-center justify-between mb-6">
+                        <div>
+                          <p className="text-xs text-light-text-muted dark:text-dark-text-muted uppercase tracking-wide">Campagne</p>
+                          <h4 className="font-bold text-nreach-midnight dark:text-dark-text">"Nouvelle Collection"</h4>
+                        </div>
+                        <div className="px-3 py-1.5 bg-nreach-electric text-nreach-midnight text-sm font-bold rounded-lg">
+                          500 POSTS UNIQUES
+                        </div>
                       </div>
-                      <div className="flex justify-between text-xs mt-1">
-                        <span className="text-red-400">Duplicate = -80%</span>
-                        <span className="font-bold text-visio-violet">VisioPost = +340%</span>
+
+                      {/* Example Posts */}
+                      <div className="grid grid-cols-2 gap-4 mb-6">
+                        {examplePosts.map((post, index) => (
+                          <div
+                            key={index}
+                            className="bg-light-surface dark:bg-dark-bg rounded-xl p-4 border border-light-border dark:border-dark-border"
+                          >
+                            <div className="flex items-center gap-1.5 text-nreach-electric text-xs font-medium mb-2">
+                              <MapPin className="w-3 h-3" />
+                              {post.city}
+                            </div>
+                            <p className="text-sm text-nreach-midnight dark:text-dark-text">
+                              {post.text}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Comparison Bar */}
+                      <div>
+                        <p className="text-xs text-light-text-muted dark:text-dark-text-muted mb-2">
+                          Portée Estimée vs Duplicate Content
+                        </p>
+                        <div className="flex h-3 rounded-full overflow-hidden">
+                          <div className="w-1/5 bg-red-500" />
+                          <div className="flex-1 bg-gradient-to-r from-nreach-electric to-nreach-lavande" />
+                        </div>
+                        <div className="flex justify-between mt-2 text-xs font-medium">
+                          <span className="text-red-500">Duplicate = -80%</span>
+                          <span className="text-nreach-electric">nReach = +340%</span>
+                        </div>
                       </div>
                     </motion.div>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="video"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="relative aspect-video bg-gradient-to-br from-gray-900 to-gray-800">
-                      <video
-                        src="/videos/presentation.mp4"
-                        className="absolute inset-0 w-full h-full object-cover"
-                        controls={isPlaying}
-                        playsInline
-                        onPlay={() => setIsPlaying(true)}
-                        onPause={() => setIsPlaying(false)}
-                        onEnded={() => setIsPlaying(false)}
-                        onClick={(e) => {
-                          if (!isPlaying) {
-                            (e.target as HTMLVideoElement).play();
-                          }
-                        }}
-                      />
+                  ) : (
+                    <motion.div
+                      key="video"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="aspect-video bg-nreach-midnight rounded-xl flex items-center justify-center cursor-pointer group"
+                    >
+                      <div className="w-16 h-16 bg-nreach-electric rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Play className="w-8 h-8 text-nreach-midnight ml-1" />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
 
-                      {!isPlaying && (
-                        <>
-                          <div className="absolute inset-0 flex items-center justify-center z-10">
-                            <motion.button
-                              className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition group"
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.95 }}
-                              initial={{ scale: 0 }}
-                              animate={{ scale: 1 }}
-                              transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
-                              onClick={() => {
-                                const video = document.querySelector('video');
-                                if (video) video.play();
-                              }}
-                            >
-                              <Play className="w-8 h-8 text-visio-violet ml-1 group-hover:scale-110 transition" />
-                            </motion.button>
-                          </div>
-
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
-
-                          <motion.div
-                            className="absolute bottom-4 left-4 right-4 z-10"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.4 }}
-                          >
-                            <div className="text-white text-sm font-medium">
-                              Découvrez comment VisioPost élimine le duplicate content
-                            </div>
-                            <div className="text-white/70 text-xs mt-1">
-                              Sans inscription • Résultat immédiat
-                            </div>
-                          </motion.div>
-                        </>
-                      )}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+            {/* Floating badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8 }}
+              className="absolute -bottom-4 -right-4 bg-white dark:bg-dark-surface rounded-xl px-4 py-2 shadow-lg border border-light-border dark:border-dark-border"
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-nreach-electric rounded-full animate-pulse" />
+                <span className="text-sm font-medium text-nreach-midnight dark:text-dark-text">Live demo</span>
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </div>
+      
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-light-bg dark:from-dark-bg to-transparent" />
     </section>
   );
 };

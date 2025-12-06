@@ -64,10 +64,10 @@ const PlanCard = ({ title, price, period, features, cta, highlight, isPopular, v
 
   const getGradient = () => {
     switch (variant) {
-      case 'starter': return 'from-blue-500 to-blue-600';
-      case 'pro': return 'from-visio-violet to-visio-rose';
-      case 'centrale': return 'from-gray-800 to-gray-900';
-      default: return 'from-blue-500 to-blue-600';
+      case 'starter': return 'from-nreach-lavande to-nreach-electric';
+      case 'pro': return 'from-nreach-midnight to-nreach-lavande';
+      case 'centrale': return 'from-gray-800 to-nreach-midnight';
+      default: return 'from-nreach-lavande to-nreach-electric';
     }
   };
 
@@ -75,14 +75,14 @@ const PlanCard = ({ title, price, period, features, cta, highlight, isPopular, v
     <motion.div
       variants={cardVariants}
       whileHover={{ y: -8, scale: 1.02 }}
-      className={`relative bg-white rounded-2xl shadow-xl border-2 overflow-hidden flex flex-col ${
-        isPopular ? 'border-visio-violet' : 'border-gray-100'
+      className={`relative bg-white dark:bg-dark-surface rounded-2xl shadow-xl border-2 overflow-hidden flex flex-col ${
+        isPopular ? 'border-nreach-electric' : 'border-light-border dark:border-dark-border'
       }`}
     >
       {/* Popular badge */}
       {isPopular && (
         <div className="absolute top-0 right-0">
-          <div className="bg-gradient-to-r from-visio-violet to-visio-rose text-white text-xs font-bold px-4 py-1 rounded-bl-lg">
+          <div className="bg-gradient-to-r from-nreach-electric to-nreach-lavande text-nreach-midnight text-xs font-bold px-4 py-1 rounded-bl-lg">
             ⭐ RECOMMANDÉ
           </div>
         </div>
@@ -119,10 +119,10 @@ const PlanCard = ({ title, price, period, features, cta, highlight, isPopular, v
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
             >
-              <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                <Check className="w-3 h-3 text-green-600" />
+              <div className="w-5 h-5 bg-nreach-electric/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Check className="w-3 h-3 text-nreach-electric" />
               </div>
-              <span className="text-gray-700 text-sm">{feature}</span>
+              <span className="text-light-text dark:text-dark-text text-sm">{feature}</span>
             </motion.li>
           ))}
         </ul>
@@ -148,10 +148,11 @@ const PlanCard = ({ title, price, period, features, cta, highlight, isPopular, v
 
 /**
  * Section Pricing - 3 plans avec setup et simulateur ROI
+ * Rebrandé pour nReach Studio
  */
 const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
   return (
-    <section id="pricing" className={`py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white ${className}`}>
+    <section id="pricing" className={`py-20 px-4 sm:px-6 lg:px-8 bg-light-surface dark:bg-dark-bg ${className}`}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -161,10 +162,10 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
           viewport={{ once: true, amount: 0.5 }}
           variants={titleVariants}
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
             Tarification transparente
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-light-text-muted dark:text-dark-text-muted max-w-2xl mx-auto">
             Des plans adaptés à la taille de votre réseau. Sans surprise.
           </p>
         </motion.div>
@@ -177,17 +178,17 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <div className="bg-gradient-to-r from-visio-violet/5 to-visio-rose/5 rounded-2xl p-6 border border-visio-violet/20">
+          <div className="bg-gradient-to-r from-nreach-electric/5 to-nreach-lavande/5 rounded-2xl p-6 border border-nreach-electric/20">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <div className="flex items-center space-x-2 text-visio-violet font-semibold mb-1">
+                <div className="flex items-center space-x-2 text-nreach-electric font-semibold mb-1">
                   <Zap className="w-4 h-4" />
                   <span>Frais de mise en place (one-shot)</span>
                 </div>
-                <div className="text-2xl font-bold text-gray-900">
+                <div className="text-2xl font-bold text-nreach-midnight dark:text-dark-text">
                   À partir de {setupConfig.startingPrice}€
                 </div>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-light-text-muted dark:text-dark-text-muted mt-1">
                   Devis personnalisé selon la taille de votre réseau
                 </p>
               </div>
@@ -195,13 +196,13 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
                 {setupConfig.includes.slice(0, 3).map((item, index) => (
                   <span
                     key={index}
-                    className="inline-flex items-center px-3 py-1 bg-white rounded-full text-xs text-gray-600 border border-gray-200"
+                    className="inline-flex items-center px-3 py-1 bg-white dark:bg-dark-surface rounded-full text-xs text-light-text dark:text-dark-text border border-light-border dark:border-dark-border"
                   >
-                    <Check className="w-3 h-3 text-green-500 mr-1" />
+                    <Check className="w-3 h-3 text-nreach-electric mr-1" />
                     {item}
                   </span>
                 ))}
-                <span className="inline-flex items-center px-3 py-1 bg-white rounded-full text-xs text-gray-500 border border-gray-200">
+                <span className="inline-flex items-center px-3 py-1 bg-white dark:bg-dark-surface rounded-full text-xs text-light-text-muted dark:text-dark-text-muted border border-light-border dark:border-dark-border">
                   +{setupConfig.includes.length - 3} inclus
                 </span>
               </div>
@@ -242,7 +243,7 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
           transition={{ delay: 0.4 }}
         >
           <div className="text-center mb-6">
-            <span className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
+            <span className="text-sm font-semibold text-light-text-muted dark:text-dark-text-muted uppercase tracking-wide">
               Plateformes supportées
             </span>
           </div>
@@ -252,23 +253,23 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
                 key={index}
                 className={`p-4 rounded-xl text-center border-2 transition-all ${
                   platform.included
-                    ? 'bg-green-50 border-green-200'
+                    ? 'bg-nreach-electric/10 border-nreach-electric/30'
                     : platform.available
-                    ? 'bg-blue-50 border-blue-200'
-                    : 'bg-gray-50 border-gray-200'
+                    ? 'bg-nreach-lavande/10 border-nreach-lavande/30'
+                    : 'bg-light-surface dark:bg-dark-surface border-light-border dark:border-dark-border'
                 }`}
               >
-                <div className="font-semibold text-gray-900">{platform.name}</div>
+                <div className="font-semibold text-nreach-midnight dark:text-dark-text">{platform.name}</div>
                 {platform.included ? (
-                  <div className="text-xs text-green-600 font-medium mt-1">
+                  <div className="text-xs text-nreach-electric font-medium mt-1">
                     ✓ Inclus dans tous les plans
                   </div>
                 ) : (
                   <>
-                    <div className="text-xs text-gray-500 mt-1">+{platform.price}€/mois</div>
+                    <div className="text-xs text-light-text-muted dark:text-dark-text-muted mt-1">+{platform.price}€/mois</div>
                     {platform.badge && (
                       <div className={`text-xs font-medium mt-1 ${
-                        platform.available ? 'text-blue-600' : 'text-gray-400'
+                        platform.available ? 'text-nreach-lavande' : 'text-light-text-muted dark:text-dark-text-muted'
                       }`}>
                         {platform.badge}
                       </div>
@@ -288,14 +289,14 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          <div className="inline-flex items-center space-x-2 text-gray-500 text-sm">
+          <div className="inline-flex items-center space-x-2 text-light-text-muted dark:text-dark-text-muted text-sm">
             <HelpCircle className="w-4 h-4" />
             <span>Tarifs dégressifs selon la taille de votre réseau</span>
           </div>
           <div className="mt-4">
             <button
               onClick={onOpenRoi}
-              className="text-visio-violet hover:text-visio-rose font-medium underline underline-offset-4 transition-colors"
+              className="text-nreach-electric hover:text-nreach-lavande font-medium underline underline-offset-4 transition-colors"
             >
               Simuler mon tarif et mon ROI →
             </button>

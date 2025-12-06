@@ -1,52 +1,78 @@
-import { ButtonProps } from '../types';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-/**
- * Composant Button réutilisable avec variants
- * Utilisé partout dans la landing page (8+ fois)
- *
- * Variants:
- * - primary: Gradient violet → rose (CTA principal)
- * - secondary: Outline violet (CTA secondaire)
- * - ghost: Transparent avec hover
- * - outline: Border avec couleur personnalisée
- */
-const Button = ({
+interface ButtonProps {
+  children: React.ReactNode;
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  onClick?: () => void;
+  className?: string;
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+  icon?: React.ReactNode;
+}
+
+export const Button: React.FC<ButtonProps> = ({
+  children,
   variant = 'primary',
   size = 'md',
-  children,
   onClick,
   className = '',
   disabled = false,
-  type = 'button'
-}: ButtonProps) => {
-  const baseClasses = "font-semibold transition-all duration-300 flex items-center justify-center space-x-2";
+  type = 'button',
+  icon,
+}) => {
+  const baseStyles = `
+    inline-flex items-center justify-center gap-2
+    font-semibold rounded-xl
+    transition-all duration-200
+    disabled:opacity-50 disabled:cursor-not-allowed
+  `;
 
-  const variantClasses = {
-    primary: "bg-gradient-to-r from-visio-violet to-visio-rose text-white hover:shadow-2xl",
-    secondary: "border-2 border-visio-violet text-visio-violet hover:bg-visio-violet hover:text-white",
-    ghost: "text-gray-700 hover:text-visio-violet",
-    outline: "border-2 border-current hover:shadow-lg"
+  const variants = {
+    primary: `
+      bg-gradient-to-r from-nreach-electric to-nreach-lavande
+      text-nreach-midnight
+      hover:shadow-nreach-lg hover:scale-[1.02]
+      active:scale-[0.98]
+    `,
+    secondary: `
+      bg-nreach-midnight
+      text-white
+      hover:bg-nreach-midnight-600
+      active:bg-nreach-midnight-700
+    `,
+    outline: `
+      bg-transparent
+      border-2 border-light-border dark:border-dark-border
+      text-nreach-midnight dark:text-dark-text
+      hover:border-nreach-electric hover:text-nreach-electric
+    `,
+    ghost: `
+      bg-transparent
+      text-nreach-electric
+      hover:bg-nreach-electric/10
+    `,
   };
 
-  const sizeClasses = {
-    sm: "px-4 py-2 text-sm rounded-lg",
-    md: "px-6 py-2 text-base rounded-lg",
-    lg: "px-8 py-4 text-lg rounded-xl"
+  const sizes = {
+    sm: 'px-4 py-2 text-sm',
+    md: 'px-6 py-3 text-base',
+    lg: 'px-8 py-4 text-lg',
   };
-
-  const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className} ${
-    disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
-  }`.trim();
 
   return (
-    <button
+    <motion.button
       type={type}
-      className={classes}
       onClick={onClick}
       disabled={disabled}
+      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+      whileHover={{ scale: disabled ? 1 : 1.02 }}
+      whileTap={{ scale: disabled ? 1 : 0.98 }}
     >
+      {icon && <span>{icon}</span>}
       {children}
-    </button>
+    </motion.button>
   );
 };
 

@@ -22,16 +22,16 @@ import FloatingIcons from './components/FloatingIcons';
 import RoiModal from './components/RoiModal';
 
 /**
- * Landing Page VisioPost V3.1.1
+ * Landing Page nReach Studio
  *
  * Structure des sections (ordre optimisé pour conversion) :
  * 
- * 1. Hero - Accroche "0 duplicate content"
+ * 1. Hero - Accroche "n locations. One studio."
  * 2. SocialProof - Stats crédibilité (+340%, etc.)
  * 3. Problem - Pénalité Facebook duplicate
  * 4. Solution - Comment on résout (3 points clés)
  * 5. BeforeAfter - Simulation posts Facebook (impact visuel)
- * 6. HowItWorks - Flowchart animé Siège→VisioPost→Magasins + teaser modes
+ * 6. HowItWorks - Flowchart animé Siège→nReach→Magasins + teaser modes
  * 7. UseCases - Exemples par secteur (Optique, Distribution, Sport, Coiffure)
  * 8. Features - Fonctionnalités détaillées
  * 9. MultiPlatform - Facebook + Instagram/TikTok/LinkedIn à venir
@@ -48,7 +48,7 @@ const LandingPage = () => {
   const handleCloseRoi = () => setIsRoiModalOpen(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative">
+    <div className="min-h-screen bg-light-bg dark:bg-dark-bg relative">
       {/* ROI Simulator Modal */}
       <RoiModal isOpen={isRoiModalOpen} onClose={handleCloseRoi} />
 
