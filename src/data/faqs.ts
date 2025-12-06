@@ -1,32 +1,26 @@
-import { Faq } from '../types';
-
-/**
- * FAQ B2B - Questions pour DSI/Juridique/Direction Marketing
- * Focus : Sécurité, Compliance, Intégration, ROI
- */
-export const faqs: Faq[] = [
+export const faqs = [
   {
-    q: "Comment garantissez-vous que l'IA ne publie pas de bêtises ?",
-    a: "Sécurité totale. Nous utilisons un système de 'Double-Verrou' : 1. Le Siège valide les thèmes et mots-clés interdits. 2. Notre IA 'Supervisor' relit chaque post avant génération pour vérifier la conformité à la charte. Rien n'est publié sans validation (humaine ou automatique selon votre réglage)."
+    question: "Qu'est-ce que nReach Studio ?",
+    answer: "nReach Studio est une plateforme SaaS qui génère automatiquement des posts Facebook uniques pour chaque point de vente de votre réseau. Grâce à l'IA GPT-4 Vision, nous créons des variations personnalisées à partir d'une seule image et d'un brief, évitant ainsi les pénalités de contenu dupliqué de Facebook."
   },
   {
-    q: "Est-ce compatible avec notre outil actuel (Hootsuite, Sociabble...) ?",
-    a: "Oui. Visiopost ne remplace pas vos outils corporate, il les complète. Nous gérons la couche 'Locale' que ces outils ne savent pas faire (génération unique par ville). Nous pouvons même nous connecter via API."
+    question: "Comment fonctionne la génération de contenu unique ?",
+    answer: "Notre IA analyse votre image et votre brief, puis génère des variations uniques en utilisant des variables dynamiques (ville, région, horaires) et des reformulations créatives. Chaque point de vente reçoit un post différent, ce qui maximise la portée organique sur Facebook."
   },
   {
-    q: "Quel est le modèle économique ?",
-    a: "Nous fonctionnons par 'Licence Point de Vente'. Le tarif est dégressif selon la taille du réseau. Le Setup technique (Onboarding) est facturé une seule fois au lancement."
+    question: "Combien de temps faut-il pour configurer nReach Studio ?",
+    answer: "La configuration initiale prend généralement entre 2 et 5 jours ouvrables selon la taille de votre réseau. Cela inclut l'import de vos points de vente, la connexion des pages Facebook, et la formation de vos équipes."
   },
   {
-    q: "Quelle charge de travail pour l'équipe Marketing Siège ?",
-    a: "Minime. Environ 1h par mois pour valider les campagnes du mois suivant. L'IA se charge des 500 déclinaisons opérationnelles."
+    question: "Quelles plateformes sont supportées ?",
+    answer: "Actuellement, nReach Studio supporte Facebook. Instagram sera disponible au T1 2025, suivi de TikTok au T2 2025 et LinkedIn courant 2025. Chaque plateforme additionnelle est proposée en option."
   },
   {
-    q: "Nos adhérents sont indépendants, on ne peut rien leur imposer.",
-    a: "C'est notre force. Le mode 'Suggestion' permet d'envoyer les posts dans l'app mobile de l'adhérent. Il garde le clic final 'Publier'. Taux d'adoption moyen constaté : 85% (car le contenu est excellent)."
+    question: "Comment sont calculés les tarifs ?",
+    answer: "Notre tarification est basée sur le nombre d'utilisateurs (points de vente) à 30€/mois/utilisateur, avec des tarifs dégressifs pour les grands réseaux. Des frais de setup one-shot s'appliquent à partir de 990€ selon la complexité de votre configuration."
   },
   {
-    q: "Où sont hébergées les données ?",
-    a: "En Europe (France/Allemagne) sur des serveurs certifiés ISO 27001. Vos données clients ne servent jamais à entraîner des modèles IA publics."
-  }
+    question: "Puis-je essayer nReach Studio avant de m'engager ?",
+    answer: "Oui ! Nous proposons une démo personnalisée gratuite où nous vous montrons la plateforme avec vos propres contenus. Vous pouvez également bénéficier d'une période d'essai sur un échantillon de vos points de vente."
+  },
 ];

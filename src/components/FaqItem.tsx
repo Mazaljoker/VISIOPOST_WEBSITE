@@ -1,35 +1,54 @@
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { FaqItemProps } from '../types';
+
+interface FaqItemProps {
+  question: string;
+  answer: string;
+}
 
 /**
- * Composant FaqItem pour l'accordéon FAQ
- * Utilisé 6 fois dans FaqSection
- *
- * Features:
- * - Accordéon animé avec ChevronDown rotation
- * - Hover effect sur le bouton
- * - Border et shadow
+ * FAQ Item Component
+ * Rebrandé pour nReach Studio
  */
-const FaqItem = ({ question, answer, isOpen, onToggle }: FaqItemProps) => {
+const FaqItem: React.FC<FaqItemProps> = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+    <motion.div
+      className="bg-white dark:bg-dark-surface rounded-xl border border-light-border dark:border-dark-border overflow-hidden"
+      initial={false}
+    >
       <button
-        onClick={onToggle}
-        className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition"
+        className="w-full px-6 py-4 flex items-center justify-between text-left"
+        onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="font-semibold text-gray-900 text-lg">{question}</span>
-        <ChevronDown
-          className={`w-6 h-6 text-visio-violet transition-transform ${
-            isOpen ? 'transform rotate-180' : ''
-          }`}
-        />
+        <span className="font-semibold text-nreach-midnight dark:text-dark-text pr-4">
+          {question}
+        </span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <ChevronDown className="w-5 h-5 text-nreach-electric flex-shrink-0" />
+        </motion.div>
       </button>
-      {isOpen && (
-        <div className="px-8 pb-6 text-gray-600">
-          {answer}
-        </div>
-      )}
-    </div>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="px-6 pb-4 text-light-text-muted dark:text-dark-text-muted">
+              {answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 

@@ -1,200 +1,45 @@
-import {
-  Facebook,
-  Instagram,
-  Twitter,
-  Linkedin,
-  Heart,
-  Share2,
-  MessageCircle,
-  ThumbsUp,
-  Send,
-  TrendingUp,
-  Sparkles,
-  Users
-} from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Facebook, Instagram, Linkedin, Video, Hash, Heart, MessageCircle, Share2 } from 'lucide-react';
+
+const icons = [
+  { Icon: Facebook, x: '10%', y: '20%', delay: 0 },
+  { Icon: Instagram, x: '85%', y: '15%', delay: 0.5 },
+  { Icon: Linkedin, x: '75%', y: '70%', delay: 1 },
+  { Icon: Video, x: '15%', y: '75%', delay: 1.5 },
+  { Icon: Hash, x: '90%', y: '45%', delay: 2 },
+  { Icon: Heart, x: '5%', y: '50%', delay: 2.5 },
+  { Icon: MessageCircle, x: '80%', y: '85%', delay: 3 },
+  { Icon: Share2, x: '20%', y: '90%', delay: 3.5 },
+];
 
 /**
- * Composant FloatingIcons - Éléments flottants en arrière-plan
- * Icônes réseaux sociaux animées avec couleurs VisioScreen
- *
- * Features:
- * - Mouvement aléatoire (float + drift)
- * - Changement de couleur graduel (VisioScreen palette)
- * - Positions aléatoires
- * - Opacité faible pour ne pas distraire
+ * Floating Icons Background
+ * Rebrandé pour nReach Studio
  */
 const FloatingIcons = () => {
-  // Configuration des icônes avec positions et animations aléatoires
-  const floatingIcons = [
-    // Facebook - Top left
-    {
-      Icon: Facebook,
-      style: {
-        top: '10%',
-        left: '5%',
-        animationDelay: '0s',
-        animationDuration: '20s'
-      }
-    },
-    // Instagram - Top right
-    {
-      Icon: Instagram,
-      style: {
-        top: '15%',
-        right: '10%',
-        animationDelay: '2s',
-        animationDuration: '25s'
-      }
-    },
-    // Twitter - Middle left
-    {
-      Icon: Twitter,
-      style: {
-        top: '30%',
-        left: '8%',
-        animationDelay: '4s',
-        animationDuration: '18s'
-      }
-    },
-    // LinkedIn - Middle right
-    {
-      Icon: Linkedin,
-      style: {
-        top: '35%',
-        right: '5%',
-        animationDelay: '1s',
-        animationDuration: '22s'
-      }
-    },
-    // Heart - Upper middle left
-    {
-      Icon: Heart,
-      style: {
-        top: '20%',
-        left: '15%',
-        animationDelay: '3s',
-        animationDuration: '16s'
-      }
-    },
-    // Share2 - Upper middle right
-    {
-      Icon: Share2,
-      style: {
-        top: '25%',
-        right: '18%',
-        animationDelay: '5s',
-        animationDuration: '19s'
-      }
-    },
-    // MessageCircle - Middle center left
-    {
-      Icon: MessageCircle,
-      style: {
-        top: '50%',
-        left: '3%',
-        animationDelay: '2.5s',
-        animationDuration: '21s'
-      }
-    },
-    // ThumbsUp - Middle center right
-    {
-      Icon: ThumbsUp,
-      style: {
-        top: '55%',
-        right: '8%',
-        animationDelay: '4.5s',
-        animationDuration: '17s'
-      }
-    },
-    // Send - Lower left
-    {
-      Icon: Send,
-      style: {
-        top: '70%',
-        left: '10%',
-        animationDelay: '1.5s',
-        animationDuration: '23s'
-      }
-    },
-    // TrendingUp - Lower right
-    {
-      Icon: TrendingUp,
-      style: {
-        top: '75%',
-        right: '12%',
-        animationDelay: '3.5s',
-        animationDuration: '20s'
-      }
-    },
-    // Sparkles - Lower middle left
-    {
-      Icon: Sparkles,
-      style: {
-        top: '85%',
-        left: '6%',
-        animationDelay: '0.5s',
-        animationDuration: '24s'
-      }
-    },
-    // Users - Lower middle right
-    {
-      Icon: Users,
-      style: {
-        top: '90%',
-        right: '15%',
-        animationDelay: '2.8s',
-        animationDuration: '18s'
-      }
-    },
-    // Heart - Middle extra
-    {
-      Icon: Heart,
-      style: {
-        top: '45%',
-        left: '20%',
-        animationDelay: '6s',
-        animationDuration: '26s'
-      }
-    },
-    // Share2 - Middle extra
-    {
-      Icon: Share2,
-      style: {
-        top: '60%',
-        right: '20%',
-        animationDelay: '5.5s',
-        animationDuration: '15s'
-      }
-    },
-    // MessageCircle - Top extra
-    {
-      Icon: MessageCircle,
-      style: {
-        top: '8%',
-        left: '25%',
-        animationDelay: '4.2s',
-        animationDuration: '22s'
-      }
-    }
-  ];
-
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {floatingIcons.map((item, index) => {
-        const { Icon, style } = item;
-        return (
-          <div
-            key={index}
-            className="absolute animate-float-random animate-color-shift"
-            style={style}
-          >
-            <Icon
-              className="w-12 h-12 opacity-[0.08]"
-              strokeWidth={1.5}
-            />
-          </div>
-        );
-      })}
+      {icons.map(({ Icon, x, y, delay }, index) => (
+        <motion.div
+          key={index}
+          className="absolute"
+          style={{ left: x, top: y }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{
+            opacity: [0.1, 0.2, 0.1],
+            scale: [0.8, 1, 0.8],
+            y: [0, -20, 0],
+          }}
+          transition={{
+            duration: 4,
+            delay,
+            repeat: Infinity,
+            repeatType: 'reverse',
+          }}
+        >
+          <Icon className="w-8 h-8 text-nreach-electric/20 dark:text-nreach-electric/10" />
+        </motion.div>
+      ))}
     </div>
   );
 };
