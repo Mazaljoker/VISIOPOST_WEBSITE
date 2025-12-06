@@ -46,7 +46,7 @@ interface PlanCardProps {
   period: string;
   features: string[];
   cta: string;
-  highlight: string;
+  highlight?: string;
   isPopular?: boolean;
   variant: string;
   onOpenRoi?: () => void;
@@ -92,7 +92,7 @@ const PlanCard = ({ title, price, period, features, cta, highlight, isPopular, v
       <div className={`bg-gradient-to-r ${getGradient()} p-6 text-white`}>
         <div className="flex items-center space-x-2 mb-2">
           {getIcon()}
-          <span className="text-sm font-medium opacity-90">{highlight}</span>
+          {highlight && <span className="text-sm font-medium opacity-90">{highlight}</span>}
         </div>
         <h3 className="text-2xl font-bold mb-2">{title}</h3>
         <div className="flex items-baseline">
@@ -220,7 +220,14 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
           {pricingPlans.map((plan, index) => (
             <PlanCard
               key={index}
-              {...plan}
+              title={plan.title}
+              price={plan.price}
+              period={plan.period}
+              features={plan.features}
+              cta={plan.cta}
+              highlight={plan.highlight}
+              isPopular={plan.isPopular}
+              variant={plan.variant}
               onOpenRoi={onOpenRoi}
             />
           ))}
