@@ -4,6 +4,10 @@ import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '../components/Button';
 import { NReachLogo } from '../components/NReachLogo';
 
+interface FinalCtaSectionProps {
+  onOpenRoi?: () => void;
+}
+
 const benefits = [
   'Configuration en 5 minutes',
   'Aucune carte bancaire requise',
@@ -11,7 +15,7 @@ const benefits = [
   'Annulation à tout moment',
 ];
 
-export const FinalCtaSection: React.FC = () => {
+export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenRoi }) => {
   return (
     <section className="relative py-24 overflow-hidden">
       {/* Background */}
@@ -83,10 +87,16 @@ export const FinalCtaSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Button variant="primary" size="lg" icon={<ArrowRight size={20} />}>
             Démarrer gratuitement
           </Button>
+          {onOpenRoi && (
+            <Button variant="ghost" size="lg" onClick={onOpenRoi} className="text-nreach-electric">
+              Simuler mon ROI
+            </Button>
+          )}
         </motion.div>
         
         {/* Tagline */}

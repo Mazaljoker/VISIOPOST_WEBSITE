@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Users, Zap } from 'lucide-react';
 import { Button } from '../components/Button';
-import { NReachLogo } from '../components/NReachLogo';
 
 const stats = [
   { value: 'n', label: 'locations', icon: Users },
