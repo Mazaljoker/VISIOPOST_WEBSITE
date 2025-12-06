@@ -5,20 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- SEO Meta Tags -->
-  <title>VisioPost - Plateforme Sociale IA pour Coopératives | Posts Facebook en 30 secondes</title>
-  <meta name="description" content="La première plateforme sociale avec IA GPT-4 Vision pour coopératives. Créez des posts Facebook professionnels en 30 secondes. Gratuit pour votre centrale." />
-  <meta name="keywords" content="social media, coopérative, IA, GPT-4, Facebook, gestion réseaux sociaux, Système U, Leclerc" />
+  <title>nReach Studio - Plateforme Sociale IA pour Réseaux de Franchise | n locations. One studio.</title>
+  <meta name="description" content="nReach Studio génère automatiquement des posts Facebook uniques pour chaque point de vente de votre réseau. Fini les pénalités de contenu dupliqué." />
+  <meta name="keywords" content="franchise, réseau, social media, IA, Facebook, contenu unique, multi-sites, marketing local" />
   
   <!-- Open Graph -->
-  <meta property="og:title" content="VisioPost - Plateforme Sociale IA pour Coopératives" />
-  <meta property="og:description" content="Transformez vos photos en posts Facebook professionnels en 30 secondes avec l'IA" />
+  <meta property="og:title" content="nReach Studio - n locations. One studio." />
+  <meta property="og:description" content="Générez des posts Facebook uniques pour chaque point de vente de votre réseau grâce à l'IA." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:url" content="https://nreachstudio.com" />
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="VisioPost - Plateforme Sociale IA pour Coopératives" />
-  <meta name="twitter:description" content="Créez des posts Facebook professionnels en 30 secondes avec l'IA" />
+  <meta name="twitter:title" content="nReach Studio - n locations. One studio." />
+  <meta name="twitter:description" content="Générez des posts Facebook uniques pour chaque point de vente de votre réseau." />
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -27,11 +28,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Google Fonts - Plus Jakarta Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
-  <!-- Theme color -->
-  <meta name="theme-color" content="#3f2680" />
+  <!-- Theme color - nReach Midnight -->
+  <meta name="theme-color" content="#1A1F3D" />
   
   <!-- Robots -->
   <meta name="robots" content="index, follow" />
@@ -40,19 +41,19 @@
     /* Critical CSS for initial load */
     body {
       margin: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
     
-    /* Loading screen */
+    /* Loading screen - nReach Studio branded */
     #loading {
       position: fixed;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #3f2680, #ed1164, #00aeef);
+      background: linear-gradient(135deg, #1A1F3D 0%, #2E3440 100%);
       z-index: 9999;
     }
     
@@ -65,21 +66,46 @@
       align-items: center;
       justify-content: center;
       font-size: 48px;
-      font-weight: bold;
-      color: #3f2680;
+      font-weight: 800;
+      color: #1A1F3D;
       animation: pulse 1.5s ease-in-out infinite;
+      position: relative;
+    }
+    
+    #loading-logo::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: #00D4AA;
+      border-radius: 50%;
+    }
+    
+    #loading-logo::after {
+      content: '';
+      position: absolute;
+      right: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background: #00D4AA;
+      border-radius: 50%;
     }
     
     @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4); }
+      50% { transform: scale(1.05); box-shadow: 0 0 30px 10px rgba(0, 212, 170, 0.2); }
     }
   </style>
 </head>
 <body>
   <!-- Loading screen -->
   <div id="loading">
-    <div id="loading-logo">V</div>
+    <div id="loading-logo">n</div>
   </div>
   
   <div id="root"></div>
