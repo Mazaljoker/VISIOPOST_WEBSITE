@@ -1,33 +1,32 @@
 import { Step } from '../types';
 
 /**
- * Étapes de la solution VisioPost
- * Flow linéaire : Siège -> IA -> Local -> Écoute
- * Histoire claire pour le client B2B
+ * Étapes de la solution VisioPost V3.1.1
+ * Focus sur le résultat, pas sur la méthode
  */
 export const solutionSteps: Step[] = [
   {
     number: "01",
-    title: "LE SIÈGE IMPULSE",
+    title: "UPLOADEZ",
     icon: "ShieldCheck",
     features: [
-      "Définition de la campagne nationale",
-      "Verrouillage des assets de marque",
-      "Validation du message clé"
+      "Votre visuel et votre message",
+      "Notre IA prend le relais",
+      "Validation siège garantie"
     ],
-    highlight: "1 Campagne créée",
+    highlight: "1 Campagne",
     gradientIcon: "from-visio-violet to-visio-rose",
     gradientNumber: "from-visio-violet to-visio-rose",
     highlightColor: "visio-violet"
   },
   {
     number: "02",
-    title: "L'IA DÉCLINE",
+    title: "GÉNÉRATION AUTOMATIQUE",
     icon: "Sparkles",
     features: [
-      "Génération de 500 variantes uniques",
-      "Adaptation au contexte local (Ville/Météo)",
-      "Optimisation anti-duplicate"
+      "Une version unique par magasin",
+      "Personnalisation ville et région",
+      "Zéro duplicate content"
     ],
     highlight: "500 Posts Uniques",
     gradientIcon: "from-visio-rose to-visio-bleu",
@@ -36,28 +35,28 @@ export const solutionSteps: Step[] = [
   },
   {
     number: "03",
-    title: "LE LOCAL PUBLIE",
+    title: "PUBLICATION SIMPLIFIÉE",
     icon: "MapPin",
     features: [
-      "Notification aux gérants (App mobile)",
-      "Publication automatique ou validée",
-      "Rayonnement local immédiat"
+      "Le magasin reçoit une notification",
+      "3 clics pour publier",
+      "Aucune formation nécessaire"
     ],
-    highlight: "100% du Réseau Actif",
+    highlight: "30 Secondes",
     gradientIcon: "from-visio-bleu to-visio-violet",
     gradientNumber: "from-visio-bleu to-visio-violet",
     highlightColor: "visio-bleu"
   },
   {
     number: "04",
-    title: "LE SIÈGE MESURE",
+    title: "PORTÉE MAXIMALE",
     icon: "BarChart3",
     features: [
-      "Analytics consolidés en temps réel",
-      "Analyse de sentiments IA",
-      "Alertes réputation & reporting"
+      "Facebook voit des contenus originaux",
+      "L'algorithme vous récompense",
+      "Analytics consolidés en temps réel"
     ],
-    highlight: "Visibilité Totale",
+    highlight: "+340% Reach",
     gradientIcon: "from-visio-rose to-visio-violet",
     gradientNumber: "from-visio-rose to-visio-violet",
     highlightColor: "visio-rose"

@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../components/Button';
 import { HeroSectionProps } from '../types';
 
-// Variants pour animations hero spectaculaires
 const heroContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -90,7 +89,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                 >
                   <ShieldCheck className="w-4 h-4" />
                 </motion.div>
-                Infrastructure Certifiée Brand Safety
+                Technologie Anti-Duplicate Brevetée
               </span>
             </motion.div>
 
@@ -98,7 +97,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
               variants={heroTitle}
               className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6"
             >
-              Transformez votre Réseau en{' '}
+              Vos 500 pages publient.{' '}
               <motion.span
                 className="bg-gradient-to-r from-visio-violet via-visio-rose to-visio-bleu bg-clip-text text-transparent inline-block"
                 animate={{
@@ -111,7 +110,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                 }}
                 style={{ backgroundSize: '200% 100%' }}
               >
-                Média Décentralisé
+                Zéro contenu dupliqué.
               </motion.span>
             </motion.h1>
 
@@ -119,11 +118,11 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
               variants={heroItem}
               className="text-xl text-gray-600 mb-8 leading-relaxed"
             >
-              <span className="block mb-2 font-semibold text-gray-800">
-                Le problème : Vos 500 pages locales sont muettes ou désordonnées.
+              Quand un réseau poste le même contenu partout, Facebook coupe la portée.
+              Notre IA génère des publications uniques pour chaque point de vente.
+              <span className="block mt-2 font-semibold text-gray-800">
+                Votre reach explose.
               </span>
-              Diffusez automatiquement vos campagnes nationales sur l'ensemble de vos points de vente.
-              Chaque magasin publie une version unique et locale, sans double effort ni risque d'erreur.
             </motion.p>
 
             <motion.div
@@ -135,7 +134,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                 whileTap={{ scale: 0.98 }}
               >
                 <Button variant="primary" size="lg" className="group">
-                  <span>Demander une Démo Réseau</span>
+                  <span>Demander une Démo</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </motion.div>
@@ -163,9 +162,8 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                   }}
                 >
                   <Play className="w-5 h-5" />
-                  <span>Voir le concept (2min)</span>
+                  <span>Voir comment ça marche (2min)</span>
                 </Button>
-                <span className="text-xs text-gray-400 mt-2">Pas d'inscription requise</span>
               </motion.div>
             </motion.div>
 
@@ -178,14 +176,21 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                 whileHover={{ scale: 1.05 }}
               >
                 <CheckCircle className="w-5 h-5 text-green-500" />
-                <span>Compatible Facebook & LinkedIn</span>
+                <span>+340% de portée organique</span>
               </motion.div>
               <motion.div
                 className="flex items-center space-x-2"
                 whileHover={{ scale: 1.05 }}
               >
                 <CheckCircle className="w-5 h-5 text-green-500" />
-                <span>Conforme RGPD / Brand Safety</span>
+                <span>100% des posts uniques</span>
+              </motion.div>
+              <motion.div
+                className="flex items-center space-x-2"
+                whileHover={{ scale: 1.05 }}
+              >
+                <CheckCircle className="w-5 h-5 text-green-500" />
+                <span>30 secondes pour publier</span>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -196,7 +201,6 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {/* Glow effect animé */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-br from-visio-violet/20 via-visio-rose/20 to-visio-bleu/20 rounded-3xl blur-3xl"
               variants={pulseGlow}
@@ -204,14 +208,12 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
               animate="animate"
             />
 
-            {/* Card avec onglets : Campagne / Vidéo */}
             <motion.div
               className="relative bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
               variants={floatAnimation}
               initial="initial"
               animate="animate"
             >
-              {/* Onglets de navigation */}
               <motion.div
                 className="flex border-b border-gray-100 bg-gray-50"
                 initial={{ opacity: 0 }}
@@ -243,7 +245,6 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                 </button>
               </motion.div>
 
-              {/* Contenu avec animation */}
               <AnimatePresence mode="wait">
                 {activeTab === 'campagne' ? (
                   <motion.div
@@ -254,20 +255,18 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                     transition={{ duration: 0.3 }}
                     className="p-6"
                   >
-                    {/* Header Campagne */}
                     <div className="flex justify-between items-center border-b pb-4 mb-4">
-                      <div className="text-sm font-bold text-gray-500">CAMPAGNE NATIONALE "Rentrée 2025"</div>
+                      <div className="text-sm font-bold text-gray-500">CAMPAGNE "Nouvelle Collection"</div>
                       <motion.div
                         className="text-green-600 text-sm font-bold bg-green-100 px-2 py-1 rounded"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
                       >
-                        VALIDÉE
+                        500 POSTS UNIQUES
                       </motion.div>
                     </div>
 
-                    {/* Variations locales */}
                     <div className="grid grid-cols-2 gap-4 mb-4">
                       <motion.div
                         className="bg-gray-50 p-3 rounded-lg border border-gray-100"
@@ -276,8 +275,8 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                         transition={{ delay: 0.3 }}
                         whileHover={{ scale: 1.02, borderColor: '#8B5CF6' }}
                       >
-                        <div className="text-xs text-gray-400 mb-1">Variation Lyon</div>
-                        <div className="text-sm font-medium">"Salut les Gones ! La rentrée approche..."</div>
+                        <div className="text-xs text-gray-400 mb-1">📍 Lyon</div>
+                        <div className="text-sm font-medium">"Ici à Lyon, on craque pour les nouvelles Ray-Ban !"</div>
                       </motion.div>
                       <motion.div
                         className="bg-gray-50 p-3 rounded-lg border border-gray-100"
@@ -286,12 +285,11 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                         transition={{ delay: 0.4 }}
                         whileHover={{ scale: 1.02, borderColor: '#EC4899' }}
                       >
-                        <div className="text-xs text-gray-400 mb-1">Variation Bordeaux</div>
-                        <div className="text-sm font-medium">"Gavé hâte de vous retrouver pour la rentrée..."</div>
+                        <div className="text-xs text-gray-400 mb-1">📍 Bordeaux</div>
+                        <div className="text-sm font-medium">"En Nouvelle-Aquitaine, c'est LA tendance de l'été !"</div>
                       </motion.div>
                     </div>
 
-                    {/* Barre de progression */}
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -307,8 +305,8 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                         />
                       </div>
                       <div className="flex justify-between text-xs mt-1">
-                        <span>Standard</span>
-                        <span className="font-bold text-visio-violet">+450% Visibilité</span>
+                        <span className="text-red-400">Duplicate = -80%</span>
+                        <span className="font-bold text-visio-violet">VisioPost = +340%</span>
                       </div>
                     </motion.div>
                   </motion.div>
@@ -320,9 +318,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
                   >
-                    {/* Container vidéo 16:9 */}
                     <div className="relative aspect-video bg-gradient-to-br from-gray-900 to-gray-800">
-                      {/* Vidéo HTML5 */}
                       <video
                         src="/videos/presentation.mp4"
                         className="absolute inset-0 w-full h-full object-cover"
@@ -338,7 +334,6 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                         }}
                       />
 
-                      {/* Overlay Play button (caché quand vidéo joue) */}
                       {!isPlaying && (
                         <>
                           <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -358,10 +353,8 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                             </motion.button>
                           </div>
 
-                          {/* Overlay gradient */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
 
-                          {/* Texte overlay bas */}
                           <motion.div
                             className="absolute bottom-4 left-4 right-4 z-10"
                             initial={{ opacity: 0, y: 20 }}
@@ -369,7 +362,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                             transition={{ delay: 0.4 }}
                           >
                             <div className="text-white text-sm font-medium">
-                              Découvrez comment VisioPost transforme votre communication réseau
+                              Découvrez comment VisioPost élimine le duplicate content
                             </div>
                             <div className="text-white/70 text-xs mt-1">
                               Sans inscription • Résultat immédiat

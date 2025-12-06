@@ -1,0 +1,333 @@
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Glasses, ShoppingCart, Dumbbell, Scissors, ThumbsUp, MessageCircle, Share2 } from 'lucide-react';
+
+interface UseCaseData {
+  id: string;
+  icon: React.ReactNode;
+  sector: string;
+  color: string;
+  bgGradient: string;
+  posts: {
+    location: string;
+    content: string;
+    likes: number;
+    comments: number;
+    shares: number;
+  }[];
+}
+
+const useCases: UseCaseData[] = [
+  {
+    id: 'optique',
+    icon: <Glasses className="w-5 h-5" />,
+    sector: 'Optique',
+    color: 'text-purple-600',
+    bgGradient: 'from-purple-500 to-purple-600',
+    posts: [
+      {
+        location: 'Lyon',
+        content: "Ici à Lyon, on craque pour les nouvelles Ray-Ban ! ☀️ Essayage gratuit ce weekend !",
+        likes: 156,
+        comments: 23,
+        shares: 12
+      },
+      {
+        location: 'Marseille',
+        content: "Marseille + soleil = lunettes obligatoires ! 😎 -20% sur la collection été, rdv en boutique !",
+        likes: 203,
+        comments: 31,
+        shares: 18
+      },
+      {
+        location: 'Bordeaux',
+        content: "Les Bordelais le savent : le style commence par le regard 👓 Nouvelle collection dispo !",
+        likes: 178,
+        comments: 19,
+        shares: 14
+      }
+    ]
+  },
+  {
+    id: 'distribution',
+    icon: <ShoppingCart className="w-5 h-5" />,
+    sector: 'Grande Distribution',
+    color: 'text-green-600',
+    bgGradient: 'from-green-500 to-green-600',
+    posts: [
+      {
+        location: 'Rennes',
+        content: "🍎 Arrivage de pommes bio bretonnes ce matin ! Direct du producteur à Rennes. Quantités limitées !",
+        likes: 234,
+        comments: 45,
+        shares: 67
+      },
+      {
+        location: 'Toulouse',
+        content: "Toulouse, c'est cassoulet ! 🫘 Tous les ingrédients locaux en promo cette semaine. À vos marmites !",
+        likes: 312,
+        comments: 89,
+        shares: 54
+      },
+      {
+        location: 'Lille',
+        content: "Les Ch'tis aiment le bon ! 🧀 Maroilles, mimolette... notre rayon fromages vous attend !",
+        likes: 189,
+        comments: 34,
+        shares: 28
+      }
+    ]
+  },
+  {
+    id: 'fitness',
+    icon: <Dumbbell className="w-5 h-5" />,
+    sector: 'Salle de Sport',
+    color: 'text-orange-600',
+    bgGradient: 'from-orange-500 to-orange-600',
+    posts: [
+      {
+        location: 'Nice',
+        content: "💪 Nice, on se remet en forme avant l'été ! Cours de HIIT gratuit ce samedi. Qui relève le défi ?",
+        likes: 145,
+        comments: 67,
+        shares: 23
+      },
+      {
+        location: 'Strasbourg',
+        content: "Strasbourg bouge ! 🏋️ Nouvelle salle de crossfit ouverte. 1ère séance offerte pour les Strasbourgeois !",
+        likes: 198,
+        comments: 54,
+        shares: 41
+      },
+      {
+        location: 'Nantes',
+        content: "Nantes, prêts pour le marathon ? 🏃 Programme spécial running ce mois-ci. Inscrivez-vous !",
+        likes: 167,
+        comments: 38,
+        shares: 56
+      }
+    ]
+  },
+  {
+    id: 'coiffure',
+    icon: <Scissors className="w-5 h-5" />,
+    sector: 'Salon Coiffure',
+    color: 'text-pink-600',
+    bgGradient: 'from-pink-500 to-pink-600',
+    posts: [
+      {
+        location: 'Paris 11e',
+        content: "✂️ Le balayage californien fait fureur dans le 11e ! Rdv dispo cette semaine. Qui veut son glow-up ?",
+        likes: 267,
+        comments: 43,
+        shares: 19
+      },
+      {
+        location: 'Montpellier',
+        content: "Montpellier sous le soleil ☀️ = cheveux protégés ! Soin réparateur offert pour toute coupe ce mois-ci.",
+        likes: 189,
+        comments: 28,
+        shares: 15
+      },
+      {
+        location: 'Grenoble',
+        content: "Grenobloises, la tendance coupe courte arrive en montagne ! 🏔️ Venez découvrir les nouveaux looks.",
+        likes: 145,
+        comments: 31,
+        shares: 12
+      }
+    ]
+  }
+];
+
+interface MiniPostProps {
+  location: string;
+  content: string;
+  likes: number;
+  comments: number;
+  shares: number;
+  gradient: string;
+  delay: number;
+}
+
+const MiniPost = ({ location, content, likes, comments, shares, gradient, delay }: MiniPostProps) => (
+  <motion.div
+    className="bg-white rounded-lg shadow-md border border-gray-100 overflow-hidden"
+    initial={{ opacity: 0, y: 20, scale: 0.95 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    exit={{ opacity: 0, y: -20, scale: 0.95 }}
+    transition={{ delay, duration: 0.3 }}
+    whileHover={{ scale: 1.02 }}
+  >
+    <div className="p-3">
+      <div className="flex items-center space-x-2 mb-2">
+        <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${gradient} flex items-center justify-center text-white text-xs font-bold`}>
+          {location.charAt(0)}
+        </div>
+        <div>
+          <div className="font-medium text-sm text-gray-900">{location}</div>
+          <div className="text-xs text-gray-400">Sponsorisé · 1h</div>
+        </div>
+      </div>
+      <p className="text-sm text-gray-700 mb-3 line-clamp-2">{content}</p>
+      <div className="flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-100">
+        <div className="flex items-center space-x-1">
+          <ThumbsUp className="w-3 h-3 text-blue-500" />
+          <span>{likes}</span>
+        </div>
+        <div className="flex items-center space-x-3">
+          <span className="flex items-center space-x-1">
+            <MessageCircle className="w-3 h-3" />
+            <span>{comments}</span>
+          </span>
+          <span className="flex items-center space-x-1">
+            <Share2 className="w-3 h-3" />
+            <span>{shares}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </motion.div>
+);
+
+/**
+ * Section Use Cases - Exemples par secteur
+ * Tabs interactifs avec posts adaptés
+ */
+const UseCasesSection = ({ className = '' }: { className?: string }) => {
+  const [activeTab, setActiveTab] = useState('optique');
+  const activeCase = useCases.find(uc => uc.id === activeTab) || useCases[0];
+
+  return (
+    <section className={`py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 ${className}`}>
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Adapté à votre secteur
+          </h2>
+          <p className="text-xl text-gray-600">
+            Chaque réseau a son ton. VisioPost s'adapte.
+          </p>
+        </motion.div>
+
+        {/* Tabs */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-2 mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          {useCases.map((useCase) => (
+            <motion.button
+              key={useCase.id}
+              onClick={() => setActiveTab(useCase.id)}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-full font-medium text-sm transition-all ${
+                activeTab === useCase.id
+                  ? `bg-gradient-to-r ${useCase.bgGradient} text-white shadow-lg`
+                  : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {useCase.icon}
+              <span>{useCase.sector}</span>
+            </motion.button>
+          ))}
+        </motion.div>
+
+        {/* Content */}
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Campaign header */}
+              <div className="bg-white rounded-t-2xl p-4 border border-gray-200 border-b-0">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${activeCase.bgGradient} flex items-center justify-center text-white`}>
+                      {activeCase.icon}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900">Campagne {activeCase.sector}</div>
+                      <div className="text-xs text-gray-500">1 visuel → 150 posts uniques générés</div>
+                    </div>
+                  </div>
+                  <div className="hidden sm:block">
+                    <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
+                      ✓ 0% duplicate content
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Posts grid */}
+              <div className="bg-gradient-to-br from-gray-100 to-gray-50 rounded-b-2xl p-6 border border-gray-200 border-t-0">
+                <div className="grid md:grid-cols-3 gap-4">
+                  {activeCase.posts.map((post, index) => (
+                    <MiniPost
+                      key={`${activeTab}-${index}`}
+                      {...post}
+                      gradient={activeCase.bgGradient}
+                      delay={index * 0.1}
+                    />
+                  ))}
+                </div>
+
+                {/* Stats footer */}
+                <motion.div
+                  className="mt-6 flex flex-wrap items-center justify-center gap-6 text-sm"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 rounded-full bg-green-500" />
+                    <span className="text-gray-600">Engagement moyen :</span>
+                    <span className="font-bold text-gray-900">
+                      +{Math.round(activeCase.posts.reduce((acc, p) => acc + p.likes + p.comments + p.shares, 0) / 3)}
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-500" />
+                    <span className="text-gray-600">Portée estimée :</span>
+                    <span className="font-bold bg-gradient-to-r from-visio-violet to-visio-rose bg-clip-text text-transparent">
+                      +340%
+                    </span>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          className="text-center mt-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          <p className="text-gray-500">
+            Et aussi : <span className="font-medium">Restauration</span>, <span className="font-medium">Automobile</span>, <span className="font-medium">Immobilier</span>, <span className="font-medium">Services</span>...
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default UseCasesSection;

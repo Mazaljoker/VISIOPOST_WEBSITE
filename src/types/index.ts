@@ -26,7 +26,7 @@ export interface FeatureCardProps {
 
 export interface PricingCardProps {
   title: string;
-  price: number;
+  price: number | null;
   period?: string;
   features: string[];
   cta: string;
@@ -81,15 +81,22 @@ export interface Step {
   highlightColor: string;
 }
 
+export interface DegressivityTier {
+  min: number;
+  max: number;
+  price: number;
+}
+
 export interface PricingPlan {
   title: string;
-  price: number;
+  price: number | null;
   period: string;
   features: string[];
   cta: string;
   variant: 'free' | 'starter' | 'pro' | 'centrale';
   isPopular?: boolean;
   highlight?: string;
+  degressivity?: DegressivityTier[];
 }
 
 export interface Faq {

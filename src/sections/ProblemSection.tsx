@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { problems } from '../data/problems';
+import { AlertTriangle } from 'lucide-react';
+import { problems, problemStat } from '../data/problems';
 import { ProblemSectionProps } from '../types';
 
 const containerVariants = {
@@ -38,11 +39,10 @@ const cardVariants = {
   },
 };
 
-const conclusionVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
+const statVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
   visible: {
     opacity: 1,
-    y: 0,
     scale: 1,
     transition: {
       duration: 0.6,
@@ -53,12 +53,11 @@ const conclusionVariants = {
 };
 
 /**
- * Section Problème - Le Mur Algorithmique
- * Animations en cascade pour impact visuel
+ * Section Problème - Le duplicate content et ses conséquences
  */
 const ProblemSection = ({ className = '' }: ProblemSectionProps) => {
   return (
-    <section className={`py-20 px-4 sm:px-6 lg:px-8 ${className}`}>
+    <section className={`py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 ${className}`}>
       <motion.div
         className="max-w-4xl mx-auto text-center"
         initial="hidden"
@@ -68,13 +67,20 @@ const ProblemSection = ({ className = '' }: ProblemSectionProps) => {
       >
         <motion.h2
           variants={titleVariants}
-          className="text-4xl font-bold text-gray-900 mb-6"
+          className="text-4xl font-bold text-gray-900 mb-4"
         >
-          Le Mur Algorithmique : Pourquoi votre réseau est invisible
+          Le problème que personne ne vous dit
         </motion.h2>
+        
+        <motion.p
+          variants={titleVariants}
+          className="text-xl text-gray-600 mb-12"
+        >
+          Ce qui se passe vraiment quand votre réseau publie
+        </motion.p>
 
         <motion.div
-          className="grid md:grid-cols-2 gap-6 mt-12"
+          className="space-y-4 mt-8 text-left"
           variants={containerVariants}
         >
           {problems.map((problem, index) => (
@@ -82,16 +88,15 @@ const ProblemSection = ({ className = '' }: ProblemSectionProps) => {
               key={index}
               variants={cardVariants}
               whileHover={{
-                scale: 1.03,
+                scale: 1.02,
                 x: 5,
                 transition: { duration: 0.2 },
               }}
-              whileTap={{ scale: 0.98 }}
-              className="p-6 bg-red-50 border-l-4 border-red-500 text-left rounded-lg cursor-default"
+              className="p-6 bg-white border-l-4 border-red-500 rounded-lg shadow-sm"
             >
               <p className="text-gray-700 flex items-start space-x-3">
                 <motion.span
-                  className="text-red-500 text-xl"
+                  className="text-red-500 text-xl flex-shrink-0"
                   animate={{
                     rotate: [0, -10, 10, 0],
                   }}
@@ -102,20 +107,24 @@ const ProblemSection = ({ className = '' }: ProblemSectionProps) => {
                 >
                   ❌
                 </motion.span>
-                <span>{problem}</span>
+                <span className="text-lg">{problem}</span>
               </p>
             </motion.div>
           ))}
         </motion.div>
 
         <motion.div
-          variants={conclusionVariants}
-          className="mt-12 p-8 bg-gradient-to-r from-visio-violet/5 to-visio-rose/5 rounded-2xl"
+          variants={statVariants}
+          className="mt-16 p-8 bg-gradient-to-r from-red-500 to-red-600 rounded-2xl text-white"
           whileHover={{ scale: 1.02 }}
         >
-          <p className="text-xl font-semibold text-gray-900">
-            Résultat : Vous avez une armée d'ambassadeurs, mais leurs armes sont enrayées par les filtres Anti-Spam de Meta et LinkedIn.
-          </p>
+          <div className="flex items-center justify-center space-x-4">
+            <AlertTriangle className="w-12 h-12" />
+            <div className="text-left">
+              <div className="text-5xl font-bold">{problemStat.value}</div>
+              <div className="text-xl opacity-90">{problemStat.label}</div>
+            </div>
+          </div>
         </motion.div>
       </motion.div>
     </section>
