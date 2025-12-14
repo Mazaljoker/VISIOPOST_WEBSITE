@@ -1,14 +1,10 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Clock, Users, TrendingUp, Calendar } from 'lucide-react';
 
-interface FinalCtaSectionProps {
-  onOpenRoi?: () => void;
-}
-
 /**
  * Final CTA Section - Vision nSignal
  */
-const FinalCtaSection = ({ onOpenRoi }: FinalCtaSectionProps) => {
+const FinalCtaSection = () => {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-nsignal-primary via-nsignal-primary to-nsignal-secondary">
       <div className="max-w-4xl mx-auto text-center">
