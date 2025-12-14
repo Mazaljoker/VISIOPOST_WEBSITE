@@ -1,145 +1,124 @@
-# 🎨 nReach Studio - Guide de Migration
+# 🚀 REBRAND: nReach Studio → nSignal
 
-## Changement de Marque
+## Décision Stratégique
 
-**Ancien nom:** VisioPost  
-**Nouveau nom:** nReach Studio  
-**Domaines:** nreachstudio.com, nreachstudio.fr  
-**Tagline:** "n locations. One studio."
+**Date:** 14 Décembre 2025
 
----
+### Ancien Nom
+- **nReach Studio**
+- Domaine: nreachstudio.com
+- Tagline: "n locations. One studio."
+- Positionnement: Génération de contenu
 
-## 🎨 Palette de Couleurs
-
-### Brand Colors
-
-| Nom | Hex | Usage |
-|-----|-----|-------|
-| **Midnight** | `#1A1F3D` | Primary, headers, logo |
-| **Electric Cyan** | `#00D4AA` | Accent, CTAs, highlights |
-| **Lavande Tech** | `#6B7AED` | Secondary, hover states |
-
-### Light Mode
-
-| Nom | Hex | Usage |
-|-----|-----|-------|
-| Background | `#FFFFFF` | Fond principal |
-| Surface | `#F9FAFB` | Cards, surfaces |
-| Text | `#0F1219` | Texte principal |
-| Text Muted | `#6B7280` | Texte secondaire |
-| Border | `#E5E7EB` | Bordures |
-
-### Dark Mode
-
-| Nom | Hex | Usage |
-|-----|-----|-------|
-| Background | `#0F1219` | Fond principal |
-| Surface | `#1F2937` | Cards, surfaces |
-| Text | `#E5E7EB` | Texte principal |
-| Text Muted | `#9CA3AF` | Texte secondaire |
-| Border | `#374151` | Bordures |
+### Nouveau Nom
+- **nSignal**
+- Domaine: **nsignal.ai**
+- Tagline: **"n locations. One signal."**
+- Positionnement: **Plateforme de pilotage social pour réseaux**
 
 ---
 
-## 🔤 Typographie
+## Pourquoi ce Changement ?
 
-**Font:** Plus Jakarta Sans  
-**Weights:** 400, 500, 600, 700, 800
+### 1. Positionnement Plus Fort
 
-| Usage | Size | Weight |
-|-------|------|--------|
-| H1 | 48px | 800 |
-| H2 | 32px | 700 |
-| H3 | 24px | 700 |
-| Body | 16px | 400 |
-| Button | 15px | 600 |
-| Small | 14px | 500 |
+| Avant | Après |
+|-------|-------|
+| "Générez des posts" | "Pilotez votre réseau" |
+| Focus création | Focus visibilité & contrôle |
+| Parle au créatif | Parle au Dir. Marketing |
 
----
+### 2. Coopérative-Friendly
 
-## 📁 Assets
+| Mot | Perception |
+|-----|------------|
+| ❌ Command | "Ils veulent nous donner des ordres" |
+| ❌ Control | "Ils veulent nous contrôler" |
+| ✅ **Signal** | "On nous envoie des signaux, on décide" |
+
+### 3. Double Sens Parfait
 
 ```
-public/
-├── favicon.svg
-├── logos/
-│   ├── nreach-logo-light.svg
-│   ├── nreach-logo-dark.svg
-│   ├── nreach-icon-light.svg
-│   └── nreach-icon-dark.svg
+Pour le SIÈGE:
+→ "Recevez les signaux de votre réseau"
+→ Dashboard, alertes, insights
+
+Pour le TERRAIN:
+→ "On vous envoie le signal, vous décidez"
+→ Suggestion, pas imposition
 ```
 
----
+### 4. Extension .ai
 
-## 🔄 Checklist Migration
-
-### Phase 1: Assets & Config ✅
-- [x] Logos SVG (light/dark)
-- [x] Favicon
-- [x] tailwind.config.js
-- [x] index.html (meta tags)
-
-### Phase 2: Composants UI
-- [ ] Header.tsx
-- [ ] Footer.tsx
-- [ ] Button.tsx
-- [ ] PricingCard.tsx
-- [ ] FeatureCard.tsx
-
-### Phase 3: Sections
-- [ ] HeroSection.tsx
-- [ ] PricingSection.tsx
-- [ ] FeaturesSection.tsx
-- [ ] FaqSection.tsx
-- [ ] FinalCtaSection.tsx
-
-### Phase 4: Contenu
-- [ ] Remplacer "VisioPost" → "nReach Studio"
-- [ ] Mettre à jour les textes
-- [ ] Ajouter tagline
-
-### Phase 5: Tests
-- [ ] Light mode
-- [ ] Dark mode
-- [ ] Responsive
-- [ ] Accessibilité
+- Le produit utilise GPT-4o = IA native
+- .ai = premium, moderne, 2025
+- Différenciation immédiate
 
 ---
 
-## 🎯 Classes Tailwind Utiles
+## Changements Techniques
 
-```jsx
-// Backgrounds
-className="bg-nreach-midnight"
-className="bg-nreach-electric"
-className="bg-gradient-electric"
-className="bg-gradient-midnight"
+### Fichiers Modifiés
 
-// Text
-className="text-nreach-midnight"
-className="text-nreach-electric"
-className="text-light-text"
-className="dark:text-dark-text"
+| Fichier | Changement |
+|---------|------------|
+| `src/components/NSignalLogo.tsx` | Nouveau logo avec ondes signal |
+| `src/sections/Header.tsx` | Import NSignalLogo |
+| `src/sections/HeroSection.tsx` | Nouveau messaging pilotage |
+| `src/sections/Footer.tsx` | Brand + contact@nsignal.ai |
+| `index.html` | SEO, title, meta, OG |
 
-// Shadows
-className="shadow-nreach"
-className="shadow-card"
-className="hover:shadow-nreach-lg"
+### À Faire (Post-Merge)
 
-// Borders
-className="border-light-border dark:border-dark-border"
+- [ ] Configurer DNS nsignal.ai → Netlify
+- [ ] Mettre à jour favicon.svg avec ondes
+- [ ] Créer og-image.jpg avec nouveau branding
+- [ ] Rediriger nreachstudio.com → nsignal.ai
+- [ ] Mettre à jour les autres mentions dans le code
+
+---
+
+## Identité Visuelle
+
+### Couleurs (inchangées)
+```css
+--midnight: #1A1F3D
+--electric: #00D4AA
+--lavande: #6B7AED
 ```
 
+### Logo nSignal
+```
+n● Signal
+  ↑
+  Cercle avec "n" + ondes signal
+```
+
+### Icône
+- Cercle avec "n"
+- Ondes de signal (3 arcs) à droite
+- Points réseau aux 4 coins
+
 ---
 
-## 📝 Remplacement de Texte
+## Messages Clés
 
-| Ancien | Nouveau |
-|--------|----------|
-| VisioPost | nReach Studio |
-| visio-violet | nreach-midnight |
-| visio-rose | nreach-electric |
-| visio-bleu | nreach-lavande |
-| #3f2680 | #1A1F3D |
-| #ed1164 | #00D4AA |
-| #00aeef | #6B7AED |
+### Hero
+```
+"n locations. One signal."
+"Pilotez la présence sociale de tout votre réseau."
+"Captez les signaux. Coordonnez sans imposer."
+```
+
+### Value Props
+- Visibilité temps réel
+- Dashboard siège
+- 0% duplicate content
+- Suggestion, pas imposition
+
+---
+
+## Contact
+
+- **Email:** contact@nsignal.ai
+- **Site:** https://nsignal.ai

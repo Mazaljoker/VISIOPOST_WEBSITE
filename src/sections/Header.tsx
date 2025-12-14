@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { NReachLogo } from '../components/NReachLogo';
+import { NSignalLogo } from '../components/NSignalLogo';
 import { Button } from '../components/Button';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { useTheme } from '../context/ThemeContext';
@@ -26,11 +26,9 @@ export const Header: React.FC = () => {
   }, []);
 
   // Détermine le thème du logo selon le contexte
-  // En haut de page (hero dark) = logo light (blanc)
-  // Après scroll ou en mode light = logo dark (midnight)
   const logoTheme = isScrolled 
     ? (resolvedTheme === 'dark' ? 'dark' : 'light')
-    : 'dark'; // En haut sur le hero sombre, logo blanc
+    : 'dark';
 
   return (
     <>
@@ -47,7 +45,7 @@ export const Header: React.FC = () => {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <a href="#" className="flex items-center">
-              <NReachLogo
+              <NSignalLogo
                 variant="full"
                 theme={logoTheme}
                 size="md"
@@ -70,7 +68,6 @@ export const Header: React.FC = () => {
                 </a>
               ))}
               
-              {/* Theme Toggle */}
               <ThemeToggle />
               
               <Button variant="primary" size="md">
@@ -78,7 +75,7 @@ export const Header: React.FC = () => {
               </Button>
             </nav>
 
-            {/* Mobile: Theme Toggle + Menu Button */}
+            {/* Mobile */}
             <div className="md:hidden flex items-center gap-2">
               <ThemeToggle />
               <button

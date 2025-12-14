@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- SEO Meta Tags -->
-  <title>nReach Studio - Plateforme Sociale IA pour Réseaux de Franchise | n locations. One studio.</title>
-  <meta name="description" content="nReach Studio génère automatiquement des posts Facebook uniques pour chaque point de vente de votre réseau. Fini les pénalités de contenu dupliqué." />
-  <meta name="keywords" content="franchise, réseau, social media, IA, Facebook, contenu unique, multi-sites, marketing local" />
+  <title>nSignal - Plateforme de Pilotage Social pour Réseaux | n locations. One signal.</title>
+  <meta name="description" content="nSignal : pilotez la présence sociale de tout votre réseau. Captez les signaux de chaque magasin, coordonnez sans imposer. 0% duplicate content garanti." />
+  <meta name="keywords" content="pilotage réseau, franchise, social media, IA, Facebook, contenu unique, multi-sites, marketing local, dashboard" />
   
   <!-- Open Graph -->
-  <meta property="og:title" content="nReach Studio - n locations. One studio." />
-  <meta property="og:description" content="Générez des posts Facebook uniques pour chaque point de vente de votre réseau grâce à l'IA." />
+  <meta property="og:title" content="nSignal - n locations. One signal." />
+  <meta property="og:description" content="Pilotez la présence sociale de tout votre réseau. Captez les signaux, coordonnez sans imposer." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/og-image.jpg" />
-  <meta property="og:url" content="https://nreachstudio.com" />
+  <meta property="og:url" content="https://nsignal.ai" />
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="nReach Studio - n locations. One studio." />
-  <meta name="twitter:description" content="Générez des posts Facebook uniques pour chaque point de vente de votre réseau." />
+  <meta name="twitter:title" content="nSignal - n locations. One signal." />
+  <meta name="twitter:description" content="Pilotez la présence sociale de tout votre réseau." />
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -31,7 +31,7 @@
   <!-- Google Fonts - Plus Jakarta Sans -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
-  <!-- Theme color - nReach Midnight -->
+  <!-- Theme color -->
   <meta name="theme-color" content="#1A1F3D" />
   
   <!-- Robots -->
@@ -46,7 +46,7 @@
       -moz-osx-font-smoothing: grayscale;
     }
     
-    /* Loading screen - nReach Studio branded */
+    /* Loading screen - nSignal branded */
     #loading {
       position: fixed;
       inset: 0;
@@ -72,33 +72,44 @@
       position: relative;
     }
     
+    /* Signal waves animation */
     #loading-logo::before {
       content: '';
       position: absolute;
-      top: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 8px;
-      height: 8px;
-      background: #00D4AA;
-      border-radius: 50%;
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 40px;
+      border: 3px solid #00D4AA;
+      border-left: none;
+      border-radius: 0 20px 20px 0;
+      animation: signal 1s ease-out infinite;
     }
     
     #loading-logo::after {
       content: '';
       position: absolute;
-      right: -8px;
       top: 50%;
+      left: calc(100% + 10px);
       transform: translateY(-50%);
-      width: 8px;
-      height: 8px;
-      background: #00D4AA;
-      border-radius: 50%;
+      width: 15px;
+      height: 30px;
+      border: 3px solid #00D4AA;
+      border-left: none;
+      border-radius: 0 15px 15px 0;
+      animation: signal 1s ease-out infinite 0.2s;
+      opacity: 0.6;
     }
     
     @keyframes pulse {
       0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4); }
       50% { transform: scale(1.05); box-shadow: 0 0 30px 10px rgba(0, 212, 170, 0.2); }
+    }
+    
+    @keyframes signal {
+      0% { opacity: 1; transform: translateY(-50%) scale(0.8); }
+      100% { opacity: 0; transform: translateY(-50%) scale(1.2); }
     }
   </style>
 </head>
