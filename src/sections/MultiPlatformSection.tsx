@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Facebook, Instagram, Video, Linkedin, CheckCircle, Clock } from 'lucide-react';
+import { Facebook, Instagram, Video, Linkedin, CheckCircle, Clock, MapPin } from 'lucide-react';
 
 const platforms = [
   {
@@ -12,29 +12,28 @@ const platforms = [
     name: 'Instagram',
     icon: Instagram,
     status: 'coming',
-    description: 'T1 2025',
+    description: 'T1 2026',
+  },
+  {
+    name: 'Google Business',
+    icon: MapPin,
+    status: 'coming',
+    description: 'T2 2026',
   },
   {
     name: 'TikTok',
     icon: Video,
-    status: 'coming',
-    description: 'T2 2025',
-  },
-  {
-    name: 'LinkedIn',
-    icon: Linkedin,
     status: 'planned',
-    description: '2025',
+    description: '2026',
   },
 ];
 
 /**
- * Section Multi-Platform - Plateformes supportées
- * Rebrandé pour nReach Studio
+ * Section Multi-Platform - Charte Graphique nSignal 2025
  */
 const MultiPlatformSection = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-light-bg dark:bg-dark-bg">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-nsignal-dark">
       <div className="max-w-4xl mx-auto">
         <motion.div
           className="text-center mb-12"
@@ -42,10 +41,10 @@ const MultiPlatformSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-nsignal-dark dark:text-nsignal-light mb-4">
             Multi-plateforme
           </h2>
-          <p className="text-lg text-light-text-muted dark:text-dark-text-muted">
+          <p className="text-lg text-nsignal-light-700 dark:text-nsignal-light-600">
             Aujourd'hui Facebook, demain tout le reste
           </p>
         </motion.div>
@@ -56,10 +55,10 @@ const MultiPlatformSection = () => {
               key={index}
               className={`p-6 rounded-xl text-center border-2 transition-all ${
                 platform.status === 'available'
-                  ? 'bg-nreach-electric/10 border-nreach-electric'
+                  ? 'bg-nsignal-primary/10 border-nsignal-primary'
                   : platform.status === 'coming'
-                  ? 'bg-nreach-lavande/10 border-nreach-lavande/50'
-                  : 'bg-light-surface dark:bg-dark-surface border-light-border dark:border-dark-border'
+                  ? 'bg-nsignal-secondary/10 border-nsignal-secondary/50'
+                  : 'bg-nsignal-light dark:bg-nsignal-dark-500 border-nsignal-light-400 dark:border-nsignal-dark-400'
               }`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -68,20 +67,20 @@ const MultiPlatformSection = () => {
             >
               <platform.icon className={`w-10 h-10 mx-auto mb-3 ${
                 platform.status === 'available'
-                  ? 'text-nreach-electric'
+                  ? 'text-nsignal-primary'
                   : platform.status === 'coming'
-                  ? 'text-nreach-lavande'
-                  : 'text-light-text-muted dark:text-dark-text-muted'
+                  ? 'text-nsignal-secondary'
+                  : 'text-nsignal-light-700 dark:text-nsignal-light-600'
               }`} />
-              <h3 className="font-semibold text-nreach-midnight dark:text-dark-text mb-1">
+              <h3 className="font-semibold text-nsignal-dark dark:text-nsignal-light mb-1">
                 {platform.name}
               </h3>
               <div className={`flex items-center justify-center gap-1 text-xs ${
                 platform.status === 'available'
-                  ? 'text-nreach-electric'
+                  ? 'text-nsignal-primary'
                   : platform.status === 'coming'
-                  ? 'text-nreach-lavande'
-                  : 'text-light-text-muted dark:text-dark-text-muted'
+                  ? 'text-nsignal-secondary'
+                  : 'text-nsignal-light-700 dark:text-nsignal-light-600'
               }`}>
                 {platform.status === 'available' ? (
                   <CheckCircle className="w-3 h-3" />

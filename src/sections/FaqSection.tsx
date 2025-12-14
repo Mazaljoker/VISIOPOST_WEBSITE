@@ -15,12 +15,11 @@ const titleVariants = {
 };
 
 /**
- * Section FAQ - Questions fréquentes
- * Rebrandé pour nReach Studio
+ * Section FAQ - Charte Graphique nSignal 2025
  */
 const FaqSection = () => {
   return (
-    <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-light-surface dark:bg-dark-surface">
+    <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-nsignal-light dark:bg-nsignal-dark-500">
       <div className="max-w-3xl mx-auto">
         <motion.div
           className="text-center mb-12"
@@ -29,11 +28,11 @@ const FaqSection = () => {
           viewport={{ once: true, amount: 0.5 }}
           variants={titleVariants}
         >
-          <h2 className="text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
+          <h2 className="text-4xl font-bold text-nsignal-dark dark:text-nsignal-light mb-4">
             Questions fréquentes
           </h2>
-          <p className="text-xl text-light-text-muted dark:text-dark-text-muted">
-            Tout ce que vous devez savoir sur nReach Studio
+          <p className="text-xl text-nsignal-light-700 dark:text-nsignal-light-600">
+            Tout ce que vous devez savoir sur nSignal
           </p>
         </motion.div>
 
