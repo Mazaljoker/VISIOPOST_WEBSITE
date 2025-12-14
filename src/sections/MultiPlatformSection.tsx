@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Facebook, Instagram, Video, Linkedin, CheckCircle, Clock, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Video, CheckCircle, Clock, MapPin } from 'lucide-react';
 
 const platforms = [
   {
