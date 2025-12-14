@@ -12,6 +12,10 @@ const navItems = [
   { label: 'FAQ', href: '#faq' },
 ];
 
+/**
+ * Header - Charte Graphique nSignal 2025
+ * Couleurs: Teal #0F7B6C + Coral #E86A58 + Charcoal #1E2B3A
+ */
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -37,7 +41,7 @@ export const Header: React.FC = () => {
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/90 dark:bg-dark-bg/90 backdrop-blur-lg shadow-card'
+            ? 'bg-white/90 dark:bg-nsignal-dark/90 backdrop-blur-lg shadow-card'
             : 'bg-transparent'
         }`}
       >
@@ -60,7 +64,7 @@ export const Header: React.FC = () => {
                   href={item.href}
                   className={`transition-colors font-medium ${
                     isScrolled
-                      ? 'text-light-text-muted hover:text-nreach-midnight dark:text-dark-text-muted dark:hover:text-dark-text'
+                      ? 'text-nsignal-light-700 hover:text-nsignal-dark dark:text-nsignal-light-600 dark:hover:text-nsignal-light'
                       : 'text-white/80 hover:text-white'
                   }`}
                 >
@@ -79,7 +83,7 @@ export const Header: React.FC = () => {
             <div className="md:hidden flex items-center gap-2">
               <ThemeToggle />
               <button
-                className={`p-2 ${isScrolled ? 'text-nreach-midnight dark:text-dark-text' : 'text-white'}`}
+                className={`p-2 ${isScrolled ? 'text-nsignal-dark dark:text-nsignal-light' : 'text-white'}`}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -98,13 +102,13 @@ export const Header: React.FC = () => {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-40 md:hidden pt-20"
           >
-            <div className="bg-white dark:bg-dark-bg h-full">
+            <div className="bg-white dark:bg-nsignal-dark h-full">
               <nav className="flex flex-col items-center gap-6 p-8">
                 {navItems.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="text-xl font-medium text-nreach-midnight dark:text-dark-text"
+                    className="text-xl font-medium text-nsignal-dark dark:text-nsignal-light"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}

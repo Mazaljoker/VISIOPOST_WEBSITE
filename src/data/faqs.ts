@@ -1,26 +1,38 @@
+/**
+ * FAQ nSignal - Charte Graphique 2025
+ * Orientation: Pilotage réseau
+ */
 export const faqs = [
   {
-    question: "Qu'est-ce que nReach Studio ?",
-    answer: "nReach Studio est une plateforme SaaS qui génère automatiquement des posts Facebook uniques pour chaque point de vente de votre réseau. Grâce à l'IA GPT-4 Vision, nous créons des variations personnalisées à partir d'une seule image et d'un brief, évitant ainsi les pénalités de contenu dupliqué de Facebook."
+    question: "Qu'est-ce que nSignal ?",
+    answer: "nSignal est une plateforme de pilotage social pour réseaux multi-sites. Elle permet aux sièges de coordonner la présence sociale de centaines de points de vente tout en préservant l'autonomie locale."
   },
   {
-    question: "Comment fonctionne la génération de contenu unique ?",
-    answer: "Notre IA analyse votre image et votre brief, puis génère des variations uniques en utilisant des variables dynamiques (ville, région, horaires) et des reformulations créatives. Chaque point de vente reçoit un post différent, ce qui maximise la portée organique sur Facebook."
+    question: "En quoi nSignal diffère des outils classiques ?",
+    answer: "Contrairement aux outils qui imposent du contenu, nSignal propose 3 modes (Free Style, Playlist, Auto) qui s'adaptent à la maturité de chaque adhérent. Le siège suggère, le terrain décide."
   },
   {
-    question: "Combien de temps faut-il pour configurer nReach Studio ?",
-    answer: "La configuration initiale prend généralement entre 2 et 5 jours ouvrables selon la taille de votre réseau. Cela inclut l'import de vos points de vente, la connexion des pages Facebook, et la formation de vos équipes."
+    question: "Comment évitez-vous le duplicate content ?",
+    answer: "Notre IA génère des variations uniques pour chaque magasin à partir de blocs validés. Même message, mais formulation différente = 0% pénalité Facebook."
+  },
+  {
+    question: "Quel est le temps de mise en place ?",
+    answer: "40 secondes par magasin. Import CSV, connexion Facebook, c'est prêt. Pas de formation longue, interface intuitive."
+  },
+  {
+    question: "Le siège peut-il voir l'activité de chaque magasin ?",
+    answer: "Oui ! Dashboard temps réel avec vue par région, alertes inactivité, et analytics consolidés. Vous savez exactement qui publie et quand."
+  },
+  {
+    question: "Et si un adhérent ne veut pas utiliser la plateforme ?",
+    answer: "C'est sa liberté ! nSignal ne force rien. Mais avec le mode Playlist (1 clic = publication), même les plus réticents adoptent facilement."
   },
   {
     question: "Quelles plateformes sont supportées ?",
-    answer: "Actuellement, nReach Studio supporte Facebook. Instagram sera disponible au T1 2025, suivi de TikTok au T2 2025 et LinkedIn courant 2025. Chaque plateforme additionnelle est proposée en option."
+    answer: "Actuellement Facebook. Instagram arrive au T1 2026, suivi de Google Business Profile, TikTok et LinkedIn courant 2026."
   },
   {
     question: "Comment sont calculés les tarifs ?",
-    answer: "Notre tarification est basée sur le nombre d'utilisateurs (points de vente) à 30€/mois/utilisateur, avec des tarifs dégressifs pour les grands réseaux. Des frais de setup one-shot s'appliquent à partir de 990€ selon la complexité de votre configuration."
-  },
-  {
-    question: "Puis-je essayer nReach Studio avant de m'engager ?",
-    answer: "Oui ! Nous proposons une démo personnalisée gratuite où nous vous montrons la plateforme avec vos propres contenus. Vous pouvez également bénéficier d'une période d'essai sur un échantillon de vos points de vente."
-  },
+    answer: "30€/utilisateur/mois avec tarifs dégressifs pour les grands réseaux. Le siège est GRATUIT si 10+ adhérents payants. Frais de setup one-shot à partir de 990€."
+  }
 ];
