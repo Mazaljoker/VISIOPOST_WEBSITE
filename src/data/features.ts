@@ -1,44 +1,44 @@
 import { Feature } from '../types';
 
 /**
- * Fonctionnalités nReach Studio
- * Focus sur les bénéfices, pas sur la technique
+ * Fonctionnalités nSignal - Charte Graphique 2025
+ * Focus sur le PILOTAGE et les bénéfices
  */
 export const features: Feature[] = [
   {
+    icon: "Radio",
+    title: "Dashboard Pilotage",
+    description: "Vue temps réel sur l'activité de tout votre réseau. Alertes inactivité, insights performance.",
+    gradient: "bg-gradient-to-br from-nsignal-primary to-nsignal-primary-600"
+  },
+  {
     icon: "Sparkles",
-    title: "Génération IA",
-    description: "Notre technologie crée des variations uniques de vos campagnes. Chaque magasin = un contenu différent.",
-    gradient: "bg-gradient-to-br from-nreach-electric to-nreach-lavande"
-  },
-  {
-    icon: "MapPin",
-    title: "Personnalisation locale",
-    description: "Ville, région, actualités locales. Chaque post parle à l'audience du magasin.",
-    gradient: "bg-gradient-to-br from-nreach-lavande to-nreach-midnight"
-  },
-  {
-    icon: "Shield",
-    title: "Validation centralisée",
-    description: "Le siège contrôle le message. Les magasins exécutent sans risque d'erreur.",
-    gradient: "bg-gradient-to-br from-nreach-midnight to-nreach-electric"
-  },
-  {
-    icon: "Zap",
-    title: "Publication simplifiée",
-    description: "3 clics pour publier. Aucune formation nécessaire. 30 secondes chrono.",
-    gradient: "bg-gradient-to-br from-nreach-electric to-nreach-midnight"
-  },
-  {
-    icon: "BarChart3",
-    title: "Analytics réseau",
-    description: "Vue consolidée de la performance. Comparez vos régions en temps réel.",
-    gradient: "bg-gradient-to-br from-nreach-lavande to-nreach-electric"
+    title: "Génération IA Anti-Duplicate",
+    description: "Chaque magasin = un post unique. 0% pénalité Facebook garanti.",
+    gradient: "bg-gradient-to-br from-nsignal-secondary to-nsignal-secondary-600"
   },
   {
     icon: "Users",
-    title: "Multi-format",
-    description: "Feed, Stories, Reels. Un visuel, tous les formats. Optimisé pour chaque plateforme.",
-    gradient: "bg-gradient-to-br from-nreach-midnight to-nreach-lavande"
+    title: "3 Modes de Distribution",
+    description: "Free Style, Playlist, ou Full Auto. Adaptez à la maturité de chaque adhérent.",
+    gradient: "bg-gradient-to-br from-nsignal-accent to-nsignal-accent-600"
+  },
+  {
+    icon: "MapPin",
+    title: "Personnalisation Locale",
+    description: "Ville, région, événements locaux. Chaque post parle à son audience.",
+    gradient: "bg-gradient-to-br from-nsignal-primary to-nsignal-secondary"
+  },
+  {
+    icon: "BarChart3",
+    title: "Analytics Réseau",
+    description: "Comparez vos régions, identifiez les top performers, mesurez le ROI.",
+    gradient: "bg-gradient-to-br from-nsignal-secondary to-nsignal-accent"
+  },
+  {
+    icon: "Shield",
+    title: "Validation Centralisée",
+    description: "Le siège valide les blocs, pas les posts. Brand safety garantie.",
+    gradient: "bg-gradient-to-br from-nsignal-dark to-nsignal-primary"
   }
 ];
