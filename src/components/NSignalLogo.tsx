@@ -13,6 +13,10 @@ const sizes = {
   lg: { full: { width: 300, height: 56 }, icon: { width: 64, height: 64 } },
 };
 
+/**
+ * Logo nSignal - Charte Graphique 2025
+ * Couleurs: Teal #0F7B6C + Coral #E86A58
+ */
 export const NSignalLogo: React.FC<NSignalLogoProps> = ({
   variant = 'full',
   theme = 'light',
@@ -21,23 +25,25 @@ export const NSignalLogo: React.FC<NSignalLogoProps> = ({
 }) => {
   const { width, height } = sizes[size][variant];
   
+  // Nouvelles couleurs nSignal 2025
   const colors = {
     light: {
-      primary: '#1A1F3D',
-      text: '#1A1F3D',
-      muted: '#6B7280',
-      ring: '#1A1F3D',
+      primary: '#1E2B3A',    // Charcoal Chaud
+      text: '#1E2B3A',
+      muted: '#6B6259',
+      ring: '#1E2B3A',
     },
     dark: {
-      primary: '#FFFFFF',
-      text: '#FFFFFF',
-      muted: '#9CA3AF',
-      ring: '#FFFFFF',
+      primary: '#F8F5F2',    // Crème Mocha
+      text: '#F8F5F2',
+      muted: '#B8B0A8',
+      ring: '#F8F5F2',
     },
   };
   
   const c = colors[theme];
-  const electric = '#00D4AA';
+  const teal = '#0F7B6C';     // Primary - Teal Profond
+  const coral = '#E86A58';    // Secondary - Coral Dynamique
 
   if (variant === 'icon') {
     return (
@@ -49,52 +55,45 @@ export const NSignalLogo: React.FC<NSignalLogoProps> = ({
         xmlns="http://www.w3.org/2000/svg"
         className={className}
       >
-        {/* Signal waves */}
+        {/* Signal waves - Coral */}
         <path
           d="M32 8 C32 8, 52 20, 52 32 C52 44, 32 56, 32 56"
-          stroke={c.ring}
+          stroke={coral}
           strokeWidth="2"
           fill="none"
-          opacity="0.15"
+          opacity="0.2"
         />
         <path
           d="M32 14 C32 14, 46 23, 46 32 C46 41, 32 50, 32 50"
-          stroke={c.ring}
+          stroke={coral}
           strokeWidth="2"
           fill="none"
-          opacity="0.25"
+          opacity="0.35"
         />
         <path
           d="M32 20 C32 20, 40 26, 40 32 C40 38, 32 44, 32 44"
-          stroke={c.ring}
-          strokeWidth="2"
+          stroke={coral}
+          strokeWidth="2.5"
           fill="none"
-          opacity="0.4"
+          opacity="0.6"
         />
         
-        {/* Center circle with n */}
-        <circle cx="28" cy="32" r="14" fill={c.primary} />
+        {/* Center circle with n - Teal */}
+        <circle cx="26" cy="32" r="16" fill={teal} />
         <text
-          x="28"
-          y="39"
+          x="26"
+          y="40"
           textAnchor="middle"
           fontFamily="Plus Jakarta Sans, sans-serif"
-          fontSize="18"
+          fontSize="20"
           fontWeight="800"
-          fill={theme === 'light' ? '#FFFFFF' : '#0F1219'}
+          fill="#FFFFFF"
         >
           n
         </text>
         
-        {/* Network nodes */}
-        <circle cx="32" cy="4" r="4" fill={electric} />
-        <circle cx="60" cy="32" r="4" fill={electric} />
-        <circle cx="32" cy="60" r="4" fill={electric} />
-        <circle cx="4" cy="32" r="4" fill={electric} />
-        
-        {/* Diagonal signal dots */}
-        <circle cx="54" cy="14" r="3" fill={electric} opacity="0.6" />
-        <circle cx="54" cy="50" r="3" fill={electric} opacity="0.6" />
+        {/* Signal dot - Coral */}
+        <circle cx="56" cy="32" r="5" fill={coral} />
       </svg>
     );
   }
@@ -111,46 +110,43 @@ export const NSignalLogo: React.FC<NSignalLogoProps> = ({
     >
       {/* Icon with signal waves */}
       <g>
-        {/* Signal waves */}
+        {/* Signal waves - Coral */}
         <path
           d="M24 4 C24 4, 42 14, 42 24 C42 34, 24 44, 24 44"
-          stroke={c.ring}
+          stroke={coral}
           strokeWidth="1.5"
           fill="none"
-          opacity="0.15"
+          opacity="0.2"
         />
         <path
           d="M24 10 C24 10, 36 17, 36 24 C36 31, 24 38, 24 38"
-          stroke={c.ring}
+          stroke={coral}
           strokeWidth="1.5"
           fill="none"
-          opacity="0.25"
+          opacity="0.4"
         />
         
-        {/* Center circle */}
-        <circle cx="20" cy="24" r="11" fill={c.primary} />
+        {/* Center circle - Teal */}
+        <circle cx="18" cy="24" r="12" fill={teal} />
         <text
-          x="20"
+          x="18"
           y="30"
           textAnchor="middle"
           fontFamily="Plus Jakarta Sans, sans-serif"
           fontSize="14"
           fontWeight="800"
-          fill={theme === 'light' ? '#FFFFFF' : '#0F1219'}
+          fill="#FFFFFF"
         >
           n
         </text>
         
-        {/* Network nodes */}
-        <circle cx="24" cy="2" r="3" fill={electric} />
-        <circle cx="46" cy="24" r="3" fill={electric} />
-        <circle cx="24" cy="46" r="3" fill={electric} />
-        <circle cx="2" cy="24" r="3" fill={electric} />
+        {/* Signal dot - Coral */}
+        <circle cx="44" cy="24" r="4" fill={coral} />
       </g>
       
       {/* Text: nSignal */}
-      <text x="58" y="32" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="28" fontWeight="800" fill={electric}>n</text>
-      <text x="78" y="32" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="28" fontWeight="800" fill={c.text}>Signal</text>
+      <text x="58" y="32" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="28" fontWeight="800" fill={teal}>n</text>
+      <text x="78" y="32" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="28" fontWeight="700" fill={c.text}>Signal</text>
     </svg>
   );
 };
