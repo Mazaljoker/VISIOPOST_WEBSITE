@@ -1,277 +1,187 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Radio, Users, Zap, MapPin, Play, MessageSquare, Eye, BarChart3 } from 'lucide-react';
-import { Button } from '../components/Button';
-
-const stats = [
-  { value: 'n', label: 'locations', icon: Users },
-  { value: '1', label: 'signal', icon: Radio },
-  { value: '∞', label: 'variations', icon: Zap },
-];
-
-const examplePosts = [
-  {
-    city: 'Lyon',
-    region: 'Auvergne-Rhône-Alpes',
-    text: '"Ici à Lyon, on craque pour les nouvelles Ray-Ban !"',
-  },
-  {
-    city: 'Bordeaux',
-    region: 'Nouvelle-Aquitaine',
-    text: '"En Nouvelle-Aquitaine, c\'est LA tendance de l\'été !"',
-  },
-];
+import { motion } from 'framer-motion';
+import { ArrowRight, Play, Clock, Users, TrendingUp } from 'lucide-react';
 
 /**
- * HeroSection - Charte Graphique nSignal 2025
- * Couleurs: Teal #0F7B6C + Coral #E86A58 + Charcoal #1E2B3A
+ * Hero Section - Vision nSignal
+ * Message clé: "Du contenu siège au post local en 40 secondes"
  */
-export const HeroSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'exemple' | 'video'>('exemple');
-
+const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background - Charcoal Chaud */}
-      <div className="absolute inset-0 bg-nsignal-dark-500" />
+    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-nsignal-primary/5 via-transparent to-nsignal-secondary/5" />
       
-      {/* Glow Effects - Teal & Coral */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-nsignal-primary/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-nsignal-secondary/20 rounded-full blur-3xl" />
-      
-      {/* Grid Pattern */}
-      <div 
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), 
-                           linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }}
-      />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text */}
-          <div className="text-center lg:text-left">
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nsignal-primary/10 border border-nsignal-primary/30 mb-8"
-            >
-              <Radio className="w-4 h-4 text-nsignal-primary" />
-              <span className="text-nsignal-primary text-sm font-medium">
-                Plateforme de pilotage social pour réseaux
-              </span>
-            </motion.div>
-            
-            {/* Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6"
-            >
-              <span className="text-nsignal-primary">n</span> locations.
-              <br />
-              <span className="bg-gradient-to-r from-nsignal-primary to-nsignal-secondary bg-clip-text text-transparent">
-                One signal.
-              </span>
-            </motion.h1>
-            
-            {/* Subheadline */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-lg sm:text-xl text-nsignal-light-600 max-w-xl mb-8"
-            >
-              <span className="text-white font-semibold">Pilotez</span> la présence sociale de tout votre réseau.
-              <br />
-              <span className="text-nsignal-primary">Captez les signaux. Coordonnez sans imposer.</span>
-            </motion.p>
-            
-            {/* Value Props */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8 text-sm"
-            >
-              <div className="flex items-center gap-2 text-nsignal-light-600">
-                <Eye className="w-4 h-4 text-nsignal-primary" />
-                <span>Visibilité temps réel</span>
-              </div>
-              <div className="flex items-center gap-2 text-nsignal-light-600">
-                <BarChart3 className="w-4 h-4 text-nsignal-secondary" />
-                <span>Dashboard siège</span>
-              </div>
-              <div className="flex items-center gap-2 text-nsignal-light-600">
-                <Zap className="w-4 h-4 text-nsignal-accent" />
-                <span>0% duplicate</span>
-              </div>
-            </motion.div>
-            
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-10"
-            >
-              <Button variant="primary" size="lg" icon={<ArrowRight size={20} />}>
-                Démarrer gratuitement
-              </Button>
-              <Button variant="outline" size="lg" className="border-white/20 text-white hover:border-nsignal-primary hover:text-nsignal-primary">
-                Voir la démo
-              </Button>
-            </motion.div>
-            
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex items-center justify-center lg:justify-start gap-8"
-            >
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="flex items-center justify-center gap-2 mb-1">
-                    <stat.icon className="w-4 h-4 text-nsignal-primary" />
-                    <span className="text-2xl sm:text-3xl font-extrabold text-white">
-                      {stat.value}
-                    </span>
-                  </div>
-                  <span className="text-xs text-nsignal-light-600">{stat.label}</span>
-                </div>
-              ))}
-            </motion.div>
+      <div className="max-w-6xl mx-auto text-center relative z-10">
+        {/* Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nsignal-primary/10 border border-nsignal-primary/20 mb-8"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-nsignal-primary opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-nsignal-primary"></span>
+          </span>
+          <span className="text-sm font-medium text-nsignal-primary">
+            Le canal de distribution social pour réseaux multi-sites
+          </span>
+        </motion.div>
+
+        {/* Main headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-nsignal-dark dark:text-white mb-6 leading-tight"
+        >
+          Du contenu siège au post local
+          <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-nsignal-primary to-nsignal-secondary">
+            en 40 secondes
+          </span>
+        </motion.h1>
+
+        {/* Subheadline - La vraie douleur */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-xl md:text-2xl text-nsignal-dark/70 dark:text-white/70 mb-8 max-w-3xl mx-auto"
+        >
+          Vous créez du super contenu au siège, mais{' '}
+          <span className="text-nsignal-primary font-semibold">seulement 15% de vos magasins le publient</span>.
+          <br className="hidden md:block" />
+          nSignal remplace l'email par une app où le franchisé publie en 1 tap.
+        </motion.p>
+
+        {/* Key metrics */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex flex-wrap justify-center gap-6 md:gap-12 mb-10"
+        >
+          <div className="flex items-center gap-2">
+            <Clock className="w-5 h-5 text-nsignal-primary" />
+            <span className="text-nsignal-dark dark:text-white">
+              <span className="font-bold">40 sec</span> vs 30 min
+            </span>
           </div>
+          <div className="flex items-center gap-2">
+            <Users className="w-5 h-5 text-nsignal-secondary" />
+            <span className="text-nsignal-dark dark:text-white">
+              <span className="font-bold">80%</span> du réseau actif
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <TrendingUp className="w-5 h-5 text-green-500" />
+            <span className="text-nsignal-dark dark:text-white">
+              <span className="font-bold">+300%</span> engagement
+            </span>
+          </div>
+        </motion.div>
 
-          {/* Right Column - Demo Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="relative"
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <a
+            href="https://calendly.com/nsignal/demo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 px-8 py-4 bg-nsignal-primary text-white font-semibold rounded-xl shadow-lg shadow-nsignal-primary/25 hover:shadow-xl hover:shadow-nsignal-primary/30 transition-all duration-300 hover:-translate-y-0.5"
           >
-            <div className="bg-white dark:bg-nsignal-dark-500 rounded-2xl shadow-2xl overflow-hidden">
-              {/* Tabs */}
-              <div className="flex border-b border-nsignal-light-400 dark:border-nsignal-dark-400">
-                <button
-                  onClick={() => setActiveTab('exemple')}
-                  className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 text-sm font-medium transition-colors ${
-                    activeTab === 'exemple'
-                      ? 'text-nsignal-dark dark:text-nsignal-light border-b-2 border-nsignal-primary'
-                      : 'text-nsignal-light-700 dark:text-nsignal-light-600 hover:text-nsignal-dark dark:hover:text-nsignal-light'
-                  }`}
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  Exemple
-                </button>
-                <button
-                  onClick={() => setActiveTab('video')}
-                  className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 text-sm font-medium transition-colors ${
-                    activeTab === 'video'
-                      ? 'text-nsignal-dark dark:text-nsignal-light border-b-2 border-nsignal-primary'
-                      : 'text-nsignal-light-700 dark:text-nsignal-light-600 hover:text-nsignal-dark dark:hover:text-nsignal-light'
-                  }`}
-                >
-                  <Play className="w-4 h-4" />
-                  Vidéo
-                  <span className="px-2 py-0.5 bg-nsignal-light-300 dark:bg-nsignal-dark-600 rounded text-xs">2min</span>
-                </button>
+            Voir une démo
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </a>
+          <button className="inline-flex items-center gap-2 px-8 py-4 border-2 border-nsignal-dark/20 dark:border-white/20 text-nsignal-dark dark:text-white font-semibold rounded-xl hover:border-nsignal-primary hover:text-nsignal-primary transition-all duration-300">
+            <Play className="w-5 h-5" />
+            Voir comment ça marche
+          </button>
+        </motion.div>
+
+        {/* Visual representation of the flow */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="mt-16 relative"
+        >
+          <div className="bg-white dark:bg-nsignal-dark-500 rounded-2xl shadow-2xl p-6 md:p-8 max-w-4xl mx-auto border border-nsignal-light-400 dark:border-nsignal-dark-400">
+            {/* Flow visualization */}
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              {/* Siège */}
+              <div className="flex-1 text-center">
+                <div className="w-16 h-16 mx-auto mb-3 rounded-2xl bg-nsignal-primary/10 flex items-center justify-center">
+                  <span className="text-2xl">🏢</span>
+                </div>
+                <p className="font-semibold text-nsignal-dark dark:text-white">Siège</p>
+                <p className="text-sm text-nsignal-dark/60 dark:text-white/60">Crée une fois</p>
               </div>
 
-              {/* Tab Content */}
-              <div className="p-6">
-                <AnimatePresence mode="wait">
-                  {activeTab === 'exemple' ? (
-                    <motion.div
-                      key="exemple"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                    >
-                      {/* Campaign Header */}
-                      <div className="flex items-center justify-between mb-6">
-                        <div>
-                          <p className="text-xs text-nsignal-light-700 dark:text-nsignal-light-600 uppercase tracking-wide">Campagne</p>
-                          <h4 className="font-bold text-nsignal-dark dark:text-nsignal-light">"Nouvelle Collection"</h4>
-                        </div>
-                        <div className="px-3 py-1.5 bg-nsignal-primary text-white text-sm font-bold rounded-lg">
-                          500 POSTS UNIQUES
-                        </div>
-                      </div>
+              {/* Arrow */}
+              <div className="hidden md:block">
+                <motion.div
+                  animate={{ x: [0, 10, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="text-nsignal-primary"
+                >
+                  <ArrowRight className="w-8 h-8" />
+                </motion.div>
+              </div>
 
-                      {/* Example Posts */}
-                      <div className="grid grid-cols-2 gap-4 mb-6">
-                        {examplePosts.map((post, index) => (
-                          <div
-                            key={index}
-                            className="bg-nsignal-light-300 dark:bg-nsignal-dark-600 rounded-xl p-4 border border-nsignal-light-400 dark:border-nsignal-dark-400"
-                          >
-                            <div className="flex items-center gap-1.5 text-nsignal-primary text-xs font-medium mb-2">
-                              <MapPin className="w-3 h-3" />
-                              {post.city}
-                            </div>
-                            <p className="text-sm text-nsignal-dark dark:text-nsignal-light">
-                              {post.text}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
+              {/* nSignal */}
+              <div className="flex-1 text-center">
+                <div className="w-16 h-16 mx-auto mb-3 rounded-2xl bg-gradient-to-br from-nsignal-primary to-nsignal-secondary flex items-center justify-center shadow-lg">
+                  <span className="text-2xl text-white font-bold">n</span>
+                </div>
+                <p className="font-semibold text-nsignal-dark dark:text-white">nSignal</p>
+                <p className="text-sm text-nsignal-dark/60 dark:text-white/60">Distribue à tous</p>
+              </div>
 
-                      {/* Comparison Bar */}
-                      <div>
-                        <p className="text-xs text-nsignal-light-700 dark:text-nsignal-light-600 mb-2">
-                          Portée Estimée vs Duplicate Content
-                        </p>
-                        <div className="flex h-3 rounded-full overflow-hidden">
-                          <div className="w-1/5 bg-red-500" />
-                          <div className="flex-1 bg-gradient-to-r from-nsignal-primary to-nsignal-secondary" />
-                        </div>
-                        <div className="flex justify-between mt-2 text-xs font-medium">
-                          <span className="text-red-500">Duplicate = -80%</span>
-                          <span className="text-nsignal-primary">nSignal = +340%</span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="video"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="aspect-video bg-nsignal-dark rounded-xl flex items-center justify-center cursor-pointer group"
-                    >
-                      <div className="w-16 h-16 bg-nsignal-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Play className="w-8 h-8 text-white ml-1" />
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+              {/* Arrow */}
+              <div className="hidden md:block">
+                <motion.div
+                  animate={{ x: [0, 10, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
+                  className="text-nsignal-secondary"
+                >
+                  <ArrowRight className="w-8 h-8" />
+                </motion.div>
+              </div>
+
+              {/* Magasins */}
+              <div className="flex-1 text-center">
+                <div className="flex justify-center gap-1 mb-3">
+                  <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                    <span className="text-xl">🏪</span>
+                  </div>
+                  <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                    <span className="text-xl">🏪</span>
+                  </div>
+                  <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                    <span className="text-xl">🏪</span>
+                  </div>
+                </div>
+                <p className="font-semibold text-nsignal-dark dark:text-white">247 magasins</p>
+                <p className="text-sm text-green-600 dark:text-green-400 font-medium">Publient en 1 tap</p>
               </div>
             </div>
 
-            {/* Floating badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8 }}
-              className="absolute -bottom-4 -right-4 bg-white dark:bg-nsignal-dark-500 rounded-xl px-4 py-2 shadow-lg border border-nsignal-light-400 dark:border-nsignal-dark-400"
-            >
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-nsignal-primary rounded-full animate-pulse" />
-                <span className="text-sm font-medium text-nsignal-dark dark:text-nsignal-light">Live demo</span>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
+            {/* Timer */}
+            <div className="mt-6 pt-6 border-t border-nsignal-light-400 dark:border-nsignal-dark-400 text-center">
+              <span className="inline-flex items-center gap-2 text-sm text-nsignal-dark/60 dark:text-white/60">
+                <Clock className="w-4 h-4" />
+                Temps total : <span className="font-bold text-nsignal-primary">40 secondes</span> par magasin
+              </span>
+            </div>
+          </div>
+        </motion.div>
       </div>
-      
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-nsignal-light dark:from-nsignal-dark to-transparent" />
     </section>
   );
 };
