@@ -30,7 +30,7 @@ const steps = [
       'Validation siège garantie',
     ],
     badge: '1 Campagne',
-    badgeColor: 'bg-nreach-midnight text-white',
+    badgeColor: 'bg-nsignal-dark text-white',
   },
   {
     number: '02',
@@ -42,7 +42,7 @@ const steps = [
       'Zéro duplicate content',
     ],
     badge: '500 Posts Uniques',
-    badgeColor: 'bg-nreach-midnight text-white',
+    badgeColor: 'bg-nsignal-dark text-white',
   },
   {
     number: '03',
@@ -54,7 +54,7 @@ const steps = [
       'Aucune formation nécessaire',
     ],
     badge: '30 Secondes',
-    badgeColor: 'bg-nreach-lavande text-white',
+    badgeColor: 'bg-nsignal-secondary text-white',
   },
   {
     number: '04',
@@ -66,17 +66,16 @@ const steps = [
       'Analytics consolidés en temps réel',
     ],
     badge: '+340% Reach',
-    badgeColor: 'bg-nreach-electric text-nreach-midnight',
+    badgeColor: 'bg-nsignal-primary text-white',
   },
 ];
 
 /**
- * Section Solution - 4 étapes clés + Brand Safety
- * Rebrandé pour nReach Studio
+ * Section Solution - Charte Graphique nSignal 2025
  */
 const SolutionSection = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-light-bg dark:bg-dark-bg">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-nsignal-dark">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -85,15 +84,15 @@ const SolutionSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
-            Comment <span className="text-nreach-electric">nReach Studio</span> résout le problème
+          <h2 className="text-3xl md:text-4xl font-bold text-nsignal-dark dark:text-nsignal-light mb-4">
+            Comment <span className="text-nsignal-primary">nSignal</span> résout le problème
           </h2>
-          <p className="text-lg text-light-text-muted dark:text-dark-text-muted max-w-2xl mx-auto">
+          <p className="text-lg text-nsignal-light-700 dark:text-nsignal-light-600 max-w-2xl mx-auto">
             Un processus simple et sécurisé pour générer du contenu unique sur tout votre réseau
           </p>
         </motion.div>
 
-        {/* Top Cards - Brand Safety, 30s, Portée */}
+        {/* Top Cards */}
         <motion.div
           className="grid md:grid-cols-3 gap-6 mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -104,16 +103,16 @@ const SolutionSection = () => {
           {topCards.map((card, index) => (
             <motion.div
               key={index}
-              className="bg-white dark:bg-dark-surface rounded-2xl p-6 border border-light-border dark:border-dark-border shadow-card text-center"
+              className="bg-nsignal-light dark:bg-nsignal-dark-500 rounded-2xl p-6 border border-nsignal-light-400 dark:border-nsignal-dark-400 shadow-card text-center"
               whileHover={{ y: -4 }}
             >
-              <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-nreach-electric/20 to-nreach-lavande/20 flex items-center justify-center">
-                <card.icon className="w-7 h-7 text-nreach-electric" />
+              <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-nsignal-primary/20 to-nsignal-secondary/20 flex items-center justify-center">
+                <card.icon className="w-7 h-7 text-nsignal-primary" />
               </div>
-              <h3 className="text-lg font-bold text-nreach-midnight dark:text-dark-text mb-2">
+              <h3 className="text-lg font-bold text-nsignal-dark dark:text-nsignal-light mb-2">
                 {card.title}
               </h3>
-              <p className="text-sm text-light-text-muted dark:text-dark-text-muted">
+              <p className="text-sm text-nsignal-light-700 dark:text-nsignal-light-600">
                 {card.description}
               </p>
             </motion.div>
@@ -125,40 +124,40 @@ const SolutionSection = () => {
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              className="relative bg-white dark:bg-dark-surface rounded-2xl p-6 border border-light-border dark:border-dark-border shadow-card"
+              className="relative bg-nsignal-light dark:bg-nsignal-dark-500 rounded-2xl p-6 border border-nsignal-light-400 dark:border-nsignal-dark-400 shadow-card"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -4 }}
             >
-              {/* Arrow between cards (desktop only) */}
+              {/* Arrow between cards */}
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10">
-                  <ArrowRight className="w-6 h-6 text-nreach-electric" />
+                  <ArrowRight className="w-6 h-6 text-nsignal-primary" />
                 </div>
               )}
 
               {/* Icon */}
-              <div className="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-nreach-midnight to-nreach-lavande flex items-center justify-center">
+              <div className="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-nsignal-dark to-nsignal-primary flex items-center justify-center">
                 <step.icon className="w-7 h-7 text-white" />
               </div>
 
               {/* Number */}
-              <div className="text-4xl font-extrabold text-nreach-electric mb-2">
+              <div className="text-4xl font-extrabold text-nsignal-primary mb-2">
                 {step.number}
               </div>
 
               {/* Title */}
-              <h3 className="text-lg font-bold text-nreach-midnight dark:text-dark-text mb-4 uppercase tracking-wide">
+              <h3 className="text-lg font-bold text-nsignal-dark dark:text-nsignal-light mb-4 uppercase tracking-wide">
                 {step.title}
               </h3>
 
               {/* Features */}
               <ul className="space-y-2 mb-6">
                 {step.features.map((feature, fIndex) => (
-                  <li key={fIndex} className="flex items-start gap-2 text-sm text-light-text-muted dark:text-dark-text-muted">
-                    <Check className="w-4 h-4 text-nreach-electric flex-shrink-0 mt-0.5" />
+                  <li key={fIndex} className="flex items-start gap-2 text-sm text-nsignal-light-700 dark:text-nsignal-light-600">
+                    <Check className="w-4 h-4 text-nsignal-primary flex-shrink-0 mt-0.5" />
                     <span>{feature}</span>
                   </li>
                 ))}

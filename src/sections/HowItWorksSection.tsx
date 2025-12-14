@@ -10,7 +10,7 @@ const mainSteps = [
   },
   {
     icon: Sparkles,
-    title: 'nReach Studio',
+    title: 'nSignal',
     description: 'Génère n variations uniques avec notre IA',
     highlight: true,
   },
@@ -35,19 +35,18 @@ const controlFeatures = [
 ];
 
 const sectors = [
-  { icon: Glasses, name: 'Optique', color: 'from-blue-500 to-cyan-500' },
-  { icon: ShoppingCart, name: 'Distribution', color: 'from-orange-500 to-red-500' },
-  { icon: Dumbbell, name: 'Sport', color: 'from-green-500 to-emerald-500' },
-  { icon: Scissors, name: 'Beauté / Coiffure', color: 'from-pink-500 to-rose-500' },
+  { icon: Glasses, name: 'Optique', color: 'from-nsignal-primary to-nsignal-primary-600' },
+  { icon: ShoppingCart, name: 'Distribution', color: 'from-nsignal-secondary to-nsignal-secondary-600' },
+  { icon: Dumbbell, name: 'Sport', color: 'from-nsignal-accent to-nsignal-accent-600' },
+  { icon: Scissors, name: 'Beauté / Coiffure', color: 'from-nsignal-primary to-nsignal-secondary' },
 ];
 
 /**
- * Section How It Works - Flowchart + Contrôle + Secteurs
- * Rebrandé pour nReach Studio
+ * Section How It Works - Charte Graphique nSignal 2025
  */
 const HowItWorksSection = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-light-surface dark:bg-dark-surface">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-nsignal-light dark:bg-nsignal-dark-500">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -56,23 +55,23 @@ const HowItWorksSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-nsignal-dark dark:text-nsignal-light mb-4">
             Comment ça marche ?
           </h2>
-          <p className="text-lg text-light-text-muted dark:text-dark-text-muted max-w-2xl mx-auto">
+          <p className="text-lg text-nsignal-light-700 dark:text-nsignal-light-600 max-w-2xl mx-auto">
             Un processus simple en 3 étapes pour diffuser du contenu unique sur tout votre réseau
           </p>
         </motion.div>
 
-        {/* Main Flow: Siège → nReach → Magasins */}
+        {/* Main Flow: Siège → nSignal → Magasins */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-16">
           {mainSteps.map((step, index) => (
             <React.Fragment key={index}>
               <motion.div
                 className={`flex flex-col items-center p-6 rounded-2xl w-full md:w-64 ${
                   step.highlight
-                    ? 'bg-gradient-to-br from-nreach-electric/10 to-nreach-lavande/10 border-2 border-nreach-electric'
-                    : 'bg-white dark:bg-dark-bg border border-light-border dark:border-dark-border'
+                    ? 'bg-gradient-to-br from-nsignal-primary/10 to-nsignal-secondary/10 border-2 border-nsignal-primary'
+                    : 'bg-white dark:bg-nsignal-dark border border-nsignal-light-400 dark:border-nsignal-dark-400'
                 } shadow-card`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -82,17 +81,17 @@ const HowItWorksSection = () => {
               >
                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 ${
                   step.highlight
-                    ? 'bg-gradient-to-br from-nreach-electric to-nreach-lavande'
-                    : 'bg-gradient-to-br from-nreach-midnight to-nreach-lavande'
+                    ? 'bg-gradient-to-br from-nsignal-primary to-nsignal-secondary'
+                    : 'bg-gradient-to-br from-nsignal-dark to-nsignal-primary'
                 }`}>
                   <step.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className={`text-lg font-bold mb-2 ${
-                  step.highlight ? 'text-nreach-electric' : 'text-nreach-midnight dark:text-dark-text'
+                  step.highlight ? 'text-nsignal-primary' : 'text-nsignal-dark dark:text-nsignal-light'
                 }`}>
                   {step.title}
                 </h3>
-                <p className="text-sm text-light-text-muted dark:text-dark-text-muted text-center">
+                <p className="text-sm text-nsignal-light-700 dark:text-nsignal-light-600 text-center">
                   {step.description}
                 </p>
               </motion.div>
@@ -105,7 +104,7 @@ const HowItWorksSection = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.15 + 0.1 }}
                 >
-                  <ArrowRight className="w-8 h-8 text-nreach-electric" />
+                  <ArrowRight className="w-8 h-8 text-nsignal-primary" />
                 </motion.div>
               )}
             </React.Fragment>
@@ -119,27 +118,27 @@ const HowItWorksSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-nreach-midnight dark:text-dark-text text-center mb-8">
-            Vous gardez le <span className="text-nreach-electric">contrôle</span>
+          <h3 className="text-2xl font-bold text-nsignal-dark dark:text-nsignal-light text-center mb-8">
+            Vous gardez le <span className="text-nsignal-primary">contrôle</span>
           </h3>
           <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {controlFeatures.map((feature, index) => (
               <motion.div
                 key={index}
-                className="flex items-start gap-4 bg-white dark:bg-dark-bg rounded-xl p-5 border border-light-border dark:border-dark-border shadow-card"
+                className="flex items-start gap-4 bg-white dark:bg-nsignal-dark rounded-xl p-5 border border-nsignal-light-400 dark:border-nsignal-dark-400 shadow-card"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="w-12 h-12 bg-nreach-electric/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <feature.icon className="w-6 h-6 text-nreach-electric" />
+                <div className="w-12 h-12 bg-nsignal-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <feature.icon className="w-6 h-6 text-nsignal-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-nreach-midnight dark:text-dark-text mb-1">
+                  <h4 className="font-bold text-nsignal-dark dark:text-nsignal-light mb-1">
                     {feature.title}
                   </h4>
-                  <p className="text-sm text-light-text-muted dark:text-dark-text-muted">
+                  <p className="text-sm text-nsignal-light-700 dark:text-nsignal-light-600">
                     {feature.description}
                   </p>
                 </div>
@@ -154,14 +153,14 @@ const HowItWorksSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-nreach-midnight dark:text-dark-text text-center mb-8">
-            Adapté à votre <span className="text-nreach-electric">secteur</span>
+          <h3 className="text-2xl font-bold text-nsignal-dark dark:text-nsignal-light text-center mb-8">
+            Adapté à votre <span className="text-nsignal-secondary">secteur</span>
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {sectors.map((sector, index) => (
               <motion.div
                 key={index}
-                className="bg-white dark:bg-dark-bg rounded-xl p-5 border border-light-border dark:border-dark-border shadow-card text-center"
+                className="bg-white dark:bg-nsignal-dark rounded-xl p-5 border border-nsignal-light-400 dark:border-nsignal-dark-400 shadow-card text-center"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -171,7 +170,7 @@ const HowItWorksSection = () => {
                 <div className={`w-14 h-14 mx-auto mb-3 rounded-2xl bg-gradient-to-br ${sector.color} flex items-center justify-center`}>
                   <sector.icon className="w-7 h-7 text-white" />
                 </div>
-                <h4 className="font-semibold text-nreach-midnight dark:text-dark-text">
+                <h4 className="font-semibold text-nsignal-dark dark:text-nsignal-light">
                   {sector.name}
                 </h4>
               </motion.div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '../components/Button';
-import { NReachLogo } from '../components/NReachLogo';
+import { NSignalLogo } from '../components/NSignalLogo';
 
 interface FinalCtaSectionProps {
   onOpenRoi?: () => void;
@@ -15,15 +15,18 @@ const benefits = [
   'Annulation à tout moment',
 ];
 
+/**
+ * Section Final CTA - Charte Graphique nSignal 2025
+ */
 export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenRoi }) => {
   return (
     <section className="relative py-24 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-midnight" />
+      {/* Background - Charcoal Chaud */}
+      <div className="absolute inset-0 bg-nsignal-dark" />
       
-      {/* Glow Effects */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-nreach-electric/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-nreach-lavande/20 rounded-full blur-3xl" />
+      {/* Glow Effects - Teal & Coral */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-nsignal-primary/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-nsignal-secondary/20 rounded-full blur-3xl" />
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Icon */}
@@ -33,7 +36,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenRoi }) =
           viewport={{ once: true }}
           className="flex justify-center mb-8"
         >
-          <NReachLogo variant="icon" theme="dark" size="lg" />
+          <NSignalLogo variant="icon" theme="dark" size="lg" />
         </motion.div>
         
         {/* Headline */}
@@ -45,7 +48,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenRoi }) =
         >
           Prêt à maximiser la
           <br />
-          <span className="bg-gradient-to-r from-nreach-electric to-nreach-lavande bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-nsignal-primary to-nsignal-secondary bg-clip-text text-transparent">
             portée de votre réseau ?
           </span>
         </motion.h2>
@@ -56,7 +59,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenRoi }) =
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-xl text-dark-text-muted mb-10 max-w-2xl mx-auto"
+          className="text-xl text-nsignal-light-600 mb-10 max-w-2xl mx-auto"
         >
           Rejoignez les réseaux qui génèrent déjà des milliers de posts uniques
           pour leurs points de vente.
@@ -75,8 +78,8 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenRoi }) =
               key={index}
               className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10"
             >
-              <CheckCircle className="w-4 h-4 text-nreach-electric" />
-              <span className="text-sm text-dark-text-muted">{benefit}</span>
+              <CheckCircle className="w-4 h-4 text-nsignal-primary" />
+              <span className="text-sm text-nsignal-light-600">{benefit}</span>
             </div>
           ))}
         </motion.div>
@@ -93,7 +96,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenRoi }) =
             Démarrer gratuitement
           </Button>
           {onOpenRoi && (
-            <Button variant="ghost" size="lg" onClick={onOpenRoi} className="text-nreach-electric">
+            <Button variant="ghost" size="lg" onClick={onOpenRoi} className="text-nsignal-primary hover:text-nsignal-secondary">
               Simuler mon ROI
             </Button>
           )}
@@ -105,9 +108,9 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenRoi }) =
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-8 text-nreach-electric font-medium italic"
+          className="mt-8 text-nsignal-primary font-medium italic"
         >
-          "n locations. One studio."
+          "n locations. One signal."
         </motion.p>
       </div>
     </section>

@@ -26,12 +26,11 @@ const platforms = [
 ];
 
 /**
- * Section Problem - Le problème du duplicate content
- * Rebrandé pour nReach Studio - Multi-plateformes
+ * Section Problem - Charte Graphique nSignal 2025
  */
 const ProblemSection = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-light-surface dark:bg-dark-surface">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-nsignal-light dark:bg-nsignal-dark-500">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-12"
@@ -43,10 +42,10 @@ const ProblemSection = () => {
             <AlertTriangle className="w-4 h-4" />
             <span className="text-sm font-medium">Le problème</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-nsignal-dark dark:text-nsignal-light mb-4">
             Les réseaux sociaux pénalisent le contenu dupliqué
           </h2>
-          <p className="text-lg text-light-text-muted dark:text-dark-text-muted max-w-3xl mx-auto mb-6">
+          <p className="text-lg text-nsignal-light-700 dark:text-nsignal-light-600 max-w-3xl mx-auto mb-6">
             Quand vous créez une campagne et la diffusez à l'identique sur tous vos points de vente, 
             les algorithmes réduisent drastiquement votre portée organique.
           </p>
@@ -56,14 +55,14 @@ const ProblemSection = () => {
             {platforms.map((platform, index) => (
               <motion.div
                 key={index}
-                className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-dark-bg rounded-full border border-light-border dark:border-dark-border"
+                className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-nsignal-dark rounded-full border border-nsignal-light-400 dark:border-nsignal-dark-400"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
                 <platform.icon className="w-4 h-4 text-red-500" />
-                <span className="text-sm text-light-text-muted dark:text-dark-text-muted">{platform.name}</span>
+                <span className="text-sm text-nsignal-light-700 dark:text-nsignal-light-600">{platform.name}</span>
               </motion.div>
             ))}
           </div>
@@ -73,7 +72,7 @@ const ProblemSection = () => {
           {problems.map((problem, index) => (
             <motion.div
               key={index}
-              className="bg-white dark:bg-dark-bg rounded-xl p-6 border border-light-border dark:border-dark-border shadow-card"
+              className="bg-white dark:bg-nsignal-dark rounded-xl p-6 border border-nsignal-light-400 dark:border-nsignal-dark-400 shadow-card"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -82,10 +81,10 @@ const ProblemSection = () => {
               <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center mb-4">
                 <problem.icon className="w-6 h-6 text-red-500" />
               </div>
-              <h3 className="text-lg font-semibold text-nreach-midnight dark:text-dark-text mb-2">
+              <h3 className="text-lg font-semibold text-nsignal-dark dark:text-nsignal-light mb-2">
                 {problem.title}
               </h3>
-              <p className="text-light-text-muted dark:text-dark-text-muted">
+              <p className="text-nsignal-light-700 dark:text-nsignal-light-600">
                 {problem.description}
               </p>
             </motion.div>
