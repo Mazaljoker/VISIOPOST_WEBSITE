@@ -38,7 +38,6 @@ import RoiModal from './components/RoiModal';
 const LandingPage = () => {
   const [isRoiModalOpen, setIsRoiModalOpen] = useState(false);
 
-  const handleOpenRoi = () => setIsRoiModalOpen(true);
   const handleCloseRoi = () => setIsRoiModalOpen(false);
 
   return (
@@ -59,9 +58,9 @@ const LandingPage = () => {
         <HowItWorksSection />
         <FeaturesSection />
         <MultiPlatformSection />
-        <PricingSection onOpenRoi={handleOpenRoi} />
+        <PricingSection />
         <FaqSection />
-        <FinalCtaSection onOpenRoi={handleOpenRoi} />
+        <FinalCtaSection />
         <Footer />
       </div>
     </div>
