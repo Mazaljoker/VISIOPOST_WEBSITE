@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin, Twitter, Mail } from 'lucide-react';
-import { NReachLogo } from '../components/NReachLogo';
+import { NSignalLogo } from '../components/NSignalLogo';
 
 const footerLinks = {
   product: [
@@ -11,7 +11,7 @@ const footerLinks = {
   ],
   company: [
     { label: 'À propos', href: '#about' },
-    { label: 'Contact', href: 'mailto:contact@nreachstudio.com' },
+    { label: 'Contact', href: 'mailto:contact@nsignal.ai' },
     { label: 'Blog', href: '#blog' },
   ],
   legal: [
@@ -24,7 +24,7 @@ const footerLinks = {
 const socialLinks = [
   { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
   { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-  { icon: Mail, href: 'mailto:contact@nreachstudio.com', label: 'Email' },
+  { icon: Mail, href: 'mailto:contact@nsignal.ai', label: 'Email' },
 ];
 
 export const Footer: React.FC = () => {
@@ -34,12 +34,12 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <NReachLogo variant="full" theme="dark" size="md" className="mb-6" />
+            <NSignalLogo variant="full" theme="dark" size="md" className="mb-6" />
             <p className="text-dark-text-muted max-w-sm mb-6">
-              La plateforme qui génère des posts uniques pour chaque point de vente de votre réseau.
+              La plateforme de pilotage social qui capte les signaux de votre réseau et coordonne sans imposer.
             </p>
             <p className="text-nreach-electric font-medium italic">
-              "n locations. One studio."
+              "n locations. One signal."
             </p>
           </div>
 
@@ -98,7 +98,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-dark-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-dark-text-muted text-sm">
-            © {new Date().getFullYear()} nReach Studio. Tous droits réservés.
+            © {new Date().getFullYear()} nSignal. Tous droits réservés.
           </p>
           
           {/* Social Links */}

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Sparkles, Users, Zap, MapPin, Play, MessageSquare } from 'lucide-react';
+import { ArrowRight, Radio, Users, Zap, MapPin, Play, MessageSquare, Eye, BarChart3 } from 'lucide-react';
 import { Button } from '../components/Button';
 
 const stats = [
   { value: 'n', label: 'locations', icon: Users },
-  { value: '1', label: 'studio', icon: Zap },
-  { value: '∞', label: 'variations', icon: Sparkles },
+  { value: '1', label: 'signal', icon: Radio },
+  { value: '∞', label: 'variations', icon: Zap },
 ];
 
 const examplePosts = [
@@ -55,9 +55,9 @@ export const HeroSection: React.FC = () => {
               transition={{ delay: 0.1 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nreach-electric/10 border border-nreach-electric/30 mb-8"
             >
-              <Sparkles className="w-4 h-4 text-nreach-electric" />
+              <Radio className="w-4 h-4 text-nreach-electric" />
               <span className="text-nreach-electric text-sm font-medium">
-                Propulsé par notre IA propriétaire
+                Plateforme de pilotage social pour réseaux
               </span>
             </motion.div>
             
@@ -71,21 +71,42 @@ export const HeroSection: React.FC = () => {
               <span className="text-nreach-electric">n</span> locations.
               <br />
               <span className="bg-gradient-to-r from-nreach-electric to-nreach-lavande bg-clip-text text-transparent">
-                One studio.
+                One signal.
               </span>
             </motion.h1>
             
-            {/* Subheadline */}
+            {/* Subheadline - NEW POSITIONING */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
               className="text-lg sm:text-xl text-dark-text-muted max-w-xl mb-8"
             >
-              Générez des posts <span className="text-white font-semibold">uniques</span> pour
-              chaque point de vente de votre réseau.
-              <span className="text-nreach-electric"> Fini les pénalités de contenu dupliqué.</span>
+              <span className="text-white font-semibold">Pilotez</span> la présence sociale de tout votre réseau.
+              <br />
+              <span className="text-nreach-electric">Captez les signaux. Coordonnez sans imposer.</span>
             </motion.p>
+            
+            {/* Value Props */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8 text-sm"
+            >
+              <div className="flex items-center gap-2 text-dark-text-muted">
+                <Eye className="w-4 h-4 text-nreach-electric" />
+                <span>Visibilité temps réel</span>
+              </div>
+              <div className="flex items-center gap-2 text-dark-text-muted">
+                <BarChart3 className="w-4 h-4 text-nreach-electric" />
+                <span>Dashboard siège</span>
+              </div>
+              <div className="flex items-center gap-2 text-dark-text-muted">
+                <Zap className="w-4 h-4 text-nreach-electric" />
+                <span>0% duplicate</span>
+              </div>
+            </motion.div>
             
             {/* CTA Buttons */}
             <motion.div
@@ -208,7 +229,7 @@ export const HeroSection: React.FC = () => {
                         </div>
                         <div className="flex justify-between mt-2 text-xs font-medium">
                           <span className="text-red-500">Duplicate = -80%</span>
-                          <span className="text-nreach-electric">nReach = +340%</span>
+                          <span className="text-nreach-electric">nSignal = +340%</span>
                         </div>
                       </div>
                     </motion.div>
