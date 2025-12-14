@@ -6,35 +6,34 @@ const stats = [
     value: '+340%',
     label: 'de portée organique',
     icon: TrendingUp,
-    color: 'text-nreach-electric',
+    color: 'text-nsignal-primary',
   },
   {
     value: '500+',
     label: 'points de vente',
     icon: Users,
-    color: 'text-nreach-lavande',
+    color: 'text-nsignal-secondary',
   },
   {
     value: '30s',
     label: 'par post généré',
     icon: Clock,
-    color: 'text-nreach-electric',
+    color: 'text-nsignal-primary',
   },
   {
     value: '0',
     label: 'duplicate content',
     icon: CheckCircle,
-    color: 'text-nreach-lavande',
+    color: 'text-nsignal-accent',
   },
 ];
 
 /**
- * Section Social Proof - Stats de crédibilité
- * Rebrandé pour nReach Studio
+ * Section Social Proof - Charte Graphique nSignal 2025
  */
 const SocialProofSection = () => {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-light-bg dark:bg-dark-bg border-y border-light-border dark:border-dark-border">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-nsignal-dark border-y border-nsignal-light-400 dark:border-nsignal-dark-400">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="grid grid-cols-2 md:grid-cols-4 gap-8"
@@ -52,13 +51,13 @@ const SocialProofSection = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <div className={`inline-flex p-3 rounded-xl bg-light-surface dark:bg-dark-surface mb-3`}>
+              <div className={`inline-flex p-3 rounded-xl bg-nsignal-light dark:bg-nsignal-dark-500 mb-3`}>
                 <stat.icon className={`w-6 h-6 ${stat.color}`} />
               </div>
               <div className={`text-3xl md:text-4xl font-extrabold ${stat.color} mb-1`}>
                 {stat.value}
               </div>
-              <div className="text-sm text-light-text-muted dark:text-dark-text-muted">
+              <div className="text-sm text-nsignal-light-700 dark:text-nsignal-light-600">
                 {stat.label}
               </div>
             </motion.div>

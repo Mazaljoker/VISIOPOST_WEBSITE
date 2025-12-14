@@ -14,12 +14,11 @@ const afterItems = [
 ];
 
 /**
- * Section Before/After - Comparaison visuelle compact
- * Rebrandé pour nReach Studio
+ * Section Before/After - Charte Graphique nSignal 2025
  */
 const BeforeAfterSection = () => {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-light-bg dark:bg-dark-bg">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-nsignal-dark">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
@@ -28,10 +27,10 @@ const BeforeAfterSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-nsignal-dark dark:text-nsignal-light mb-3">
             La différence en action
           </h2>
-          <p className="text-light-text-muted dark:text-dark-text-muted">
+          <p className="text-nsignal-light-700 dark:text-nsignal-light-600">
             Comparez l'impact sur votre portée organique
           </p>
         </motion.div>
@@ -40,12 +39,11 @@ const BeforeAfterSection = () => {
         <div className="grid md:grid-cols-2 gap-6">
           {/* BEFORE Card */}
           <motion.div
-            className="bg-white dark:bg-dark-surface rounded-2xl border-2 border-red-200 dark:border-red-900/50 overflow-hidden"
+            className="bg-nsignal-light dark:bg-nsignal-dark-500 rounded-2xl border-2 border-red-200 dark:border-red-900/50 overflow-hidden"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            {/* Header */}
             <div className="bg-red-50 dark:bg-red-900/20 px-6 py-4 border-b border-red-200 dark:border-red-900/50">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -58,12 +56,9 @@ const BeforeAfterSection = () => {
                 </div>
               </div>
             </div>
-
-            {/* Content */}
             <div className="p-6">
-              {/* Fake Post Preview */}
-              <div className="bg-light-surface dark:bg-dark-bg rounded-lg p-4 mb-4 border border-light-border dark:border-dark-border">
-                <p className="text-sm text-light-text-muted dark:text-dark-text-muted italic">
+              <div className="bg-white dark:bg-nsignal-dark rounded-lg p-4 mb-4 border border-nsignal-light-400 dark:border-nsignal-dark-400">
+                <p className="text-sm text-nsignal-light-700 dark:text-nsignal-light-600 italic">
                   "Découvrez notre nouvelle collection printemps !"
                 </p>
                 <div className="mt-2 text-xs text-red-500 flex items-center gap-1">
@@ -71,11 +66,9 @@ const BeforeAfterSection = () => {
                   Identique sur 100 pages
                 </div>
               </div>
-
-              {/* Problems List */}
               <ul className="space-y-2">
                 {beforeItems.map((item, index) => (
-                  <li key={index} className="flex items-center gap-2 text-sm text-light-text-muted dark:text-dark-text-muted">
+                  <li key={index} className="flex items-center gap-2 text-sm text-nsignal-light-700 dark:text-nsignal-light-600">
                     <X className="w-4 h-4 text-red-500 flex-shrink-0" />
                     {item}
                   </li>
@@ -86,47 +79,41 @@ const BeforeAfterSection = () => {
 
           {/* AFTER Card */}
           <motion.div
-            className="bg-white dark:bg-dark-surface rounded-2xl border-2 border-nreach-electric overflow-hidden"
+            className="bg-nsignal-light dark:bg-nsignal-dark-500 rounded-2xl border-2 border-nsignal-primary overflow-hidden"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            {/* Header */}
-            <div className="bg-nreach-electric/10 px-6 py-4 border-b border-nreach-electric/30">
+            <div className="bg-nsignal-primary/10 px-6 py-4 border-b border-nsignal-primary/30">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-nreach-electric" />
-                  <span className="font-bold text-nreach-electric">AVEC NREACH</span>
+                  <Sparkles className="w-5 h-5 text-nsignal-primary" />
+                  <span className="font-bold text-nsignal-primary">AVEC NSIGNAL</span>
                 </div>
-                <div className="flex items-center gap-1 text-nreach-electric">
+                <div className="flex items-center gap-1 text-nsignal-primary">
                   <TrendingUp className="w-4 h-4" />
                   <span className="text-sm font-bold">+340%</span>
                 </div>
               </div>
             </div>
-
-            {/* Content */}
             <div className="p-6">
-              {/* Fake Post Preview */}
-              <div className="bg-light-surface dark:bg-dark-bg rounded-lg p-4 mb-4 border border-nreach-electric/30">
-                <div className="flex items-center gap-1 text-nreach-electric text-xs mb-1">
+              <div className="bg-white dark:bg-nsignal-dark rounded-lg p-4 mb-4 border border-nsignal-primary/30">
+                <div className="flex items-center gap-1 text-nsignal-primary text-xs mb-1">
                   <MapPin className="w-3 h-3" />
                   Lyon
                 </div>
-                <p className="text-sm text-nreach-midnight dark:text-dark-text">
+                <p className="text-sm text-nsignal-dark dark:text-nsignal-light">
                   "Ici à Lyon, on craque pour la nouvelle collection !"
                 </p>
-                <div className="mt-2 text-xs text-nreach-electric flex items-center gap-1">
+                <div className="mt-2 text-xs text-nsignal-primary flex items-center gap-1">
                   <Check className="w-3 h-3" />
                   100% unique
                 </div>
               </div>
-
-              {/* Benefits List */}
               <ul className="space-y-2">
                 {afterItems.map((item, index) => (
-                  <li key={index} className="flex items-center gap-2 text-sm text-light-text-muted dark:text-dark-text-muted">
-                    <Check className="w-4 h-4 text-nreach-electric flex-shrink-0" />
+                  <li key={index} className="flex items-center gap-2 text-sm text-nsignal-light-700 dark:text-nsignal-light-600">
+                    <Check className="w-4 h-4 text-nsignal-primary flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -137,21 +124,21 @@ const BeforeAfterSection = () => {
 
         {/* Bottom Stats Bar */}
         <motion.div
-          className="mt-8 bg-white dark:bg-dark-surface rounded-xl p-4 border border-light-border dark:border-dark-border"
+          className="mt-8 bg-nsignal-light dark:bg-nsignal-dark-500 rounded-xl p-4 border border-nsignal-light-400 dark:border-nsignal-dark-400"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
           <div className="flex items-center justify-between text-sm mb-2">
-            <span className="text-light-text-muted dark:text-dark-text-muted">Portée organique comparée</span>
+            <span className="text-nsignal-light-700 dark:text-nsignal-light-600">Portée organique comparée</span>
           </div>
-          <div className="flex h-4 rounded-full overflow-hidden bg-light-surface dark:bg-dark-bg">
+          <div className="flex h-4 rounded-full overflow-hidden bg-white dark:bg-nsignal-dark">
             <div className="w-[15%] bg-red-500 flex items-center justify-center">
               <span className="text-[10px] text-white font-bold">-80%</span>
             </div>
-            <div className="flex-1 bg-gradient-to-r from-nreach-electric to-nreach-lavande flex items-center justify-center">
-              <span className="text-[10px] text-nreach-midnight font-bold">+340% avec nReach Studio</span>
+            <div className="flex-1 bg-gradient-to-r from-nsignal-primary to-nsignal-secondary flex items-center justify-center">
+              <span className="text-[10px] text-white font-bold">+340% avec nSignal</span>
             </div>
           </div>
         </motion.div>

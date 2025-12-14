@@ -22,8 +22,8 @@ const useCases: UseCaseData[] = [
     id: 'optique',
     icon: <Glasses className="w-5 h-5" />,
     sector: 'Optique',
-    color: 'text-nreach-lavande',
-    bgGradient: 'from-nreach-lavande to-nreach-electric',
+    color: 'text-nsignal-primary',
+    bgGradient: 'from-nsignal-primary to-nsignal-primary-600',
     posts: [
       {
         location: 'Lyon',
@@ -52,8 +52,8 @@ const useCases: UseCaseData[] = [
     id: 'distribution',
     icon: <ShoppingCart className="w-5 h-5" />,
     sector: 'Grande Distribution',
-    color: 'text-green-600',
-    bgGradient: 'from-green-500 to-emerald-500',
+    color: 'text-nsignal-secondary',
+    bgGradient: 'from-nsignal-secondary to-nsignal-secondary-600',
     posts: [
       {
         location: 'Rennes',
@@ -82,8 +82,8 @@ const useCases: UseCaseData[] = [
     id: 'fitness',
     icon: <Dumbbell className="w-5 h-5" />,
     sector: 'Salle de Sport',
-    color: 'text-orange-600',
-    bgGradient: 'from-orange-500 to-red-500',
+    color: 'text-nsignal-accent',
+    bgGradient: 'from-nsignal-accent to-nsignal-accent-600',
     posts: [
       {
         location: 'Nice',
@@ -112,8 +112,8 @@ const useCases: UseCaseData[] = [
     id: 'coiffure',
     icon: <Scissors className="w-5 h-5" />,
     sector: 'Salon Coiffure',
-    color: 'text-pink-600',
-    bgGradient: 'from-pink-500 to-rose-500',
+    color: 'text-category-partage',
+    bgGradient: 'from-category-partage to-category-partage-dark',
     posts: [
       {
         location: 'Paris 11e',
@@ -152,7 +152,7 @@ interface MiniPostProps {
 
 const MiniPost = ({ location, content, likes, comments, shares, gradient, delay }: MiniPostProps) => (
   <motion.div
-    className="bg-white dark:bg-dark-surface rounded-lg shadow-md border border-light-border dark:border-dark-border overflow-hidden"
+    className="bg-white dark:bg-nsignal-dark rounded-lg shadow-md border border-nsignal-light-400 dark:border-nsignal-dark-400 overflow-hidden"
     initial={{ opacity: 0, y: 20, scale: 0.95 }}
     animate={{ opacity: 1, y: 0, scale: 1 }}
     exit={{ opacity: 0, y: -20, scale: 0.95 }}
@@ -165,14 +165,14 @@ const MiniPost = ({ location, content, likes, comments, shares, gradient, delay 
           {location.charAt(0)}
         </div>
         <div>
-          <div className="font-medium text-sm text-nreach-midnight dark:text-dark-text">{location}</div>
-          <div className="text-xs text-light-text-muted dark:text-dark-text-muted">Sponsorisé · 1h</div>
+          <div className="font-medium text-sm text-nsignal-dark dark:text-nsignal-light">{location}</div>
+          <div className="text-xs text-nsignal-light-700 dark:text-nsignal-light-600">Sponsorisé · 1h</div>
         </div>
       </div>
-      <p className="text-sm text-light-text dark:text-dark-text-muted mb-3 line-clamp-2">{content}</p>
-      <div className="flex items-center justify-between text-xs text-light-text-muted dark:text-dark-text-muted pt-2 border-t border-light-border dark:border-dark-border">
+      <p className="text-sm text-nsignal-dark dark:text-nsignal-light-600 mb-3 line-clamp-2">{content}</p>
+      <div className="flex items-center justify-between text-xs text-nsignal-light-700 dark:text-nsignal-light-600 pt-2 border-t border-nsignal-light-400 dark:border-nsignal-dark-400">
         <div className="flex items-center space-x-1">
-          <ThumbsUp className="w-3 h-3 text-nreach-electric" />
+          <ThumbsUp className="w-3 h-3 text-nsignal-primary" />
           <span>{likes}</span>
         </div>
         <div className="flex items-center space-x-3">
@@ -191,16 +191,14 @@ const MiniPost = ({ location, content, likes, comments, shares, gradient, delay 
 );
 
 /**
- * Section Use Cases - Exemples par secteur
- * Tabs interactifs avec posts adaptés
- * Rebrandé pour nReach Studio
+ * Section Use Cases - Charte Graphique nSignal 2025
  */
 const UseCasesSection = ({ className = '' }: { className?: string }) => {
   const [activeTab, setActiveTab] = useState('optique');
   const activeCase = useCases.find(uc => uc.id === activeTab) || useCases[0];
 
   return (
-    <section className={`py-20 px-4 sm:px-6 lg:px-8 bg-light-surface dark:bg-dark-surface ${className}`}>
+    <section className={`py-20 px-4 sm:px-6 lg:px-8 bg-nsignal-light dark:bg-nsignal-dark-500 ${className}`}>
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
@@ -210,11 +208,11 @@ const UseCasesSection = ({ className = '' }: { className?: string }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
+          <h2 className="text-4xl font-bold text-nsignal-dark dark:text-nsignal-light mb-4">
             Adapté à votre secteur
           </h2>
-          <p className="text-xl text-light-text-muted dark:text-dark-text-muted">
-            Chaque réseau a son ton. <span className="text-nreach-electric">nReach Studio</span> s'adapte.
+          <p className="text-xl text-nsignal-light-700 dark:text-nsignal-light-600">
+            Chaque réseau a son ton. <span className="text-nsignal-primary">nSignal</span> s'adapte.
           </p>
         </motion.div>
 
@@ -233,7 +231,7 @@ const UseCasesSection = ({ className = '' }: { className?: string }) => {
               className={`flex items-center space-x-2 px-4 py-2 rounded-full font-medium text-sm transition-all ${
                 activeTab === useCase.id
                   ? `bg-gradient-to-r ${useCase.bgGradient} text-white shadow-lg`
-                  : 'bg-white dark:bg-dark-bg text-light-text-muted dark:text-dark-text-muted hover:bg-light-surface dark:hover:bg-dark-surface border border-light-border dark:border-dark-border'
+                  : 'bg-white dark:bg-nsignal-dark text-nsignal-light-700 dark:text-nsignal-light-600 hover:bg-nsignal-light dark:hover:bg-nsignal-dark-500 border border-nsignal-light-400 dark:border-nsignal-dark-400'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
@@ -255,19 +253,19 @@ const UseCasesSection = ({ className = '' }: { className?: string }) => {
               transition={{ duration: 0.3 }}
             >
               {/* Campaign header */}
-              <div className="bg-white dark:bg-dark-bg rounded-t-2xl p-4 border border-light-border dark:border-dark-border border-b-0">
+              <div className="bg-white dark:bg-nsignal-dark rounded-t-2xl p-4 border border-nsignal-light-400 dark:border-nsignal-dark-400 border-b-0">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
                     <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${activeCase.bgGradient} flex items-center justify-center text-white`}>
                       {activeCase.icon}
                     </div>
                     <div>
-                      <div className="font-semibold text-nreach-midnight dark:text-dark-text">Campagne {activeCase.sector}</div>
-                      <div className="text-xs text-light-text-muted dark:text-dark-text-muted">1 visuel → 150 posts uniques générés</div>
+                      <div className="font-semibold text-nsignal-dark dark:text-nsignal-light">Campagne {activeCase.sector}</div>
+                      <div className="text-xs text-nsignal-light-700 dark:text-nsignal-light-600">1 visuel → 150 posts uniques générés</div>
                     </div>
                   </div>
                   <div className="hidden sm:block">
-                    <span className="px-3 py-1 bg-nreach-electric/10 text-nreach-electric text-xs font-medium rounded-full">
+                    <span className="px-3 py-1 bg-nsignal-primary/10 text-nsignal-primary text-xs font-medium rounded-full">
                       ✓ 0% duplicate content
                     </span>
                   </div>
@@ -275,7 +273,7 @@ const UseCasesSection = ({ className = '' }: { className?: string }) => {
               </div>
 
               {/* Posts grid */}
-              <div className="bg-light-surface dark:bg-dark-surface rounded-b-2xl p-6 border border-light-border dark:border-dark-border border-t-0">
+              <div className="bg-nsignal-light dark:bg-nsignal-dark-500 rounded-b-2xl p-6 border border-nsignal-light-400 dark:border-nsignal-dark-400 border-t-0">
                 <div className="grid md:grid-cols-3 gap-4">
                   {activeCase.posts.map((post, index) => (
                     <MiniPost
@@ -295,16 +293,16 @@ const UseCasesSection = ({ className = '' }: { className?: string }) => {
                   transition={{ delay: 0.4 }}
                 >
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 rounded-full bg-nreach-electric" />
-                    <span className="text-light-text-muted dark:text-dark-text-muted">Engagement moyen :</span>
-                    <span className="font-bold text-nreach-midnight dark:text-dark-text">
+                    <div className="w-2 h-2 rounded-full bg-nsignal-primary" />
+                    <span className="text-nsignal-light-700 dark:text-nsignal-light-600">Engagement moyen :</span>
+                    <span className="font-bold text-nsignal-dark dark:text-nsignal-light">
                       +{Math.round(activeCase.posts.reduce((acc, p) => acc + p.likes + p.comments + p.shares, 0) / 3)}
                     </span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 rounded-full bg-nreach-lavande" />
-                    <span className="text-light-text-muted dark:text-dark-text-muted">Portée estimée :</span>
-                    <span className="font-bold text-nreach-electric">
+                    <div className="w-2 h-2 rounded-full bg-nsignal-secondary" />
+                    <span className="text-nsignal-light-700 dark:text-nsignal-light-600">Portée estimée :</span>
+                    <span className="font-bold text-nsignal-primary">
                       +340%
                     </span>
                   </div>
@@ -322,8 +320,8 @@ const UseCasesSection = ({ className = '' }: { className?: string }) => {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          <p className="text-light-text-muted dark:text-dark-text-muted">
-            Et aussi : <span className="font-medium text-nreach-midnight dark:text-dark-text">Restauration</span>, <span className="font-medium text-nreach-midnight dark:text-dark-text">Automobile</span>, <span className="font-medium text-nreach-midnight dark:text-dark-text">Immobilier</span>, <span className="font-medium text-nreach-midnight dark:text-dark-text">Services</span>...
+          <p className="text-nsignal-light-700 dark:text-nsignal-light-600">
+            Et aussi : <span className="font-medium text-nsignal-dark dark:text-nsignal-light">Restauration</span>, <span className="font-medium text-nsignal-dark dark:text-nsignal-light">Automobile</span>, <span className="font-medium text-nsignal-dark dark:text-nsignal-light">Immobilier</span>, <span className="font-medium text-nsignal-dark dark:text-nsignal-light">Services</span>...
           </p>
         </motion.div>
       </div>
