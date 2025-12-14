@@ -1,14 +1,10 @@
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, Building, Store, Gift } from 'lucide-react';
 
-interface PricingSectionProps {
-  onOpenRoi?: () => void;
-}
-
 /**
  * Pricing Section - Simple: 30€/magasin/mois
  */
-const PricingSection = ({ onOpenRoi }: PricingSectionProps) => {
+const PricingSection = () => {
   const included = [
     'Accès siège illimité',
     'App mobile tous franchisés',
