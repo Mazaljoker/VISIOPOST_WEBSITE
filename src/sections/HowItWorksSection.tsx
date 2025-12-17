@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, ArrowRight, Store, Sparkles, Shield, Eye, Glasses, ShoppingCart, Dumbbell, Scissors } from 'lucide-react';
+import { Building2, ArrowRight, Store, Sparkles, Shield, Eye } from 'lucide-react';
 
 const mainSteps = [
   {
@@ -34,15 +34,9 @@ const controlFeatures = [
   },
 ];
 
-const sectors = [
-  { icon: Glasses, name: 'Optique', color: 'from-blue-500 to-cyan-500' },
-  { icon: ShoppingCart, name: 'Distribution', color: 'from-orange-500 to-red-500' },
-  { icon: Dumbbell, name: 'Sport', color: 'from-green-500 to-emerald-500' },
-  { icon: Scissors, name: 'Beauté / Coiffure', color: 'from-pink-500 to-rose-500' },
-];
 
 /**
- * Section How It Works - Flowchart + Contrôle + Secteurs
+ * Section How It Works - Flowchart + Contrôle
  * Rebrandé pour nReach Studio
  */
 const HowItWorksSection = () => {
@@ -114,7 +108,6 @@ const HowItWorksSection = () => {
 
         {/* Vous gardez le contrôle */}
         <motion.div
-          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -143,37 +136,6 @@ const HowItWorksSection = () => {
                     {feature.description}
                   </p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Adapté à votre secteur */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl font-bold text-nreach-midnight dark:text-dark-text text-center mb-8">
-            Adapté à votre <span className="text-nreach-electric">secteur</span>
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {sectors.map((sector, index) => (
-              <motion.div
-                key={index}
-                className="bg-white dark:bg-dark-bg rounded-xl p-5 border border-light-border dark:border-dark-border shadow-card text-center"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -4 }}
-              >
-                <div className={`w-14 h-14 mx-auto mb-3 rounded-2xl bg-gradient-to-br ${sector.color} flex items-center justify-center`}>
-                  <sector.icon className="w-7 h-7 text-white" />
-                </div>
-                <h4 className="font-semibold text-nreach-midnight dark:text-dark-text">
-                  {sector.name}
-                </h4>
               </motion.div>
             ))}
           </div>
