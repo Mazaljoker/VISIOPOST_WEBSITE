@@ -32,7 +32,7 @@ const itemVariants = {
 /**
  * Section Final CTA - Appel à l'action avec Calendly
  */
-const FinalCtaSection = ({ className = '' }: FinalCtaSectionProps) => {
+const FinalCtaSection = ({ className = '', onOpenRoi: _onOpenRoi }: FinalCtaSectionProps) => {
   const reassurances = [
     "Sans engagement",
     "Démo personnalisée",
