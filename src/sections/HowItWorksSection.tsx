@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, ArrowRight, Store, Sparkles, Shield, Eye, Glasses, ShoppingCart, Dumbbell, Scissors } from 'lucide-react';
+import { Building2, ArrowRight, Store, Sparkles, Shield, Eye } from 'lucide-react';
 
 const mainSteps = [
   {
@@ -34,12 +34,6 @@ const controlFeatures = [
   },
 ];
 
-const sectors = [
-  { icon: Glasses, name: 'Optique', color: 'from-nsignal-primary to-nsignal-primary-600' },
-  { icon: ShoppingCart, name: 'Distribution', color: 'from-nsignal-secondary to-nsignal-secondary-600' },
-  { icon: Dumbbell, name: 'Sport', color: 'from-nsignal-accent to-nsignal-accent-600' },
-  { icon: Scissors, name: 'Beauté / Coiffure', color: 'from-nsignal-primary to-nsignal-secondary' },
-];
 
 /**
  * Section How It Works - Charte Graphique nSignal 2025
@@ -147,36 +141,6 @@ const HowItWorksSection = () => {
           </div>
         </motion.div>
 
-        {/* Adapté à votre secteur */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl font-bold text-nsignal-dark dark:text-nsignal-light text-center mb-8">
-            Adapté à votre <span className="text-nsignal-secondary">secteur</span>
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {sectors.map((sector, index) => (
-              <motion.div
-                key={index}
-                className="bg-white dark:bg-nsignal-dark rounded-xl p-5 border border-nsignal-light-400 dark:border-nsignal-dark-400 shadow-card text-center"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -4 }}
-              >
-                <div className={`w-14 h-14 mx-auto mb-3 rounded-2xl bg-gradient-to-br ${sector.color} flex items-center justify-center`}>
-                  <sector.icon className="w-7 h-7 text-white" />
-                </div>
-                <h4 className="font-semibold text-nsignal-dark dark:text-nsignal-light">
-                  {sector.name}
-                </h4>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
