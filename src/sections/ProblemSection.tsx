@@ -1,132 +1,96 @@
 import { motion } from 'framer-motion';
-import { AlertTriangle } from 'lucide-react';
-import { problems, problemStat } from '../data/problems';
-import { ProblemSectionProps } from '../types';
+import { AlertTriangle, TrendingDown, Copy, Ban, Facebook, Instagram, Linkedin } from 'lucide-react';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
+const problems = [
+  {
+    icon: Copy,
+    title: 'Contenu dupliqué',
+    description: 'Le même post sur 100 pages = pénalité algorithmique sur tous les réseaux',
   },
-};
+  {
+    icon: TrendingDown,
+    title: 'Portée en chute',
+    description: 'Vos posts atteignent moins de 2% de votre audience potentielle',
+  },
+  {
+    icon: Ban,
+    title: 'Engagement nul',
+    description: 'Aucune interaction car le contenu n\'est pas personnalisé localement',
+  },
+];
 
-const titleVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut' as const,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, x: -50, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut' as const,
-    },
-  },
-};
-
-const statVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      delay: 0.6,
-      ease: 'easeOut' as const,
-    },
-  },
-};
+const platforms = [
+  { icon: Facebook, name: 'Facebook' },
+  { icon: Instagram, name: 'Instagram' },
+  { icon: Linkedin, name: 'LinkedIn' },
+];
 
 /**
- * Section Problème - Le duplicate content et ses conséquences
+ * Section Problem - Charte Graphique nSignal 2025
  */
-const ProblemSection = ({ className = '' }: ProblemSectionProps) => {
+const ProblemSection = () => {
   return (
-    <section className={`py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 ${className}`}>
-      <motion.div
-        className="max-w-4xl mx-auto text-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={containerVariants}
-      >
-        <motion.h2
-          variants={titleVariants}
-          className="text-4xl font-bold text-gray-900 mb-4"
-        >
-          Le problème que personne ne vous dit
-        </motion.h2>
-        
-        <motion.p
-          variants={titleVariants}
-          className="text-xl text-gray-600 mb-12"
-        >
-          Ce qui se passe vraiment quand votre réseau publie
-        </motion.p>
-
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-nsignal-light dark:bg-nsignal-dark-500">
+      <div className="max-w-6xl mx-auto">
         <motion.div
-          className="space-y-4 mt-8 text-left"
-          variants={containerVariants}
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 mb-4">
+            <AlertTriangle className="w-4 h-4" />
+            <span className="text-sm font-medium">Le problème</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-nsignal-dark dark:text-nsignal-light mb-4">
+            Les réseaux sociaux pénalisent le contenu dupliqué
+          </h2>
+          <p className="text-lg text-nsignal-light-700 dark:text-nsignal-light-600 max-w-3xl mx-auto mb-6">
+            Quand vous créez une campagne et la diffusez à l'identique sur tous vos points de vente, 
+            les algorithmes réduisent drastiquement votre portée organique.
+          </p>
+
+          {/* Platforms affected */}
+          <div className="flex items-center justify-center gap-4">
+            {platforms.map((platform, index) => (
+              <motion.div
+                key={index}
+                className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-nsignal-dark rounded-full border border-nsignal-light-400 dark:border-nsignal-dark-400"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <platform.icon className="w-4 h-4 text-red-500" />
+                <span className="text-sm text-nsignal-light-700 dark:text-nsignal-light-600">{platform.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-6">
           {problems.map((problem, index) => (
             <motion.div
               key={index}
-              variants={cardVariants}
-              whileHover={{
-                scale: 1.02,
-                x: 5,
-                transition: { duration: 0.2 },
-              }}
-              className="p-6 bg-white border-l-4 border-red-500 rounded-lg shadow-sm"
+              className="bg-white dark:bg-nsignal-dark rounded-xl p-6 border border-nsignal-light-400 dark:border-nsignal-dark-400 shadow-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
             >
-              <p className="text-gray-700 flex items-start space-x-3">
-                <motion.span
-                  className="text-red-500 text-xl flex-shrink-0"
-                  animate={{
-                    rotate: [0, -10, 10, 0],
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.2 + 0.5,
-                  }}
-                >
-                  ❌
-                </motion.span>
-                <span className="text-lg">{problem}</span>
+              <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-xl flex items-center justify-center mb-4">
+                <problem.icon className="w-6 h-6 text-red-500" />
+              </div>
+              <h3 className="text-lg font-semibold text-nsignal-dark dark:text-nsignal-light mb-2">
+                {problem.title}
+              </h3>
+              <p className="text-nsignal-light-700 dark:text-nsignal-light-600">
+                {problem.description}
               </p>
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div
-          variants={statVariants}
-          className="mt-16 p-8 bg-gradient-to-r from-red-500 to-red-600 rounded-2xl text-white"
-          whileHover={{ scale: 1.02 }}
-        >
-          <div className="flex items-center justify-center space-x-4">
-            <AlertTriangle className="w-12 h-12" />
-            <div className="text-left">
-              <div className="text-5xl font-bold">{problemStat.value}</div>
-              <div className="text-xl opacity-90">{problemStat.label}</div>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 };

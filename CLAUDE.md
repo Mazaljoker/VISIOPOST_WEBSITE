@@ -1,19 +1,39 @@
 # 🤖 CLAUDE.md - Instructions Claude Code
 
+## ⚠️ REBRAND EN COURS: nSignal
+
+**IMPORTANT:** Ce projet est en cours de rebrand de "nReach Studio" vers **nSignal**.
+
+📋 **Voir le plan complet:** [CLAUDE_REFONTE_NSIGNAL.md](./CLAUDE_REFONTE_NSIGNAL.md)
+
+### Résumé Rebrand
+| Avant | Après |
+|-------|-------|
+| nReach Studio | **nSignal** |
+| nreachstudio.com | **nsignal.ai** |
+| "n locations. One studio." | **"n locations. One signal."** |
+| Focus: Création contenu | **Focus: Pilotage réseau** |
+
+---
+
 ## 🎯 Mission
 
-Développer le **site web complet VisioPost** (landing + pages additionnelles) en suivant **KISS, SRP, SOLID, DRY**.
+Développer le **site web complet nSignal** (landing + pages additionnelles) en suivant **KISS, SRP, SOLID, DRY**.
+
+**Positionnement:** Plateforme de PILOTAGE social pour réseaux multi-sites (franchises, coopératives)
+
+**Cible:** Directeur Marketing qui veut visibilité et contrôle sur tout son réseau
 
 ## 🌐 Scope - Site Web Complet
 
 ### Pages à Développer
 
-#### Phase 1 : Landing Page ✅
-- `/` - Homepage avec Hero, Playlists, Features, Pricing, FAQ
+#### Phase 1 : Landing Page 🔄 EN COURS
+- `/` - Homepage avec nouveau messaging "Pilotage"
 
 #### Phase 2 : Pages Produit 📄
-- `/features` - Détail fonctionnalités
-- `/playlists` - Page dédiée USP principal
+- `/features` - Détail fonctionnalités (3 modes)
+- `/how-it-works` - Les 3 modes expliqués
 - `/pricing` - Tarification détaillée + ROI calculator
 
 #### Phase 3 : Content 📄
@@ -26,45 +46,49 @@ Développer le **site web complet VisioPost** (landing + pages additionnelles) e
 - `/contact` - Formulaire + démo
 - `/legal/*` - CGV, Privacy, Cookies
 
-#### Phase 5 : Marketing 📄
-- `/demo` - Demande démo
-- `/partners` - Programme partenaires
-- `/integrations` - Facebook, Instagram, etc.
-
-## 🏗️ Architecture Cible
+## 🏗️ Architecture
 
 ```
 src/
 ├── components/
-│   ├── layout/          # Header, Footer, Navigation
-│   ├── ui/              # Button, Card, Input, Modal
-│   ├── sections/        # FeatureCard, PricingCard, etc.
-│   └── forms/           # ContactForm, DemoRequestForm
-├── pages/
-│   ├── home/            # Landing page + sections
-│   ├── features/        # Page fonctionnalités
-│   ├── playlists/       # Page dédiée Playlists
-│   ├── pricing/         # Pricing détaillée
-│   ├── blog/            # Blog + articles
-│   ├── contact/         # Contact
-│   └── legal/           # Pages légales
-├── data/                # features.ts, pricing.ts, faqs.ts
-├── hooks/               # useFaq, useForm, useAnalytics
-├── utils/               # classNames, validation, seo
-├── router/              # React Router config
-└── App.tsx              # App avec routing
+│   ├── NSignalLogo.tsx    # ✅ NOUVEAU
+│   ├── layout/
+│   ├── ui/
+│   └── forms/
+├── sections/
+│   ├── Header.tsx         # ✅ MODIFIÉ
+│   ├── HeroSection.tsx    # ✅ MODIFIÉ
+│   ├── Footer.tsx         # ✅ MODIFIÉ
+│   ├── ProblemSection.tsx # 🔄 À MODIFIER
+│   ├── SolutionSection.tsx # 🔄 À MODIFIER
+│   └── ...
+├── data/
+│   ├── features.ts        # 🔄 À MODIFIER
+│   ├── faqs.ts            # 🔄 À MODIFIER
+│   └── ...
+└── ...
 ```
 
-## 🎨 Design System VisioScreen
+## 🎨 Design System nSignal
 
-### Couleurs (IMMUABLES)
-```
-Violet: #3f2680
-Rose:   #ed1164
-Bleu:   #00aeef
+### Couleurs (inchangées)
+```css
+--midnight: #1A1F3D
+--electric: #00D4AA
+--lavande: #6B7AED
 ```
 
-**RÈGLE ABSOLUE** : NE JAMAIS modifier ces couleurs.
+### Icônes clés (Lucide)
+```
+Radio - Signal
+Eye - Visibilité
+BarChart3 - Analytics
+Users - Réseau
+ListMusic - Playlist
+Zap - Rapidité
+Shield - Sécurité
+MapPin - Local
+```
 
 ## ⚡ Principes
 
@@ -77,13 +101,6 @@ Bleu:   #00aeef
 - Fichiers <300 lignes
 - Composants <100 lignes
 
-### SOLID
-- Single Responsibility
-- Open/Closed
-- Liskov Substitution
-- Interface Segregation  
-- Dependency Inversion
-
 ### DRY - Don't Repeat Yourself
 - Zéro duplication
 - Composants réutilisables
@@ -91,87 +108,62 @@ Bleu:   #00aeef
 ## 🚨 Règles STRICTES
 
 ### ❌ INTERDIT
-1. Modifier couleurs VisioScreen
+1. Utiliser "nReach" (remplacer par "nSignal")
 2. Dupliquer code
 3. Fichiers >300 lignes
 4. Types `any`
 5. Inline styles
-6. Console.log en prod
-7. Hardcoded data dans composants
+6. Messaging "imposition/contrôle" (utiliser "suggestion/signal")
 
 ### ✅ OBLIGATOIRE
 1. TypeScript strict
 2. Composants <100 lignes
 3. Props interfaces explicites
 4. Extraction data dans `/data`
-5. Tests manuel (npm run dev)
-6. Responsive mobile-first
-7. Accessibilité WCAG AA
-8. SEO meta tags par page
-9. Routing propre
-10. Navigation breadcrumbs
+5. Responsive mobile-first
+6. SEO meta tags
+7. Tone coopérative-friendly
 
-## 💡 Concept Clé : Playlists
+## 💡 Concepts Clés
 
-**USP PRINCIPAL** - À mentionner partout :
-- Landing page : Section dédiée
-- Header : Menu item highlighted
-- Page /playlists : Page entière
-- Features : Feature principale
-- Pricing : Dans chaque plan
-- Blog : Articles explicatifs
+### 3 Modes de Distribution
+1. **Free Style Assisté** - L'adhérent crée avec aide IA
+2. **Posts Suggérés (Playlist)** - Le siège propose, l'adhérent choisit
+3. **Playlist Automatique** - Full automation
 
-**Analogie** : "Netflix pour posts sociaux"
+### Double Sens "Signal"
+- **Pour le Siège:** "Captez les signaux de votre réseau"
+- **Pour le Terrain:** "Recevez le signal, décidez vous-même"
 
-## 🎯 Priorités Développement
-
-### P0 - Semaine 1
-1. Setup React Router
-2. Layout global (Header + Footer)
-3. Refactor Landing en composants
-4. Système UI (Button, Card, Input)
-
-### P1 - Semaine 2-3  
-1. Page /playlists (USP)
-2. Page /features
-3. Page /pricing
-4. Page /contact
-
-### P2 - Semaine 4-5
-1. Blog
-2. Case studies
-3. Resources
-4. Pages légales
+### Mots-clés
+✅ Signal, Pilotage, Visibilité, Coordonner, Suggérer
+❌ Command, Control, Imposer, Forcer, Centraliser
 
 ## 🔄 Workflow Git
 
 ### Format Commits
 ```
-feat(pages): add PlaylistsPage
-feat(components): add DemoRequestForm
-refactor(home): extract HeroSection
-fix(navigation): mobile menu bug
+feat(sections): update ProblemSection for nSignal rebrand
+refactor(components): replace NReachLogo with NSignalLogo
+fix(data): update faqs for new messaging
 ```
 
 ## 🏁 Checklist Avant Commit
 
-- [ ] KISS : Simple ?
-- [ ] SRP : 1 responsabilité ?
-- [ ] SOLID : Principes OK ?
-- [ ] DRY : Pas duplication ?
+- [ ] Tous "nReach" remplacés par "nSignal" ?
+- [ ] Messaging orienté "pilotage" ?
+- [ ] Coopérative-friendly (pas d'imposition) ?
 - [ ] TypeScript strict ?
 - [ ] Responsive testé ?
-- [ ] Routes fonctionnent ?
-- [ ] SEO meta tags ?
 - [ ] Build réussit ?
-- [ ] Couleurs inchangées ?
 
-## 📚 Documentation Complète
+## 📚 Documentation
 
-Le fichier complet (1700+ lignes) avec exemples détaillés, templates et guidelines est disponible en local dans le projet.
+- **Plan de refonte complet:** [CLAUDE_REFONTE_NSIGNAL.md](./CLAUDE_REFONTE_NSIGNAL.md)
+- **Historique rebrand:** [REBRAND.md](./REBRAND.md)
 
 ---
 
-**Version** : 2.0 (Full Website)  
-**Projet** : VisioPost Website Complet  
-**Auteur** : Claude + Franck-Olivier
+**Version** : 3.0 (Rebrand nSignal)  
+**Projet** : nSignal Website  
+**Domaine** : nsignal.ai

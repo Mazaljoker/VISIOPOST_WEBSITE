@@ -1,52 +1,96 @@
-import { ButtonProps } from '../types';
+import React from 'react';
+import { motion } from 'framer-motion';
+
+interface ButtonProps {
+  children: React.ReactNode;
+  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  icon?: React.ReactNode;
+  iconPosition?: 'left' | 'right';
+  className?: string;
+  onClick?: () => void;
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+}
 
 /**
- * Composant Button réutilisable avec variants
- * Utilisé partout dans la landing page (8+ fois)
- *
- * Variants:
- * - primary: Gradient violet → rose (CTA principal)
- * - secondary: Outline violet (CTA secondaire)
- * - ghost: Transparent avec hover
- * - outline: Border avec couleur personnalisée
+ * Button - Charte Graphique nSignal 2025
+ * 
+ * Variantes:
+ * - primary: Teal Profond #0F7B6C
+ * - secondary: Coral Dynamique #E86A58
+ * - accent: Jaune Signal #DFAB01
+ * - outline: Bordure Teal
+ * - ghost: Transparent
  */
-const Button = ({
+export const Button: React.FC<ButtonProps> = ({
+  children,
   variant = 'primary',
   size = 'md',
-  children,
-  onClick,
+  icon,
+  iconPosition = 'right',
   className = '',
+  onClick,
   disabled = false,
-  type = 'button'
-}: ButtonProps) => {
-  const baseClasses = "font-semibold transition-all duration-300 flex items-center justify-center space-x-2";
+  type = 'button',
+}) => {
+  const baseStyles = `
+    inline-flex items-center justify-center gap-2
+    font-semibold rounded-xl
+    transition-all duration-200
+    focus:outline-none focus:ring-2 focus:ring-offset-2
+    disabled:opacity-50 disabled:cursor-not-allowed
+  `;
 
-  const variantClasses = {
-    primary: "bg-gradient-to-r from-visio-violet to-visio-rose text-white hover:shadow-2xl",
-    secondary: "border-2 border-visio-violet text-visio-violet hover:bg-visio-violet hover:text-white",
-    ghost: "text-gray-700 hover:text-visio-violet",
-    outline: "border-2 border-current hover:shadow-lg"
+  const variants = {
+    primary: `
+      bg-nsignal-primary text-white
+      hover:bg-nsignal-primary-600
+      focus:ring-nsignal-primary
+      shadow-nsignal hover:shadow-nsignal-lg
+    `,
+    secondary: `
+      bg-nsignal-secondary text-white
+      hover:bg-nsignal-secondary-600
+      focus:ring-nsignal-secondary
+      shadow-warm
+    `,
+    accent: `
+      bg-nsignal-accent text-nsignal-dark
+      hover:bg-nsignal-accent-600
+      focus:ring-nsignal-accent
+    `,
+    outline: `
+      bg-transparent border-2 border-nsignal-primary text-nsignal-primary
+      hover:bg-nsignal-primary hover:text-white
+      focus:ring-nsignal-primary
+    `,
+    ghost: `
+      bg-transparent text-nsignal-dark dark:text-nsignal-light
+      hover:bg-nsignal-light-400 dark:hover:bg-nsignal-dark-400
+      focus:ring-nsignal-primary
+    `,
   };
 
-  const sizeClasses = {
-    sm: "px-4 py-2 text-sm rounded-lg",
-    md: "px-6 py-2 text-base rounded-lg",
-    lg: "px-8 py-4 text-lg rounded-xl"
+  const sizes = {
+    sm: 'px-4 py-2 text-sm',
+    md: 'px-6 py-3 text-base',
+    lg: 'px-8 py-4 text-lg',
   };
-
-  const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className} ${
-    disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
-  }`.trim();
 
   return (
-    <button
+    <motion.button
       type={type}
-      className={classes}
       onClick={onClick}
       disabled={disabled}
+      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+      whileHover={{ scale: disabled ? 1 : 1.02 }}
+      whileTap={{ scale: disabled ? 1 : 0.98 }}
     >
+      {icon && iconPosition === 'left' && <span>{icon}</span>}
       {children}
-    </button>
+      {icon && iconPosition === 'right' && <span>{icon}</span>}
+    </motion.button>
   );
 };
 

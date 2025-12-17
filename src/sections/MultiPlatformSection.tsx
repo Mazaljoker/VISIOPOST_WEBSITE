@@ -1,96 +1,97 @@
 import { motion } from 'framer-motion';
-import { Check, Clock } from 'lucide-react';
-import { platformOptions } from '../data/pricing';
+import { Facebook, Instagram, Video, CheckCircle, Clock, MapPin } from 'lucide-react';
 
-const titleVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut' as const,
-    },
+const platforms = [
+  {
+    name: 'Facebook',
+    icon: Facebook,
+    status: 'available',
+    description: 'Disponible maintenant',
   },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.4,
-    },
+  {
+    name: 'Instagram',
+    icon: Instagram,
+    status: 'coming',
+    description: 'T1 2026',
   },
-};
+  {
+    name: 'Google Business',
+    icon: MapPin,
+    status: 'coming',
+    description: 'T2 2026',
+  },
+  {
+    name: 'TikTok',
+    icon: Video,
+    status: 'planned',
+    description: '2026',
+  },
+];
 
 /**
- * Section Multi-Plateforme - Facebook + à venir
+ * Section Multi-Platform - Charte Graphique nSignal 2025
  */
-const MultiPlatformSection = ({ className = '' }: { className?: string }) => {
+const MultiPlatformSection = () => {
   return (
-    <section className={`py-20 px-4 sm:px-6 lg:px-8 ${className}`}>
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-nsignal-dark">
       <div className="max-w-4xl mx-auto">
         <motion.div
           className="text-center mb-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={titleVariants}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Facebook. Et bientôt tout le reste.
+          <h2 className="text-3xl md:text-4xl font-bold text-nsignal-dark dark:text-nsignal-light mb-4">
+            Multi-plateforme
           </h2>
-          <p className="text-xl text-gray-600">
-            Nous lançons avec Facebook, là où le problème duplicate est le plus critique.
-            Instagram, TikTok et LinkedIn arrivent.
+          <p className="text-lg text-nsignal-light-700 dark:text-nsignal-light-600">
+            Aujourd'hui Facebook, demain tout le reste
           </p>
         </motion.div>
 
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {platformOptions.map((platform, index) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {platforms.map((platform, index) => (
             <motion.div
               key={index}
-              variants={cardVariants}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
               className={`p-6 rounded-xl text-center border-2 transition-all ${
-                platform.included
-                  ? 'bg-gradient-to-br from-visio-violet/5 to-visio-rose/5 border-visio-violet'
-                  : 'bg-gray-50 border-gray-200'
+                platform.status === 'available'
+                  ? 'bg-nsignal-primary/10 border-nsignal-primary'
+                  : platform.status === 'coming'
+                  ? 'bg-nsignal-secondary/10 border-nsignal-secondary/50'
+                  : 'bg-nsignal-light dark:bg-nsignal-dark-500 border-nsignal-light-400 dark:border-nsignal-dark-400'
               }`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
             >
-              <div className="text-2xl font-bold text-gray-900 mb-2">
+              <platform.icon className={`w-10 h-10 mx-auto mb-3 ${
+                platform.status === 'available'
+                  ? 'text-nsignal-primary'
+                  : platform.status === 'coming'
+                  ? 'text-nsignal-secondary'
+                  : 'text-nsignal-light-700 dark:text-nsignal-light-600'
+              }`} />
+              <h3 className="font-semibold text-nsignal-dark dark:text-nsignal-light mb-1">
                 {platform.name}
+              </h3>
+              <div className={`flex items-center justify-center gap-1 text-xs ${
+                platform.status === 'available'
+                  ? 'text-nsignal-primary'
+                  : platform.status === 'coming'
+                  ? 'text-nsignal-secondary'
+                  : 'text-nsignal-light-700 dark:text-nsignal-light-600'
+              }`}>
+                {platform.status === 'available' ? (
+                  <CheckCircle className="w-3 h-3" />
+                ) : (
+                  <Clock className="w-3 h-3" />
+                )}
+                {platform.description}
               </div>
-              
-              {platform.included ? (
-                <div className="flex items-center justify-center text-green-600 font-medium">
-                  <Check className="w-5 h-5 mr-1" />
-                  Disponible
-                </div>
-              ) : (
-                <div className="flex items-center justify-center text-blue-600 font-medium">
-                  <Clock className="w-4 h-4 mr-1" />
-                  {platform.badge}
-                </div>
-              )}
-
-              {!platform.included && (
-                <div className="text-sm text-gray-500 mt-2">
-                  +{platform.price}€/mois
-                </div>
-              )}
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

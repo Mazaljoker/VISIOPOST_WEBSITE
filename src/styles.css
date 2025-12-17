@@ -1,124 +1,367 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+/* ========================================
+   nSignal - Global Styles
+   Charte Graphique 2025
+   ======================================== */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ========================================
+   CSS Custom Properties (Design Tokens)
+   ======================================== */
+
+:root {
+  /* ====== Couleurs Primaires de Marque ====== */
+  
+  /* Primary - Teal Profond */
+  --nsignal-primary: #0F7B6C;
+  --nsignal-primary-50: #E6F4F2;
+  --nsignal-primary-100: #CCE9E5;
+  --nsignal-primary-200: #99D3CB;
+  --nsignal-primary-300: #66BDB1;
+  --nsignal-primary-400: #33A797;
+  --nsignal-primary-500: #0F7B6C;
+  --nsignal-primary-600: #0C6256;
+  --nsignal-primary-700: #094A41;
+  --nsignal-primary-800: #06312B;
+  --nsignal-primary-900: #031916;
+  
+  /* Secondary - Coral Dynamique */
+  --nsignal-secondary: #E86A58;
+  --nsignal-secondary-50: #FDEBE8;
+  --nsignal-secondary-100: #FBD7D1;
+  --nsignal-secondary-200: #F7AFA3;
+  --nsignal-secondary-300: #F38775;
+  --nsignal-secondary-400: #EF5F47;
+  --nsignal-secondary-500: #E86A58;
+  --nsignal-secondary-600: #D55A4A;
+  --nsignal-secondary-700: #B84A3C;
+  --nsignal-secondary-800: #8A382D;
+  --nsignal-secondary-900: #5C251E;
+  
+  /* Accent - Jaune Signal */
+  --nsignal-accent: #DFAB01;
+  --nsignal-accent-50: #FEF9E6;
+  --nsignal-accent-100: #FDF3CC;
+  --nsignal-accent-200: #FBE799;
+  --nsignal-accent-300: #F9DB66;
+  --nsignal-accent-400: #F7CF33;
+  --nsignal-accent-500: #DFAB01;
+  --nsignal-accent-600: #B28901;
+  --nsignal-accent-700: #866701;
+  --nsignal-accent-800: #594400;
+  --nsignal-accent-900: #2D2200;
+  
+  /* Dark - Charcoal Chaud */
+  --nsignal-dark: #1E2B3A;
+  --nsignal-dark-50: #E9EBEE;
+  --nsignal-dark-100: #D3D7DD;
+  --nsignal-dark-200: #A7AFBB;
+  --nsignal-dark-300: #7B8799;
+  --nsignal-dark-400: #4F5F77;
+  --nsignal-dark-500: #1E2B3A;
+  --nsignal-dark-600: #18222E;
+  --nsignal-dark-700: #121A23;
+  --nsignal-dark-800: #0C1117;
+  --nsignal-dark-900: #06090C;
+  
+  /* Light - Crème Mocha */
+  --nsignal-light: #F8F5F2;
+  --nsignal-light-50: #FFFFFF;
+  --nsignal-light-100: #FDFCFB;
+  --nsignal-light-200: #FAF8F6;
+  --nsignal-light-300: #F8F5F2;
+  --nsignal-light-400: #EDE9E5;
+  --nsignal-light-500: #D6D0CA;
+  --nsignal-light-600: #B8B0A8;
+  --nsignal-light-700: #8A8279;
+  --nsignal-light-800: #6B6259;
+  --nsignal-light-900: #4A433C;
+  
+  /* ====== Couleurs de Catégories ====== */
+  
+  --category-personnel: #0B6E99;
+  --category-personnel-light: #E6F4F9;
+  --category-personnel-dark: #074A66;
+  
+  --category-playlist: #E86A58;
+  --category-playlist-light: #FDEBE8;
+  --category-playlist-dark: #B84A3C;
+  
+  --category-herite: #2D7D46;
+  --category-herite-light: #E8F5EC;
+  --category-herite-dark: #1E5330;
+  
+  --category-suggere: #D9730D;
+  --category-suggere-light: #FEF3E6;
+  --category-suggere-dark: #9A5209;
+  
+  --category-partage: #7C4DFF;
+  --category-partage-light: #F0EBFF;
+  --category-partage-dark: #5835B3;
+  
+  /* ====== Couleurs Sémantiques ====== */
+  
+  --status-success: #2D7D46;
+  --status-warning: #D9730D;
+  --status-error: #DC2626;
+  --status-info: #0B6E99;
+  
+  /* ====== Light Mode ====== */
+  
+  --light-bg: #FFFFFF;
+  --light-surface: #F8F5F2;
+  --light-text: #1E2B3A;
+  --light-text-muted: #6B6259;
+  --light-border: #EDE9E5;
+  
+  /* ====== Dark Mode ====== */
+  
+  --dark-bg: #0F1419;
+  --dark-surface: #1E2B3A;
+  --dark-text: #F8F5F2;
+  --dark-text-muted: #B8B0A8;
+  --dark-border: #2B3544;
+  
+  /* ====== Gradients ====== */
+  
+  --gradient-primary: linear-gradient(135deg, #0F7B6C 0%, #E86A58 100%);
+  --gradient-dark: linear-gradient(135deg, #1E2B3A 0%, #0F7B6C 100%);
+  --gradient-warm: linear-gradient(135deg, #E86A58 0%, #DFAB01 100%);
+  
+  /* ====== Shadows ====== */
+  
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-nsignal: 0 4px 24px rgba(15, 123, 108, 0.15);
+  --shadow-nsignal-lg: 0 8px 40px rgba(15, 123, 108, 0.2);
+  
+  /* ====== Border Radius ====== */
+  
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+}
+
+/* ========================================
+   Base Styles
+   ======================================== */
+
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
   body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--light-text);
+  }
+  
+  .dark body {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
   }
 }
+
+/* ========================================
+   Component Classes
+   ======================================== */
+
+@layer components {
+  /* Gradient Backgrounds */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-dark {
+    background: var(--gradient-dark);
+  }
+  
+  .bg-gradient-warm {
+    background: var(--gradient-warm);
+  }
+  
+  /* Cards */
+  .card {
+    background: var(--light-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  
+  .card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+  
+  .dark .card {
+    background: var(--dark-surface);
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    background-color: var(--nsignal-primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--nsignal-primary-600);
+    transform: translateY(-2px);
+  }
+  
+  .btn-secondary {
+    background-color: var(--nsignal-secondary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-secondary:hover {
+    background-color: var(--nsignal-secondary-600);
+  }
+  
+  .btn-accent {
+    background-color: var(--nsignal-accent);
+    color: var(--nsignal-dark);
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-outline {
+    background: transparent;
+    color: var(--nsignal-primary);
+    border: 2px solid var(--nsignal-primary);
+    padding: 10px 22px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-outline:hover {
+    background-color: var(--nsignal-primary);
+    color: white;
+  }
+  
+  /* Category Badges */
+  .badge-personnel {
+    background-color: var(--category-personnel-light);
+    color: var(--category-personnel);
+    border-left: 3px solid var(--category-personnel);
+  }
+  
+  .badge-playlist {
+    background-color: var(--category-playlist-light);
+    color: var(--category-playlist);
+    border-left: 3px solid var(--category-playlist);
+  }
+  
+  .badge-herite {
+    background-color: var(--category-herite-light);
+    color: var(--category-herite);
+    border-left: 3px solid var(--category-herite);
+  }
+  
+  .badge-suggere {
+    background-color: var(--category-suggere-light);
+    color: var(--category-suggere);
+    border-left: 3px solid var(--category-suggere);
+  }
+  
+  .badge-partage {
+    background-color: var(--category-partage-light);
+    color: var(--category-partage);
+    border-left: 3px solid var(--category-partage);
+  }
+  
+  /* Status Indicators */
+  .status-success {
+    color: var(--status-success);
+  }
+  
+  .status-warning {
+    color: var(--status-warning);
+  }
+  
+  .status-error {
+    color: var(--status-error);
+  }
+  
+  .status-info {
+    color: var(--status-info);
+  }
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-visio-violet via-visio-rose to-visio-bleu bg-clip-text text-transparent;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
-  .bg-gradient-visio {
-    @apply bg-gradient-to-r from-visio-violet via-visio-rose to-visio-bleu;
+  .shadow-nsignal {
+    box-shadow: var(--shadow-nsignal);
   }
   
-  .shadow-visio {
-    box-shadow: 0 10px 40px rgba(63, 38, 128, 0.15);
-  }
-  
-  .hover-lift {
-    @apply transition-transform duration-300 hover:-translate-y-1;
+  .shadow-nsignal-lg {
+    box-shadow: var(--shadow-nsignal-lg);
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
+/* ========================================
+   Animations
+   ======================================== */
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3f2680, #ed1164);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #2a1250, #c90f54);
-}
-
-/* Animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
+@keyframes signal-wave {
+  0% {
+    opacity: 1;
+    transform: scale(0.8);
   }
-  50% {
-    transform: translateY(-20px);
+  100% {
+    opacity: 0;
+    transform: scale(1.3);
   }
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+.animate-signal {
+  animation: signal-wave 1.5s ease-out infinite;
 }
 
-/* Floating icons animations */
-@keyframes float-random {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(15px, -25px) rotate(5deg);
-  }
-  50% {
-    transform: translate(-10px, -40px) rotate(-3deg);
-  }
-  75% {
-    transform: translate(20px, -15px) rotate(4deg);
-  }
+/* ========================================
+   Legacy Support (transition from nReach)
+   À SUPPRIMER après migration complète
+   ======================================== */
+
+.bg-nreach-midnight {
+  background-color: var(--nsignal-dark);
 }
 
-@keyframes color-shift {
-  0%, 100% {
-    color: #3f2680; /* visio-violet */
-  }
-  33% {
-    color: #ed1164; /* visio-rose */
-  }
-  66% {
-    color: #00aeef; /* visio-bleu */
-  }
+.bg-nreach-electric {
+  background-color: var(--nsignal-primary);
 }
 
-.animate-float-random {
-  animation: float-random var(--animation-duration, 20s) ease-in-out infinite;
+.text-nreach-midnight {
+  color: var(--nsignal-dark);
 }
 
-.animate-color-shift {
-  animation: color-shift 8s ease-in-out infinite;
-}
-
-/* Glassmorphism effect */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Gradient text animation */
-@keyframes gradient-x {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-.animate-gradient-x {
-  background-size: 200% 200%;
-  animation: gradient-x 3s ease infinite;
+.text-nreach-electric {
+  color: var(--nsignal-primary);
 }

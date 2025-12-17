@@ -1,32 +1,38 @@
-import { Faq } from '../types';
-
 /**
- * FAQ B2B - Questions pour DSI/Juridique/Direction Marketing
- * Focus : Sécurité, Compliance, Intégration, ROI
+ * FAQ nSignal - Charte Graphique 2025
+ * Orientation: Pilotage réseau
  */
-export const faqs: Faq[] = [
+export const faqs = [
   {
-    q: "Comment garantissez-vous que l'IA ne publie pas de bêtises ?",
-    a: "Sécurité totale. Nous utilisons un système de 'Double-Verrou' : 1. Le Siège valide les thèmes et mots-clés interdits. 2. Notre IA 'Supervisor' relit chaque post avant génération pour vérifier la conformité à la charte. Rien n'est publié sans validation (humaine ou automatique selon votre réglage)."
+    question: "Qu'est-ce que nSignal ?",
+    answer: "nSignal est une plateforme de pilotage social pour réseaux multi-sites. Elle permet aux sièges de coordonner la présence sociale de centaines de points de vente tout en préservant l'autonomie locale."
   },
   {
-    q: "Est-ce compatible avec notre outil actuel (Hootsuite, Sociabble...) ?",
-    a: "Oui. Visiopost ne remplace pas vos outils corporate, il les complète. Nous gérons la couche 'Locale' que ces outils ne savent pas faire (génération unique par ville). Nous pouvons même nous connecter via API."
+    question: "En quoi nSignal diffère des outils classiques ?",
+    answer: "Contrairement aux outils qui imposent du contenu, nSignal propose 3 modes (Free Style, Playlist, Auto) qui s'adaptent à la maturité de chaque adhérent. Le siège suggère, le terrain décide."
   },
   {
-    q: "Quel est le modèle économique ?",
-    a: "Nous fonctionnons par 'Licence Point de Vente'. Le tarif est dégressif selon la taille du réseau. Le Setup technique (Onboarding) est facturé une seule fois au lancement."
+    question: "Comment évitez-vous le duplicate content ?",
+    answer: "Notre IA génère des variations uniques pour chaque magasin à partir de blocs validés. Même message, mais formulation différente = 0% pénalité Facebook."
   },
   {
-    q: "Quelle charge de travail pour l'équipe Marketing Siège ?",
-    a: "Minime. Environ 1h par mois pour valider les campagnes du mois suivant. L'IA se charge des 500 déclinaisons opérationnelles."
+    question: "Quel est le temps de mise en place ?",
+    answer: "40 secondes par magasin. Import CSV, connexion Facebook, c'est prêt. Pas de formation longue, interface intuitive."
   },
   {
-    q: "Nos adhérents sont indépendants, on ne peut rien leur imposer.",
-    a: "C'est notre force. Le mode 'Suggestion' permet d'envoyer les posts dans l'app mobile de l'adhérent. Il garde le clic final 'Publier'. Taux d'adoption moyen constaté : 85% (car le contenu est excellent)."
+    question: "Le siège peut-il voir l'activité de chaque magasin ?",
+    answer: "Oui ! Dashboard temps réel avec vue par région, alertes inactivité, et analytics consolidés. Vous savez exactement qui publie et quand."
   },
   {
-    q: "Où sont hébergées les données ?",
-    a: "En Europe (France/Allemagne) sur des serveurs certifiés ISO 27001. Vos données clients ne servent jamais à entraîner des modèles IA publics."
+    question: "Et si un adhérent ne veut pas utiliser la plateforme ?",
+    answer: "C'est sa liberté ! nSignal ne force rien. Mais avec le mode Playlist (1 clic = publication), même les plus réticents adoptent facilement."
+  },
+  {
+    question: "Quelles plateformes sont supportées ?",
+    answer: "Actuellement Facebook. Instagram arrive au T1 2026, suivi de Google Business Profile, TikTok et LinkedIn courant 2026."
+  },
+  {
+    question: "Comment sont calculés les tarifs ?",
+    answer: "30€/utilisateur/mois avec tarifs dégressifs pour les grands réseaux. Le siège est GRATUIT si 10+ adhérents payants. Frais de setup one-shot à partir de 990€."
   }
 ];

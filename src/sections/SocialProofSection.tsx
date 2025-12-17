@@ -1,75 +1,67 @@
 import { motion } from 'framer-motion';
-import { Quote } from 'lucide-react';
-import { stats, testimonial } from '../data/socialProof';
-import { SocialProofSectionProps } from '../types';
+import { TrendingUp, Users, Clock, CheckCircle } from 'lucide-react';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
+const stats = [
+  {
+    value: '+340%',
+    label: 'de portée organique',
+    icon: TrendingUp,
+    color: 'text-nsignal-primary',
   },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-    },
+  {
+    value: '500+',
+    label: 'points de vente',
+    icon: Users,
+    color: 'text-nsignal-secondary',
   },
-};
+  {
+    value: '30s',
+    label: 'par post généré',
+    icon: Clock,
+    color: 'text-nsignal-primary',
+  },
+  {
+    value: '0',
+    label: 'duplicate content',
+    icon: CheckCircle,
+    color: 'text-nsignal-accent',
+  },
+];
 
 /**
- * Section Social Proof - Stats et témoignage
+ * Section Social Proof - Charte Graphique nSignal 2025
  */
-const SocialProofSection = ({ className = '' }: SocialProofSectionProps) => {
+const SocialProofSection = () => {
   return (
-    <section className={`py-16 px-4 sm:px-6 lg:px-8 bg-white ${className}`}>
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-nsignal-dark border-y border-nsignal-light-400 dark:border-nsignal-dark-400">
       <div className="max-w-6xl mx-auto">
-        {/* Stats */}
         <motion.div
-          className="grid md:grid-cols-3 gap-8 mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={containerVariants}
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="text-5xl font-bold bg-gradient-to-r from-visio-violet to-visio-rose bg-clip-text text-transparent mb-2">
-                {stat.value}
-              </div>
-              <div className="text-gray-600">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Testimonial */}
-        <motion.div
-          className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 md:p-12 border border-gray-100"
-          initial={{ opacity: 0, y: 40 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="max-w-3xl mx-auto text-center">
-            <Quote className="w-12 h-12 text-visio-violet/20 mx-auto mb-6" />
-            <blockquote className="text-xl md:text-2xl text-gray-700 italic mb-6">
-              "{testimonial.quote}"
-            </blockquote>
-            <div className="text-gray-900 font-semibold">{testimonial.author}</div>
-            <div className="text-gray-500">{testimonial.company}</div>
-          </div>
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <div className={`inline-flex p-3 rounded-xl bg-nsignal-light dark:bg-nsignal-dark-500 mb-3`}>
+                <stat.icon className={`w-6 h-6 ${stat.color}`} />
+              </div>
+              <div className={`text-3xl md:text-4xl font-extrabold ${stat.color} mb-1`}>
+                {stat.value}
+              </div>
+              <div className="text-sm text-nsignal-light-700 dark:text-nsignal-light-600">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
