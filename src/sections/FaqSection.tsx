@@ -29,7 +29,7 @@ const FaqSection = () => {
           viewport={{ once: true, amount: 0.5 }}
           variants={titleVariants}
         >
-          <h2 className="text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
+          <h2 className="text-4xl font-bold text-nsignal-dark dark:text-dark-text mb-4">
             Questions fréquentes
           </h2>
           <p className="text-xl text-light-text-muted dark:text-dark-text-muted">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Sparkles, Users, Zap, MapPin, Play, MessageSquare } from 'lucide-react';
+import { ArrowRight, Sparkles, Users, Zap, MapPin, Play, MessageSquare, Globe, Star } from 'lucide-react';
 import { Button } from '../components/Button';
 
 const stats = [
@@ -28,11 +28,11 @@ export const HeroSection: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-midnight" />
+      <div className="absolute inset-0 bg-gradient-dark" />
       
       {/* Glow Effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-nreach-electric/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-nreach-lavande/20 rounded-full blur-3xl" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-nsignal-primary/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-nsignal-secondary/20 rounded-full blur-3xl" />
       
       {/* Grid Pattern */}
       <div 
@@ -53,10 +53,10 @@ export const HeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nreach-electric/10 border border-nreach-electric/30 mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nsignal-primary/10 border border-nsignal-primary/30 mb-8"
             >
-              <Sparkles className="w-4 h-4 text-nreach-electric" />
-              <span className="text-nreach-electric text-sm font-medium">
+              <Sparkles className="w-4 h-4 text-nsignal-primary" />
+              <span className="text-nsignal-primary text-sm font-medium">
                 Propulsé par notre IA propriétaire
               </span>
             </motion.div>
@@ -68,9 +68,9 @@ export const HeroSection: React.FC = () => {
               transition={{ delay: 0.2 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6"
             >
-              <span className="text-nreach-electric">n</span> locations.
+              <span className="text-nsignal-primary">n</span> locations.
               <br />
-              <span className="bg-gradient-to-r from-nreach-electric to-nreach-lavande bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-nsignal-primary to-nsignal-secondary bg-clip-text text-transparent">
                 One studio.
               </span>
             </motion.h1>
@@ -80,12 +80,30 @@ export const HeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-lg sm:text-xl text-dark-text-muted max-w-xl mb-8"
+              className="text-lg sm:text-xl text-dark-text-muted max-w-xl mb-4"
             >
-              Générez des posts <span className="text-white font-semibold">uniques</span> pour
-              chaque point de vente de votre réseau.
-              <span className="text-nreach-electric"> Fini les pénalités de contenu dupliqué.</span>
+              Gérez toute votre <span className="text-white font-semibold">présence digitale locale</span> :
+              réseaux sociaux <span className="text-nsignal-primary">ET</span> Google My Business.
+              <span className="text-nsignal-secondary"> Une seule plateforme, des contenus uniques partout.</span>
             </motion.p>
+
+            {/* Platform badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-8"
+            >
+              <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-sm font-medium flex items-center gap-1">
+                <MessageSquare className="w-3 h-3" /> Réseaux Sociaux
+              </span>
+              <span className="px-3 py-1 rounded-full bg-nsignal-primary/20 text-nsignal-primary text-sm font-medium flex items-center gap-1">
+                <Globe className="w-3 h-3" /> Google My Business
+              </span>
+              <span className="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-medium flex items-center gap-1">
+                <Star className="w-3 h-3" /> Gestion des Avis
+              </span>
+            </motion.div>
             
             {/* CTA Buttons */}
             <motion.div
@@ -97,7 +115,7 @@ export const HeroSection: React.FC = () => {
               <Button variant="primary" size="lg" icon={<ArrowRight size={20} />}>
                 Démarrer gratuitement
               </Button>
-              <Button variant="outline" size="lg" className="border-white/20 text-white hover:border-nreach-electric hover:text-nreach-electric">
+              <Button variant="outline" size="lg" className="border-white/20 text-white hover:border-nsignal-primary hover:text-nsignal-primary">
                 Voir la démo
               </Button>
             </motion.div>
@@ -112,7 +130,7 @@ export const HeroSection: React.FC = () => {
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="flex items-center justify-center gap-2 mb-1">
-                    <stat.icon className="w-4 h-4 text-nreach-electric" />
+                    <stat.icon className="w-4 h-4 text-nsignal-primary" />
                     <span className="text-2xl sm:text-3xl font-extrabold text-white">
                       {stat.value}
                     </span>
@@ -137,8 +155,8 @@ export const HeroSection: React.FC = () => {
                   onClick={() => setActiveTab('exemple')}
                   className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 text-sm font-medium transition-colors ${
                     activeTab === 'exemple'
-                      ? 'text-nreach-midnight dark:text-dark-text border-b-2 border-nreach-electric'
-                      : 'text-light-text-muted dark:text-dark-text-muted hover:text-nreach-midnight dark:hover:text-dark-text'
+                      ? 'text-nsignal-dark dark:text-dark-text border-b-2 border-nsignal-primary'
+                      : 'text-light-text-muted dark:text-dark-text-muted hover:text-nsignal-dark dark:hover:text-dark-text'
                   }`}
                 >
                   <MessageSquare className="w-4 h-4" />
@@ -148,8 +166,8 @@ export const HeroSection: React.FC = () => {
                   onClick={() => setActiveTab('video')}
                   className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 text-sm font-medium transition-colors ${
                     activeTab === 'video'
-                      ? 'text-nreach-midnight dark:text-dark-text border-b-2 border-nreach-electric'
-                      : 'text-light-text-muted dark:text-dark-text-muted hover:text-nreach-midnight dark:hover:text-dark-text'
+                      ? 'text-nsignal-dark dark:text-dark-text border-b-2 border-nsignal-primary'
+                      : 'text-light-text-muted dark:text-dark-text-muted hover:text-nsignal-dark dark:hover:text-dark-text'
                   }`}
                 >
                   <Play className="w-4 h-4" />
@@ -172,9 +190,9 @@ export const HeroSection: React.FC = () => {
                       <div className="flex items-center justify-between mb-6">
                         <div>
                           <p className="text-xs text-light-text-muted dark:text-dark-text-muted uppercase tracking-wide">Campagne</p>
-                          <h4 className="font-bold text-nreach-midnight dark:text-dark-text">"Nouvelle Collection"</h4>
+                          <h4 className="font-bold text-nsignal-dark dark:text-dark-text">"Nouvelle Collection"</h4>
                         </div>
-                        <div className="px-3 py-1.5 bg-nreach-electric text-nreach-midnight text-sm font-bold rounded-lg">
+                        <div className="px-3 py-1.5 bg-nsignal-primary text-nsignal-dark text-sm font-bold rounded-lg">
                           500 POSTS UNIQUES
                         </div>
                       </div>
@@ -186,11 +204,11 @@ export const HeroSection: React.FC = () => {
                             key={index}
                             className="bg-light-surface dark:bg-dark-bg rounded-xl p-4 border border-light-border dark:border-dark-border"
                           >
-                            <div className="flex items-center gap-1.5 text-nreach-electric text-xs font-medium mb-2">
+                            <div className="flex items-center gap-1.5 text-nsignal-primary text-xs font-medium mb-2">
                               <MapPin className="w-3 h-3" />
                               {post.city}
                             </div>
-                            <p className="text-sm text-nreach-midnight dark:text-dark-text">
+                            <p className="text-sm text-nsignal-dark dark:text-dark-text">
                               {post.text}
                             </p>
                           </div>
@@ -204,11 +222,11 @@ export const HeroSection: React.FC = () => {
                         </p>
                         <div className="flex h-3 rounded-full overflow-hidden">
                           <div className="w-1/5 bg-red-500" />
-                          <div className="flex-1 bg-gradient-to-r from-nreach-electric to-nreach-lavande" />
+                          <div className="flex-1 bg-gradient-to-r from-nsignal-primary to-nsignal-secondary" />
                         </div>
                         <div className="flex justify-between mt-2 text-xs font-medium">
                           <span className="text-red-500">Duplicate = -80%</span>
-                          <span className="text-nreach-electric">nReach = +340%</span>
+                          <span className="text-nsignal-primary">nReach = +340%</span>
                         </div>
                       </div>
                     </motion.div>
@@ -218,10 +236,10 @@ export const HeroSection: React.FC = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="aspect-video bg-nreach-midnight rounded-xl flex items-center justify-center cursor-pointer group"
+                      className="aspect-video bg-nsignal-dark rounded-xl flex items-center justify-center cursor-pointer group"
                     >
-                      <div className="w-16 h-16 bg-nreach-electric rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Play className="w-8 h-8 text-nreach-midnight ml-1" />
+                      <div className="w-16 h-16 bg-nsignal-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Play className="w-8 h-8 text-nsignal-dark ml-1" />
                       </div>
                     </motion.div>
                   )}
@@ -237,8 +255,8 @@ export const HeroSection: React.FC = () => {
               className="absolute -bottom-4 -right-4 bg-white dark:bg-dark-surface rounded-xl px-4 py-2 shadow-lg border border-light-border dark:border-dark-border"
             >
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-nreach-electric rounded-full animate-pulse" />
-                <span className="text-sm font-medium text-nreach-midnight dark:text-dark-text">Live demo</span>
+                <div className="w-2 h-2 bg-nsignal-primary rounded-full animate-pulse" />
+                <span className="text-sm font-medium text-nsignal-dark dark:text-dark-text">Live demo</span>
               </div>
             </motion.div>
           </motion.div>

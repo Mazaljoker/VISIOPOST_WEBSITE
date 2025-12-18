@@ -22,8 +22,8 @@ const useCases: UseCaseData[] = [
     id: 'optique',
     icon: <Glasses className="w-5 h-5" />,
     sector: 'Optique',
-    color: 'text-nreach-lavande',
-    bgGradient: 'from-nreach-lavande to-nreach-electric',
+    color: 'text-nsignal-secondary',
+    bgGradient: 'from-nsignal-secondary to-nsignal-primary',
     posts: [
       {
         location: 'Lyon',
@@ -165,14 +165,14 @@ const MiniPost = ({ location, content, likes, comments, shares, gradient, delay 
           {location.charAt(0)}
         </div>
         <div>
-          <div className="font-medium text-sm text-nreach-midnight dark:text-dark-text">{location}</div>
+          <div className="font-medium text-sm text-nsignal-dark dark:text-dark-text">{location}</div>
           <div className="text-xs text-light-text-muted dark:text-dark-text-muted">Sponsorisé · 1h</div>
         </div>
       </div>
       <p className="text-sm text-light-text dark:text-dark-text-muted mb-3 line-clamp-2">{content}</p>
       <div className="flex items-center justify-between text-xs text-light-text-muted dark:text-dark-text-muted pt-2 border-t border-light-border dark:border-dark-border">
         <div className="flex items-center space-x-1">
-          <ThumbsUp className="w-3 h-3 text-nreach-electric" />
+          <ThumbsUp className="w-3 h-3 text-nsignal-primary" />
           <span>{likes}</span>
         </div>
         <div className="flex items-center space-x-3">
@@ -210,11 +210,11 @@ const UseCasesSection = ({ className = '' }: { className?: string }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
+          <h2 className="text-4xl font-bold text-nsignal-dark dark:text-dark-text mb-4">
             Adapté à votre secteur
           </h2>
           <p className="text-xl text-light-text-muted dark:text-dark-text-muted">
-            Chaque réseau a son ton. <span className="text-nreach-electric">nReach Studio</span> s'adapte.
+            Chaque réseau a son ton. <span className="text-nsignal-primary">nReach Studio</span> s'adapte.
           </p>
         </motion.div>
 
@@ -262,12 +262,12 @@ const UseCasesSection = ({ className = '' }: { className?: string }) => {
                       {activeCase.icon}
                     </div>
                     <div>
-                      <div className="font-semibold text-nreach-midnight dark:text-dark-text">Campagne {activeCase.sector}</div>
+                      <div className="font-semibold text-nsignal-dark dark:text-dark-text">Campagne {activeCase.sector}</div>
                       <div className="text-xs text-light-text-muted dark:text-dark-text-muted">1 visuel → 150 posts uniques générés</div>
                     </div>
                   </div>
                   <div className="hidden sm:block">
-                    <span className="px-3 py-1 bg-nreach-electric/10 text-nreach-electric text-xs font-medium rounded-full">
+                    <span className="px-3 py-1 bg-nsignal-primary/10 text-nsignal-primary text-xs font-medium rounded-full">
                       ✓ 0% duplicate content
                     </span>
                   </div>
@@ -295,16 +295,16 @@ const UseCasesSection = ({ className = '' }: { className?: string }) => {
                   transition={{ delay: 0.4 }}
                 >
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 rounded-full bg-nreach-electric" />
+                    <div className="w-2 h-2 rounded-full bg-nsignal-primary" />
                     <span className="text-light-text-muted dark:text-dark-text-muted">Engagement moyen :</span>
-                    <span className="font-bold text-nreach-midnight dark:text-dark-text">
+                    <span className="font-bold text-nsignal-dark dark:text-dark-text">
                       +{Math.round(activeCase.posts.reduce((acc, p) => acc + p.likes + p.comments + p.shares, 0) / 3)}
                     </span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 rounded-full bg-nreach-lavande" />
+                    <div className="w-2 h-2 rounded-full bg-nsignal-secondary" />
                     <span className="text-light-text-muted dark:text-dark-text-muted">Portée estimée :</span>
-                    <span className="font-bold text-nreach-electric">
+                    <span className="font-bold text-nsignal-primary">
                       +340%
                     </span>
                   </div>
@@ -323,7 +323,7 @@ const UseCasesSection = ({ className = '' }: { className?: string }) => {
           transition={{ delay: 0.3 }}
         >
           <p className="text-light-text-muted dark:text-dark-text-muted">
-            Et aussi : <span className="font-medium text-nreach-midnight dark:text-dark-text">Restauration</span>, <span className="font-medium text-nreach-midnight dark:text-dark-text">Automobile</span>, <span className="font-medium text-nreach-midnight dark:text-dark-text">Immobilier</span>, <span className="font-medium text-nreach-midnight dark:text-dark-text">Services</span>...
+            Et aussi : <span className="font-medium text-nsignal-dark dark:text-dark-text">Restauration</span>, <span className="font-medium text-nsignal-dark dark:text-dark-text">Automobile</span>, <span className="font-medium text-nsignal-dark dark:text-dark-text">Immobilier</span>, <span className="font-medium text-nsignal-dark dark:text-dark-text">Services</span>...
           </p>
         </motion.div>
       </div>

@@ -6,25 +6,25 @@ const stats = [
     value: '+340%',
     label: 'de portée organique',
     icon: TrendingUp,
-    color: 'text-nreach-electric',
+    color: 'text-nsignal-primary',
   },
   {
     value: '500+',
     label: 'points de vente',
     icon: Users,
-    color: 'text-nreach-lavande',
+    color: 'text-nsignal-secondary',
   },
   {
     value: '30s',
     label: 'par post généré',
     icon: Clock,
-    color: 'text-nreach-electric',
+    color: 'text-nsignal-primary',
   },
   {
     value: '0',
     label: 'duplicate content',
     icon: CheckCircle,
-    color: 'text-nreach-lavande',
+    color: 'text-nsignal-secondary',
   },
 ];
 

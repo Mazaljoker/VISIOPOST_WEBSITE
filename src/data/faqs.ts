@@ -13,7 +13,7 @@ export const faqs = [
   },
   {
     question: "Quelles plateformes sont supportées ?",
-    answer: "Actuellement, nReach Studio supporte Facebook. Instagram sera disponible au T1 2025, suivi de TikTok au T2 2025 et LinkedIn courant 2025. Chaque plateforme additionnelle est proposée en option."
+    answer: "nReach Studio supporte Facebook et Google My Business (posts GMB, gestion des avis, synchronisation des informations). Instagram et TikTok seront disponibles au T1 2025, suivis de LinkedIn courant 2025. Google My Business est inclus dans les plans Business et Enterprise."
   },
   {
     question: "Comment sont calculés les tarifs ?",

@@ -62,7 +62,7 @@ export const Header: React.FC = () => {
                   href={item.href}
                   className={`transition-colors font-medium ${
                     isScrolled
-                      ? 'text-light-text-muted hover:text-nreach-midnight dark:text-dark-text-muted dark:hover:text-dark-text'
+                      ? 'text-light-text-muted hover:text-nsignal-dark dark:text-dark-text-muted dark:hover:text-dark-text'
                       : 'text-white/80 hover:text-white'
                   }`}
                 >
@@ -82,7 +82,7 @@ export const Header: React.FC = () => {
             <div className="md:hidden flex items-center gap-2">
               <ThemeToggle />
               <button
-                className={`p-2 ${isScrolled ? 'text-nreach-midnight dark:text-dark-text' : 'text-white'}`}
+                className={`p-2 ${isScrolled ? 'text-nsignal-dark dark:text-dark-text' : 'text-white'}`}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -107,7 +107,7 @@ export const Header: React.FC = () => {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="text-xl font-medium text-nreach-midnight dark:text-dark-text"
+                    className="text-xl font-medium text-nsignal-dark dark:text-dark-text"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}

@@ -25,7 +25,7 @@ const features = [
  */
 const NetworkIntelligenceSection = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-nreach-midnight to-nreach-midnight-700">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-nsignal-dark to-nsignal-dark-700">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-12"
@@ -33,7 +33,7 @@ const NetworkIntelligenceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nreach-electric/20 text-nreach-electric mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nsignal-primary/20 text-nsignal-primary mb-4">
             <Zap className="w-4 h-4" />
             <span className="text-sm font-medium">Bientôt disponible</span>
           </div>
@@ -55,8 +55,8 @@ const NetworkIntelligenceSection = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <div className="w-12 h-12 bg-nreach-electric/20 rounded-xl flex items-center justify-center mb-4">
-                <feature.icon className="w-6 h-6 text-nreach-electric" />
+              <div className="w-12 h-12 bg-nsignal-primary/20 rounded-xl flex items-center justify-center mb-4">
+                <feature.icon className="w-6 h-6 text-nsignal-primary" />
               </div>
               <h3 className="text-lg font-semibold text-white mb-2">
                 {feature.title}

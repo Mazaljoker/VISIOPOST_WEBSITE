@@ -64,10 +64,10 @@ const PlanCard = ({ title, price, period, features, cta, highlight, isPopular, v
 
   const getGradient = () => {
     switch (variant) {
-      case 'starter': return 'from-nreach-lavande to-nreach-electric';
-      case 'pro': return 'from-nreach-midnight to-nreach-lavande';
-      case 'centrale': return 'from-gray-800 to-nreach-midnight';
-      default: return 'from-nreach-lavande to-nreach-electric';
+      case 'starter': return 'from-nsignal-secondary to-nsignal-primary';
+      case 'pro': return 'from-nsignal-dark to-nsignal-secondary';
+      case 'centrale': return 'from-gray-800 to-nsignal-dark';
+      default: return 'from-nsignal-secondary to-nsignal-primary';
     }
   };
 
@@ -76,13 +76,13 @@ const PlanCard = ({ title, price, period, features, cta, highlight, isPopular, v
       variants={cardVariants}
       whileHover={{ y: -8, scale: 1.02 }}
       className={`relative bg-white dark:bg-dark-surface rounded-2xl shadow-xl border-2 overflow-hidden flex flex-col ${
-        isPopular ? 'border-nreach-electric' : 'border-light-border dark:border-dark-border'
+        isPopular ? 'border-nsignal-primary' : 'border-light-border dark:border-dark-border'
       }`}
     >
       {/* Popular badge */}
       {isPopular && (
         <div className="absolute top-0 right-0">
-          <div className="bg-gradient-to-r from-nreach-electric to-nreach-lavande text-nreach-midnight text-xs font-bold px-4 py-1 rounded-bl-lg">
+          <div className="bg-gradient-to-r from-nsignal-primary to-nsignal-secondary text-nsignal-dark text-xs font-bold px-4 py-1 rounded-bl-lg">
             ⭐ RECOMMANDÉ
           </div>
         </div>
@@ -119,8 +119,8 @@ const PlanCard = ({ title, price, period, features, cta, highlight, isPopular, v
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
             >
-              <div className="w-5 h-5 bg-nreach-electric/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                <Check className="w-3 h-3 text-nreach-electric" />
+              <div className="w-5 h-5 bg-nsignal-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Check className="w-3 h-3 text-nsignal-primary" />
               </div>
               <span className="text-light-text dark:text-dark-text text-sm">{feature}</span>
             </motion.li>
@@ -162,7 +162,7 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
           viewport={{ once: true, amount: 0.5 }}
           variants={titleVariants}
         >
-          <h2 className="text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
+          <h2 className="text-4xl font-bold text-nsignal-dark dark:text-dark-text mb-4">
             Tarification transparente
           </h2>
           <p className="text-xl text-light-text-muted dark:text-dark-text-muted max-w-2xl mx-auto">
@@ -178,14 +178,14 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <div className="bg-gradient-to-r from-nreach-electric/5 to-nreach-lavande/5 rounded-2xl p-6 border border-nreach-electric/20">
+          <div className="bg-gradient-to-r from-nsignal-primary/5 to-nsignal-secondary/5 rounded-2xl p-6 border border-nsignal-primary/20">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <div className="flex items-center space-x-2 text-nreach-electric font-semibold mb-1">
+                <div className="flex items-center space-x-2 text-nsignal-primary font-semibold mb-1">
                   <Zap className="w-4 h-4" />
                   <span>Frais de mise en place (one-shot)</span>
                 </div>
-                <div className="text-2xl font-bold text-nreach-midnight dark:text-dark-text">
+                <div className="text-2xl font-bold text-nsignal-dark dark:text-dark-text">
                   À partir de {setupConfig.startingPrice}€
                 </div>
                 <p className="text-sm text-light-text-muted dark:text-dark-text-muted mt-1">
@@ -198,7 +198,7 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
                     key={index}
                     className="inline-flex items-center px-3 py-1 bg-white dark:bg-dark-surface rounded-full text-xs text-light-text dark:text-dark-text border border-light-border dark:border-dark-border"
                   >
-                    <Check className="w-3 h-3 text-nreach-electric mr-1" />
+                    <Check className="w-3 h-3 text-nsignal-primary mr-1" />
                     {item}
                   </span>
                 ))}
@@ -253,15 +253,15 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
                 key={index}
                 className={`p-4 rounded-xl text-center border-2 transition-all ${
                   platform.included
-                    ? 'bg-nreach-electric/10 border-nreach-electric/30'
+                    ? 'bg-nsignal-primary/10 border-nsignal-primary/30'
                     : platform.available
-                    ? 'bg-nreach-lavande/10 border-nreach-lavande/30'
+                    ? 'bg-nsignal-secondary/10 border-nsignal-secondary/30'
                     : 'bg-light-surface dark:bg-dark-surface border-light-border dark:border-dark-border'
                 }`}
               >
-                <div className="font-semibold text-nreach-midnight dark:text-dark-text">{platform.name}</div>
+                <div className="font-semibold text-nsignal-dark dark:text-dark-text">{platform.name}</div>
                 {platform.included ? (
-                  <div className="text-xs text-nreach-electric font-medium mt-1">
+                  <div className="text-xs text-nsignal-primary font-medium mt-1">
                     ✓ Inclus dans tous les plans
                   </div>
                 ) : (
@@ -269,7 +269,7 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
                     <div className="text-xs text-light-text-muted dark:text-dark-text-muted mt-1">+{platform.price}€/mois</div>
                     {platform.badge && (
                       <div className={`text-xs font-medium mt-1 ${
-                        platform.available ? 'text-nreach-lavande' : 'text-light-text-muted dark:text-dark-text-muted'
+                        platform.available ? 'text-nsignal-secondary' : 'text-light-text-muted dark:text-dark-text-muted'
                       }`}>
                         {platform.badge}
                       </div>
@@ -296,7 +296,7 @@ const PricingSection = ({ className = '', onOpenRoi }: PricingSectionProps) => {
           <div className="mt-4">
             <button
               onClick={onOpenRoi}
-              className="text-nreach-electric hover:text-nreach-lavande font-medium underline underline-offset-4 transition-colors"
+              className="text-nsignal-primary hover:text-nsignal-secondary font-medium underline underline-offset-4 transition-colors"
             >
               Simuler mon tarif et mon ROI →
             </button>

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* nReach Studio - Global Styles */
+/* nSignal 2025 - Global Styles */
 
 /* Font Import */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -12,7 +12,7 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   /* Transition fluide lors du changement de thème */
   html.transitioning,
   html.transitioning *,
@@ -20,12 +20,12 @@
   html.transitioning *::after {
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
   }
-  
+
   body {
     @apply bg-light-bg text-light-text antialiased;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   }
-  
+
   /* Dark mode body */
   .dark body {
     @apply bg-dark-bg text-dark-text;
@@ -38,42 +38,42 @@
   .card {
     @apply bg-white dark:bg-dark-surface rounded-2xl border border-light-border dark:border-dark-border shadow-card;
   }
-  
+
   .card-hover {
     @apply transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1;
   }
-  
+
   /* Gradient text */
   .text-gradient {
-    @apply bg-gradient-to-r from-nreach-electric to-nreach-lavande bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-nsignal-primary to-nsignal-secondary bg-clip-text text-transparent;
   }
-  
+
   /* Glow effect */
   .glow {
-    @apply shadow-nreach;
+    @apply shadow-nsignal;
   }
-  
+
   .glow-lg {
-    @apply shadow-nreach-lg;
+    @apply shadow-nsignal-lg;
   }
-  
+
   /* Section styles */
   .section {
     @apply py-20 lg:py-32;
   }
-  
+
   .section-title {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-extrabold text-nreach-midnight dark:text-dark-text mb-6;
+    @apply text-3xl sm:text-4xl lg:text-5xl font-extrabold text-nsignal-dark dark:text-dark-text mb-6;
   }
-  
+
   .section-subtitle {
     @apply text-lg sm:text-xl text-light-text-muted dark:text-dark-text-muted max-w-2xl mx-auto;
   }
-  
+
   /* Theme toggle indicator */
   .theme-indicator {
     @apply fixed bottom-4 right-4 px-3 py-1.5 rounded-full text-xs font-medium z-50;
-    @apply bg-nreach-midnight/90 text-white dark:bg-white/90 dark:text-nreach-midnight;
+    @apply bg-nsignal-dark/90 text-white dark:bg-white/90 dark:text-nsignal-dark;
   }
 }
 
@@ -84,21 +84,21 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-  
+
   /* Glass effect */
   .glass {
     @apply bg-white/80 dark:bg-dark-surface/80 backdrop-blur-lg;
   }
-  
+
   /* Animate glow */
   .animate-glow {
     animation: glow 2s ease-in-out infinite alternate;
   }
-  
+
   /* Dark mode transition helper */
   .theme-transition {
     @apply transition-colors duration-300 ease-in-out;
@@ -108,10 +108,10 @@
 /* Animations */
 @keyframes glow {
   0% {
-    box-shadow: 0 0 20px rgba(0, 212, 170, 0.3);
+    box-shadow: 0 0 20px rgba(15, 123, 108, 0.3);
   }
   100% {
-    box-shadow: 0 0 40px rgba(0, 212, 170, 0.5);
+    box-shadow: 0 0 40px rgba(15, 123, 108, 0.5);
   }
 }
 
@@ -129,7 +129,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-nreach-electric;
+  @apply bg-nsignal-primary;
 }
 
 /* Dark mode scrollbar */
@@ -142,14 +142,14 @@
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  @apply bg-nreach-electric;
+  @apply bg-nsignal-primary;
 }
 
 /* Selection colors */
 ::selection {
-  @apply bg-nreach-electric/30 text-nreach-midnight;
+  @apply bg-nsignal-primary/30 text-nsignal-dark;
 }
 
 .dark ::selection {
-  @apply bg-nreach-electric/40 text-white;
+  @apply bg-nsignal-primary/40 text-white;
 }

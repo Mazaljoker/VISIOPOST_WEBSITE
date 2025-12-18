@@ -37,7 +37,7 @@ const FloatingIcons = () => {
             repeatType: 'reverse',
           }}
         >
-          <Icon className="w-8 h-8 text-nreach-electric/20 dark:text-nreach-electric/10" />
+          <Icon className="w-8 h-8 text-nsignal-primary/20 dark:text-nsignal-primary/10" />
         </motion.div>
       ))}
     </div>

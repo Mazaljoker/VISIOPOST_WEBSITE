@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Upload, Sparkles, Bell, TrendingUp, Shield, Clock, BarChart3, Check, ArrowRight } from 'lucide-react';
+import { Upload, Sparkles, Bell, TrendingUp, Shield, Clock, Check, ArrowRight, Globe } from 'lucide-react';
 
 const topCards = [
   {
@@ -13,9 +13,9 @@ const topCards = [
     description: 'Le magasin choisit et publie',
   },
   {
-    icon: BarChart3,
-    title: 'Portée maximale',
-    description: 'Les réseaux récompensent le contenu unique',
+    icon: Globe,
+    title: 'RS + Google',
+    description: 'Une seule plateforme pour tout gérer',
   },
 ];
 
@@ -30,7 +30,7 @@ const steps = [
       'Validation siège garantie',
     ],
     badge: '1 Campagne',
-    badgeColor: 'bg-nreach-midnight text-white',
+    badgeColor: 'bg-nsignal-dark text-white',
   },
   {
     number: '02',
@@ -42,7 +42,7 @@ const steps = [
       'Zéro duplicate content',
     ],
     badge: '500 Posts Uniques',
-    badgeColor: 'bg-nreach-midnight text-white',
+    badgeColor: 'bg-nsignal-dark text-white',
   },
   {
     number: '03',
@@ -54,19 +54,19 @@ const steps = [
       'Aucune formation nécessaire',
     ],
     badge: '30 Secondes',
-    badgeColor: 'bg-nreach-lavande text-white',
+    badgeColor: 'bg-nsignal-secondary text-white',
   },
   {
     number: '04',
     icon: TrendingUp,
-    title: 'PORTÉE MAXIMALE',
+    title: 'VISIBILITÉ BOOSTÉE',
     features: [
-      'Les réseaux voient des contenus originaux',
-      "L'algorithme vous récompense",
-      'Analytics consolidés en temps réel',
+      'Posts uniques = algorithmes satisfaits',
+      'Fiches Google optimisées = SEO local',
+      'Avis gérés = réputation maîtrisée',
     ],
-    badge: '+340% Reach',
-    badgeColor: 'bg-nreach-electric text-nreach-midnight',
+    badge: '+340% Visibilité',
+    badgeColor: 'bg-nsignal-primary text-nsignal-dark',
   },
 ];
 
@@ -85,11 +85,12 @@ const SolutionSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
-            Comment <span className="text-nreach-electric">nReach Studio</span> résout le problème
+          <h2 className="text-3xl md:text-4xl font-bold text-nsignal-dark dark:text-dark-text mb-4">
+            Comment <span className="text-nsignal-primary">nReach Studio</span> résout tout ça
           </h2>
           <p className="text-lg text-light-text-muted dark:text-dark-text-muted max-w-2xl mx-auto">
-            Un processus simple et sécurisé pour générer du contenu unique sur tout votre réseau
+            Un processus simple pour gérer votre présence digitale locale :<br />
+            <span className="font-semibold text-nsignal-dark dark:text-dark-text">réseaux sociaux + Google My Business</span>, sur tout votre réseau
           </p>
         </motion.div>
 
@@ -107,10 +108,10 @@ const SolutionSection = () => {
               className="bg-white dark:bg-dark-surface rounded-2xl p-6 border border-light-border dark:border-dark-border shadow-card text-center"
               whileHover={{ y: -4 }}
             >
-              <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-nreach-electric/20 to-nreach-lavande/20 flex items-center justify-center">
-                <card.icon className="w-7 h-7 text-nreach-electric" />
+              <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-nsignal-primary/20 to-nsignal-secondary/20 flex items-center justify-center">
+                <card.icon className="w-7 h-7 text-nsignal-primary" />
               </div>
-              <h3 className="text-lg font-bold text-nreach-midnight dark:text-dark-text mb-2">
+              <h3 className="text-lg font-bold text-nsignal-dark dark:text-dark-text mb-2">
                 {card.title}
               </h3>
               <p className="text-sm text-light-text-muted dark:text-dark-text-muted">
@@ -135,22 +136,22 @@ const SolutionSection = () => {
               {/* Arrow between cards (desktop only) */}
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10">
-                  <ArrowRight className="w-6 h-6 text-nreach-electric" />
+                  <ArrowRight className="w-6 h-6 text-nsignal-primary" />
                 </div>
               )}
 
               {/* Icon */}
-              <div className="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-nreach-midnight to-nreach-lavande flex items-center justify-center">
+              <div className="w-14 h-14 mb-4 rounded-2xl bg-gradient-to-br from-nsignal-dark to-nsignal-secondary flex items-center justify-center">
                 <step.icon className="w-7 h-7 text-white" />
               </div>
 
               {/* Number */}
-              <div className="text-4xl font-extrabold text-nreach-electric mb-2">
+              <div className="text-4xl font-extrabold text-nsignal-primary mb-2">
                 {step.number}
               </div>
 
               {/* Title */}
-              <h3 className="text-lg font-bold text-nreach-midnight dark:text-dark-text mb-4 uppercase tracking-wide">
+              <h3 className="text-lg font-bold text-nsignal-dark dark:text-dark-text mb-4 uppercase tracking-wide">
                 {step.title}
               </h3>
 
@@ -158,7 +159,7 @@ const SolutionSection = () => {
               <ul className="space-y-2 mb-6">
                 {step.features.map((feature, fIndex) => (
                   <li key={fIndex} className="flex items-start gap-2 text-sm text-light-text-muted dark:text-dark-text-muted">
-                    <Check className="w-4 h-4 text-nreach-electric flex-shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-nsignal-primary flex-shrink-0 mt-0.5" />
                     <span>{feature}</span>
                   </li>
                 ))}

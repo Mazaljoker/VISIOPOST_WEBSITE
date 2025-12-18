@@ -31,27 +31,27 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variants = {
     primary: `
-      bg-gradient-to-r from-nreach-electric to-nreach-lavande
-      text-nreach-midnight
-      hover:shadow-nreach-lg hover:scale-[1.02]
+      bg-gradient-to-r from-nsignal-primary to-nsignal-secondary
+      text-white
+      hover:shadow-nsignal-lg hover:scale-[1.02]
       active:scale-[0.98]
     `,
     secondary: `
-      bg-nreach-midnight
+      bg-nsignal-dark
       text-white
-      hover:bg-nreach-midnight-600
-      active:bg-nreach-midnight-700
+      hover:bg-nsignal-dark-600
+      active:bg-nsignal-dark-700
     `,
     outline: `
       bg-transparent
       border-2 border-light-border dark:border-dark-border
-      text-nreach-midnight dark:text-dark-text
-      hover:border-nreach-electric hover:text-nreach-electric
+      text-nsignal-dark dark:text-dark-text
+      hover:border-nsignal-primary hover:text-nsignal-primary
     `,
     ghost: `
       bg-transparent
-      text-nreach-electric
-      hover:bg-nreach-electric/10
+      text-nsignal-primary
+      hover:bg-nsignal-primary/10
     `,
   };
 

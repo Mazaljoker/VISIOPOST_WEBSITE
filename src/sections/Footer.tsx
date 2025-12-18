@@ -29,7 +29,7 @@ const socialLinks = [
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-nreach-midnight text-white">
+    <footer className="bg-nsignal-dark text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
             <p className="text-dark-text-muted max-w-sm mb-6">
               La plateforme qui génère des posts uniques pour chaque point de vente de votre réseau.
             </p>
-            <p className="text-nreach-electric font-medium italic">
+            <p className="text-nsignal-primary font-medium italic">
               "n locations. One studio."
             </p>
           </div>
@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-dark-text-muted hover:text-nreach-electric transition-colors"
+                    className="text-dark-text-muted hover:text-nsignal-primary transition-colors"
                   >
                     {link.label}
                   </a>
@@ -68,7 +68,7 @@ export const Footer: React.FC = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-dark-text-muted hover:text-nreach-electric transition-colors"
+                    className="text-dark-text-muted hover:text-nsignal-primary transition-colors"
                   >
                     {link.label}
                   </a>
@@ -85,7 +85,7 @@ export const Footer: React.FC = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-dark-text-muted hover:text-nreach-electric transition-colors"
+                    className="text-dark-text-muted hover:text-nsignal-primary transition-colors"
                   >
                     {link.label}
                   </a>
@@ -109,7 +109,7 @@ export const Footer: React.FC = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-dark-surface hover:bg-nreach-electric/20 text-dark-text-muted hover:text-nreach-electric transition-all"
+                className="p-2 rounded-full bg-dark-surface hover:bg-nsignal-primary/20 text-dark-text-muted hover:text-nsignal-primary transition-all"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >

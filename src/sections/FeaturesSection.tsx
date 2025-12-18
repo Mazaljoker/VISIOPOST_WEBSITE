@@ -9,6 +9,7 @@ import {
   Zap,
   Shield,
   MapPin,
+  Globe,
   Heart
 } from 'lucide-react';
 import { features } from '../data/features';
@@ -52,6 +53,7 @@ const iconComponents: Record<string, React.FC<{ className?: string }>> = {
   Zap,
   Shield,
   MapPin,
+  Globe,
   Heart
 };
 
@@ -72,7 +74,7 @@ const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
           viewport={{ once: true, amount: 0.5 }}
           variants={titleVariants}
         >
-          <h2 className="text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
+          <h2 className="text-4xl font-bold text-nsignal-dark dark:text-dark-text mb-4">
             Tout ce dont vous avez besoin
           </h2>
           <p className="text-xl text-light-text-muted dark:text-dark-text-muted">Une plateforme complète pour vos réseaux</p>
@@ -112,23 +114,23 @@ const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
 
         {/* Bloc Feature Prédictive - AI Intelligence - with rewind */}
         <motion.div
-          className="mt-20 max-w-5xl mx-auto bg-nreach-midnight rounded-3xl p-1 text-white overflow-hidden shadow-2xl"
+          className="mt-20 max-w-5xl mx-auto bg-nsignal-dark rounded-3xl p-1 text-white overflow-hidden shadow-2xl"
           initial={{ opacity: 0, y: 60, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6, ease: 'easeOut' as const }}
         >
-          <div className="bg-gradient-to-r from-nreach-midnight-600 to-nreach-midnight p-8 md:p-12 rounded-[22px] border border-dark-border">
+          <div className="bg-gradient-to-r from-nsignal-dark-600 to-nsignal-dark p-8 md:p-12 rounded-[22px] border border-dark-border">
             <div className="grid md:grid-cols-2 gap-12 items-center">
 
               {/* Texte */}
               <div>
-                <div className="inline-block px-4 py-1 bg-nreach-electric/20 text-nreach-electric rounded-full text-sm font-bold mb-6">
+                <div className="inline-block px-4 py-1 bg-nsignal-primary/20 text-nsignal-primary rounded-full text-sm font-bold mb-6">
                   NOUVEAU : AI PREDICTION
                 </div>
                 <h3 className="text-3xl font-bold mb-4">
                   Ne devinez plus. <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-nreach-electric to-nreach-lavande">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-nsignal-primary to-nsignal-secondary">
                     Sachez quand poster.
                   </span>
                 </h3>
@@ -136,12 +138,12 @@ const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
                   Notre algorithme analyse 12 points de données (Météo, Trafic, Historique, Concurrents...) pour déterminer la fenêtre de tir idéale par point de vente.
                 </p>
                 <div className="flex items-center space-x-4 text-sm font-medium">
-                  <div className="flex items-center text-nreach-electric">
-                    <span className="w-2 h-2 bg-nreach-electric rounded-full mr-2"></span>
+                  <div className="flex items-center text-nsignal-primary">
+                    <span className="w-2 h-2 bg-nsignal-primary rounded-full mr-2"></span>
                     +45% d'Engagement
                   </div>
-                  <div className="flex items-center text-nreach-lavande">
-                    <span className="w-2 h-2 bg-nreach-lavande rounded-full mr-2"></span>
+                  <div className="flex items-center text-nsignal-secondary">
+                    <span className="w-2 h-2 bg-nsignal-secondary rounded-full mr-2"></span>
                     Prédiction à J+7
                   </div>
                 </div>
@@ -172,14 +174,14 @@ const FeaturesSection = ({ className = '' }: FeaturesSectionProps) => {
                     transition={{ duration: 0.5, delay: 0.5 }}
                   />
                   <motion.div
-                    className="w-full bg-gradient-to-t from-nreach-electric to-nreach-lavande rounded-t relative group"
+                    className="w-full bg-gradient-to-t from-nsignal-primary to-nsignal-secondary rounded-t relative group"
                     initial={{ height: 0 }}
                     whileInView={{ height: '90%' }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.6 }}
                   >
                     <motion.div
-                      className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-nreach-midnight text-xs font-bold px-2 py-1 rounded shadow-lg whitespace-nowrap"
+                      className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-nsignal-dark text-xs font-bold px-2 py-1 rounded shadow-lg whitespace-nowrap"
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}

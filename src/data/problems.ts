@@ -1,18 +1,23 @@
 /**
- * Problèmes résolus par VisioPost
- * Focus sur le duplicate content et ses conséquences
+ * Problèmes résolus par nReach Studio
+ * Focus sur la présence digitale locale (RS + GMB)
  */
 export const problems: string[] = [
-  "Vous créez une belle campagne au siège. Vous l'envoyez à vos 200 magasins. Ils publient tous le même post.",
-  "Facebook détecte le duplicate content. Algorithme pénalisé. Portée divisée par 5.",
-  "Plus votre réseau grandit, plus le problème empire. Chaque nouveau magasin aggrave la pénalité.",
-  "Votre investissement marketing s'évapore. Vos concurrents locaux vous dépassent en visibilité."
+  "Vous créez une campagne au siège. 200 magasins publient le même post. Pénalité algorithmique.",
+  "Vos 200 fiches Google ont des horaires différents, des avis sans réponse, zéro posts locaux.",
+  "Plus votre réseau grandit, plus c'est ingérable. Chaque magasin aggrave le chaos.",
+  "Vos concurrents locaux vous dépassent sur Facebook ET sur Google Maps."
 ];
 
 /**
- * Chiffre choc pour la section problème
+ * Chiffres chocs pour la section problème
  */
 export const problemStat = {
   value: "-80%",
   label: "de portée quand 50+ pages publient le même contenu"
+};
+
+export const gmbStat = {
+  value: "76%",
+  label: "des recherches locales aboutissent à une visite sous 24h"
 };

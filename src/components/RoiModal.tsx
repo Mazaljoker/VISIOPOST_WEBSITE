@@ -61,9 +61,9 @@ interface MetricCardProps {
 
 const MetricCard = ({ icon, label, value, suffix = '', sublabel, color }: MetricCardProps) => {
   const colorClasses = {
-    blue: 'bg-nreach-electric/10 border-nreach-electric/30 text-nreach-electric',
+    blue: 'bg-nsignal-primary/10 border-nsignal-primary/30 text-nsignal-primary',
     green: 'bg-green-50 border-green-200 text-green-600',
-    purple: 'bg-nreach-lavande/10 border-nreach-lavande/30 text-nreach-lavande',
+    purple: 'bg-nsignal-secondary/10 border-nsignal-secondary/30 text-nsignal-secondary',
     orange: 'bg-orange-50 border-orange-200 text-orange-600',
     red: 'bg-red-50 border-red-200 text-red-600',
   };
@@ -77,7 +77,7 @@ const MetricCard = ({ icon, label, value, suffix = '', sublabel, color }: Metric
         {icon}
         {label}
       </div>
-      <div className="text-2xl font-extrabold text-nreach-midnight dark:text-dark-text">
+      <div className="text-2xl font-extrabold text-nsignal-dark dark:text-dark-text">
         <AnimatedNumber value={value} suffix={suffix} />
       </div>
       <div className="text-xs opacity-80 mt-1">{sublabel}</div>
@@ -155,7 +155,7 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" role="dialog" aria-modal="true">
           {/* Backdrop */}
           <motion.div
-            className="absolute inset-0 bg-nreach-midnight/60 backdrop-blur-md"
+            className="absolute inset-0 bg-nsignal-dark/60 backdrop-blur-md"
             variants={backdropVariants}
             initial="hidden"
             animate="visible"
@@ -172,7 +172,7 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
             exit="exit"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-nreach-midnight to-nreach-lavande p-6 text-white flex justify-between items-center shrink-0">
+            <div className="bg-gradient-to-r from-nsignal-dark to-nsignal-secondary p-6 text-white flex justify-between items-center shrink-0">
               <h3 className="text-2xl font-bold flex items-center gap-3">
                 <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
                   <TrendingUp className="w-6 h-6" />
@@ -195,10 +195,10 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
                 {/* Slider */}
                 <div>
                   <div className="flex justify-between items-end mb-3">
-                    <label className="text-nreach-midnight dark:text-dark-text font-bold">
+                    <label className="text-nsignal-dark dark:text-dark-text font-bold">
                       Taille du réseau
                     </label>
-                    <span className="text-2xl font-bold text-nreach-electric">
+                    <span className="text-2xl font-bold text-nsignal-primary">
                       {shops} <span className="text-sm font-normal text-light-text-muted dark:text-dark-text-muted">points de vente</span>
                     </span>
                   </div>
@@ -210,10 +210,10 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
                       step="10"
                       value={shops}
                       onChange={(e) => setShops(parseInt(e.target.value))}
-                      className="w-full h-2 bg-light-border dark:bg-dark-border rounded-lg appearance-none cursor-pointer accent-nreach-electric focus:outline-none z-10"
+                      className="w-full h-2 bg-light-border dark:bg-dark-border rounded-lg appearance-none cursor-pointer accent-nsignal-primary focus:outline-none z-10"
                     />
                     <div 
-                      className="absolute h-2 bg-gradient-to-r from-nreach-electric to-nreach-lavande rounded-l-lg pointer-events-none top-1/2 -translate-y-1/2" 
+                      className="absolute h-2 bg-gradient-to-r from-nsignal-primary to-nsignal-secondary rounded-l-lg pointer-events-none top-1/2 -translate-y-1/2" 
                       style={{ width: `${((shops - 10) / 490) * 100}%` }} 
                     />
                   </div>
@@ -226,7 +226,7 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
 
                 {/* Plan selector */}
                 <div>
-                  <label className="text-nreach-midnight dark:text-dark-text font-bold block mb-3">
+                  <label className="text-nsignal-dark dark:text-dark-text font-bold block mb-3">
                     Plan sélectionné
                   </label>
                   <div className="flex gap-3">
@@ -234,22 +234,22 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
                       onClick={() => setSelectedPlan('starter')}
                       className={`flex-1 p-3 rounded-xl border-2 transition-all ${
                         selectedPlan === 'starter'
-                          ? 'border-nreach-electric bg-nreach-electric/5'
-                          : 'border-light-border dark:border-dark-border hover:border-nreach-electric/50'
+                          ? 'border-nsignal-primary bg-nsignal-primary/5'
+                          : 'border-light-border dark:border-dark-border hover:border-nsignal-primary/50'
                       }`}
                     >
-                      <div className="font-bold text-nreach-midnight dark:text-dark-text">Essentiel</div>
+                      <div className="font-bold text-nsignal-dark dark:text-dark-text">Essentiel</div>
                       <div className="text-sm text-light-text-muted dark:text-dark-text-muted">{getPlanPrice}€/user</div>
                     </button>
                     <button
                       onClick={() => setSelectedPlan('pro')}
                       className={`flex-1 p-3 rounded-xl border-2 transition-all ${
                         selectedPlan === 'pro'
-                          ? 'border-nreach-lavande bg-nreach-lavande/5'
-                          : 'border-light-border dark:border-dark-border hover:border-nreach-lavande/50'
+                          ? 'border-nsignal-secondary bg-nsignal-secondary/5'
+                          : 'border-light-border dark:border-dark-border hover:border-nsignal-secondary/50'
                       }`}
                     >
-                      <div className="font-bold text-nreach-midnight dark:text-dark-text">Business</div>
+                      <div className="font-bold text-nsignal-dark dark:text-dark-text">Business</div>
                       <div className="text-sm text-light-text-muted dark:text-dark-text-muted">{selectedPlan === 'pro' ? getPlanPrice : 45}€/user</div>
                     </button>
                   </div>
@@ -279,23 +279,23 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
                   </div>
                 </div>
 
-                <div className="bg-nreach-electric/10 rounded-xl p-4 border border-nreach-electric/30">
-                  <div className="flex items-center space-x-2 text-nreach-electric font-semibold mb-3">
+                <div className="bg-nsignal-primary/10 rounded-xl p-4 border border-nsignal-primary/30">
+                  <div className="flex items-center space-x-2 text-nsignal-primary font-semibold mb-3">
                     <CheckCircle className="w-4 h-4" />
                     <span>Avec nReach Studio</span>
                   </div>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-light-text-muted dark:text-dark-text-muted">Portée mensuelle</span>
-                      <span className="font-bold text-nreach-electric">{metrics.reachWithNReach.toLocaleString('fr-FR')}</span>
+                      <span className="font-bold text-nsignal-primary">{metrics.reachWithNReach.toLocaleString('fr-FR')}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-light-text-muted dark:text-dark-text-muted">Engagement</span>
-                      <span className="font-bold text-nreach-electric">{metrics.engagementWithNReach.toLocaleString('fr-FR')}</span>
+                      <span className="font-bold text-nsignal-primary">{metrics.engagementWithNReach.toLocaleString('fr-FR')}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-light-text-muted dark:text-dark-text-muted">Gain de portée</span>
-                      <span className="font-bold text-nreach-electric">+{metrics.reachGainPercent}%</span>
+                      <span className="font-bold text-nsignal-primary">+{metrics.reachGainPercent}%</span>
                     </div>
                   </div>
                 </div>
@@ -338,25 +338,25 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
               {/* Cost breakdown */}
               <div className="bg-light-surface dark:bg-dark-bg rounded-xl p-4 border border-light-border dark:border-dark-border mb-6">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="font-semibold text-nreach-midnight dark:text-dark-text">Récapitulatif mensuel</span>
+                  <span className="font-semibold text-nsignal-dark dark:text-dark-text">Récapitulatif mensuel</span>
                   <span className="text-xs text-light-text-muted dark:text-dark-text-muted">Plan {selectedPlan === 'starter' ? 'Essentiel' : 'Business'}</span>
                 </div>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-light-text-muted dark:text-dark-text-muted">{shops} utilisateurs × {getPlanPrice}€</span>
-                    <span className="font-bold text-nreach-midnight dark:text-dark-text">{metrics.nreachCost.toLocaleString('fr-FR')}€/mois</span>
+                    <span className="font-bold text-nsignal-dark dark:text-dark-text">{metrics.nreachCost.toLocaleString('fr-FR')}€/mois</span>
                   </div>
                   <div className="flex justify-between text-green-600">
                     <span>Économie vs agence ({roiConfig.agencyCostPerShop}€/PDV)</span>
                     <span className="font-bold">+{metrics.savingsVsAgency.toLocaleString('fr-FR')}€/mois</span>
                   </div>
-                  <div className="flex justify-between text-nreach-electric">
+                  <div className="flex justify-between text-nsignal-primary">
                     <span>Revenu additionnel estimé</span>
                     <span className="font-bold">+{metrics.additionalRevenue.toLocaleString('fr-FR')}€/mois</span>
                   </div>
                   <div className="border-t border-light-border dark:border-dark-border pt-2 mt-2 flex justify-between">
-                    <span className="font-bold text-nreach-midnight dark:text-dark-text">Bénéfice net estimé</span>
-                    <span className="font-bold text-nreach-electric text-lg">
+                    <span className="font-bold text-nsignal-dark dark:text-dark-text">Bénéfice net estimé</span>
+                    <span className="font-bold text-nsignal-primary text-lg">
                       +{(metrics.savingsVsAgency + metrics.additionalRevenue - metrics.nreachCost).toLocaleString('fr-FR')}€/mois
                     </span>
                   </div>
@@ -369,7 +369,7 @@ const RoiModal = ({ isOpen, onClose }: RoiModalProps) => {
                   *Estimations basées sur les performances moyennes du secteur Retail. Résultats réels variables.
                 </p>
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button variant="primary" size="lg" className="w-full sm:w-auto shadow-xl shadow-nreach-electric/20">
+                  <Button variant="primary" size="lg" className="w-full sm:w-auto shadow-xl shadow-nsignal-primary/20">
                     <Zap className="w-5 h-5 mr-2" />
                     <span>Demander mon devis personnalisé</span>
                     <ArrowRight className="w-5 h-5 ml-2" />

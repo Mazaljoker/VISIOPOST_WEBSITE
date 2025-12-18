@@ -49,6 +49,8 @@ export const pricingPlans: PricingPlan[] = [
     features: [
       "Tout Essentiel inclus",
       "Multi-plateforme (Instagram, TikTok)",
+      "Google My Business complet",
+      "Gestion des avis Google",
       "Analytics avancés par région",
       "Dashboard carte de France",
       "Brand Safety complet",
@@ -73,6 +75,7 @@ export const pricingPlans: PricingPlan[] = [
     features: [
       "Tout Business inclus",
       "Network Intelligence (IA qui apprend)",
+      "API Google My Business avancée",
       "API & intégrations custom",
       "SSO / SAML",
       "SLA garanti 99.9%",
@@ -92,6 +95,7 @@ export const pricingPlans: PricingPlan[] = [
 export const platformOptions = [
   { name: "Facebook", price: 0, included: true, available: true },
   { name: "Instagram", price: 15, included: false, available: true, badge: "Disponible" },
+  { name: "Google My Business", price: 0, included: false, available: true, badge: "Business+", note: "Inclus dans Business & Enterprise" },
   { name: "TikTok", price: 15, included: false, available: false, badge: "Q1 2025" },
   { name: "LinkedIn", price: 15, included: false, available: false, badge: "Q1 2025" }
 ];

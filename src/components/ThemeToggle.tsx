@@ -32,7 +32,7 @@ export const ThemeToggle: React.FC<{ className?: string }> = ({ className = '' }
   return (
     <motion.button
       onClick={cycleTheme}
-      className={`relative p-2 rounded-xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border hover:border-nreach-electric transition-colors ${className}`}
+      className={`relative p-2 rounded-xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border hover:border-nsignal-primary transition-colors ${className}`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       title={`Thème: ${currentTheme.label}`}
@@ -46,7 +46,7 @@ export const ThemeToggle: React.FC<{ className?: string }> = ({ className = '' }
           exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
           transition={{ duration: 0.2 }}
         >
-          <CurrentIcon className="w-5 h-5 text-nreach-midnight dark:text-dark-text" />
+          <CurrentIcon className="w-5 h-5 text-nsignal-dark dark:text-dark-text" />
         </motion.div>
       </AnimatePresence>
     </motion.button>
@@ -69,8 +69,8 @@ export const ThemeToggleExpanded: React.FC<{ className?: string }> = ({ classNam
           onClick={() => setTheme(value)}
           className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
             theme === value
-              ? 'bg-nreach-electric text-nreach-midnight'
-              : 'text-light-text-muted dark:text-dark-text-muted hover:text-nreach-midnight dark:hover:text-dark-text'
+              ? 'bg-nsignal-primary text-nsignal-dark'
+              : 'text-light-text-muted dark:text-dark-text-muted hover:text-nsignal-dark dark:hover:text-dark-text'
           }`}
           title={label}
           aria-label={`Thème ${label}`}

@@ -50,7 +50,7 @@ const HowItWorksSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-nreach-midnight dark:text-dark-text mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-nsignal-dark dark:text-dark-text mb-4">
             Comment ça marche ?
           </h2>
           <p className="text-lg text-light-text-muted dark:text-dark-text-muted max-w-2xl mx-auto">
@@ -65,7 +65,7 @@ const HowItWorksSection = () => {
               <motion.div
                 className={`flex flex-col items-center p-6 rounded-2xl w-full md:w-64 ${
                   step.highlight
-                    ? 'bg-gradient-to-br from-nreach-electric/10 to-nreach-lavande/10 border-2 border-nreach-electric'
+                    ? 'bg-gradient-to-br from-nsignal-primary/10 to-nsignal-secondary/10 border-2 border-nsignal-primary'
                     : 'bg-white dark:bg-dark-bg border border-light-border dark:border-dark-border'
                 } shadow-card`}
                 initial={{ opacity: 0, y: 20 }}
@@ -76,13 +76,13 @@ const HowItWorksSection = () => {
               >
                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 ${
                   step.highlight
-                    ? 'bg-gradient-to-br from-nreach-electric to-nreach-lavande'
-                    : 'bg-gradient-to-br from-nreach-midnight to-nreach-lavande'
+                    ? 'bg-gradient-to-br from-nsignal-primary to-nsignal-secondary'
+                    : 'bg-gradient-to-br from-nsignal-dark to-nsignal-secondary'
                 }`}>
                   <step.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className={`text-lg font-bold mb-2 ${
-                  step.highlight ? 'text-nreach-electric' : 'text-nreach-midnight dark:text-dark-text'
+                  step.highlight ? 'text-nsignal-primary' : 'text-nsignal-dark dark:text-dark-text'
                 }`}>
                   {step.title}
                 </h3>
@@ -99,7 +99,7 @@ const HowItWorksSection = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.15 + 0.1 }}
                 >
-                  <ArrowRight className="w-8 h-8 text-nreach-electric" />
+                  <ArrowRight className="w-8 h-8 text-nsignal-primary" />
                 </motion.div>
               )}
             </React.Fragment>
@@ -112,8 +112,8 @@ const HowItWorksSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold text-nreach-midnight dark:text-dark-text text-center mb-8">
-            Vous gardez le <span className="text-nreach-electric">contrôle</span>
+          <h3 className="text-2xl font-bold text-nsignal-dark dark:text-dark-text text-center mb-8">
+            Vous gardez le <span className="text-nsignal-primary">contrôle</span>
           </h3>
           <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {controlFeatures.map((feature, index) => (
@@ -125,11 +125,11 @@ const HowItWorksSection = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="w-12 h-12 bg-nreach-electric/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <feature.icon className="w-6 h-6 text-nreach-electric" />
+                <div className="w-12 h-12 bg-nsignal-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <feature.icon className="w-6 h-6 text-nsignal-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-nreach-midnight dark:text-dark-text mb-1">
+                  <h4 className="font-bold text-nsignal-dark dark:text-dark-text mb-1">
                     {feature.title}
                   </h4>
                   <p className="text-sm text-light-text-muted dark:text-dark-text-muted">

@@ -13,6 +13,15 @@ const sizes = {
   lg: { full: { width: 280, height: 56 }, icon: { width: 64, height: 64 } },
 };
 
+// nReach Studio - Nouvelle charte couleurs 2025
+const nsignalColors = {
+  primary: '#0F7B6C',    // Teal
+  secondary: '#E86A58',  // Coral
+  accent: '#DFAB01',     // Yellow
+  dark: '#1E2B3A',       // Charcoal
+  light: '#F8F5F2',      // Cream
+};
+
 export const NReachLogo: React.FC<NReachLogoProps> = ({
   variant = 'full',
   theme = 'light',
@@ -20,24 +29,23 @@ export const NReachLogo: React.FC<NReachLogoProps> = ({
   size = 'md',
 }) => {
   const { width, height } = sizes[size][variant];
-  
+
   const colors = {
     light: {
-      primary: '#1A1F3D',
-      text: '#1A1F3D',
-      muted: '#6B7280',
-      ring: '#1A1F3D',
+      primary: nsignalColors.dark,
+      text: nsignalColors.dark,
+      muted: '#6B6259',
+      ring: nsignalColors.dark,
     },
     dark: {
       primary: '#FFFFFF',
       text: '#FFFFFF',
-      muted: '#9CA3AF',
+      muted: '#B8B0A8',
       ring: '#FFFFFF',
     },
   };
-  
+
   const c = colors[theme];
-  const electric = '#00D4AA';
 
   if (variant === 'icon') {
     return (
@@ -52,7 +60,7 @@ export const NReachLogo: React.FC<NReachLogoProps> = ({
         {/* Outer rings */}
         <circle cx="32" cy="32" r="28" stroke={c.ring} strokeWidth="2" fill="none" opacity="0.15" />
         <circle cx="32" cy="32" r="21" stroke={c.ring} strokeWidth="2" fill="none" opacity="0.25" />
-        
+
         {/* Center circle with n */}
         <circle cx="32" cy="32" r="14" fill={c.primary} />
         <text
@@ -62,22 +70,22 @@ export const NReachLogo: React.FC<NReachLogoProps> = ({
           fontFamily="Plus Jakarta Sans, sans-serif"
           fontSize="18"
           fontWeight="800"
-          fill={theme === 'light' ? '#FFFFFF' : '#0F1219'}
+          fill={theme === 'light' ? '#FFFFFF' : nsignalColors.dark}
         >
           n
         </text>
-        
-        {/* Network nodes */}
-        <circle cx="32" cy="4" r="4" fill={electric} />
-        <circle cx="60" cy="32" r="4" fill={electric} />
-        <circle cx="32" cy="60" r="4" fill={electric} />
-        <circle cx="4" cy="32" r="4" fill={electric} />
-        
-        {/* Diagonal nodes */}
-        <circle cx="52" cy="12" r="3" fill={electric} opacity="0.6" />
-        <circle cx="52" cy="52" r="3" fill={electric} opacity="0.6" />
-        <circle cx="12" cy="52" r="3" fill={electric} opacity="0.6" />
-        <circle cx="12" cy="12" r="3" fill={electric} opacity="0.6" />
+
+        {/* Network nodes - 4 colors around the n */}
+        <circle cx="32" cy="4" r="4" fill={nsignalColors.primary} />    {/* Top - Teal */}
+        <circle cx="60" cy="32" r="4" fill={nsignalColors.secondary} /> {/* Right - Coral */}
+        <circle cx="32" cy="60" r="4" fill={nsignalColors.accent} />    {/* Bottom - Yellow */}
+        <circle cx="4" cy="32" r="4" fill={nsignalColors.dark} />       {/* Left - Charcoal */}
+
+        {/* Diagonal nodes - alternating colors */}
+        <circle cx="52" cy="12" r="3" fill={nsignalColors.secondary} opacity="0.7" />
+        <circle cx="52" cy="52" r="3" fill={nsignalColors.accent} opacity="0.7" />
+        <circle cx="12" cy="52" r="3" fill={nsignalColors.primary} opacity="0.7" />
+        <circle cx="12" cy="12" r="3" fill={nsignalColors.dark} opacity="0.7" />
       </svg>
     );
   }
@@ -104,18 +112,19 @@ export const NReachLogo: React.FC<NReachLogoProps> = ({
           fontFamily="Plus Jakarta Sans, sans-serif"
           fontSize="14"
           fontWeight="800"
-          fill={theme === 'light' ? '#FFFFFF' : '#0F1219'}
+          fill={theme === 'light' ? '#FFFFFF' : nsignalColors.dark}
         >
           n
         </text>
-        <circle cx="24" cy="2" r="3" fill={electric} />
-        <circle cx="46" cy="24" r="3" fill={electric} />
-        <circle cx="24" cy="46" r="3" fill={electric} />
-        <circle cx="2" cy="24" r="3" fill={electric} />
+        {/* Network nodes - 4 colors */}
+        <circle cx="24" cy="2" r="3" fill={nsignalColors.primary} />    {/* Top - Teal */}
+        <circle cx="46" cy="24" r="3" fill={nsignalColors.secondary} /> {/* Right - Coral */}
+        <circle cx="24" cy="46" r="3" fill={nsignalColors.accent} />    {/* Bottom - Yellow */}
+        <circle cx="2" cy="24" r="3" fill={nsignalColors.dark} />       {/* Left - Charcoal */}
       </g>
-      
-      {/* Text */}
-      <text x="58" y="32" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="26" fontWeight="800" fill={electric}>n</text>
+
+      {/* Text: nReach Studio */}
+      <text x="58" y="32" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="26" fontWeight="800" fill={nsignalColors.primary}>n</text>
       <text x="75" y="32" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="26" fontWeight="800" fill={c.text}>Reach</text>
       <text x="156" y="32" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="22" fontWeight="500" fill={c.muted}>Studio</text>
     </svg>

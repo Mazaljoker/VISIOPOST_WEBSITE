@@ -23,14 +23,14 @@ const FaqItem: React.FC<FaqItemProps> = ({ question, answer }) => {
         className="w-full px-6 py-4 flex items-center justify-between text-left"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="font-semibold text-nreach-midnight dark:text-dark-text pr-4">
+        <span className="font-semibold text-nsignal-dark dark:text-dark-text pr-4">
           {question}
         </span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <ChevronDown className="w-5 h-5 text-nreach-electric flex-shrink-0" />
+          <ChevronDown className="w-5 h-5 text-nsignal-primary flex-shrink-0" />
         </motion.div>
       </button>
       

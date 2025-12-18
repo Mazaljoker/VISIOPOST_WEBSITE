@@ -19,11 +19,11 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenRoi }) =
   return (
     <section className="relative py-24 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-midnight" />
+      <div className="absolute inset-0 bg-gradient-dark" />
       
       {/* Glow Effects */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-nreach-electric/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-nreach-lavande/20 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-nsignal-primary/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-nsignal-secondary/20 rounded-full blur-3xl" />
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Icon */}
@@ -45,7 +45,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenRoi }) =
         >
           Prêt à maximiser la
           <br />
-          <span className="bg-gradient-to-r from-nreach-electric to-nreach-lavande bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-nsignal-primary to-nsignal-secondary bg-clip-text text-transparent">
             portée de votre réseau ?
           </span>
         </motion.h2>
@@ -75,7 +75,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenRoi }) =
               key={index}
               className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10"
             >
-              <CheckCircle className="w-4 h-4 text-nreach-electric" />
+              <CheckCircle className="w-4 h-4 text-nsignal-primary" />
               <span className="text-sm text-dark-text-muted">{benefit}</span>
             </div>
           ))}
@@ -93,7 +93,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenRoi }) =
             Démarrer gratuitement
           </Button>
           {onOpenRoi && (
-            <Button variant="ghost" size="lg" onClick={onOpenRoi} className="text-nreach-electric">
+            <Button variant="ghost" size="lg" onClick={onOpenRoi} className="text-nsignal-primary">
               Simuler mon ROI
             </Button>
           )}
@@ -105,7 +105,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenRoi }) =
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-8 text-nreach-electric font-medium italic"
+          className="mt-8 text-nsignal-primary font-medium italic"
         >
           "n locations. One studio."
         </motion.p>
