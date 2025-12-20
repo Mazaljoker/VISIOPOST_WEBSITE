@@ -1,0 +1,44 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Guide Typographie nSignal -->
+
+  <!-- Titre -->
+  <text x="400" y="40" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="24" font-weight="800" fill="#1E2B3A">Typographie nSignal</text>
+
+  <!-- Police principale -->
+  <text x="30" y="90" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="700" fill="#0F7B6C">Police Principale</text>
+
+  <rect x="30" y="105" width="350" height="150" rx="12" fill="#F8F5F2"/>
+  <text x="50" y="145" font-family="Plus Jakarta Sans, sans-serif" font-size="32" font-weight="800" fill="#1E2B3A">Plus Jakarta Sans</text>
+  <text x="50" y="175" font-family="Plus Jakarta Sans, sans-serif" font-size="16" font-weight="400" fill="#6B6259">ABCDEFGHIJKLMNOPQRSTUVWXYZ</text>
+  <text x="50" y="200" font-family="Plus Jakarta Sans, sans-serif" font-size="16" font-weight="400" fill="#6B6259">abcdefghijklmnopqrstuvwxyz</text>
+  <text x="50" y="225" font-family="Plus Jakarta Sans, sans-serif" font-size="16" font-weight="400" fill="#6B6259">0123456789 @#$%&amp;</text>
+
+  <!-- Weights -->
+  <text x="420" y="90" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="700" fill="#0F7B6C">Graisses Utilisees</text>
+
+  <rect x="420" y="105" width="350" height="150" rx="12" fill="#F8F5F2"/>
+  <text x="440" y="140" font-family="Plus Jakarta Sans, sans-serif" font-size="18" font-weight="400" fill="#1E2B3A">Regular (400) - Corps de texte</text>
+  <text x="440" y="170" font-family="Plus Jakarta Sans, sans-serif" font-size="18" font-weight="600" fill="#1E2B3A">SemiBold (600) - Sous-titres</text>
+  <text x="440" y="200" font-family="Plus Jakarta Sans, sans-serif" font-size="18" font-weight="700" fill="#1E2B3A">Bold (700) - Titres</text>
+  <text x="440" y="230" font-family="Plus Jakarta Sans, sans-serif" font-size="18" font-weight="800" fill="#1E2B3A">ExtraBold (800) - Logo &amp; Accents</text>
+
+  <!-- Hierarchie -->
+  <text x="30" y="290" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="700" fill="#0F7B6C">Hierarchie Typographique</text>
+
+  <rect x="30" y="305" width="740" height="180" rx="12" fill="#F8F5F2"/>
+
+  <text x="50" y="345" font-family="Plus Jakarta Sans, sans-serif" font-size="48" font-weight="800" fill="#1E2B3A">H1 - Titre Principal</text>
+  <text x="540" y="345" font-family="Plus Jakarta Sans, monospace" font-size="12" fill="#6B6259">48px / ExtraBold</text>
+
+  <text x="50" y="390" font-family="Plus Jakarta Sans, sans-serif" font-size="32" font-weight="700" fill="#1E2B3A">H2 - Titre Section</text>
+  <text x="540" y="390" font-family="Plus Jakarta Sans, monospace" font-size="12" fill="#6B6259">32px / Bold</text>
+
+  <text x="50" y="425" font-family="Plus Jakarta Sans, sans-serif" font-size="24" font-weight="600" fill="#1E2B3A">H3 - Sous-titre</text>
+  <text x="540" y="425" font-family="Plus Jakarta Sans, monospace" font-size="12" fill="#6B6259">24px / SemiBold</text>
+
+  <text x="50" y="455" font-family="Plus Jakarta Sans, sans-serif" font-size="16" font-weight="400" fill="#1E2B3A">Body - Texte courant pour les paragraphes et contenus.</text>
+  <text x="540" y="455" font-family="Plus Jakarta Sans, monospace" font-size="12" fill="#6B6259">16px / Regular</text>
+
+  <text x="50" y="475" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="400" fill="#6B6259">Small - Legendes, notes de bas de page, metadata.</text>
+  <text x="540" y="475" font-family="Plus Jakarta Sans, monospace" font-size="12" fill="#6B6259">14px / Regular</text>
+</svg>

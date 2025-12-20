@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nSignal - Charte Graphique Officielle 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #0F7B6C;
+      --coral: #E86A58;
+      --yellow: #DFAB01;
+      --charcoal: #1E2B3A;
+      --cream: #F8F5F2;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      background: var(--charcoal);
+      color: white;
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 18px;
+      opacity: 0.8;
+    }
+
+    /* Navigation */
+    .nav {
+      background: white;
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: var(--charcoal);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .nav a:hover {
+      background: var(--teal);
+      color: white;
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section:nth-child(even) {
+      background: white;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--teal);
+      margin-bottom: 40px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid var(--teal);
+    }
+
+    .section h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin: 40px 0 20px;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    .card.dark {
+      background: var(--charcoal);
+      color: white;
+    }
+
+    .card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--teal);
+    }
+
+    .card.dark h4 {
+      color: var(--coral);
+    }
+
+    /* Logo Preview */
+    .logo-preview {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100px;
+      margin-bottom: 20px;
+    }
+
+    .logo-preview img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Colors */
+    .color-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .color-swatch {
+      width: 150px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .color-swatch .preview {
+      height: 100px;
+    }
+
+    .color-swatch .info {
+      padding: 15px;
+      background: white;
+    }
+
+    .color-swatch .name {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .color-swatch .hex {
+      font-family: monospace;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .color-swatch .rgb {
+      font-family: monospace;
+      font-size: 11px;
+      color: #999;
+    }
+
+    /* Typography */
+    .typo-sample {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .typo-h1 { font-size: 48px; font-weight: 800; }
+    .typo-h2 { font-size: 36px; font-weight: 700; }
+    .typo-h3 { font-size: 24px; font-weight: 600; }
+    .typo-body { font-size: 16px; font-weight: 400; }
+    .typo-small { font-size: 14px; font-weight: 400; color: #666; }
+
+    .typo-label {
+      font-size: 12px;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      font-size: 14px;
+      transition: all 0.2s;
+      margin: 5px;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #0C6256;
+    }
+
+    .btn-secondary {
+      background: var(--coral);
+      color: white;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--teal);
+      color: var(--teal);
+    }
+
+    .btn-outline:hover {
+      background: var(--teal);
+      color: white;
+    }
+
+    /* Do/Dont */
+    .do-dont {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .do, .dont {
+      padding: 30px;
+      border-radius: 16px;
+    }
+
+    .do {
+      background: #E8F5EC;
+      border: 2px solid #2D7D46;
+    }
+
+    .dont {
+      background: #FDEBE8;
+      border: 2px solid #DC2626;
+    }
+
+    .do h4, .dont h4 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .do h4 { color: #2D7D46; }
+    .dont h4 { color: #DC2626; }
+
+    .do ul, .dont ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .do li, .dont li {
+      padding: 8px 0;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .do li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #2D7D46;
+      font-weight: bold;
+    }
+
+    .dont li::before {
+      content: "✗";
+      position: absolute;
+      left: 0;
+      color: #DC2626;
+      font-weight: bold;
+    }
+
+    /* Spacing */
+    .spacing-demo {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .spacing-demo img {
+      max-width: 200px;
+      margin: 20px;
+    }
+
+    .spacing-box {
+      display: inline-block;
+      border: 2px dashed var(--coral);
+      padding: 20px;
+      margin: 20px;
+    }
+
+    /* Download */
+    .download-section {
+      background: linear-gradient(135deg, var(--teal), var(--coral));
+      color: white;
+      padding: 60px 40px;
+      text-align: center;
+      border-radius: 24px;
+      margin: 40px 0;
+    }
+
+    .download-section h3 {
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .download-grid {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .download-btn {
+      background: white;
+      color: var(--charcoal);
+      padding: 15px 30px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s;
+    }
+
+    .download-btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--charcoal);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .footer p {
+      opacity: 0.7;
+    }
+
+    canvas { display: none; }
+
+    @media (max-width: 768px) {
+      .header h1 { font-size: 32px; }
+      .section { padding: 40px 20px; }
+      .do-dont { grid-template-columns: 1fr; }
+      .nav { padding: 15px 20px; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <img src="logos/nsignal-logo-dark.svg" alt="nSignal" style="height: 60px; margin-bottom: 30px;">
+    <h1>Charte Graphique</h1>
+    <p>Guide officiel de l'identite visuelle nSignal - 2025</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="#logo">Logo</a>
+    <a href="#couleurs">Couleurs</a>
+    <a href="#typographie">Typographie</a>
+    <a href="#icones">Icones</a>
+    <a href="#usage">Usage</a>
+    <a href="#telechargement">Telechargement</a>
+  </nav>
+
+  <!-- Logo Section -->
+  <section id="logo" class="section">
+    <h2>Logo nSignal</h2>
+    <p style="margin-bottom: 40px; font-size: 18px; max-width: 800px;">
+      Le logo nSignal represente la connexion et la diffusion du signal a travers un reseau.
+      Les 5 boules en orbite symbolisent les 5 piliers de notre plateforme et nos 5 couleurs de marque.
+    </p>
+
+    <h3>Logo Principal</h3>
+    <div class="grid grid-2">
+      <div class="card">
+        <h4>Light Mode</h4>
+        <div class="logo-preview">
+          <img src="logos/nsignal-logo-light.svg" alt="Logo Light">
+        </div>
+        <p style="text-align: center; color: #666; font-size: 14px;">Pour fonds clairs</p>
+      </div>
+      <div class="card dark">
+        <h4>Dark Mode</h4>
+        <div class="logo-preview">
+          <img src="logos/nsignal-logo-dark.svg" alt="Logo Dark">
+        </div>
+        <p style="text-align: center; opacity: 0.7; font-size: 14px;">Pour fonds sombres</p>
+      </div>
+    </div>
+
+    <h3>Icon</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Light Mode</h4>
+        <div class="logo-preview">
+          <img src="logos/nsignal-icon-light.svg" alt="Icon Light" style="width: 64px;">
+        </div>
+      </div>
+      <div class="card dark">
+        <h4>Dark Mode</h4>
+        <div class="logo-preview">
+          <img src="logos/nsignal-icon-dark.svg" alt="Icon Dark" style="width: 64px;">
+        </div>
+      </div>
+      <div class="card">
+        <h4>Monochrome Sombre</h4>
+        <div class="logo-preview">
+          <img src="logos/nsignal-icon-monochrome-dark.svg" alt="Icon Mono Dark" style="width: 64px;">
+        </div>
+      </div>
+      <div class="card dark">
+        <h4>Monochrome Clair</h4>
+        <div class="logo-preview">
+          <img src="logos/nsignal-icon-monochrome-light.svg" alt="Icon Mono Light" style="width: 64px;">
+        </div>
+      </div>
+    </div>
+
+    <h3>Haute Resolution (512px)</h3>
+    <div class="grid grid-2">
+      <div class="card">
+        <h4>512x512 - Light</h4>
+        <div class="logo-preview">
+          <img src="logos/nsignal-icon-512-light.svg" alt="Icon 512 Light" style="width: 128px;">
+        </div>
+      </div>
+      <div class="card dark">
+        <h4>512x512 - Dark</h4>
+        <div class="logo-preview">
+          <img src="logos/nsignal-icon-512-dark.svg" alt="Icon 512 Dark" style="width: 128px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Couleurs Section -->
+  <section id="couleurs" class="section">
+    <h2>Palette de Couleurs</h2>
+    <p style="margin-bottom: 40px; font-size: 18px;">
+      Notre palette se compose de 5 couleurs principales qui representent l'energie,
+      la fiabilite et l'innovation de nSignal.
+    </p>
+
+    <h3>Couleurs Principales</h3>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="preview" style="background: #0F7B6C;"></div>
+        <div class="info">
+          <div class="name">Teal</div>
+          <div class="hex">#0F7B6C</div>
+          <div class="rgb">RGB: 15, 123, 108</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="preview" style="background: #E86A58;"></div>
+        <div class="info">
+          <div class="name">Coral</div>
+          <div class="hex">#E86A58</div>
+          <div class="rgb">RGB: 232, 106, 88</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="preview" style="background: #DFAB01;"></div>
+        <div class="info">
+          <div class="name">Jaune Signal</div>
+          <div class="hex">#DFAB01</div>
+          <div class="rgb">RGB: 223, 171, 1</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="preview" style="background: #1E2B3A;"></div>
+        <div class="info">
+          <div class="name">Charcoal</div>
+          <div class="hex">#1E2B3A</div>
+          <div class="rgb">RGB: 30, 43, 58</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="preview" style="background: #F8F5F2; border: 1px solid #E5E5E5;"></div>
+        <div class="info">
+          <div class="name">Creme</div>
+          <div class="hex">#F8F5F2</div>
+          <div class="rgb">RGB: 248, 245, 242</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Usage des Couleurs</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Teal - Couleur Principale</h4>
+        <p>Utilisee pour les elements principaux: boutons, liens, accents. Represente la confiance et la stabilite.</p>
+      </div>
+      <div class="card">
+        <h4>Coral - Couleur d'Action</h4>
+        <p>Utilisee pour les CTA secondaires, les notifications, les elements d'attention. Energie et dynamisme.</p>
+      </div>
+      <div class="card">
+        <h4>Jaune Signal - Accent</h4>
+        <p>Utilisee avec parcimonie pour attirer l'attention sur des elements specifiques. Optimisme et innovation.</p>
+      </div>
+      <div class="card">
+        <h4>Charcoal & Creme</h4>
+        <p>Couleurs neutres pour le texte et les fonds. S'inversent entre les modes light et dark.</p>
+      </div>
+    </div>
+
+    <h3>Palette SVG</h3>
+    <div style="background: white; padding: 20px; border-radius: 16px; overflow: auto;">
+      <img src="couleurs/palette.svg" alt="Palette Complete" style="width: 100%; max-width: 800px;">
+    </div>
+  </section>
+
+  <!-- Typographie Section -->
+  <section id="typographie" class="section">
+    <h2>Typographie</h2>
+
+    <h3>Police Principale: Plus Jakarta Sans</h3>
+    <div class="typo-sample">
+      <div class="typo-label">ExtraBold (800) - Titres principaux</div>
+      <p class="typo-h1">Plus Jakarta Sans</p>
+    </div>
+
+    <div class="typo-sample">
+      <div class="typo-label">Bold (700) - Titres de section</div>
+      <p class="typo-h2">nSignal - Le pilotage social</p>
+    </div>
+
+    <div class="typo-sample">
+      <div class="typo-label">SemiBold (600) - Sous-titres</div>
+      <p class="typo-h3">Coordonnez votre reseau en un clic</p>
+    </div>
+
+    <div class="typo-sample">
+      <div class="typo-label">Regular (400) - Corps de texte</div>
+      <p class="typo-body">nSignal permet aux reseaux multi-sites de piloter leur presence social avec simplicite et efficacite. Du siege au terrain, chaque point de vente devient acteur de sa communication.</p>
+    </div>
+
+    <div class="typo-sample">
+      <div class="typo-label">Regular (400) - Texte secondaire</div>
+      <p class="typo-small">Legendes, metadata, informations complementaires</p>
+    </div>
+
+    <h3>Guide Typographique SVG</h3>
+    <div style="background: white; padding: 20px; border-radius: 16px; overflow: auto;">
+      <img src="typographie/typographie.svg" alt="Guide Typographie" style="width: 100%; max-width: 800px;">
+    </div>
+  </section>
+
+  <!-- Icones Section -->
+  <section id="icones" class="section">
+    <h2>Icones & Badges</h2>
+
+    <h3>Icones pour Reseaux Sociaux</h3>
+    <div class="grid grid-2">
+      <div class="card">
+        <h4>Circulaire - Fond Teal</h4>
+        <div class="logo-preview">
+          <img src="icones/social-icon-circle.svg" alt="Social Circle" style="width: 100px;">
+        </div>
+        <p style="text-align: center; color: #666; font-size: 14px;">Profils reseaux sociaux</p>
+      </div>
+      <div class="card">
+        <h4>Carre - Fond Charcoal</h4>
+        <div class="logo-preview">
+          <img src="icones/social-icon-square.svg" alt="Social Square" style="width: 100px;">
+        </div>
+        <p style="text-align: center; color: #666; font-size: 14px;">App stores, thumbnails</p>
+      </div>
+    </div>
+
+    <h3>Favicon</h3>
+    <div class="card" style="max-width: 300px;">
+      <h4>Favicon 32x32</h4>
+      <div class="logo-preview">
+        <img src="logos/favicon.svg" alt="Favicon" style="width: 32px;">
+        <img src="logos/favicon.svg" alt="Favicon" style="width: 64px; margin-left: 20px;">
+      </div>
+    </div>
+  </section>
+
+  <!-- Usage Section -->
+  <section id="usage" class="section">
+    <h2>Regles d'Usage</h2>
+
+    <h3>Zone de Protection</h3>
+    <div class="spacing-demo">
+      <p style="margin-bottom: 20px;">Toujours respecter un espace minimum autour du logo egal a la hauteur du "n".</p>
+      <div class="spacing-box">
+        <img src="logos/nsignal-logo-light.svg" alt="Logo avec zone" style="max-width: 200px;">
+      </div>
+    </div>
+
+    <h3>Bonnes Pratiques</h3>
+    <div class="do-dont">
+      <div class="do">
+        <h4>A FAIRE</h4>
+        <ul>
+          <li>Utiliser les versions officielles du logo</li>
+          <li>Respecter les zones de protection</li>
+          <li>Utiliser le mode adapte au fond (light/dark)</li>
+          <li>Conserver les proportions originales</li>
+          <li>Utiliser la version monochrome si necessaire</li>
+        </ul>
+      </div>
+      <div class="dont">
+        <h4>A NE PAS FAIRE</h4>
+        <ul>
+          <li>Modifier les couleurs du logo</li>
+          <li>Deformer ou etirer le logo</li>
+          <li>Ajouter des effets (ombres, contours)</li>
+          <li>Placer sur un fond trop charge</li>
+          <li>Utiliser une version basse resolution</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Boutons & CTA</h3>
+    <div class="card">
+      <p style="margin-bottom: 20px;">Exemples de boutons avec la charte nSignal:</p>
+      <button class="btn btn-primary">Bouton Principal</button>
+      <button class="btn btn-secondary">Bouton Secondaire</button>
+      <button class="btn btn-outline">Bouton Outline</button>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section id="telechargement" class="section">
+    <div class="download-section">
+      <h3>Telecharger les Assets</h3>
+      <p style="margin-bottom: 30px; opacity: 0.9;">Tous les fichiers sont disponibles en SVG haute qualite.</p>
+      <div class="download-grid">
+        <a href="logos/nsignal-logo-light.svg" download class="download-btn">Logo Light SVG</a>
+        <a href="logos/nsignal-logo-dark.svg" download class="download-btn">Logo Dark SVG</a>
+        <a href="logos/nsignal-icon-512-light.svg" download class="download-btn">Icon 512px Light</a>
+        <a href="logos/nsignal-icon-512-dark.svg" download class="download-btn">Icon 512px Dark</a>
+        <a href="couleurs/palette.svg" download class="download-btn">Palette SVG</a>
+        <a href="typographie/typographie.svg" download class="download-btn">Typographie SVG</a>
+      </div>
+    </div>
+
+    <h3>Exporter en PNG</h3>
+    <p style="margin-bottom: 20px;">Cliquez pour telecharger les versions PNG:</p>
+    <div class="grid">
+      <div class="card">
+        <h4>Icon Light</h4>
+        <div class="logo-preview">
+          <img src="logos/nsignal-icon-light.svg" alt="Icon Light" id="icon-light" style="width: 64px;">
+        </div>
+        <button class="btn btn-primary" onclick="downloadPNG('icon-light', 'nsignal-icon-light', 64)">64px</button>
+        <button class="btn btn-primary" onclick="downloadPNG('icon-light', 'nsignal-icon-light', 128)">128px</button>
+        <button class="btn btn-primary" onclick="downloadPNG('icon-light', 'nsignal-icon-light', 256)">256px</button>
+        <button class="btn btn-primary" onclick="downloadPNG('icon-light', 'nsignal-icon-light', 512)">512px</button>
+      </div>
+      <div class="card dark">
+        <h4>Icon Dark</h4>
+        <div class="logo-preview">
+          <img src="logos/nsignal-icon-dark.svg" alt="Icon Dark" id="icon-dark" style="width: 64px;">
+        </div>
+        <button class="btn btn-secondary" onclick="downloadPNG('icon-dark', 'nsignal-icon-dark', 64)">64px</button>
+        <button class="btn btn-secondary" onclick="downloadPNG('icon-dark', 'nsignal-icon-dark', 128)">128px</button>
+        <button class="btn btn-secondary" onclick="downloadPNG('icon-dark', 'nsignal-icon-dark', 256)">256px</button>
+        <button class="btn btn-secondary" onclick="downloadPNG('icon-dark', 'nsignal-icon-dark', 512)">512px</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <img src="logos/nsignal-logo-dark.svg" alt="nSignal" style="height: 40px; margin-bottom: 20px;">
+    <p>nSignal - Charte Graphique Officielle 2025</p>
+    <p style="margin-top: 10px; font-size: 14px;">nsignal.ai</p>
+  </footer>
+
+  <canvas id="canvas"></canvas>
+
+  <script>
+    function downloadPNG(imgId, filename, size) {
+      const img = document.getElementById(imgId);
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      canvas.width = size;
+      canvas.height = size;
+
+      const svgImg = new Image();
+      svgImg.onload = function() {
+        ctx.clearRect(0, 0, size, size);
+        ctx.drawImage(svgImg, 0, 0, size, size);
+
+        const link = document.createElement('a');
+        link.download = filename + '-' + size + 'px.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      };
+      svgImg.src = img.src;
+    }
+  </script>
+</body>
+</html>

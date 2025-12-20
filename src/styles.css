@@ -346,6 +346,96 @@
 }
 
 /* ========================================
+   nSignal Logo Animations
+   ======================================== */
+
+/* Animation pulse sur les boules */
+@keyframes logo-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+/* Animation onde propagation */
+@keyframes wave-propagate {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.4;
+  }
+}
+
+/* Animation glow subtil */
+@keyframes logo-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(15, 123, 108, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(15, 123, 108, 0.5));
+  }
+}
+
+/* Boules animees avec delai progressif */
+.nsignal-logo-animated .dot {
+  transform-origin: center;
+  animation: logo-pulse 2.5s ease-in-out infinite;
+}
+
+.nsignal-logo-animated .dot-1 {
+  animation-delay: 0s;
+}
+
+.nsignal-logo-animated .dot-2 {
+  animation-delay: 0.4s;
+}
+
+.nsignal-logo-animated .dot-3 {
+  animation-delay: 0.8s;
+}
+
+.nsignal-logo-animated .dot-4 {
+  animation-delay: 1.2s;
+}
+
+.nsignal-logo-animated .dot-5 {
+  animation-delay: 1.6s;
+}
+
+/* Ondes animees avec propagation */
+.nsignal-logo-animated .wave {
+  stroke-dasharray: 100;
+  animation: wave-propagate 3s ease-in-out infinite;
+}
+
+.nsignal-logo-animated .wave-1 {
+  animation-delay: 0s;
+}
+
+.nsignal-logo-animated .wave-2 {
+  animation-delay: 0.5s;
+}
+
+.nsignal-logo-animated .wave-3 {
+  animation-delay: 1s;
+}
+
+/* Effet glow au hover */
+.nsignal-logo:hover {
+  animation: logo-glow 1.5s ease-in-out infinite;
+}
+
+/* ========================================
    Legacy Support (transition from nReach)
    À SUPPRIMER après migration complète
    ======================================== */

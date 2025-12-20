@@ -1,0 +1,60 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Palette de couleurs nSignal -->
+
+  <!-- Titre -->
+  <text x="400" y="40" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="24" font-weight="800" fill="#1E2B3A">Palette nSignal</text>
+
+  <!-- Couleurs principales -->
+  <text x="30" y="85" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="700" fill="#1E2B3A">Couleurs Principales</text>
+
+  <!-- Teal -->
+  <rect x="30" y="100" width="140" height="140" rx="12" fill="#0F7B6C"/>
+  <text x="100" y="200" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Teal</text>
+  <text x="100" y="220" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="11" fill="#FFFFFF" opacity="0.8">#0F7B6C</text>
+
+  <!-- Coral -->
+  <rect x="185" y="100" width="140" height="140" rx="12" fill="#E86A58"/>
+  <text x="255" y="200" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Coral</text>
+  <text x="255" y="220" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="11" fill="#FFFFFF" opacity="0.8">#E86A58</text>
+
+  <!-- Jaune Signal -->
+  <rect x="340" y="100" width="140" height="140" rx="12" fill="#DFAB01"/>
+  <text x="410" y="200" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="700" fill="#1E2B3A">Jaune Signal</text>
+  <text x="410" y="220" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="11" fill="#1E2B3A" opacity="0.8">#DFAB01</text>
+
+  <!-- Charcoal -->
+  <rect x="495" y="100" width="140" height="140" rx="12" fill="#1E2B3A"/>
+  <text x="565" y="200" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Charcoal</text>
+  <text x="565" y="220" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="11" fill="#FFFFFF" opacity="0.8">#1E2B3A</text>
+
+  <!-- Creme -->
+  <rect x="650" y="100" width="140" height="140" rx="12" fill="#F8F5F2" stroke="#E5E5E5" stroke-width="1"/>
+  <text x="720" y="200" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="700" fill="#1E2B3A">Creme</text>
+  <text x="720" y="220" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="11" fill="#1E2B3A" opacity="0.8">#F8F5F2</text>
+
+  <!-- Variations Teal -->
+  <text x="30" y="280" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="700" fill="#1E2B3A">Variations Teal</text>
+  <rect x="30" y="295" width="60" height="60" rx="8" fill="#E6F4F2"/>
+  <text x="60" y="370" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="9" fill="#1E2B3A">50</text>
+  <rect x="100" y="295" width="60" height="60" rx="8" fill="#99D3CB"/>
+  <text x="130" y="370" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="9" fill="#1E2B3A">200</text>
+  <rect x="170" y="295" width="60" height="60" rx="8" fill="#0F7B6C"/>
+  <text x="200" y="370" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="9" fill="#1E2B3A">500</text>
+  <rect x="240" y="295" width="60" height="60" rx="8" fill="#094A41"/>
+  <text x="270" y="370" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="9" fill="#1E2B3A">700</text>
+  <rect x="310" y="295" width="60" height="60" rx="8" fill="#031916"/>
+  <text x="340" y="370" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="9" fill="#1E2B3A">900</text>
+
+  <!-- Variations Coral -->
+  <text x="420" y="280" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="700" fill="#1E2B3A">Variations Coral</text>
+  <rect x="420" y="295" width="60" height="60" rx="8" fill="#FDEBE8"/>
+  <text x="450" y="370" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="9" fill="#1E2B3A">50</text>
+  <rect x="490" y="295" width="60" height="60" rx="8" fill="#F7AFA3"/>
+  <text x="520" y="370" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="9" fill="#1E2B3A">200</text>
+  <rect x="560" y="295" width="60" height="60" rx="8" fill="#E86A58"/>
+  <text x="590" y="370" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="9" fill="#1E2B3A">500</text>
+  <rect x="630" y="295" width="60" height="60" rx="8" fill="#B84A3C"/>
+  <text x="660" y="370" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="9" fill="#1E2B3A">700</text>
+  <rect x="700" y="295" width="60" height="60" rx="8" fill="#5C251E"/>
+  <text x="730" y="370" text-anchor="middle" font-family="Plus Jakarta Sans, monospace" font-size="9" fill="#1E2B3A">900</text>
+</svg>
